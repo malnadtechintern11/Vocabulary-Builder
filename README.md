@@ -25,7 +25,7 @@ Built strictly following the **Flutter Production Architecture Standard**:
 - **Clean Architecture:** Domain, Data, and Presentation layer separation with Repository Pattern and Use Cases.
 - **State Management:** Riverpod 2 (`flutter_riverpod`) for reactive, testable state.
 - **Navigation:** `go_router` with `StatefulShellRoute` preserving navigation states.
-- **Design System:** Material 3 with tailored Light & Dark themes, Google Fonts typography, and smooth micro-interactions.
+- **Design System:** Material 3 with tailored Light & themes, Google Fonts typography, and smooth micro-interactions.
 
 ```
 lib/

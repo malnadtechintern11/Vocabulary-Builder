@@ -102,20 +102,51 @@ class ActiveQuizScreen extends ConsumerWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Question $currentNum of $total',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13,
-                              color: isDark ? Colors.white70 : Colors.black54,
+                          Flexible(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(
+                                color: isDark ? AppColors.surfaceVariantDark : const Color(0xFFEEF2FF),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: isDark ? AppColors.borderDark : const Color(0xFFC7D2FE),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Text(
+                                'Question $currentNum of $total',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 13,
+                                  color: isDark ? const Color(0xFFF8FAFC) : const Color(0xFF312E81),
+                                ),
+                              ),
                             ),
                           ),
-                          Text(
-                            'Score: ${state.correctAnswersCount}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13,
-                              color: AppColors.primary,
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(
+                                color: isDark ? const Color(0xFF064E3B) : const Color(0xFFDCFCE7),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: isDark ? const Color(0xFF047857) : const Color(0xFFA7F3D0),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Text(
+                                'Score: ${state.correctAnswersCount}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 13,
+                                  color: isDark ? const Color(0xFF6EE7B7) : const Color(0xFF14532D),
+                                ),
+                              ),
                             ),
                           ),
                         ],

@@ -103,6 +103,70 @@ class WordCard extends ConsumerWidget {
                   height: 1.4,
                 ),
               ),
+              if (word.kannadaMeaning.isNotEmpty) ...[
+                const SizedBox(height: 6),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1.5),
+                      margin: const EdgeInsets.only(right: 6),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primary.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        'ಕನ್ನಡ',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: theme.colorScheme.primary,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        word.kannadaMeaning,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? const Color(0xFFCBD5E1) : const Color(0xFF334155),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+              if (word.example.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: isDark ? Colors.white.withValues(alpha: 0.04) : Colors.black.withValues(alpha: 0.03),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border(
+                      left: BorderSide(
+                        color: theme.colorScheme.primary.withValues(alpha: 0.6),
+                        width: 3,
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    '"${word.example}"',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      fontStyle: FontStyle.italic,
+                      color: isDark ? Colors.white70 : Colors.black54,
+                      height: 1.3,
+                    ),
+                  ),
+                ),
+              ],
               const SizedBox(height: 12),
               // Bottom Row: Part of Speech, Category & Difficulty Badge
               Row(
@@ -112,17 +176,21 @@ class WordCard extends ConsumerWidget {
                   DifficultyBadge(difficulty: word.difficulty),
                   const Spacer(),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3.5),
                     decoration: BoxDecoration(
-                      color: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
+                      color: isDark ? const Color(0xFF1E293B) : const Color(0xFFE2E8F0),
                       borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        color: isDark ? const Color(0xFF334155) : const Color(0xFFCBD5E1),
+                        width: 1,
+                      ),
                     ),
                     child: Text(
                       '#${word.category}',
                       style: TextStyle(
-                        fontSize: 11,
-                        color: isDark ? Colors.white54 : Colors.black45,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 11.5,
+                        color: isDark ? const Color(0xFFF1F5F9) : const Color(0xFF0F172A),
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),

@@ -60,7 +60,20 @@ class AppDatabase {
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    // Migration strategy for future schema versions
+    if (oldVersion < 2) {
+      try {
+        await db.execute('ALTER TABLE ${DatabaseTables.tableWords} ADD COLUMN ${DatabaseTables.colKannadaMeaning} TEXT;');
+      } catch (e) {
+        debugPrint('Column ${DatabaseTables.colKannadaMeaning} might already exist: $e');
+      }
+    }
+    if (oldVersion < 5) {
+      try {
+        await db.delete(DatabaseTables.tableWords);
+      } catch (e) {
+        debugPrint('Resetting words table for 50+ words per topic dataset: $e');
+      }
+    }
   }
 
   /// Syncs newly added words from JSON asset without overwriting existing user data
@@ -73,13 +86,17 @@ class AppDatabase {
       final now = DateTime.now().toIso8601String();
 
       for (final item in jsonList) {
+        final rawDiff = item['level']?.toString() ?? item['difficulty']?.toString() ?? 'Basic';
+        final rawCat = item['topic']?.toString() ?? item['category']?.toString() ?? 'General';
+
         batch.rawInsert(
           '''
-          INSERT OR IGNORE INTO ${DatabaseTables.tableWords} (
+          INSERT INTO ${DatabaseTables.tableWords} (
             ${DatabaseTables.colWord},
             ${DatabaseTables.colPhonetic},
             ${DatabaseTables.colPartOfSpeech},
             ${DatabaseTables.colMeaning},
+            ${DatabaseTables.colKannadaMeaning},
             ${DatabaseTables.colExample},
             ${DatabaseTables.colSynonyms},
             ${DatabaseTables.colAntonyms},
@@ -88,18 +105,26 @@ class AppDatabase {
             ${DatabaseTables.colIsFavorite},
             ${DatabaseTables.colIsLearned},
             ${DatabaseTables.colCreatedAt}
-          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, ?)
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, ?)
+          ON CONFLICT(${DatabaseTables.colWord}) DO UPDATE SET
+            ${DatabaseTables.colKannadaMeaning} = excluded.${DatabaseTables.colKannadaMeaning},
+            ${DatabaseTables.colMeaning} = excluded.${DatabaseTables.colMeaning},
+            ${DatabaseTables.colExample} = excluded.${DatabaseTables.colExample},
+            ${DatabaseTables.colDifficulty} = excluded.${DatabaseTables.colDifficulty},
+            ${DatabaseTables.colCategory} = excluded.${DatabaseTables.colCategory},
+            ${DatabaseTables.colPhonetic} = excluded.${DatabaseTables.colPhonetic}
           ''',
           [
             item['word'],
             item['phonetic'] ?? '',
-            item['partOfSpeech'],
-            item['meaning'],
-            item['example'],
+            item['partOfSpeech'] ?? 'noun',
+            item['meaning'] ?? '',
+            item['kannadaMeaning'] ?? '',
+            item['example'] ?? '',
             json.encode(item['synonyms'] ?? []),
             json.encode(item['antonyms'] ?? []),
-            item['difficulty'],
-            item['category'] ?? 'daily',
+            rawDiff.toLowerCase(),
+            rawCat.toLowerCase(),
             now,
           ],
         );

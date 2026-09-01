@@ -3,6 +3,7 @@ import '../../data/datasources/word_local_data_source.dart';
 import '../../data/repositories/word_repository_impl.dart';
 import '../../domain/entities/word.dart';
 import '../../domain/repositories/word_repository.dart';
+import '../../domain/usecases/add_word_usecase.dart';
 import '../../domain/usecases/get_word_by_id_usecase.dart';
 import '../../domain/usecases/get_word_statistics_usecase.dart';
 import '../../domain/usecases/get_words_usecase.dart';
@@ -19,6 +20,10 @@ final wordLocalDataSourceProvider = Provider<WordLocalDataSource>((ref) {
 final wordRepositoryProvider = Provider<WordRepository>((ref) {
   final dataSource = ref.watch(wordLocalDataSourceProvider);
   return WordRepositoryImpl(localDataSource: dataSource);
+});
+
+final addWordUseCaseProvider = Provider<AddWordUseCase>((ref) {
+  return AddWordUseCase(ref.watch(wordRepositoryProvider));
 });
 
 final getWordsUseCaseProvider = Provider<GetWordsUseCase>((ref) {
@@ -112,6 +117,22 @@ class WordController extends StateNotifier<AsyncValue<void>> {
       state = const AsyncValue.data(null);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
+    }
+  }
+
+  Future<Word?> addWord(Word word) async {
+    state = const AsyncValue.loading();
+    try {
+      final useCase = _ref.read(addWordUseCaseProvider);
+      final created = await useCase(word);
+      _ref.invalidate(wordsListProvider);
+      _ref.invalidate(categoriesProvider);
+      _ref.invalidate(getWordStatisticsUseCaseProvider);
+      state = const AsyncValue.data(null);
+      return created;
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+      return null;
     }
   }
 

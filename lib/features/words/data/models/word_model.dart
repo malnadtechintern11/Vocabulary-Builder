@@ -10,6 +10,7 @@ class WordModel extends Word {
     required super.phonetic,
     required super.partOfSpeech,
     required super.meaning,
+    super.kannadaMeaning = '',
     required super.example,
     required super.synonyms,
     required super.antonyms,
@@ -37,6 +38,7 @@ class WordModel extends Word {
       phonetic: map[DatabaseTables.colPhonetic] as String? ?? '',
       partOfSpeech: map[DatabaseTables.colPartOfSpeech] as String,
       meaning: map[DatabaseTables.colMeaning] as String,
+      kannadaMeaning: map[DatabaseTables.colKannadaMeaning] as String? ?? '',
       example: map[DatabaseTables.colExample] as String,
       synonyms: parseList(map[DatabaseTables.colSynonyms]),
       antonyms: parseList(map[DatabaseTables.colAntonyms]),
@@ -54,6 +56,7 @@ class WordModel extends Word {
       DatabaseTables.colPhonetic: phonetic,
       DatabaseTables.colPartOfSpeech: partOfSpeech,
       DatabaseTables.colMeaning: meaning,
+      DatabaseTables.colKannadaMeaning: kannadaMeaning,
       DatabaseTables.colExample: example,
       DatabaseTables.colSynonyms: json.encode(synonyms),
       DatabaseTables.colAntonyms: json.encode(antonyms),
@@ -72,6 +75,7 @@ class WordModel extends Word {
       phonetic: entity.phonetic,
       partOfSpeech: entity.partOfSpeech,
       meaning: entity.meaning,
+      kannadaMeaning: entity.kannadaMeaning,
       example: entity.example,
       synonyms: entity.synonyms,
       antonyms: entity.antonyms,
@@ -80,5 +84,87 @@ class WordModel extends Word {
       isFavorite: entity.isFavorite,
       isLearned: entity.isLearned,
     );
+  }
+
+  /// Create WordModel from JSON map
+  factory WordModel.fromJson(Map<String, dynamic> json) {
+    List<String> parseList(dynamic raw) {
+      if (raw == null) return [];
+      if (raw is List) return raw.map((e) => e.toString()).toList();
+      return [];
+    }
+
+    final diff = json['level']?.toString() ?? json['difficulty']?.toString() ?? 'Basic';
+    final cat = json['topic']?.toString() ?? json['category']?.toString() ?? 'General';
+
+    return WordModel(
+      id: json['id'] is int ? json['id'] as int : 0,
+      word: json['word']?.toString() ?? '',
+      phonetic: json['phonetic']?.toString() ?? '',
+      partOfSpeech: json['partOfSpeech']?.toString() ?? 'noun',
+      meaning: json['meaning']?.toString() ?? '',
+      kannadaMeaning: json['kannadaMeaning']?.toString() ?? '',
+      example: json['example']?.toString() ?? '',
+      synonyms: parseList(json['synonyms']),
+      antonyms: parseList(json['antonyms']),
+      difficulty: diff.toLowerCase(),
+      category: cat.toLowerCase(),
+      isFavorite: json['isFavorite'] == true,
+      isLearned: json['isLearned'] == true,
+    );
+  }
+
+  @override
+  WordModel copyWith({
+    int? id,
+    String? word,
+    String? phonetic,
+    String? partOfSpeech,
+    String? meaning,
+    String? kannadaMeaning,
+    String? example,
+    List<String>? synonyms,
+    List<String>? antonyms,
+    String? difficulty,
+    String? category,
+    bool? isFavorite,
+    bool? isLearned,
+  }) {
+    return WordModel(
+      id: id ?? this.id,
+      word: word ?? this.word,
+      phonetic: phonetic ?? this.phonetic,
+      partOfSpeech: partOfSpeech ?? this.partOfSpeech,
+      meaning: meaning ?? this.meaning,
+      kannadaMeaning: kannadaMeaning ?? this.kannadaMeaning,
+      example: example ?? this.example,
+      synonyms: synonyms ?? this.synonyms,
+      antonyms: antonyms ?? this.antonyms,
+      difficulty: difficulty ?? this.difficulty,
+      category: category ?? this.category,
+      isFavorite: isFavorite ?? this.isFavorite,
+      isLearned: isLearned ?? this.isLearned,
+    );
+  }
+
+  /// Export to JSON map
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'word': word,
+      'phonetic': phonetic,
+      'partOfSpeech': partOfSpeech,
+      'meaning': meaning,
+      'kannadaMeaning': kannadaMeaning,
+      'example': example,
+      'level': level,
+      'topic': topic,
+      'difficulty': difficulty,
+      'category': category,
+      'synonyms': synonyms,
+      'antonyms': antonyms,
+      'isFavorite': isFavorite,
+      'isLearned': isLearned,
+    };
   }
 }

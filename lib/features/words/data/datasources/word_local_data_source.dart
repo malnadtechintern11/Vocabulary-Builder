@@ -14,6 +14,7 @@ abstract class WordLocalDataSource {
   });
 
   Future<WordModel> getWordById(int id);
+  Future<WordModel> insertWord(WordModel word);
   Future<List<WordModel>> searchWords(String query);
   Future<WordModel> updateFavoriteStatus(int id, bool isFavorite);
   Future<WordModel> updateLearnedStatus(int id, bool isLearned);
@@ -96,6 +97,23 @@ class WordLocalDataSourceImpl implements WordLocalDataSource {
   }
 
   @override
+  Future<WordModel> insertWord(WordModel word) async {
+    try {
+      final db = await databaseHelper.database;
+      final map = word.toDbMap();
+      map.remove(DatabaseTables.colId);
+      final id = await db.insert(
+        DatabaseTables.tableWords,
+        map,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+      return word.copyWith(id: id);
+    } catch (e) {
+      throw AppDatabaseException('Failed to insert word: $e', e);
+    }
+  }
+
+  @override
   Future<List<WordModel>> searchWords(String query) async {
     try {
       final db = await databaseHelper.database;
@@ -103,8 +121,8 @@ class WordLocalDataSourceImpl implements WordLocalDataSource {
 
       final results = await db.query(
         DatabaseTables.tableWords,
-        where: '${DatabaseTables.colWord} LIKE ? OR ${DatabaseTables.colMeaning} LIKE ? OR ${DatabaseTables.colCategory} LIKE ?',
-        whereArgs: [sanitized, sanitized, sanitized],
+        where: '${DatabaseTables.colWord} LIKE ? OR ${DatabaseTables.colMeaning} LIKE ? OR ${DatabaseTables.colKannadaMeaning} LIKE ? OR ${DatabaseTables.colCategory} LIKE ? OR ${DatabaseTables.colDifficulty} LIKE ?',
+        whereArgs: [sanitized, sanitized, sanitized, sanitized, sanitized],
         orderBy: '${DatabaseTables.colWord} ASC',
       );
 

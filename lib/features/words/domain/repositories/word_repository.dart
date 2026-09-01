@@ -13,6 +13,9 @@ abstract class WordRepository {
   /// Get a single word by its identifier
   Future<Word> getWordById(int id);
 
+  /// Add a new custom vocabulary word
+  Future<Word> addWord(Word word);
+
   /// Search words by query matching word, meaning, or tags
   Future<List<Word>> searchWords(String query);
 

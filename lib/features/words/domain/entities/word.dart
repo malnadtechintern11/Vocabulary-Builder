@@ -5,13 +5,18 @@ class Word {
   final String phonetic;
   final String partOfSpeech;
   final String meaning;
+  final String kannadaMeaning;
   final String example;
   final List<String> synonyms;
   final List<String> antonyms;
-  final String difficulty; // beginner, intermediate, advanced
-  final String category;
+  final String difficulty; // basic, intermediate, advanced
+  final String category; // actions, nature, food, etc.
   final bool isFavorite;
   final bool isLearned;
+
+  /// Aliases for user-facing Level & Topic
+  String get level => difficulty[0].toUpperCase() + difficulty.substring(1);
+  String get topic => category[0].toUpperCase() + category.substring(1);
 
   const Word({
     required this.id,
@@ -19,6 +24,7 @@ class Word {
     required this.phonetic,
     required this.partOfSpeech,
     required this.meaning,
+    this.kannadaMeaning = '',
     required this.example,
     required this.synonyms,
     required this.antonyms,
@@ -34,6 +40,7 @@ class Word {
     String? phonetic,
     String? partOfSpeech,
     String? meaning,
+    String? kannadaMeaning,
     String? example,
     List<String>? synonyms,
     List<String>? antonyms,
@@ -48,6 +55,7 @@ class Word {
       phonetic: phonetic ?? this.phonetic,
       partOfSpeech: partOfSpeech ?? this.partOfSpeech,
       meaning: meaning ?? this.meaning,
+      kannadaMeaning: kannadaMeaning ?? this.kannadaMeaning,
       example: example ?? this.example,
       synonyms: synonyms ?? this.synonyms,
       antonyms: antonyms ?? this.antonyms,

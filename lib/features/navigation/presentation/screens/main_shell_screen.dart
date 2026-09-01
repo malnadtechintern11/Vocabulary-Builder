@@ -43,6 +43,16 @@ class MainShellScreen extends StatelessWidget {
             selectedIcon: Icon(Icons.insights_rounded),
             label: 'Progress',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.add_circle_outline_rounded),
+            selectedIcon: Icon(Icons.add_circle_rounded),
+            label: 'Add Word',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(Icons.settings_rounded),
+            label: 'Settings',
+          ),
         ],
       ),
     );

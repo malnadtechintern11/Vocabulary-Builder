@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../app/router/route_paths.dart';
+import '../../../../app/theme/app_colors.dart';
 import '../../../../core/widgets/empty_state_view.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
@@ -21,6 +24,13 @@ class WordsListScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Vocabulary Builder'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings_outlined),
+            tooltip: 'Settings',
+            onPressed: () => context.go(RoutePaths.settings),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -38,6 +48,7 @@ class WordsListScreen extends ConsumerWidget {
                 categoriesAsync.when(
                   data: (categories) {
                     if (categories.isEmpty) return const SizedBox.shrink();
+                    final isDark = Theme.of(context).brightness == Brightness.dark;
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -46,6 +57,21 @@ class WordsListScreen extends ConsumerWidget {
                             label: const Text('All Topics'),
                             selected: selectedCategory == 'all',
                             showCheckmark: false,
+                            backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                            selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                            side: BorderSide(
+                              color: selectedCategory == 'all'
+                                  ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                                  : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                              width: 1,
+                            ),
+                            labelStyle: TextStyle(
+                              color: selectedCategory == 'all'
+                                  ? Colors.white
+                                  : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                              fontWeight: selectedCategory == 'all' ? FontWeight.w700 : FontWeight.w600,
+                              fontSize: 13,
+                            ),
                             onSelected: (_) {
                               ref.read(selectedCategoryFilterProvider.notifier).state = 'all';
                             },
@@ -59,6 +85,21 @@ class WordsListScreen extends ConsumerWidget {
                                 label: Text(cat[0].toUpperCase() + cat.substring(1)),
                                 selected: isSel,
                                 showCheckmark: false,
+                                backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                                selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                                side: BorderSide(
+                                  color: isSel
+                                      ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                                      : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                                  width: 1,
+                                ),
+                                labelStyle: TextStyle(
+                                  color: isSel
+                                      ? Colors.white
+                                      : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                                  fontWeight: isSel ? FontWeight.w700 : FontWeight.w600,
+                                  fontSize: 13,
+                                ),
                                 onSelected: (_) {
                                   ref.read(selectedCategoryFilterProvider.notifier).state = cat;
                                 },

@@ -7,4 +7,6 @@ class RouteNames {
   static const String quizActive = 'quizActive';
   static const String quizResult = 'quizResult';
   static const String progress = 'progress';
+  static const String addWord = 'addWord';
+  static const String settings = 'settings';
 }

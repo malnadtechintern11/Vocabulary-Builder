@@ -7,4 +7,6 @@ class RoutePaths {
   static const String quizActive = '/quiz/active';
   static const String quizResult = '/quiz/result';
   static const String progress = '/progress';
+  static const String addWord = '/add-word';
+  static const String settings = '/settings';
 }

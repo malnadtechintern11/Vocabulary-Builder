@@ -98,13 +98,14 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
         final options = [target.meaning, ...distractorOptions]..shuffle(random);
         final correctIndex = options.indexOf(target.meaning);
 
+        final knSuffix = target.kannadaMeaning.isNotEmpty ? ' (ಕನ್ನಡ: ${target.kannadaMeaning})' : '';
         return QuizQuestion(
           id: 'q_${index}_${target.id}',
           prompt: 'What is the correct meaning of "${target.word}"?',
           contextSnippet: target.phonetic.isNotEmpty ? 'Phonetic: ${target.phonetic} (${target.partOfSpeech})' : null,
           options: options,
           correctOptionIndex: correctIndex,
-          explanation: '"${target.word}" (${target.partOfSpeech}) means: ${target.meaning}',
+          explanation: '"${target.word}" (${target.partOfSpeech}) means: ${target.meaning}$knSuffix',
           type: type,
           targetWordId: target.id,
           targetWord: target.word,
@@ -140,10 +141,11 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
         final options = [correctSynonym, ...distractors]..shuffle(random);
         final correctIndex = options.indexOf(correctSynonym);
 
+        final knCtx = target.kannadaMeaning.isNotEmpty ? ' | ಕನ್ನಡ: ${target.kannadaMeaning}' : '';
         return QuizQuestion(
           id: 'q_${index}_${target.id}',
           prompt: 'Which word is a closest SYNONYM for "${target.word}"?',
-          contextSnippet: 'Meaning: ${target.meaning}',
+          contextSnippet: 'Meaning: ${target.meaning}$knCtx',
           options: options,
           correctOptionIndex: correctIndex,
           explanation: '"$correctSynonym" is a synonym for "${target.word}". All synonyms: ${target.synonyms.join(", ")}.',
@@ -182,10 +184,11 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
         final options = [correctAntonym, ...distractors]..shuffle(random);
         final correctIndex = options.indexOf(correctAntonym);
 
+        final knCtx = target.kannadaMeaning.isNotEmpty ? ' | ಕನ್ನಡ: ${target.kannadaMeaning}' : '';
         return QuizQuestion(
           id: 'q_${index}_${target.id}',
           prompt: 'Which word is the ANTONYM (opposite) of "${target.word}"?',
-          contextSnippet: 'Meaning: ${target.meaning}',
+          contextSnippet: 'Meaning: ${target.meaning}$knCtx',
           options: options,
           correctOptionIndex: correctIndex,
           explanation: '"$correctAntonym" is the antonym of "${target.word}". Antonyms: ${target.antonyms.join(", ")}.',
@@ -204,13 +207,14 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
         final options = [target.word, ...distractors]..shuffle(random);
         final correctIndex = options.indexOf(target.word);
 
+        final knMeaning = target.kannadaMeaning.isNotEmpty ? ' (ಕನ್ನಡ: ${target.kannadaMeaning})' : '';
         return QuizQuestion(
           id: 'q_${index}_${target.id}',
           prompt: 'Fill in the blank with the most appropriate vocabulary word:',
           contextSnippet: '"$blankedExample"',
           options: options,
           correctOptionIndex: correctIndex,
-          explanation: 'Full Sentence: "${target.example}" — ${target.meaning}',
+          explanation: 'Full Sentence: "${target.example}" — ${target.meaning}$knMeaning',
           type: type,
           targetWordId: target.id,
           targetWord: target.word,

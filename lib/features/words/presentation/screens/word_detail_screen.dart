@@ -98,13 +98,24 @@ class WordDetailScreen extends ConsumerWidget {
                         children: [
                           PartOfSpeechChip(partOfSpeech: word.partOfSpeech),
                           const SizedBox(width: 8),
-                          Chip(
-                            label: Text(
-                              'Topic: ${word.category[0].toUpperCase() + word.category.substring(1)}',
-                              style: const TextStyle(fontSize: 11),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: isDark ? const Color(0xFF1E293B) : Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: isDark ? const Color(0xFF334155) : const Color(0xFFCBD5E1),
+                                width: 1,
+                              ),
                             ),
-                            padding: EdgeInsets.zero,
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            child: Text(
+                              'Topic: ${word.category[0].toUpperCase() + word.category.substring(1)}',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                color: isDark ? const Color(0xFFF1F5F9) : const Color(0xFF0F172A),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -114,7 +125,7 @@ class WordDetailScreen extends ConsumerWidget {
                 const SizedBox(height: 24),
 
                 // Meaning Section
-                _buildSectionHeader(context, 'Definition', Icons.menu_book_rounded),
+                _buildSectionHeader(context, 'English Definition', Icons.menu_book_rounded),
                 const SizedBox(height: 8),
                 Card(
                   child: Padding(
@@ -126,6 +137,54 @@ class WordDetailScreen extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
+
+                // Kannada Meaning Section
+                if (word.kannadaMeaning.isNotEmpty) ...[
+                  _buildSectionHeader(context, 'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning)', Icons.translate_rounded),
+                  const SizedBox(height: 8),
+                  Card(
+                    color: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF0FDF4),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      side: BorderSide(
+                        color: isDark ? AppColors.borderDark : const Color(0xFF86EFAC),
+                        width: 1.5,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: AppColors.success.withValues(alpha: 0.15),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: const Icon(
+                              Icons.g_translate_rounded,
+                              color: AppColors.success,
+                              size: 22,
+                            ),
+                          ),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Text(
+                              word.kannadaMeaning,
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w700,
+                                height: 1.4,
+                                color: isDark ? Colors.white : const Color(0xFF14532D),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
 
                 // Example Sentence Section
                 _buildSectionHeader(context, 'Example in Context', Icons.format_quote_rounded),

@@ -118,11 +118,10 @@ class QuizResultScreen extends ConsumerWidget {
                   const Divider(),
                   const SizedBox(height: 16),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildStatColumn('Total', '${result.totalQuestions}', AppColors.primary),
-                      _buildStatColumn('Correct', '${result.correctAnswers}', AppColors.correctGreen),
-                      _buildStatColumn('Incorrect', '$incorrect', AppColors.incorrectRed),
+                      Expanded(child: _buildStatColumn('Total', '${result.totalQuestions}', AppColors.primary)),
+                      Expanded(child: _buildStatColumn('Correct', '${result.correctAnswers}', AppColors.correctGreen)),
+                      Expanded(child: _buildStatColumn('Incorrect', '$incorrect', AppColors.incorrectRed)),
                     ],
                   ),
                 ],

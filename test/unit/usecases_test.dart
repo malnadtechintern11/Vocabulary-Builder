@@ -5,6 +5,7 @@ import 'package:vocabulary_builder/features/quiz/domain/repositories/quiz_reposi
 import 'package:vocabulary_builder/features/quiz/domain/usecases/generate_quiz_usecase.dart';
 import 'package:vocabulary_builder/features/words/domain/entities/word.dart';
 import 'package:vocabulary_builder/features/words/domain/repositories/word_repository.dart';
+import 'package:vocabulary_builder/features/words/domain/usecases/add_word_usecase.dart';
 import 'package:vocabulary_builder/features/words/domain/usecases/get_words_usecase.dart';
 import 'package:vocabulary_builder/features/words/domain/usecases/search_words_usecase.dart';
 import 'package:vocabulary_builder/features/words/domain/usecases/toggle_favorite_usecase.dart';
@@ -27,6 +28,7 @@ void main() {
     phonetic: '/ˌser.ənˈdɪp.ə.ti/',
     partOfSpeech: 'noun',
     meaning: 'Good fortune by chance',
+    kannadaMeaning: 'ಆಕಸ್ಮಿಕ ಲಾಭ / ಅನಿರೀಕ್ಷಿತ ಅದೃಷ್ಟ',
     example: 'Pure serendipity.',
     synonyms: ['fortune', 'chance'],
     antonyms: ['misfortune'],
@@ -82,6 +84,16 @@ void main() {
       final result = await useCase(1, true);
       expect(result.isFavorite, isTrue);
       verify(() => mockWordRepository.toggleFavorite(1, true)).called(1);
+    });
+
+    test('AddWordUseCase adds word to repository', () async {
+      final useCase = AddWordUseCase(mockWordRepository);
+      when(() => mockWordRepository.addWord(sampleWord))
+          .thenAnswer((_) async => sampleWord);
+
+      final result = await useCase(sampleWord);
+      expect(result.word, 'Serendipity');
+      verify(() => mockWordRepository.addWord(sampleWord)).called(1);
     });
   });
 

@@ -7,6 +7,8 @@ import '../../features/progress/presentation/screens/progress_screen.dart';
 import '../../features/quiz/presentation/screens/active_quiz_screen.dart';
 import '../../features/quiz/presentation/screens/quiz_result_screen.dart';
 import '../../features/quiz/presentation/screens/quiz_setup_screen.dart';
+import '../../features/settings/presentation/screens/settings_screen.dart';
+import '../../features/words/presentation/screens/add_word_screen.dart';
 import '../../features/words/presentation/screens/word_detail_screen.dart';
 import '../../features/words/presentation/screens/words_list_screen.dart';
 import 'route_names.dart';
@@ -92,6 +94,28 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 path: RoutePaths.progress,
                 name: RouteNames.progress,
                 builder: (context, state) => const ProgressScreen(),
+              ),
+            ],
+          ),
+
+          // Branch 5: User Adding New Words (in the middle of Progress and Settings)
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RoutePaths.addWord,
+                name: RouteNames.addWord,
+                builder: (context, state) => const AddWordScreen(),
+              ),
+            ],
+          ),
+
+          // Branch 6: Settings & Customization
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: RoutePaths.settings,
+                name: RouteNames.settings,
+                builder: (context, state) => const SettingsScreen(),
               ),
             ],
           ),

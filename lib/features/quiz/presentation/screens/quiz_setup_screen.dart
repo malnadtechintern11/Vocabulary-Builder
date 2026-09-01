@@ -124,9 +124,10 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
             const SizedBox(height: 12),
             Wrap(
               spacing: 8,
+              runSpacing: 8,
               children: [
                 {'key': 'all', 'label': 'All Levels'},
-                {'key': 'beginner', 'label': 'Beginner'},
+                {'key': 'basic', 'label': 'Basic'},
                 {'key': 'intermediate', 'label': 'Intermediate'},
                 {'key': 'advanced', 'label': 'Advanced'},
               ].map((lvl) {
@@ -135,6 +136,21 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                   label: Text(lvl['label']!),
                   selected: isSel,
                   showCheckmark: false,
+                  backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                  selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                  side: BorderSide(
+                    color: isSel
+                        ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                        : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                    width: 1,
+                  ),
+                  labelStyle: TextStyle(
+                    color: isSel
+                        ? Colors.white
+                        : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                    fontWeight: isSel ? FontWeight.w700 : FontWeight.w600,
+                    fontSize: 13,
+                  ),
                   onSelected: (_) {
                     setState(() => _selectedDifficulty = lvl['key']!);
                   },
@@ -149,19 +165,33 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
               style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 12),
-            Row(
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
               children: [5, 10, 15, 20].map((count) {
                 final isSel = _selectedCount == count;
-                return Padding(
-                  padding: const EdgeInsets.only(right: 12.0),
-                  child: ChoiceChip(
-                    label: Text('$count Qs'),
-                    selected: isSel,
-                    showCheckmark: false,
-                    onSelected: (_) {
-                      setState(() => _selectedCount = count);
-                    },
+                return ChoiceChip(
+                  label: Text('$count Questions'),
+                  selected: isSel,
+                  showCheckmark: false,
+                  backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                  selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                  side: BorderSide(
+                    color: isSel
+                        ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                        : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                    width: 1,
                   ),
+                  labelStyle: TextStyle(
+                    color: isSel
+                        ? Colors.white
+                        : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                    fontWeight: isSel ? FontWeight.w700 : FontWeight.w600,
+                    fontSize: 13,
+                  ),
+                  onSelected: (_) {
+                    setState(() => _selectedCount = count);
+                  },
                 );
               }).toList(),
             ),

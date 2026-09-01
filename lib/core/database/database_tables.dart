@@ -9,6 +9,7 @@ class DatabaseTables {
   static const String colPhonetic = 'phonetic';
   static const String colPartOfSpeech = 'part_of_speech';
   static const String colMeaning = 'meaning';
+  static const String colKannadaMeaning = 'kannada_meaning';
   static const String colExample = 'example';
   static const String colSynonyms = 'synonyms';
   static const String colAntonyms = 'antonyms';
@@ -33,6 +34,7 @@ class DatabaseTables {
       $colPhonetic TEXT,
       $colPartOfSpeech TEXT NOT NULL,
       $colMeaning TEXT NOT NULL,
+      $colKannadaMeaning TEXT,
       $colExample TEXT NOT NULL,
       $colSynonyms TEXT NOT NULL,
       $colAntonyms TEXT NOT NULL,

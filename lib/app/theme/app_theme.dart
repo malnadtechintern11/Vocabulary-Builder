@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../features/settings/presentation/providers/theme_controller.dart';
 import 'app_colors.dart';
 import 'app_typography.dart';
 
 /// Provider to manage ThemeMode (System, Light, Dark)
-final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.system);
+final themeModeProvider = themeControllerProvider;
 
 /// Application Material 3 Theme Configurations
 class AppTheme {
@@ -46,14 +46,21 @@ class AppTheme {
         margin: EdgeInsets.zero,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: AppColors.surfaceVariantLight,
+        backgroundColor: const Color(0xFFF1F5F9),
+        selectedColor: AppColors.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
-          side: const BorderSide(color: Colors.transparent),
+          side: const BorderSide(color: Color(0xFFCBD5E1), width: 1),
         ),
         labelStyle: const TextStyle(
-          fontSize: 12,
+          color: Color(0xFF0F172A),
+          fontSize: 12.5,
           fontWeight: FontWeight.w600,
+        ),
+        secondaryLabelStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 12.5,
+          fontWeight: FontWeight.w700,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
@@ -155,13 +162,20 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.surfaceVariantDark,
+        selectedColor: AppColors.primaryLight,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
-          side: const BorderSide(color: Colors.transparent),
+          side: const BorderSide(color: AppColors.borderDark, width: 1),
         ),
         labelStyle: const TextStyle(
-          fontSize: 12,
+          color: AppColors.textPrimaryDark,
+          fontSize: 12.5,
           fontWeight: FontWeight.w600,
+        ),
+        secondaryLabelStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 12.5,
+          fontWeight: FontWeight.w700,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
