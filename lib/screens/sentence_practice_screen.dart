@@ -40,8 +40,9 @@ class _SentencePracticeScreenState
         .toList();
   }
 
-  void _nextSentence(int total) {
+  void _nextSentence(Sentence current, int total) {
     if (total == 0) return;
+    ref.read(practicedSentenceIdsProvider.notifier).markAsPracticed(current.id);
     setState(() {
       _currentIndex = (_currentIndex + 1) % total;
     });
@@ -117,6 +118,22 @@ class _SentencePracticeScreenState
       appBar: AppBar(
         title: const Text('Sentence Practice'),
         actions: [
+          IconButton(
+            icon: Icon(
+              currentSentence.isPracticed
+                  ? Icons.check_circle_rounded
+                  : Icons.check_circle_outline_rounded,
+              color: currentSentence.isPracticed ? AppColors.success : null,
+            ),
+            tooltip: currentSentence.isPracticed
+                ? 'Practiced (tap to unmark)'
+                : 'Mark as Practiced',
+            onPressed: () {
+              ref
+                  .read(practicedSentenceIdsProvider.notifier)
+                  .togglePracticed(currentSentence.id);
+            },
+          ),
           IconButton(
             icon: Icon(
               currentSentence.isFavorite
@@ -556,7 +573,7 @@ class _SentencePracticeScreenState
                   // Big "Next Sentence" Button
                   Expanded(
                     child: ElevatedButton.icon(
-                      onPressed: () => _nextSentence(sentences.length),
+                      onPressed: () => _nextSentence(currentSentence, sentences.length),
                       icon: const Text(
                         'Next Sentence',
                         style: TextStyle(

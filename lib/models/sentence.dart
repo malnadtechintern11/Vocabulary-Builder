@@ -43,6 +43,7 @@ class Sentence {
   final String difficulty; // 'Beginner', 'Intermediate', 'Advanced'
   final String category; // e.g. 'Daily Conversation', 'Work & Career', 'Travel', etc.
   final bool isFavorite;
+  final bool isPracticed;
 
   const Sentence({
     required this.id,
@@ -52,6 +53,7 @@ class Sentence {
     required this.difficulty,
     required this.category,
     this.isFavorite = false,
+    this.isPracticed = false,
   });
 
   Sentence copyWith({
@@ -62,6 +64,7 @@ class Sentence {
     String? difficulty,
     String? category,
     bool? isFavorite,
+    bool? isPracticed,
   }) {
     return Sentence(
       id: id ?? this.id,
@@ -71,6 +74,7 @@ class Sentence {
       difficulty: difficulty ?? this.difficulty,
       category: category ?? this.category,
       isFavorite: isFavorite ?? this.isFavorite,
+      isPracticed: isPracticed ?? this.isPracticed,
     );
   }
 
@@ -85,6 +89,7 @@ class Sentence {
       difficulty: json['difficulty'] as String? ?? 'Beginner',
       category: json['category'] as String? ?? 'General',
       isFavorite: json['isFavorite'] as bool? ?? false,
+      isPracticed: json['isPracticed'] as bool? ?? false,
     );
   }
 
@@ -97,6 +102,7 @@ class Sentence {
       'difficulty': difficulty,
       'category': category,
       'isFavorite': isFavorite,
+      'isPracticed': isPracticed,
     };
   }
 

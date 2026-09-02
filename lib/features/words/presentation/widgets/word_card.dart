@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../domain/entities/word.dart';
 import '../providers/words_provider.dart';
 import 'difficulty_badge.dart';
@@ -18,6 +19,9 @@ class WordCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+
+    final currentlySpeakingWord = ref.watch(speakingWordProvider);
+    final isSpeakingThis = currentlySpeakingWord == word.word;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -78,6 +82,24 @@ class WordCard extends ConsumerWidget {
                       ],
                     ),
                   ),
+                  IconButton(
+                    icon: Icon(
+                      isSpeakingThis
+                          ? Icons.volume_up_rounded
+                          : Icons.volume_down_rounded,
+                      color: isSpeakingThis
+                          ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                          : (isDark ? Colors.white60 : Colors.black45),
+                      size: 21,
+                    ),
+                    tooltip: 'Pronounce "${word.word}"',
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    onPressed: () {
+                      ref.read(wordTtsControllerProvider).speakWord(word.word);
+                    },
+                  ),
+                  const SizedBox(width: 14),
                   IconButton(
                     icon: Icon(
                       word.isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,

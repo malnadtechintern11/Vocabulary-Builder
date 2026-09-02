@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/services/tts_service.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
 import '../providers/words_provider.dart';
@@ -19,12 +20,30 @@ class WordDetailScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
+    final currentlySpeakingWord = ref.watch(speakingWordProvider);
+
     return wordAsync.when(
       data: (word) {
+        final isSpeakingThisWord = currentlySpeakingWord == word.word;
+
         return Scaffold(
           appBar: AppBar(
             title: Text(word.word),
             actions: [
+              IconButton(
+                icon: Icon(
+                  isSpeakingThisWord
+                      ? Icons.volume_up_rounded
+                      : Icons.volume_down_rounded,
+                  color: isSpeakingThisWord
+                      ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                      : null,
+                ),
+                tooltip: 'Pronounce "${word.word}"',
+                onPressed: () {
+                  ref.read(wordTtsControllerProvider).speakWord(word.word);
+                },
+              ),
               IconButton(
                 icon: Icon(
                   word.isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
@@ -74,25 +93,56 @@ class WordDetailScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      if (word.phonetic.isNotEmpty) ...[
-                        const SizedBox(height: 6),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: isDark ? Colors.black26 : Colors.white.withValues(alpha: 0.7),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            word.phonetic,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontStyle: FontStyle.italic,
-                              color: isDark ? Colors.white70 : AppColors.primaryDark,
-                              fontWeight: FontWeight.w500,
+                      const SizedBox(height: 8),
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 10,
+                        runSpacing: 8,
+                        children: [
+                          if (word.phonetic.isNotEmpty)
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                              decoration: BoxDecoration(
+                                color: isDark ? Colors.black26 : Colors.white.withValues(alpha: 0.7),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                word.phonetic,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontStyle: FontStyle.italic,
+                                  color: isDark ? Colors.white70 : AppColors.primaryDark,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          FilledButton.tonalIcon(
+                            onPressed: () {
+                              ref.read(wordTtsControllerProvider).speakWord(word.word);
+                            },
+                            icon: Icon(
+                              isSpeakingThisWord
+                                  ? Icons.volume_up_rounded
+                                  : Icons.volume_down_rounded,
+                              size: 18,
+                            ),
+                            label: Text(
+                              isSpeakingThisWord ? 'Playing...' : 'Pronounce',
+                              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12.5),
+                            ),
+                            style: FilledButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                              visualDensity: VisualDensity.compact,
+                              backgroundColor: isSpeakingThisWord
+                                  ? AppColors.primary
+                                  : (isDark ? AppColors.surfaceVariantDark : Colors.white),
+                              foregroundColor: isSpeakingThisWord
+                                  ? Colors.white
+                                  : (isDark ? AppColors.primaryLight : AppColors.primary),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                       const SizedBox(height: 12),
                       Row(
                         children: [
@@ -187,7 +237,21 @@ class WordDetailScreen extends ConsumerWidget {
                 ],
 
                 // Example Sentence Section
-                _buildSectionHeader(context, 'Example in Context', Icons.format_quote_rounded),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildSectionHeader(context, 'Example in Context', Icons.format_quote_rounded),
+                    if (word.example.isNotEmpty)
+                      IconButton(
+                        icon: const Icon(Icons.volume_down_rounded, size: 21),
+                        tooltip: 'Pronounce example sentence',
+                        visualDensity: VisualDensity.compact,
+                        onPressed: () {
+                          ref.read(wordTtsControllerProvider).speakText(word.example);
+                        },
+                      ),
+                  ],
+                ),
                 const SizedBox(height: 8),
                 Card(
                   child: Container(

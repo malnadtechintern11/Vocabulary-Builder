@@ -66,30 +66,30 @@ void main() {
   });
 
   group('SentencesData Quality & Count Validation', () {
-    test('Should contain at least 120 total sentences', () {
+    test('Should contain at least 600 total sentences', () {
       final total = SentencesData.sentences.length;
-      expect(total, greaterThanOrEqualTo(120));
+      expect(total, greaterThanOrEqualTo(600));
     });
 
-    test('Should contain at least 40 Beginner sentences', () {
+    test('Should contain at least 200 Beginner sentences', () {
       final beginner = SentencesData.sentences
           .where((s) => s.difficulty.toLowerCase() == 'beginner')
           .toList();
-      expect(beginner.length, greaterThanOrEqualTo(40));
+      expect(beginner.length, greaterThanOrEqualTo(200));
     });
 
-    test('Should contain at least 40 Intermediate sentences', () {
+    test('Should contain at least 200 Intermediate sentences', () {
       final intermediate = SentencesData.sentences
           .where((s) => s.difficulty.toLowerCase() == 'intermediate')
           .toList();
-      expect(intermediate.length, greaterThanOrEqualTo(40));
+      expect(intermediate.length, greaterThanOrEqualTo(200));
     });
 
-    test('Should contain at least 40 Advanced sentences', () {
+    test('Should contain at least 200 Advanced sentences', () {
       final advanced = SentencesData.sentences
           .where((s) => s.difficulty.toLowerCase() == 'advanced')
           .toList();
-      expect(advanced.length, greaterThanOrEqualTo(40));
+      expect(advanced.length, greaterThanOrEqualTo(200));
     });
 
     test('All sentences must have valid non-empty fields and vocabulary words', () {

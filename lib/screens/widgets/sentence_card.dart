@@ -110,6 +110,30 @@ class SentenceCard extends ConsumerWidget {
                   ),
                 ),
 
+                // Practiced / Completed Checkmark Button
+                IconButton(
+                  icon: Icon(
+                    sentence.isPracticed
+                        ? Icons.check_circle_rounded
+                        : Icons.check_circle_outline_rounded,
+                    color: sentence.isPracticed
+                        ? AppColors.success
+                        : (isDark
+                            ? AppColors.textTertiaryDark
+                            : AppColors.textTertiaryLight),
+                    size: 22,
+                  ),
+                  tooltip: sentence.isPracticed
+                      ? 'Practiced (tap to unmark)'
+                      : 'Mark as Practiced',
+                  visualDensity: VisualDensity.compact,
+                  onPressed: () {
+                    ref
+                        .read(practicedSentenceIdsProvider.notifier)
+                        .togglePracticed(sentence.id);
+                  },
+                ),
+
                 // Favorite Button
                 IconButton(
                   icon: Icon(

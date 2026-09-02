@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 /// Service managing text-to-speech pronunciation for sentences and vocabulary
@@ -88,6 +89,45 @@ class TtsService {
     }
   }
 
-  /// Whether a specific sentence is currently speaking
+  /// Whether a specific sentence or word is currently speaking
   bool isSpeaking(String sentenceId) => _currentlySpeakingId == sentenceId;
 }
+
+/// Provider tracking the word currently being pronounced
+final speakingWordProvider = StateProvider<String?>((ref) => null);
+
+/// Controller to pronounce vocabulary words using TTS
+final wordTtsControllerProvider = Provider<WordTtsController>((ref) {
+  return WordTtsController(ref);
+});
+
+class WordTtsController {
+  final Ref ref;
+
+  WordTtsController(this.ref);
+
+  Future<void> speakWord(String word) async {
+    final currentlySpeaking = ref.read(speakingWordProvider);
+    if (currentlySpeaking == word) {
+      await TtsService.instance.stop();
+      ref.read(speakingWordProvider.notifier).state = null;
+      return;
+    }
+
+    ref.read(speakingWordProvider.notifier).state = word;
+    try {
+      await TtsService.instance.speak(word, sentenceId: 'word_$word');
+    } finally {
+      Future.delayed(const Duration(milliseconds: 1400), () {
+        if (ref.read(speakingWordProvider) == word) {
+          ref.read(speakingWordProvider.notifier).state = null;
+        }
+      });
+    }
+  }
+
+  Future<void> speakText(String text) async {
+    await TtsService.instance.speak(text);
+  }
+}
+

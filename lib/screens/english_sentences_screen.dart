@@ -6,7 +6,7 @@ import '../features/sentences/providers/sentences_provider.dart';
 import 'sentence_practice_screen.dart';
 import 'widgets/sentence_card.dart';
 
-/// Screen displaying curated English sentences with difficulty filtering, search, and TTS
+/// Screen displaying 600 curated English sentences with progress tracking, category filtering, search, and TTS
 class EnglishSentencesScreen extends ConsumerStatefulWidget {
   const EnglishSentencesScreen({super.key});
 
@@ -36,24 +36,18 @@ class _EnglishSentencesScreenState
     final allSentences = ref.watch(allSentencesProvider);
     final filteredSentences = ref.watch(filteredSentencesProvider);
     final selectedFilter = ref.watch(sentenceDifficultyFilterProvider);
-    final favoriteIds = ref.watch(favoriteSentenceIdsProvider);
+    final selectedCategory = ref.watch(sentenceCategoryFilterProvider);
+    final categories = ref.watch(sentenceCategoriesListProvider);
+    final stats = ref.watch(sentenceProgressStatsProvider);
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-
-    final beginnerCount =
-        allSentences.where((s) => s.difficulty.toLowerCase() == 'beginner').length;
-    final intermediateCount =
-        allSentences.where((s) => s.difficulty.toLowerCase() == 'intermediate').length;
-    final advancedCount =
-        allSentences.where((s) => s.difficulty.toLowerCase() == 'advanced').length;
-    final favoritesCount = favoriteIds.length;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('English Sentences'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.fitness_center_rounded),
+            icon: const Icon(Icons.school_rounded),
             tooltip: 'Sentence Practice Mode',
             onPressed: () {
               Navigator.of(context).push(
@@ -67,15 +61,15 @@ class _EnglishSentencesScreenState
       ),
       body: Column(
         children: [
-          // Quick Practice Banner
+          // Progress & Practice Header Card
           Container(
             margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: isDark
-                    ? [const Color(0xFF312E81), const Color(0xFF1E1B4B)]
-                    : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
+                    ? [const Color(0xFF1E1B4B), const Color(0xFF0F172A)]
+                    : [const Color(0xFFEEF2FF), const Color(0xFFF1F5F9)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -86,71 +80,132 @@ class _EnglishSentencesScreenState
                     : AppColors.primaryLight.withValues(alpha: 0.25),
               ),
             ),
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: isDark
-                        ? AppColors.primaryLight.withValues(alpha: 0.25)
-                        : Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.school_rounded,
-                    color: isDark ? AppColors.primaryLight : AppColors.primary,
-                    size: 24,
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Practice Mode with Audio',
-                        style: TextStyle(
-                          fontSize: 14.5,
-                          fontWeight: FontWeight.w700,
-                          color: isDark
-                              ? AppColors.textPrimaryDark
-                              : AppColors.primaryDark,
-                        ),
+                // Top Row: Progress label, percentage & Practice button
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? AppColors.primaryLight.withValues(alpha: 0.25)
+                            : Colors.white,
+                        shape: BoxShape.circle,
                       ),
-                      const SizedBox(height: 2),
-                      Text(
-                        'Listen, test your comprehension & tap "Next Sentence".',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: isDark
-                              ? AppColors.textSecondaryDark
-                              : AppColors.textSecondaryLight,
-                        ),
+                      child: Icon(
+                        Icons.insights_rounded,
+                        color:
+                            isDark ? AppColors.primaryLight : AppColors.primary,
+                        size: 20,
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const SentencePracticeScreen(),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        isDark ? AppColors.primaryLight : AppColors.primary,
-                    foregroundColor: Colors.white,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    visualDensity: VisualDensity.compact,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ),
-                  child: const Text('Practice'),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Sentences Progress',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: isDark
+                                      ? AppColors.textPrimaryDark
+                                      : AppColors.primaryDark,
+                                ),
+                              ),
+                              const Spacer(),
+                              Text(
+                                '${stats.totalPracticed} / ${stats.totalSentences} (${(stats.overallPercentage * 100).toStringAsFixed(0)}%)',
+                                style: TextStyle(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w700,
+                                  color: isDark
+                                      ? AppColors.primaryLight
+                                      : AppColors.primary,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 5),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: LinearProgressIndicator(
+                              value: stats.overallPercentage,
+                              minHeight: 6,
+                              backgroundColor: isDark
+                                  ? AppColors.borderDark
+                                  : AppColors.borderLight,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                isDark
+                                    ? AppColors.primaryLight
+                                    : AppColors.primary,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const SentencePracticeScreen(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            isDark ? AppColors.primaryLight : AppColors.primary,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 8),
+                        visualDensity: VisualDensity.compact,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text(
+                        'Practice',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+
+                // Level Progress Breakdown Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildMiniLevelProgress(
+                      label: 'Beginner',
+                      practiced: stats.beginnerPracticed,
+                      total: stats.beginnerTotal,
+                      color: AppColors.difficultyBeginner,
+                      isDark: isDark,
+                    ),
+                    _buildMiniLevelProgress(
+                      label: 'Intermediate',
+                      practiced: stats.intermediatePracticed,
+                      total: stats.intermediateTotal,
+                      color: AppColors.difficultyIntermediate,
+                      isDark: isDark,
+                    ),
+                    _buildMiniLevelProgress(
+                      label: 'Advanced',
+                      practiced: stats.advancedPracticed,
+                      total: stats.advancedTotal,
+                      color: AppColors.difficultyAdvanced,
+                      isDark: isDark,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -158,14 +213,14 @@ class _EnglishSentencesScreenState
 
           // Search Bar
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
             child: TextField(
               controller: _searchController,
               onChanged: (val) {
                 ref.read(sentenceSearchQueryProvider.notifier).state = val;
               },
               decoration: InputDecoration(
-                hintText: 'Search sentences, meanings, or words...',
+                hintText: 'Search 600+ sentences, meanings, or words...',
                 prefixIcon: const Icon(Icons.search_rounded, size: 20),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
@@ -206,10 +261,10 @@ class _EnglishSentencesScreenState
             ),
           ),
 
-          // Difficulty & Category Filter Chips
+          // Level Filter Chips (Beginner, Intermediate, Advanced, Practiced, Saved)
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             child: Row(
               children: [
                 _buildFilterChip(
@@ -217,11 +272,12 @@ class _EnglishSentencesScreenState
                   filterValue: 'All',
                   isSelected: selectedFilter == 'All',
                   isDark: isDark,
-                  accentColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                  accentColor:
+                      isDark ? AppColors.primaryLight : AppColors.primary,
                 ),
                 const SizedBox(width: 8),
                 _buildFilterChip(
-                  label: 'Beginner ($beginnerCount)',
+                  label: 'Beginner (${stats.beginnerTotal})',
                   filterValue: 'Beginner',
                   isSelected: selectedFilter == 'Beginner',
                   isDark: isDark,
@@ -229,7 +285,7 @@ class _EnglishSentencesScreenState
                 ),
                 const SizedBox(width: 8),
                 _buildFilterChip(
-                  label: 'Intermediate ($intermediateCount)',
+                  label: 'Intermediate (${stats.intermediateTotal})',
                   filterValue: 'Intermediate',
                   isSelected: selectedFilter == 'Intermediate',
                   isDark: isDark,
@@ -237,7 +293,7 @@ class _EnglishSentencesScreenState
                 ),
                 const SizedBox(width: 8),
                 _buildFilterChip(
-                  label: 'Advanced ($advancedCount)',
+                  label: 'Advanced (${stats.advancedTotal})',
                   filterValue: 'Advanced',
                   isSelected: selectedFilter == 'Advanced',
                   isDark: isDark,
@@ -245,7 +301,16 @@ class _EnglishSentencesScreenState
                 ),
                 const SizedBox(width: 8),
                 _buildFilterChip(
-                  label: 'Saved ($favoritesCount)',
+                  label: 'Practiced (${stats.totalPracticed})',
+                  filterValue: 'Practiced',
+                  isSelected: selectedFilter == 'Practiced',
+                  isDark: isDark,
+                  accentColor: AppColors.success,
+                  icon: Icons.check_circle_rounded,
+                ),
+                const SizedBox(width: 8),
+                _buildFilterChip(
+                  label: 'Saved (${stats.totalFavorites})',
                   filterValue: 'Favorites',
                   isSelected: selectedFilter == 'Favorites',
                   isDark: isDark,
@@ -256,41 +321,79 @@ class _EnglishSentencesScreenState
             ),
           ),
 
+          // Category Filter Chips (Daily Conversation, Family, School, Work, etc.)
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+            child: Row(
+              children: categories.map((cat) {
+                final isSel = selectedCategory == cat;
+                return Padding(
+                  padding: const EdgeInsets.only(right: 6.0),
+                  child: ChoiceChip(
+                    label: Text(cat),
+                    selected: isSel,
+                    showCheckmark: false,
+                    backgroundColor: isDark
+                        ? AppColors.surfaceVariantDark.withValues(alpha: 0.5)
+                        : const Color(0xFFF1F5F9),
+                    selectedColor:
+                        isDark ? AppColors.primaryLight : AppColors.primary,
+                    side: BorderSide(
+                      color: isSel
+                          ? (isDark
+                              ? AppColors.primaryLight
+                              : AppColors.primary)
+                          : (isDark
+                              ? AppColors.borderDark
+                              : const Color(0xFFCBD5E1)),
+                      width: 1,
+                    ),
+                    labelStyle: TextStyle(
+                      color: isSel
+                          ? Colors.white
+                          : (isDark
+                              ? const Color(0xFFF8FAFC)
+                              : const Color(0xFF0F172A)),
+                      fontWeight: isSel ? FontWeight.w700 : FontWeight.w500,
+                      fontSize: 11.5,
+                    ),
+                    onSelected: (_) {
+                      ref
+                          .read(sentenceCategoryFilterProvider.notifier)
+                          .state = cat;
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+
+          const SizedBox(height: 4),
           const Divider(height: 1),
 
           // Sentences List Content
           Expanded(
             child: filteredSentences.isEmpty
-                ? (selectedFilter == 'Favorites'
-                    ? EmptyStateView(
-                        icon: Icons.favorite_border_rounded,
-                        title: 'No Saved Sentences',
-                        description:
-                            'Tap the heart icon on any sentence to save it here for quick review.',
-                        actionLabel: 'Browse All Sentences',
-                        onActionPressed: () {
-                          ref
-                              .read(sentenceDifficultyFilterProvider.notifier)
-                              .state = 'All';
-                        },
-                      )
-                    : EmptyStateView(
-                        icon: Icons.search_off_rounded,
-                        title: 'No Sentences Found',
-                        description:
-                            'No sentences match your current search or category filter.',
-                        actionLabel: 'Clear Search',
-                        onActionPressed: () {
-                          _searchController.clear();
-                          ref.read(sentenceSearchQueryProvider.notifier).state =
-                              '';
-                          ref
-                              .read(sentenceDifficultyFilterProvider.notifier)
-                              .state = 'All';
-                        },
-                      ))
+                ? EmptyStateView(
+                    icon: Icons.search_off_rounded,
+                    title: 'No Sentences Found',
+                    description:
+                        'No sentences match your active level, category, or search filters.',
+                    actionLabel: 'Reset Filters',
+                    onActionPressed: () {
+                      _searchController.clear();
+                      ref.read(sentenceSearchQueryProvider.notifier).state = '';
+                      ref
+                          .read(sentenceDifficultyFilterProvider.notifier)
+                          .state = 'All';
+                      ref
+                          .read(sentenceCategoryFilterProvider.notifier)
+                          .state = 'All';
+                    },
+                  )
                 : ListView.builder(
-                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+                    padding: const EdgeInsets.fromLTRB(16, 10, 16, 24),
                     itemCount: filteredSentences.length,
                     itemBuilder: (context, index) {
                       final sentence = filteredSentences[index];
@@ -298,7 +401,8 @@ class _EnglishSentencesScreenState
                         key: ValueKey(sentence.id),
                         sentence: sentence,
                         onPractice: () {
-                          final practiceIndex = allSentences.indexOf(sentence);
+                          final practiceIndex =
+                              allSentences.indexOf(sentence);
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => SentencePracticeScreen(
@@ -317,6 +421,46 @@ class _EnglishSentencesScreenState
     );
   }
 
+  Widget _buildMiniLevelProgress({
+    required String label,
+    required int practiced,
+    required int total,
+    required Color color,
+    required bool isDark,
+  }) {
+    return Row(
+      children: [
+        Container(
+          width: 7,
+          height: 7,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color,
+          ),
+        ),
+        const SizedBox(width: 5),
+        Text(
+          '$label: ',
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: isDark
+                ? AppColors.textTertiaryDark
+                : AppColors.textSecondaryLight,
+          ),
+        ),
+        Text(
+          '$practiced/$total',
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: color,
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildFilterChip({
     required String label,
     required String filterValue,
@@ -329,7 +473,7 @@ class _EnglishSentencesScreenState
       avatar: icon != null
           ? Icon(
               icon,
-              size: 15,
+              size: 14,
               color: isSelected ? Colors.white : accentColor,
             )
           : null,
@@ -352,10 +496,11 @@ class _EnglishSentencesScreenState
                 ? AppColors.textPrimaryDark
                 : AppColors.textPrimaryLight),
         fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-        fontSize: 12.5,
+        fontSize: 12,
       ),
       onSelected: (_) {
-        ref.read(sentenceDifficultyFilterProvider.notifier).state = filterValue;
+        ref.read(sentenceDifficultyFilterProvider.notifier).state =
+            filterValue;
       },
     );
   }

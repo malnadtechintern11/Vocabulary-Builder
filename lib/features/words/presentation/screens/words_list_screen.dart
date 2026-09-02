@@ -109,7 +109,7 @@ class WordsListScreen extends ConsumerWidget {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: const Text(
-                                      '120+ Sentences',
+                                      '600+ Sentences',
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w700,
