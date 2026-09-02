@@ -11,6 +11,8 @@ import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/words/presentation/screens/add_word_screen.dart';
 import '../../features/words/presentation/screens/word_detail_screen.dart';
 import '../../features/words/presentation/screens/words_list_screen.dart';
+import '../../screens/english_sentences_screen.dart';
+import '../../screens/sentence_practice_screen.dart';
 import 'route_names.dart';
 import 'route_paths.dart';
 
@@ -118,6 +120,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 builder: (context, state) => const SettingsScreen(),
               ),
             ],
+          ),
+        ],
+      ),
+
+      // English Sentences section with practice mode
+      GoRoute(
+        path: RoutePaths.sentences,
+        name: RouteNames.sentences,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const EnglishSentencesScreen(),
+        routes: [
+          GoRoute(
+            path: 'practice',
+            name: RouteNames.sentencesPractice,
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => const SentencePracticeScreen(),
           ),
         ],
       ),
