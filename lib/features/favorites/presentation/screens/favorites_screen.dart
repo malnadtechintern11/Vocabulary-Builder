@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:vocabulary_builder/app/router/route_paths.dart';
 import 'package:vocabulary_builder/app/theme/app_colors.dart';
 import 'package:vocabulary_builder/core/widgets/empty_state_view.dart';
 import 'package:vocabulary_builder/core/widgets/error_state_view.dart';
@@ -61,10 +63,13 @@ class FavoritesScreen extends ConsumerWidget {
       body: favoritesAsync.when(
         data: (favorites) {
           if (favorites.isEmpty) {
-            return const EmptyStateView(
+            return EmptyStateView(
               icon: Icons.favorite_border_rounded,
               title: 'No Saved Words Yet',
               description: 'Tap the heart icon on any vocabulary word to save it here for quick review and listening practice.',
+              actionLabel: 'Explore Words',
+              actionIcon: Icons.explore_rounded,
+              onActionPressed: () => context.go(RoutePaths.words),
             );
           }
 

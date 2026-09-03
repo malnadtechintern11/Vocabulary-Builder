@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/services/learning_analytics_service.dart';
 import '../../data/datasources/quiz_local_data_source.dart';
 import '../../data/repositories/quiz_repository_impl.dart';
 import '../../domain/entities/quiz_question.dart';
@@ -10,6 +11,10 @@ import '../../domain/usecases/get_quiz_statistics_usecase.dart';
 import '../../domain/usecases/save_quiz_result_usecase.dart';
 
 // --- Quiz DI Providers ---
+
+final learningAnalyticsServiceProvider = Provider<LearningAnalyticsService>((ref) {
+  return LearningAnalyticsService();
+});
 
 final quizLocalDataSourceProvider = Provider<QuizLocalDataSource>((ref) {
   return QuizLocalDataSourceImpl();
@@ -141,6 +146,13 @@ class QuizController extends StateNotifier<AsyncValue<QuizSessionState?>> {
     final isCorrect = current.selectedOptionIndex == current.currentQuestion.correctOptionIndex;
     final updatedCorrectCount = isCorrect ? current.correctAnswersCount + 1 : current.correctAnswersCount;
 
+    // Track attempt in Learning Analytics (identifies weak words automatically)
+    _ref.read(learningAnalyticsServiceProvider).recordQuizQuestionAttempt(
+      wordId: current.currentQuestion.targetWordId,
+      word: current.currentQuestion.targetWord,
+      isCorrect: isCorrect,
+    );
+
     state = AsyncValue.data(
       current.copyWith(
         isAnswerSubmitted: true,
@@ -187,6 +199,11 @@ class QuizController extends StateNotifier<AsyncValue<QuizSessionState?>> {
     try {
       final saveUseCase = _ref.read(saveQuizResultUseCaseProvider);
       final savedResult = await saveUseCase(result);
+
+      // Record daily streak and activity
+      final analyticsService = _ref.read(learningAnalyticsServiceProvider);
+      await analyticsService.recordActivityToday();
+      await analyticsService.getAchievements(); // Evaluates and unlocks badges
 
       // Invalidate history provider to update progress dashboard
       _ref.invalidate(quizHistoryProvider);

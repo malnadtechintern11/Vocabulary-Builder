@@ -59,7 +59,26 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
 
       final random = Random();
       final pool = List<WordModel>.from(allWords)..shuffle(random);
-      final selectedTargets = pool.take(min(count, pool.length)).toList();
+      List<WordModel> selectedTargets;
+
+      if (type == QuizType.weakWordsPractice) {
+        final weakRows = await db.query(
+          DatabaseTables.tableWordQuizStats,
+          where: '${DatabaseTables.colStatsTimesIncorrect} > 0',
+          orderBy: '${DatabaseTables.colStatsTimesIncorrect} DESC',
+          limit: count,
+        );
+        final weakIds = weakRows.map((r) => r[DatabaseTables.colStatsWordId] as int).toSet();
+        final weakTargetWords = allWords.where((w) => weakIds.contains(w.id)).toList()..shuffle(random);
+        if (weakTargetWords.isNotEmpty) {
+          final remainder = pool.where((w) => !weakIds.contains(w.id)).take(count - weakTargetWords.length);
+          selectedTargets = [...weakTargetWords, ...remainder];
+        } else {
+          selectedTargets = pool.take(min(count, pool.length)).toList();
+        }
+      } else {
+        selectedTargets = pool.take(min(count, pool.length)).toList();
+      }
 
       final questions = <QuizQuestion>[];
 
@@ -199,7 +218,7 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
 
       case QuizType.fillInTheBlank:
         final blankedExample = target.example.replaceAll(
-          RegExp(target.word, caseSensitive: false),
+          RegExp(RegExp.escape(target.word), caseSensitive: false),
           '__________',
         );
         final otherWords = allWords.where((w) => w.id != target.id).toList()..shuffle(random);
@@ -218,6 +237,123 @@ class QuizLocalDataSourceImpl implements QuizLocalDataSource {
           type: type,
           targetWordId: target.id,
           targetWord: target.word,
+        );
+
+      case QuizType.englishToKannada:
+        if (target.kannadaMeaning.trim().isEmpty) {
+          return _buildQuestionForType(
+            type: QuizType.meaningMatch,
+            target: target,
+            allWords: allWords,
+            index: index,
+            random: random,
+          );
+        }
+        final wordsWithKn = allWords.where((w) => w.id != target.id && w.kannadaMeaning.trim().isNotEmpty).toList()..shuffle(random);
+        final knDistractors = wordsWithKn.take(3).map((w) => w.kannadaMeaning).toSet().toList();
+        while (knDistractors.length < 3) {
+          knDistractors.add('ಅರ್ಥ ಲಭ್ಯವಿಲ್ಲ');
+        }
+
+        final knOptions = [target.kannadaMeaning, ...knDistractors.take(3)]..shuffle(random);
+        final correctKnIndex = knOptions.indexOf(target.kannadaMeaning);
+
+        return QuizQuestion(
+          id: 'q_${index}_${target.id}',
+          prompt: 'What is the correct Kannada meaning (ಕನ್ನಡ ಅರ್ಥ) of "${target.word}"?',
+          contextSnippet: 'English Definition: ${target.meaning}',
+          options: knOptions,
+          correctOptionIndex: correctKnIndex,
+          explanation: '"${target.word}" translates to "${target.kannadaMeaning}". Meaning: ${target.meaning}',
+          type: type,
+          targetWordId: target.id,
+          targetWord: target.word,
+        );
+
+      case QuizType.kannadaToEnglish:
+        if (target.kannadaMeaning.trim().isEmpty) {
+          return _buildQuestionForType(
+            type: QuizType.meaningMatch,
+            target: target,
+            allWords: allWords,
+            index: index,
+            random: random,
+          );
+        }
+        final otherWords = allWords.where((w) => w.id != target.id).toList()..shuffle(random);
+        final distractors = otherWords.take(3).map((w) => w.word).toList();
+        final options = [target.word, ...distractors]..shuffle(random);
+        final correctIndex = options.indexOf(target.word);
+
+        return QuizQuestion(
+          id: 'q_${index}_${target.id}',
+          prompt: 'Which English word corresponds to the Kannada meaning "${target.kannadaMeaning}"?',
+          contextSnippet: 'Context hint: ${target.partOfSpeech.toUpperCase()}',
+          options: options,
+          correctOptionIndex: correctIndex,
+          explanation: '"${target.word}" means "${target.kannadaMeaning}" in Kannada. English definition: ${target.meaning}',
+          type: type,
+          targetWordId: target.id,
+          targetWord: target.word,
+        );
+
+      case QuizType.sentenceCompletion:
+        final blanked = target.example.isNotEmpty
+            ? target.example.replaceAll(RegExp(RegExp.escape(target.word), caseSensitive: false), '__________')
+            : 'The __________ was clearly visible in the sentence.';
+        final otherWords = allWords.where((w) => w.id != target.id).toList()..shuffle(random);
+        final distractors = otherWords.take(3).map((w) => w.word).toList();
+        final options = [target.word, ...distractors]..shuffle(random);
+        final correctIndex = options.indexOf(target.word);
+
+        final knInfo = target.kannadaMeaning.isNotEmpty ? ' | ಕನ್ನಡ: ${target.kannadaMeaning}' : '';
+        return QuizQuestion(
+          id: 'q_${index}_${target.id}',
+          prompt: 'Complete the sentence by selecting the most suitable word:',
+          contextSnippet: '"$blanked"',
+          options: options,
+          correctOptionIndex: correctIndex,
+          explanation: 'Correct Sentence: "${target.example}" — ${target.meaning}$knInfo',
+          type: type,
+          targetWordId: target.id,
+          targetWord: target.word,
+        );
+
+      case QuizType.weakWordsPractice:
+        // Build with meaning or Kannada mode
+        if (target.kannadaMeaning.isNotEmpty && index.isEven) {
+          return _buildQuestionForType(
+            type: QuizType.englishToKannada,
+            target: target,
+            allWords: allWords,
+            index: index,
+            random: random,
+          );
+        }
+        return _buildQuestionForType(
+          type: QuizType.meaningMatch,
+          target: target,
+          allWords: allWords,
+          index: index,
+          random: random,
+        );
+
+      case QuizType.smartMixed:
+        final mixedTypes = [
+          QuizType.meaningMatch,
+          QuizType.englishToKannada,
+          QuizType.kannadaToEnglish,
+          QuizType.fillInTheBlank,
+          QuizType.sentenceCompletion,
+          if (target.synonyms.isNotEmpty) QuizType.synonymMatch,
+        ];
+        final pickedType = mixedTypes[index % mixedTypes.length];
+        return _buildQuestionForType(
+          type: pickedType,
+          target: target,
+          allWords: allWords,
+          index: index,
+          random: random,
         );
     }
   }

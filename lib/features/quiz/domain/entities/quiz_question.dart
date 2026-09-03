@@ -3,6 +3,11 @@ enum QuizType {
   synonymMatch,
   antonymMatch,
   fillInTheBlank,
+  englishToKannada,
+  kannadaToEnglish,
+  sentenceCompletion,
+  weakWordsPractice,
+  smartMixed,
 }
 
 /// Domain entity representing a single quiz question

@@ -27,6 +27,30 @@ class DatabaseTables {
   static const String colScorePercentage = 'score_percentage';
   static const String colCompletedAt = 'completed_at';
 
+  // New Learning Feature Tables
+  static const String tableWordQuizStats = 'word_quiz_stats';
+  static const String tableDailyActivity = 'daily_activity';
+  static const String tableAchievements = 'achievements';
+
+  // Word quiz stats columns
+  static const String colStatsWordId = 'word_id';
+  static const String colStatsWord = 'word';
+  static const String colStatsTimesTested = 'times_tested';
+  static const String colStatsTimesCorrect = 'times_correct';
+  static const String colStatsTimesIncorrect = 'times_incorrect';
+  static const String colStatsLastTestedAt = 'last_tested_at';
+
+  // Daily activity columns
+  static const String colActivityDate = 'date';
+  static const String colActivityWordsLearned = 'words_learned';
+  static const String colActivityQuizzesCompleted = 'quizzes_completed';
+  static const String colActivityGoalTarget = 'goal_target';
+  static const String colActivityGoalAchieved = 'goal_achieved';
+
+  // Achievements columns
+  static const String colBadgeId = 'badge_id';
+  static const String colUnlockedAt = 'unlocked_at';
+
   static const String createWordsTable = '''
     CREATE TABLE $tableWords (
       $colId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -58,6 +82,34 @@ class DatabaseTables {
       $colCorrectAnswers INTEGER NOT NULL,
       $colScorePercentage REAL NOT NULL,
       $colCompletedAt TEXT NOT NULL
+    );
+  ''';
+
+  static const String createWordQuizStatsTable = '''
+    CREATE TABLE $tableWordQuizStats (
+      $colStatsWordId INTEGER PRIMARY KEY,
+      $colStatsWord TEXT NOT NULL,
+      $colStatsTimesTested INTEGER NOT NULL DEFAULT 0,
+      $colStatsTimesCorrect INTEGER NOT NULL DEFAULT 0,
+      $colStatsTimesIncorrect INTEGER NOT NULL DEFAULT 0,
+      $colStatsLastTestedAt TEXT NOT NULL
+    );
+  ''';
+
+  static const String createDailyActivityTable = '''
+    CREATE TABLE $tableDailyActivity (
+      $colActivityDate TEXT PRIMARY KEY,
+      $colActivityWordsLearned INTEGER NOT NULL DEFAULT 0,
+      $colActivityQuizzesCompleted INTEGER NOT NULL DEFAULT 0,
+      $colActivityGoalTarget INTEGER NOT NULL DEFAULT 10,
+      $colActivityGoalAchieved INTEGER NOT NULL DEFAULT 0
+    );
+  ''';
+
+  static const String createAchievementsTable = '''
+    CREATE TABLE $tableAchievements (
+      $colBadgeId TEXT PRIMARY KEY,
+      $colUnlockedAt TEXT NOT NULL
     );
   ''';
 }

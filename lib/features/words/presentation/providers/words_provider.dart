@@ -1,4 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../progress/presentation/providers/learning_streak_provider.dart';
+import '../../../quiz/presentation/providers/quiz_controller.dart';
 import '../../data/datasources/word_local_data_source.dart';
 import '../../data/repositories/word_repository_impl.dart';
 import '../../domain/entities/word.dart';
@@ -160,17 +162,35 @@ class WordController extends StateNotifier<AsyncValue<void>> {
     }
   }
 
-  Future<void> toggleLearned(Word word) async {
+  Future<bool> toggleLearned(Word word) async {
     state = const AsyncValue.loading();
     try {
       final useCase = _ref.read(toggleLearnedUseCaseProvider);
-      await useCase(word.id, !word.isLearned);
+      final newLearned = !word.isLearned;
+      await useCase(word.id, newLearned);
+
+      bool goalAchieved = false;
+      if (newLearned) {
+        final analyticsService = _ref.read(learningAnalyticsServiceProvider);
+        goalAchieved = await analyticsService.recordWordLearned(word.id);
+        await analyticsService.getAchievements();
+      }
+
       _ref.invalidate(wordsListProvider);
       _ref.invalidate(wordDetailProvider(word.id));
       _ref.invalidate(getWordStatisticsUseCaseProvider);
+      _ref.invalidate(streakInfoProvider);
+      _ref.invalidate(todayWordsLearnedProvider);
+      _ref.invalidate(weeklyActivityProvider);
+      _ref.invalidate(achievementsProvider);
+      _ref.invalidate(categoryAnalyticsProvider);
+      _ref.invalidate(recommendationsProvider);
+
       state = const AsyncValue.data(null);
+      return goalAchieved;
     } catch (e, st) {
       state = AsyncValue.error(e, st);
+      return false;
     }
   }
 }

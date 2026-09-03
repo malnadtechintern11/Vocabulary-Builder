@@ -1,0 +1,641 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../app/router/route_paths.dart';
+import '../../../../app/theme/app_colors.dart';
+import '../../../../core/services/translation_service.dart';
+import '../../../../core/services/tts_service.dart';
+import '../providers/translation_provider.dart';
+
+/// Online Multi-Language Translation screen supporting 10 Indian & English languages
+class TranslationScreen extends ConsumerStatefulWidget {
+  final String? initialText;
+
+  const TranslationScreen({super.key, this.initialText});
+
+  @override
+  ConsumerState<TranslationScreen> createState() => _TranslationScreenState();
+}
+
+class _TranslationScreenState extends ConsumerState<TranslationScreen> {
+  late final TextEditingController _inputController;
+
+  @override
+  void initState() {
+    super.initState();
+    _inputController = TextEditingController(text: widget.initialText ?? '');
+
+    // If initial text is passed (e.g. from OCR scanner), prefill and translate
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.initialText != null && widget.initialText!.trim().isNotEmpty) {
+        ref.read(translationNotifierProvider.notifier).setInputText(widget.initialText!);
+        ref.read(translationNotifierProvider.notifier).translate(textOverride: widget.initialText);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _inputController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final translationState = ref.watch(translationNotifierProvider);
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final selectedTargetLang = TranslationService.getLanguage(translationState.targetLanguageCode);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.secondary.withValues(alpha: isDark ? 0.25 : 0.14),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Icon(
+                Icons.g_translate_rounded,
+                size: 20,
+                color: AppColors.secondary,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Multi-Language Translation',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -0.3,
+                  ),
+                ),
+                Text(
+                  '10 Indian & English Languages (Online)',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
+        children: [
+          // Offline Internet Connection Error Banner
+          if (translationState.isOfflineError) ...[
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: isDark
+                    ? const Color(0xFF7F1D1D).withValues(alpha: 0.3)
+                    : const Color(0xFFFEF2F2),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(
+                  color: isDark ? const Color(0xFFDC2626) : const Color(0xFFF87171),
+                  width: 1.5,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.red.withValues(alpha: isDark ? 0.2 : 0.08),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: AppColors.error.withValues(alpha: 0.15),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.wifi_off_rounded,
+                          color: AppColors.error,
+                          size: 22,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Connection Required',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.error,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              'Internet connection is required for translation',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: isDark ? Colors.white : const Color(0xFF7F1D1D),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    'All other Vocabulary Builder features (Words, Sentences, Quizzes, Progress, OCR Scanner) continue to work 100% offline.',
+                    style: TextStyle(
+                      fontSize: 11.5,
+                      color: isDark ? const Color(0xFFFCA5A5) : const Color(0xFF991B1B),
+                      height: 1.35,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () {
+                        ref.read(translationNotifierProvider.notifier).translate();
+                      },
+                      icon: const Icon(Icons.refresh_rounded, size: 16),
+                      label: const Text('Retry Translation'),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: AppColors.error,
+                        side: const BorderSide(color: AppColors.error),
+                        visualDensity: VisualDensity.compact,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 18),
+          ],
+
+          // Language Selector Card
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.surfaceDark : Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
+                color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                width: 1.2,
+              ),
+              boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+            ),
+            child: Row(
+              children: [
+                // Source Language
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Translate From',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? AppColors.textTertiaryDark : AppColors.textSecondaryLight,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      const Text(
+                        'Auto Detect',
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Arrow indicator
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.12),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.arrow_forward_rounded,
+                    size: 16,
+                    color: isDark ? AppColors.primaryLight : AppColors.primary,
+                  ),
+                ),
+
+                // Target Language Selector
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Translate To',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? AppColors.textTertiaryDark : AppColors.textSecondaryLight,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      PopupMenuButton<String>(
+                        initialValue: translationState.targetLanguageCode,
+                        onSelected: (code) {
+                          ref.read(translationNotifierProvider.notifier).setTargetLanguage(code);
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        itemBuilder: (context) {
+                          return TranslationService.supportedLanguages.map((lang) {
+                            return PopupMenuItem<String>(
+                              value: lang.code,
+                              child: Row(
+                                children: [
+                                  Text(lang.flag, style: const TextStyle(fontSize: 18)),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Text(
+                                      lang.displayName,
+                                      style: TextStyle(
+                                        fontWeight: lang.code == translationState.targetLanguageCode
+                                            ? FontWeight.w800
+                                            : FontWeight.w500,
+                                        color: lang.code == translationState.targetLanguageCode
+                                            ? AppColors.primary
+                                            : null,
+                                      ),
+                                    ),
+                                  ),
+                                  if (lang.code == translationState.targetLanguageCode)
+                                    const Icon(Icons.check_rounded, size: 16, color: AppColors.primary),
+                                ],
+                              ),
+                            );
+                          }).toList();
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(selectedTargetLang.flag, style: const TextStyle(fontSize: 16)),
+                            const SizedBox(width: 6),
+                            Flexible(
+                              child: Text(
+                                selectedTargetLang.name,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w800,
+                                  color: AppColors.primary,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            const Icon(Icons.arrow_drop_down_rounded, size: 20),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Quick Target Language Horizontal Pills
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: TranslationService.supportedLanguages.map((lang) {
+                final isSelected = lang.code == translationState.targetLanguageCode;
+                return Padding(
+                  padding: const EdgeInsets.only(right: 6.0),
+                  child: FilterChip(
+                    avatar: Text(lang.flag, style: const TextStyle(fontSize: 13)),
+                    label: Text(lang.name),
+                    selected: isSelected,
+                    showCheckmark: false,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                    selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                    side: BorderSide(
+                      color: isSelected
+                          ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                          : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                      width: 1.2,
+                    ),
+                    labelStyle: TextStyle(
+                      color: isSelected
+                          ? Colors.white
+                          : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                      fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                      fontSize: 12,
+                    ),
+                    onSelected: (_) {
+                      ref.read(translationNotifierProvider.notifier).setTargetLanguage(lang.code);
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Text Input Card
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.surfaceDark : Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                width: 1.2,
+              ),
+              boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Icon(Icons.edit_note_rounded, size: 18),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Input English Text or Sentence',
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+                    ),
+                    const Spacer(),
+                    if (_inputController.text.isNotEmpty)
+                      IconButton(
+                        icon: const Icon(Icons.clear_rounded, size: 18),
+                        tooltip: 'Clear input',
+                        visualDensity: VisualDensity.compact,
+                        onPressed: () {
+                          _inputController.clear();
+                          ref.read(translationNotifierProvider.notifier).clear();
+                        },
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _inputController,
+                  maxLines: 4,
+                  minLines: 2,
+                  onChanged: (val) {
+                    ref.read(translationNotifierProvider.notifier).setInputText(val);
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Type a word, phrase, or sentence to translate...',
+                    fillColor: isDark ? Colors.black26 : const Color(0xFFF8FAFC),
+                    filled: true,
+                    contentPadding: const EdgeInsets.all(14),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide(
+                        color: isDark ? AppColors.borderDark : const Color(0xFFE2E8F0),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Text(
+                      '${_inputController.text.length} characters',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: isDark ? AppColors.textTertiaryDark : AppColors.textSecondaryLight,
+                      ),
+                    ),
+                    const Spacer(),
+                    TextButton.icon(
+                      onPressed: () async {
+                        final data = await Clipboard.getData('text/plain');
+                        if (data?.text != null && data!.text!.isNotEmpty) {
+                          _inputController.text = data.text!;
+                          ref.read(translationNotifierProvider.notifier).setInputText(data.text!);
+                        }
+                      },
+                      icon: const Icon(Icons.content_paste_rounded, size: 15),
+                      label: const Text('Paste', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                      style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 18),
+
+          // Translate Button
+          SizedBox(
+            width: double.infinity,
+            height: 52,
+            child: ElevatedButton.icon(
+              onPressed: translationState.isLoading
+                  ? null
+                  : () {
+                      ref.read(translationNotifierProvider.notifier).translate(
+                            textOverride: _inputController.text,
+                          );
+                    },
+              icon: translationState.isLoading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+                    )
+                  : const Icon(Icons.translate_rounded, size: 20),
+              label: Text(
+                translationState.isLoading
+                    ? 'Translating Online...'
+                    : 'Translate to ${selectedTargetLang.name}',
+                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                foregroundColor: Colors.white,
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 22),
+
+          // Translation Result Card
+          if (translationState.result != null && translationState.result!.translatedText.isNotEmpty) ...[
+            Container(
+              decoration: BoxDecoration(
+                color: isDark ? AppColors.surfaceDark : Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isDark ? const Color(0xFF059669).withValues(alpha: 0.5) : const Color(0xFF86EFAC),
+                  width: 1.5,
+                ),
+                boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+              ),
+              padding: const EdgeInsets.all(18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Result Header
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: AppColors.success.withValues(alpha: 0.14),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.check_circle_rounded, size: 16, color: AppColors.success),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Translation Result (${selectedTargetLang.nativeName})',
+                        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+                      ),
+                      const Spacer(),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        decoration: BoxDecoration(
+                          color: AppColors.success.withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          selectedTargetLang.flag,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+
+                  // Translated Text Box
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: isDark
+                          ? const Color(0xFF064E3B).withValues(alpha: 0.18)
+                          : const Color(0xFFF0FDF4),
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                        color: isDark
+                            ? const Color(0xFF059669).withValues(alpha: 0.3)
+                            : const Color(0xFFBBF7D0),
+                      ),
+                    ),
+                    child: SelectableText(
+                      translationState.result!.translatedText,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        height: 1.45,
+                        color: isDark ? const Color(0xFF86EFAC) : const Color(0xFF14532D),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 14),
+
+                  // Actions Row: Copy, Pronounce (if English), Add to Vocabulary
+                  Row(
+                    children: [
+                      // Pronounce if English or Latin
+                      if (translationState.targetLanguageCode == 'en') ...[
+                        FilledButton.tonalIcon(
+                          onPressed: () {
+                            ref.read(appTtsControllerProvider).toggleSpeak(
+                                  id: 'translation_${translationState.result!.translatedText.hashCode}',
+                                  text: translationState.result!.translatedText,
+                                );
+                          },
+                          icon: const Icon(Icons.volume_up_rounded, size: 16),
+                          label: const Text('Listen'),
+                          style: FilledButton.styleFrom(
+                            visualDensity: VisualDensity.compact,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                      ],
+
+                      // Copy Button
+                      IconButton.outlined(
+                        icon: const Icon(Icons.copy_rounded, size: 18),
+                        tooltip: 'Copy translation',
+                        onPressed: () {
+                          Clipboard.setData(ClipboardData(text: translationState.result!.translatedText));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Translation copied to clipboard!'),
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
+                        },
+                      ),
+
+                      const Spacer(),
+
+                      // Save / Add to Vocabulary Button
+                      FilledButton.icon(
+                        onPressed: () {
+                          // Navigate to AddWordScreen with word and translation prefilled
+                          context.push(
+                            RoutePaths.addWord,
+                            extra: {
+                              'word': translationState.result!.sourceText,
+                              'kannadaMeaning': translationState.targetLanguageCode == 'kn'
+                                  ? translationState.result!.translatedText
+                                  : '',
+                              'meaning': translationState.result!.translatedText,
+                            },
+                          );
+                        },
+                        icon: const Icon(Icons.bookmark_add_rounded, size: 16),
+                        label: const Text('Save to Vocabulary'),
+                        style: FilledButton.styleFrom(
+                          visualDensity: VisualDensity.compact,
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}

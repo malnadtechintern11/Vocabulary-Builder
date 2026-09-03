@@ -11,4 +11,6 @@ class RouteNames {
   static const String settings = 'settings';
   static const String sentences = 'sentences';
   static const String sentencesPractice = 'sentencesPractice';
+  static const String scanText = 'scanText';
+  static const String translation = 'translation';
 }

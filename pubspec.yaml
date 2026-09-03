@@ -43,6 +43,10 @@ dependencies:
   shared_preferences: ^2.2.3
   flutter_tts: ^4.2.5
   speech_to_text: ^7.4.0
+  google_mlkit_text_recognition: ^0.17.1
+  image_picker: ^1.2.3
+  http: ^1.6.0
+  image_cropper: ^12.2.1
 
 dev_dependencies:
   flutter_test:

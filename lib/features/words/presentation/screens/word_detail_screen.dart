@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../core/services/tts_service.dart';
+import '../../../../core/widgets/animated_favorite_button.dart';
 import '../../../../core/widgets/audio_pronounce_button.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
+import '../../../../core/widgets/success_celebration_dialog.dart';
 import '../providers/words_provider.dart';
 import '../widgets/difficulty_badge.dart';
 import '../widgets/part_of_speech_chip.dart';
@@ -32,18 +34,16 @@ class WordDetailScreen extends ConsumerWidget {
                 text: word.word,
                 tooltip: 'Pronounce "${word.word}"',
                 iconSize: 22,
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 4),
               ),
-              IconButton(
-                icon: Icon(
-                  word.isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                  color: word.isFavorite ? AppColors.favorite : null,
-                ),
-                tooltip: word.isFavorite ? 'Remove from favorites' : 'Add to favorites',
-                onPressed: () {
+              AnimatedFavoriteButton(
+                isFavorite: word.isFavorite,
+                itemName: word.word,
+                onToggle: () {
                   ref.read(wordControllerProvider.notifier).toggleFavorite(word);
                 },
               ),
+              const SizedBox(width: 8),
             ],
           ),
           body: SingleChildScrollView(
@@ -407,8 +407,18 @@ class WordDetailScreen extends ConsumerWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
-                    onPressed: () {
-                      ref.read(wordControllerProvider.notifier).toggleLearned(word);
+                    onPressed: () async {
+                      final goalCompleted = await ref.read(wordControllerProvider.notifier).toggleLearned(word);
+                      if (goalCompleted && context.mounted) {
+                        SuccessCelebrationDialog.show(
+                          context: context,
+                          title: 'Daily Goal Completed! 🎯',
+                          message: 'Congratulations! You reached your daily learning goal. Keep up the streak and build your vocabulary!',
+                          scoreText: 'Goal 100%',
+                          primaryButtonLabel: 'Awesome!',
+                          onPrimaryPressed: () => Navigator.of(context).pop(),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: word.isLearned ? AppColors.success : theme.colorScheme.primary,

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/theme/app_colors.dart';
 import '../../core/services/tts_service.dart';
+import '../../core/widgets/animated_favorite_button.dart';
 import '../../core/widgets/audio_pronounce_button.dart';
 import '../../features/sentences/providers/sentences_provider.dart';
 import '../../models/sentence.dart';
@@ -144,27 +145,13 @@ class SentenceCard extends ConsumerWidget {
                   },
                 ),
 
-                // Favorite Button
-                IconButton(
-                  icon: Icon(
-                    sentence.isFavorite
-                        ? Icons.favorite_rounded
-                        : Icons.favorite_border_rounded,
-                    color: sentence.isFavorite
-                        ? AppColors.favorite
-                        : (isDark
-                            ? AppColors.textTertiaryDark
-                            : AppColors.textTertiaryLight),
-                    size: 22,
-                  ),
-                  tooltip: sentence.isFavorite
-                      ? 'Remove from saved'
-                      : 'Save sentence',
-                  visualDensity: VisualDensity.compact,
-                  onPressed: () {
-                    ref
-                        .read(favoriteSentenceIdsProvider.notifier)
-                        .toggleFavorite(sentence.id);
+                // Animated Favorite Button with tactile bounce
+                AnimatedFavoriteButton(
+                  isFavorite: sentence.isFavorite,
+                  itemName: sentence.text.length > 30 ? '${sentence.text.substring(0, 30)}...' : sentence.text,
+                  tooltip: sentence.isFavorite ? 'Remove from saved' : 'Save sentence',
+                  onToggle: () {
+                    ref.read(favoriteSentenceIdsProvider.notifier).toggleFavorite(sentence.id);
                   },
                 ),
               ],
@@ -280,15 +267,17 @@ class SentenceCard extends ConsumerWidget {
                               : AppColors.secondaryDark,
                         ),
                         const SizedBox(width: 6),
-                        Text(
-                          'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning)',
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.2,
-                            color: isDark
-                                ? AppColors.secondaryLight
-                                : AppColors.secondaryDark,
+                        Expanded(
+                          child: Text(
+                            'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning)',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.2,
+                              color: isDark
+                                  ? AppColors.secondaryLight
+                                  : AppColors.secondaryDark,
+                            ),
                           ),
                         ),
                       ],
@@ -355,30 +344,32 @@ class SentenceCard extends ConsumerWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '${vocab.word}: ',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 12,
-                                    color: isDark
-                                        ? AppColors.primaryLight
-                                        : AppColors.primary,
+                          Flexible(
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '${vocab.word}: ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 12,
+                                      color: isDark
+                                          ? AppColors.primaryLight
+                                          : AppColors.primary,
+                                    ),
                                   ),
-                                ),
-                                TextSpan(
-                                  text: vocab.meaning,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                    color: isDark
-                                        ? AppColors.textSecondaryDark
-                                        : const Color(0xFF334155),
+                                  TextSpan(
+                                    text: vocab.meaning,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: isDark
+                                          ? AppColors.textSecondaryDark
+                                          : const Color(0xFF334155),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(width: 4),
@@ -407,16 +398,19 @@ class SentenceCard extends ConsumerWidget {
                 AudioPronounceTonalButton(
                   id: sentence.id,
                   text: sentence.text,
-                  label: 'Pronounce',
-                  playingLabel: 'Listening...',
+                  label: 'Listen',
+                  playingLabel: 'Playing',
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 4),
 
                 // Copy Button
                 IconButton(
                   icon: const Icon(Icons.copy_rounded, size: 18),
                   tooltip: 'Copy sentence',
                   visualDensity: VisualDensity.compact,
+                  constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                  padding: EdgeInsets.zero,
                   onPressed: () {
                     final textToCopy = sentence.kannadaMeaning.isNotEmpty
                         ? '${sentence.text}\n(${sentence.kannadaMeaning})'
@@ -433,20 +427,25 @@ class SentenceCard extends ConsumerWidget {
 
                 const Spacer(),
 
-                // Practice Button
+                // Practice Button with auto-scaling to guarantee zero overflow
                 if (onPractice != null)
-                  FilledButton.tonalIcon(
-                    onPressed: onPractice,
-                    icon: const Icon(Icons.school_rounded, size: 16),
-                    label: const Text(
-                      'Practice',
-                      style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700),
-                    ),
-                    style: FilledButton.styleFrom(
-                      visualDensity: VisualDensity.compact,
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: FilledButton.tonalIcon(
+                        onPressed: onPractice,
+                        icon: const Icon(Icons.school_rounded, size: 15),
+                        label: const Text(
+                          'Practice',
+                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                        ),
+                        style: FilledButton.styleFrom(
+                          visualDensity: VisualDensity.compact,
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                       ),
                     ),
                   ),

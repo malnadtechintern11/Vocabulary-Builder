@@ -11,4 +11,6 @@ class RoutePaths {
   static const String settings = '/settings';
   static const String sentences = '/sentences';
   static const String sentencesPractice = '/sentences/practice';
+  static const String scanText = '/scan-text';
+  static const String translation = '/translate';
 }

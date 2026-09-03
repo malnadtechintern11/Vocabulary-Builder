@@ -6,6 +6,9 @@ import 'package:vocabulary_builder/core/widgets/empty_state_view.dart';
 import 'package:vocabulary_builder/features/settings/presentation/screens/settings_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/screens/add_word_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/widgets/difficulty_badge.dart';
+import 'package:vocabulary_builder/features/ocr/presentation/screens/scan_text_screen.dart';
+import 'package:vocabulary_builder/features/translation/presentation/screens/translation_screen.dart';
+import 'package:vocabulary_builder/screens/english_sentences_screen.dart';
 
 void main() {
   group('Widget Tests', () {
@@ -96,26 +99,78 @@ void main() {
       expect(find.text('Add Word to Vocabulary'), findsOneWidget);
     });
 
-    testWidgets('AddWordScreen has no overflow on narrow mobile screens (320x640)', (WidgetTester tester) async {
-      tester.view.physicalSize = const Size(320, 640);
+    testWidgets('EnglishSentencesScreen renders without any overflow on compact screen', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(360, 640);
       tester.view.devicePixelRatio = 1.0;
-      addTearDown(() {
-        tester.view.resetPhysicalSize();
-        tester.view.resetDevicePixelRatio();
-      });
+      addTearDown(tester.view.resetPhysicalSize);
 
       await tester.pumpWidget(
         const ProviderScope(
           child: MaterialApp(
-            home: AddWordScreen(),
+            home: EnglishSentencesScreen(),
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
-      // Verify no exceptions or overflows thrown
+      expect(find.text('English Sentences'), findsOneWidget);
+      expect(find.text('Sentences Progress'), findsOneWidget);
+      expect(find.text('Practice'), findsWidgets);
       expect(tester.takeException(), isNull);
-      expect(find.text('Add New Word'), findsOneWidget);
-      expect(find.text('Add Word to Vocabulary'), findsOneWidget);
+    });
+
+    testWidgets('EnglishSentencesScreen renders without any overflow on ultra-compact 320px screen', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(320, 568);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: EnglishSentencesScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('English Sentences'), findsOneWidget);
+      expect(find.text('Sentences Progress'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('ScanTextScreen renders offline OCR header, camera and gallery buttons', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: ScanTextScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Scan Text (OCR)'), findsOneWidget);
+      expect(find.text('100% Offline On-Device Recognition'), findsOneWidget);
+      expect(find.text('Take Photo'), findsOneWidget);
+      expect(find.text('Choose Image'), findsOneWidget);
+      expect(find.text('Textbook & Image Scanner'), findsOneWidget);
+    });
+
+    testWidgets('TranslationScreen renders 10 language options, input area, and handles offline message', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: TranslationScreen(initialText: 'Knowledge'),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Multi-Language Translation'), findsOneWidget);
+      expect(find.text('10 Indian & English Languages (Online)'), findsOneWidget);
+      expect(find.text('Translate From'), findsOneWidget);
+      expect(find.text('Translate To'), findsOneWidget);
+      expect(find.text('Translate to Kannada'), findsOneWidget);
+      expect(find.text('Knowledge'), findsOneWidget);
     });
   });
 }

@@ -57,6 +57,9 @@ class AppDatabase {
     await db.execute(DatabaseTables.createWordsTable);
     await db.execute(DatabaseTables.createWordsIndex);
     await db.execute(DatabaseTables.createQuizResultsTable);
+    await db.execute(DatabaseTables.createWordQuizStatsTable);
+    await db.execute(DatabaseTables.createDailyActivityTable);
+    await db.execute(DatabaseTables.createAchievementsTable);
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -72,6 +75,15 @@ class AppDatabase {
         await db.delete(DatabaseTables.tableWords);
       } catch (e) {
         debugPrint('Resetting words table for 50+ words per topic dataset: $e');
+      }
+    }
+    if (oldVersion < 6) {
+      try {
+        await db.execute(DatabaseTables.createWordQuizStatsTable);
+        await db.execute(DatabaseTables.createDailyActivityTable);
+        await db.execute(DatabaseTables.createAchievementsTable);
+      } catch (e) {
+        debugPrint('Error creating learning analytics tables: $e');
       }
     }
   }

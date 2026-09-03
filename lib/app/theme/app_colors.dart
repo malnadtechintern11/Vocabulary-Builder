@@ -46,9 +46,10 @@ class AppColors {
   static const Color textSecondaryDark = Color(0xFF94A3B8); // Slate 400
   static const Color textTertiaryDark = Color(0xFF64748B); // Slate 500
 
-  // Quiz Status Colors
+  // Status Colors
   static const Color correctGreen = Color(0xFF22C55E);
   static const Color incorrectRed = Color(0xFFEF4444);
+  static const Color error = Color(0xFFEF4444);
 
   // Subtle Card Shadows
   static const List<BoxShadow> cardShadowLight = [

@@ -4,7 +4,7 @@ class AppConstants {
   static const String appTagline = 'Master English Words, Daily & Offline';
   static const String vocabularySeedAssetPath = 'assets/words.json';
   static const String databaseName = 'vocabulary_builder.db';
-  static const int databaseVersion = 5;
+  static const int databaseVersion = 6;
 
   // Words limits & defaults
   static const int defaultQuizQuestionCount = 10;

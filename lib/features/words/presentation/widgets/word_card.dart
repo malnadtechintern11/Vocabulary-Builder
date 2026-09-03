@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/widgets/animated_favorite_button.dart';
 import '../../../../core/widgets/audio_pronounce_button.dart';
 import '../../domain/entities/word.dart';
 import '../providers/words_provider.dart';
@@ -111,31 +112,14 @@ class WordCard extends ConsumerWidget {
                       tooltip: 'Pronounce "${word.word}"',
                       iconSize: 22,
                     ),
-                    const SizedBox(width: 6),
-                    // Favorite Toggle Button with ripple feedback
-                    IconButton(
-                      icon: Icon(
-                        word.isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                        color: word.isFavorite
-                            ? AppColors.favorite
-                            : (isDark ? Colors.white38 : Colors.black38),
-                        size: 22,
-                      ),
-                      tooltip: word.isFavorite ? 'Remove from favorites' : 'Add to favorites',
-                      onPressed: () {
+                    const SizedBox(width: 4),
+                    // Animated Favorite Toggle Button with micro-bounce
+                    AnimatedFavoriteButton(
+                      isFavorite: word.isFavorite,
+                      itemName: word.word,
+                      onToggle: () {
                         ref.read(wordControllerProvider.notifier).toggleFavorite(word);
                       },
-                      style: IconButton.styleFrom(
-                        visualDensity: VisualDensity.compact,
-                        backgroundColor: word.isFavorite
-                            ? (isDark
-                                ? AppColors.favorite.withValues(alpha: 0.15)
-                                : AppColors.favoriteLight)
-                            : Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
                     ),
                   ],
                 ),

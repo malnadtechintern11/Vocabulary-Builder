@@ -11,6 +11,8 @@ import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/words/presentation/screens/add_word_screen.dart';
 import '../../features/words/presentation/screens/word_detail_screen.dart';
 import '../../features/words/presentation/screens/words_list_screen.dart';
+import '../../features/ocr/presentation/screens/scan_text_screen.dart';
+import '../../features/translation/presentation/screens/translation_screen.dart';
 import '../../screens/english_sentences_screen.dart';
 import '../../screens/sentence_practice_screen.dart';
 import 'route_names.dart';
@@ -138,6 +140,25 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             builder: (context, state) => const SentencePracticeScreen(),
           ),
         ],
+      ),
+
+      // Scan Text from Camera/Image (100% Offline On-Device OCR)
+      GoRoute(
+        path: RoutePaths.scanText,
+        name: RouteNames.scanText,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const ScanTextScreen(),
+      ),
+
+      // Multi-Language Translation (Online - 10 Languages)
+      GoRoute(
+        path: RoutePaths.translation,
+        name: RouteNames.translation,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          final initialText = state.extra is String ? state.extra as String : null;
+          return TranslationScreen(initialText: initialText);
+        },
       ),
     ],
   );

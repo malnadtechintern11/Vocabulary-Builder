@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/widgets/animated_progress_bar.dart';
 import '../../../../core/widgets/audio_pronounce_button.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
@@ -152,15 +153,11 @@ class ActiveQuizScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: LinearProgressIndicator(
-                          value: state.currentProgress,
-                          minHeight: 8,
-                          backgroundColor: isDark ? Colors.white12 : Colors.black12,
-                          valueColor: const AlwaysStoppedAnimation<Color>(AppColors.primary),
-                        ),
+                      AnimatedProgressBar(
+                        value: state.currentProgress,
+                        height: 8,
+                        color: isDark ? AppColors.primaryLight : AppColors.primary,
+                        backgroundColor: isDark ? AppColors.borderDark : AppColors.borderLight,
                       ),
                     ],
                   ),

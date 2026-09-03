@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../app/theme/app_colors.dart';
+import '../core/widgets/animated_progress_bar.dart';
 import '../core/widgets/empty_state_view.dart';
 import '../features/sentences/providers/sentences_provider.dart';
 import 'sentence_practice_screen.dart';
@@ -91,11 +92,11 @@ class _EnglishSentencesScreenState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top Row: Progress label, percentage & Practice button
+                // Top Row: Progress icon, title with stacked subtitle & Practice button
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(9),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: isDark
                             ? AppColors.primaryLight.withValues(alpha: 0.25)
@@ -104,7 +105,7 @@ class _EnglishSentencesScreenState
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
-                            blurRadius: 6,
+                            blurRadius: 5,
                             offset: const Offset(0, 2),
                           ),
                         ],
@@ -116,57 +117,39 @@ class _EnglishSentencesScreenState
                         size: 20,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Sentences Progress',
-                                style: TextStyle(
-                                  fontSize: 14.5,
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: -0.2,
-                                  color: isDark
-                                      ? AppColors.textPrimaryDark
-                                      : AppColors.primaryDark,
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(
-                                '${stats.totalPracticed} / ${stats.totalSentences} (${(stats.overallPercentage * 100).toStringAsFixed(0)}%)',
-                                style: TextStyle(
-                                  fontSize: 12.5,
-                                  fontWeight: FontWeight.w800,
-                                  color: isDark
-                                      ? AppColors.primaryLight
-                                      : AppColors.primary,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            'Sentences Progress',
+                            style: TextStyle(
+                              fontSize: 14.5,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -0.2,
+                              color: isDark
+                                  ? AppColors.textPrimaryDark
+                                  : AppColors.primaryDark,
+                            ),
                           ),
-                          const SizedBox(height: 6),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: LinearProgressIndicator(
-                              value: stats.overallPercentage,
-                              minHeight: 7,
-                              backgroundColor: isDark
-                                  ? AppColors.borderDark
-                                  : AppColors.borderLight,
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                isDark
-                                    ? AppColors.primaryLight
-                                    : AppColors.primary,
-                              ),
+                          const SizedBox(height: 2),
+                          Text(
+                            '${stats.totalPracticed} of ${stats.totalSentences} mastered (${(stats.overallPercentage * 100).toStringAsFixed(0)}%)',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w700,
+                              color: isDark
+                                  ? AppColors.primaryLight
+                                  : AppColors.primary,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 8),
                     ElevatedButton.icon(
                       onPressed: () {
                         Navigator.of(context).push(
@@ -176,13 +159,13 @@ class _EnglishSentencesScreenState
                           ),
                         );
                       },
-                      icon: const Icon(Icons.school_rounded, size: 16),
+                      icon: const Icon(Icons.school_rounded, size: 15),
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
                             isDark ? AppColors.primaryLight : AppColors.primary,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 10),
+                            horizontal: 12, vertical: 8),
                         visualDensity: VisualDensity.compact,
                         elevation: 2,
                         shape: RoundedRectangleBorder(
@@ -191,37 +174,51 @@ class _EnglishSentencesScreenState
                       ),
                       label: const Text(
                         'Practice',
-                        style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800),
+                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
 
-                // Level Progress Breakdown Row
+                // Overall Animated Progress Bar
+                AnimatedProgressBar(
+                  value: stats.overallPercentage,
+                  height: 7,
+                  color: isDark ? AppColors.primaryLight : AppColors.primary,
+                  backgroundColor: isDark ? AppColors.borderDark : AppColors.borderLight,
+                ),
+                const SizedBox(height: 10),
+
+                // Level Progress Breakdown Row - using Expanded for each level so it never overflows
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildMiniLevelProgress(
-                      label: 'Beginner',
-                      practiced: stats.beginnerPracticed,
-                      total: stats.beginnerTotal,
-                      color: AppColors.difficultyBeginner,
-                      isDark: isDark,
+                    Expanded(
+                      child: _buildMiniLevelProgress(
+                        label: 'Basic',
+                        practiced: stats.beginnerPracticed,
+                        total: stats.beginnerTotal,
+                        color: AppColors.difficultyBeginner,
+                        isDark: isDark,
+                      ),
                     ),
-                    _buildMiniLevelProgress(
-                      label: 'Intermediate',
-                      practiced: stats.intermediatePracticed,
-                      total: stats.intermediateTotal,
-                      color: AppColors.difficultyIntermediate,
-                      isDark: isDark,
+                    Expanded(
+                      child: _buildMiniLevelProgress(
+                        label: 'Inter.',
+                        practiced: stats.intermediatePracticed,
+                        total: stats.intermediateTotal,
+                        color: AppColors.difficultyIntermediate,
+                        isDark: isDark,
+                      ),
                     ),
-                    _buildMiniLevelProgress(
-                      label: 'Advanced',
-                      practiced: stats.advancedPracticed,
-                      total: stats.advancedTotal,
-                      color: AppColors.difficultyAdvanced,
-                      isDark: isDark,
+                    Expanded(
+                      child: _buildMiniLevelProgress(
+                        label: 'Adv.',
+                        practiced: stats.advancedPracticed,
+                        total: stats.advancedTotal,
+                        color: AppColors.difficultyAdvanced,
+                        isDark: isDark,
+                      ),
                     ),
                   ],
                 ),
@@ -449,6 +446,7 @@ class _EnglishSentencesScreenState
     required bool isDark,
   }) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           width: 7,
@@ -458,22 +456,25 @@ class _EnglishSentencesScreenState
             color: color,
           ),
         ),
-        const SizedBox(width: 5),
-        Text(
-          '$label: ',
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: isDark
-                ? AppColors.textTertiaryDark
-                : AppColors.textSecondaryLight,
+        const SizedBox(width: 4),
+        Flexible(
+          child: Text(
+            '$label: ',
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: isDark
+                  ? AppColors.textTertiaryDark
+                  : AppColors.textSecondaryLight,
+            ),
           ),
         ),
         Text(
           '$practiced/$total',
           style: TextStyle(
             fontSize: 11,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w800,
             color: color,
           ),
         ),
