@@ -248,20 +248,23 @@ final filteredSentencesProvider = Provider<List<Sentence>>((ref) {
 
     final inText = sentence.text.toLowerCase().contains(query);
     final inMeaning = sentence.meaning.toLowerCase().contains(query);
+    final inKannada = sentence.kannadaMeaning.toLowerCase().contains(query);
     final inCategory = sentence.category.toLowerCase().contains(query);
     final inVocab = sentence.vocabularyWords.any((v) =>
         v.word.toLowerCase().contains(query) ||
         v.meaning.toLowerCase().contains(query));
 
-    return inText || inMeaning || inCategory || inVocab;
+    return inText || inMeaning || inKannada || inCategory || inVocab;
   }).toList();
 });
 
 /// Current sentence index in Practice Mode
 final sentencePracticeIndexProvider = StateProvider<int>((ref) => 0);
 
-/// Currently playing TTS sentence ID
-final ttsSpeakingSentenceIdProvider = StateProvider<String?>((ref) => null);
+/// Currently playing TTS sentence ID provider linked to global active TTS ID
+final ttsSpeakingSentenceIdProvider = Provider<String?>((ref) {
+  return ref.watch(activeTtsIdProvider);
+});
 
 /// Controller for TTS operations connected to Riverpod
 final ttsControllerProvider = Provider<TtsController>((ref) {
@@ -270,32 +273,17 @@ final ttsControllerProvider = Provider<TtsController>((ref) {
 
 class TtsController {
   final Ref ref;
-  final TtsService _service = TtsService.instance;
 
   TtsController(this.ref);
 
   Future<void> speakSentence(Sentence sentence) async {
-    final currentSpeaking = ref.read(ttsSpeakingSentenceIdProvider);
-    if (currentSpeaking == sentence.id) {
-      await _service.stop();
-      ref.read(ttsSpeakingSentenceIdProvider.notifier).state = null;
-      return;
-    }
-
-    ref.read(ttsSpeakingSentenceIdProvider.notifier).state = sentence.id;
-    try {
-      await _service.speak(sentence.text, sentenceId: sentence.id);
-    } finally {
-      Future.delayed(const Duration(milliseconds: 1800), () {
-        if (ref.read(ttsSpeakingSentenceIdProvider) == sentence.id) {
-          ref.read(ttsSpeakingSentenceIdProvider.notifier).state = null;
-        }
-      });
-    }
+    await ref.read(appTtsControllerProvider).toggleSpeak(
+          id: sentence.id,
+          text: sentence.text,
+        );
   }
 
   Future<void> stop() async {
-    await _service.stop();
-    ref.read(ttsSpeakingSentenceIdProvider.notifier).state = null;
+    await ref.read(appTtsControllerProvider).stop();
   }
 }

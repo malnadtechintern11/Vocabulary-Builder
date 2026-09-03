@@ -63,22 +63,30 @@ class _EnglishSentencesScreenState
         children: [
           // Progress & Practice Header Card
           Container(
-            margin: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            padding: const EdgeInsets.all(14),
+            margin: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: isDark
-                    ? [const Color(0xFF1E1B4B), const Color(0xFF0F172A)]
-                    : [const Color(0xFFEEF2FF), const Color(0xFFF1F5F9)],
+                    ? [
+                        const Color(0xFF1E1B4B).withValues(alpha: 0.9),
+                        const Color(0xFF312E81).withValues(alpha: 0.6),
+                      ]
+                    : [
+                        const Color(0xFFEEF2FF),
+                        const Color(0xFFE0E7FF),
+                      ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isDark
-                    ? AppColors.primaryLight.withValues(alpha: 0.3)
-                    : AppColors.primaryLight.withValues(alpha: 0.25),
+                    ? AppColors.primaryLight.withValues(alpha: 0.35)
+                    : AppColors.primaryLight.withValues(alpha: 0.3),
+                width: 1.2,
               ),
+              boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,12 +95,19 @@ class _EnglishSentencesScreenState
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(9),
                       decoration: BoxDecoration(
                         color: isDark
                             ? AppColors.primaryLight.withValues(alpha: 0.25)
                             : Colors.white,
                         shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
                       child: Icon(
                         Icons.insights_rounded,
@@ -101,7 +116,7 @@ class _EnglishSentencesScreenState
                         size: 20,
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,8 +126,9 @@ class _EnglishSentencesScreenState
                               Text(
                                 'Sentences Progress',
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14.5,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: -0.2,
                                   color: isDark
                                       ? AppColors.textPrimaryDark
                                       : AppColors.primaryDark,
@@ -123,7 +139,7 @@ class _EnglishSentencesScreenState
                                 '${stats.totalPracticed} / ${stats.totalSentences} (${(stats.overallPercentage * 100).toStringAsFixed(0)}%)',
                                 style: TextStyle(
                                   fontSize: 12.5,
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w800,
                                   color: isDark
                                       ? AppColors.primaryLight
                                       : AppColors.primary,
@@ -131,12 +147,12 @@ class _EnglishSentencesScreenState
                               ),
                             ],
                           ),
-                          const SizedBox(height: 5),
+                          const SizedBox(height: 6),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(8),
                             child: LinearProgressIndicator(
                               value: stats.overallPercentage,
-                              minHeight: 6,
+                              minHeight: 7,
                               backgroundColor: isDark
                                   ? AppColors.borderDark
                                   : AppColors.borderLight,
@@ -150,8 +166,8 @@ class _EnglishSentencesScreenState
                         ],
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
+                    const SizedBox(width: 12),
+                    ElevatedButton.icon(
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
@@ -160,25 +176,27 @@ class _EnglishSentencesScreenState
                           ),
                         );
                       },
+                      icon: const Icon(Icons.school_rounded, size: 16),
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
                             isDark ? AppColors.primaryLight : AppColors.primary,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 8),
+                            horizontal: 14, vertical: 10),
                         visualDensity: VisualDensity.compact,
+                        elevation: 2,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: const Text(
+                      label: const Text(
                         'Practice',
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 12),
 
                 // Level Progress Breakdown Row
                 Row(
@@ -220,7 +238,7 @@ class _EnglishSentencesScreenState
                 ref.read(sentenceSearchQueryProvider.notifier).state = val;
               },
               decoration: InputDecoration(
-                hintText: 'Search 600+ sentences, meanings, or words...',
+                hintText: 'Search 600+ sentences in English or ಕನ್ನಡ...',
                 prefixIcon: const Icon(Icons.search_rounded, size: 20),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
@@ -237,24 +255,26 @@ class _EnglishSentencesScreenState
                     ? AppColors.surfaceVariantDark
                     : AppColors.surfaceVariantLight,
                 contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(
                     color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                    width: 1.2,
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                   borderSide: BorderSide(
                     color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                    width: 1.2,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                   borderSide: const BorderSide(
                     color: AppColors.primary,
-                    width: 1.5,
+                    width: 2,
                   ),
                 ),
               ),
@@ -483,6 +503,9 @@ class _EnglishSentencesScreenState
       backgroundColor:
           isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
       selectedColor: accentColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       side: BorderSide(
         color: isSelected
             ? accentColor

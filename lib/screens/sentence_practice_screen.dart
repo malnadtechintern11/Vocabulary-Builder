@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../app/theme/app_colors.dart';
+import '../core/services/tts_service.dart';
+import '../core/widgets/audio_pronounce_button.dart';
 import '../core/widgets/empty_state_view.dart';
 import '../features/sentences/providers/sentences_provider.dart';
 import '../models/sentence.dart';
@@ -111,8 +113,6 @@ class _SentencePracticeScreenState
 
     final currentSentence = sentences[_currentIndex];
     final diffColor = _getDifficultyColor(currentSentence.difficulty);
-    final currentlySpeakingId = ref.watch(ttsSpeakingSentenceIdProvider);
-    final isSpeaking = currentlySpeakingId == currentSentence.id;
 
     return Scaffold(
       appBar: AppBar(
@@ -263,20 +263,15 @@ class _SentencePracticeScreenState
                   decoration: BoxDecoration(
                     color: isDark
                         ? AppColors.surfaceDark
-                        : AppColors.surfaceLight,
-                    borderRadius: BorderRadius.circular(22),
+                        : Colors.white,
+                    borderRadius: BorderRadius.circular(24),
                     border: Border.all(
                       color: isDark
                           ? AppColors.borderDark
                           : AppColors.borderLight,
+                      width: 1.2,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.04),
-                        blurRadius: 16,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
+                    boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,19 +282,19 @@ class _SentencePracticeScreenState
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
+                                horizontal: 12, vertical: 5),
                             decoration: BoxDecoration(
                               color: diffColor.withValues(alpha: 0.14),
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
-                                color: diffColor.withValues(alpha: 0.35),
+                                color: diffColor.withValues(alpha: 0.4),
                               ),
                             ),
                             child: Text(
                               currentSentence.difficulty,
                               style: TextStyle(
                                 color: diffColor,
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w800,
                                 fontSize: 12,
                               ),
                             ),
@@ -307,8 +302,8 @@ class _SentencePracticeScreenState
                           Text(
                             currentSentence.category,
                             style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w600,
                               color: isDark
                                   ? AppColors.textTertiaryDark
                                   : AppColors.textSecondaryLight,
@@ -322,8 +317,9 @@ class _SentencePracticeScreenState
                       SelectableText(
                         currentSentence.text,
                         style: TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 22.5,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -0.3,
                           height: 1.45,
                           color: isDark
                               ? AppColors.textPrimaryDark
@@ -333,39 +329,13 @@ class _SentencePracticeScreenState
                       const SizedBox(height: 16),
 
                       // Speaker Pronunciation Button
-                      FilledButton.icon(
-                        onPressed: () {
-                          ref
-                              .read(ttsControllerProvider)
-                              .speakSentence(currentSentence);
-                        },
-                        icon: Icon(
-                          isSpeaking
-                              ? Icons.volume_up_rounded
-                              : Icons.volume_down_rounded,
-                          size: 20,
-                        ),
-                        label: Text(
-                          isSpeaking ? 'Playing...' : 'Listen Pronunciation',
-                          style: const TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: isSpeaking
-                              ? AppColors.primary
-                              : (isDark
-                                  ? AppColors.surfaceVariantDark
-                                  : AppColors.primaryContainerLight),
-                          foregroundColor: isSpeaking
-                              ? Colors.white
-                              : (isDark
-                                  ? AppColors.primaryLight
-                                  : AppColors.primary),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
+                      AudioPronounceTonalButton(
+                        id: currentSentence.id,
+                        text: currentSentence.text,
+                        label: 'Listen Pronunciation',
+                        playingLabel: 'Playing...',
+                        fontSize: 14,
+                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
                       ),
                       const SizedBox(height: 20),
 
@@ -430,17 +400,117 @@ class _SentencePracticeScreenState
                               ],
                             ),
                             if (_showMeaning) ...[
-                              const SizedBox(height: 8),
-                              Text(
-                                currentSentence.meaning,
-                                style: TextStyle(
-                                  fontSize: 14.5,
-                                  height: 1.4,
+                              const SizedBox(height: 10),
+                              // English Meaning
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
                                   color: isDark
-                                      ? AppColors.textPrimaryDark
-                                      : AppColors.textPrimaryLight,
+                                      ? AppColors.surfaceDark.withValues(alpha: 0.6)
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: isDark
+                                        ? AppColors.borderDark
+                                        : AppColors.borderLight,
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'English Meaning',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w700,
+                                            color: isDark
+                                                ? AppColors.primaryLight
+                                                : AppColors.primary,
+                                          ),
+                                        ),
+                                        AudioPronounceButton(
+                                          id: 'practice_meaning_${currentSentence.id}',
+                                          text: currentSentence.meaning,
+                                          tooltip: 'Listen to English meaning',
+                                          iconSize: 16,
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 3),
+                                    Text(
+                                      currentSentence.meaning,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        height: 1.35,
+                                        color: isDark
+                                            ? AppColors.textPrimaryDark
+                                            : AppColors.textPrimaryLight,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
+                              if (currentSentence.kannadaMeaning.isNotEmpty) ...[
+                                const SizedBox(height: 8),
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? const Color(0xFF064E3B).withValues(alpha: 0.25)
+                                        : const Color(0xFFF0FDF4),
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: isDark
+                                          ? AppColors.secondary.withValues(alpha: 0.45)
+                                          : const Color(0xFF86EFAC).withValues(alpha: 0.8),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.translate_rounded,
+                                            size: 14,
+                                            color: isDark
+                                                ? AppColors.secondaryLight
+                                                : AppColors.secondaryDark,
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning)',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w700,
+                                              color: isDark
+                                                ? AppColors.secondaryLight
+                                                : AppColors.secondaryDark,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        currentSentence.kannadaMeaning,
+                                        style: TextStyle(
+                                          fontSize: 14.5,
+                                          height: 1.45,
+                                          fontWeight: FontWeight.w500,
+                                          color: isDark
+                                              ? AppColors.textPrimaryDark
+                                              : const Color(0xFF14532D),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ] else ...[
                               const SizedBox(height: 6),
                               Text(
@@ -474,49 +544,66 @@ class _SentencePracticeScreenState
                         ),
                         const SizedBox(height: 10),
                         ...currentSentence.vocabularyWords.map((vocab) {
+                          final vocabId = 'practice_${currentSentence.id}_vocab_${vocab.word}';
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
-                            child: Container(
-                              width: double.infinity,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 14, vertical: 10),
-                              decoration: BoxDecoration(
-                                color: isDark
-                                    ? AppColors.surfaceVariantDark
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
+                            child: InkWell(
+                              onTap: () {
+                                ref.read(appTtsControllerProvider).toggleSpeak(
+                                      id: vocabId,
+                                      text: '${vocab.word}. ${vocab.meaning}',
+                                    );
+                              },
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                decoration: BoxDecoration(
                                   color: isDark
-                                      ? AppColors.borderDark
-                                      : AppColors.borderLight,
-                                ),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    vocab.word,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.5,
-                                      color: isDark
-                                          ? AppColors.primaryLight
-                                          : AppColors.primary,
-                                    ),
+                                      ? AppColors.surfaceVariantDark
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: isDark
+                                        ? AppColors.borderDark
+                                        : AppColors.borderLight,
                                   ),
-                                  const SizedBox(width: 8),
-                                  Expanded(
-                                    child: Text(
-                                      vocab.meaning,
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      vocab.word,
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 13.5,
                                         color: isDark
-                                            ? AppColors.textSecondaryDark
-                                            : const Color(0xFF334155),
+                                            ? AppColors.primaryLight
+                                            : AppColors.primary,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Text(
+                                        vocab.meaning,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: isDark
+                                              ? AppColors.textSecondaryDark
+                                              : const Color(0xFF334155),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    AudioPronounceButton(
+                                      id: vocabId,
+                                      text: '${vocab.word}. ${vocab.meaning}',
+                                      tooltip: 'Pronounce "${vocab.word}"',
+                                      iconSize: 16,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           );

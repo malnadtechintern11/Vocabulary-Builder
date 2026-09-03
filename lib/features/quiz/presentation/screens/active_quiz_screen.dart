@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/widgets/audio_pronounce_button.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
 import '../providers/quiz_controller.dart';
@@ -176,40 +177,75 @@ class ActiveQuizScreen extends ConsumerWidget {
                         // Question Card
                         Container(
                           width: double.infinity,
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(22),
                           decoration: BoxDecoration(
-                            color: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
-                            borderRadius: BorderRadius.circular(18),
+                            color: isDark ? AppColors.surfaceDark : Colors.white,
+                            borderRadius: BorderRadius.circular(20),
                             border: Border.all(
                               color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                              width: 1.2,
                             ),
+                            boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                q.prompt,
-                                style: theme.textTheme.titleLarge?.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.3,
-                                ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      q.prompt,
+                                      style: theme.textTheme.titleLarge?.copyWith(
+                                        fontSize: 19,
+                                        fontWeight: FontWeight.w800,
+                                        letterSpacing: -0.3,
+                                        height: 1.35,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  AudioPronounceButton(
+                                    id: 'quiz_q_${currentNum}_prompt',
+                                    text: q.contextSnippet != null ? '${q.prompt}. ${q.contextSnippet}' : q.prompt,
+                                    tooltip: 'Listen to question',
+                                    iconSize: 22,
+                                  ),
+                                ],
                               ),
                               if (q.contextSnippet != null) ...[
-                                const SizedBox(height: 12),
+                                const SizedBox(height: 14),
                                 Container(
-                                  padding: const EdgeInsets.all(12),
+                                  padding: const EdgeInsets.all(14),
                                   decoration: BoxDecoration(
-                                    color: isDark ? Colors.black26 : Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    q.contextSnippet!,
-                                    style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 14,
-                                      color: isDark ? Colors.white70 : AppColors.textSecondaryLight,
+                                    color: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF8FAFC),
+                                    borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(
+                                      color: isDark ? AppColors.borderDark : AppColors.borderLight,
                                     ),
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          q.contextSnippet!,
+                                          style: TextStyle(
+                                            fontStyle: FontStyle.italic,
+                                            fontSize: 14.5,
+                                            fontWeight: FontWeight.w500,
+                                            color: isDark ? Colors.white70 : AppColors.textSecondaryLight,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 6),
+                                      AudioPronounceButton(
+                                        id: 'quiz_q_${currentNum}_snippet',
+                                        text: q.contextSnippet!,
+                                        tooltip: 'Listen to contextual sentence',
+                                        iconSize: 18,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -244,13 +280,14 @@ class ActiveQuizScreen extends ConsumerWidget {
                             padding: const EdgeInsets.all(16),
                             decoration: BoxDecoration(
                               color: state.selectedOptionIndex == q.correctOptionIndex
-                                  ? AppColors.correctGreen.withValues(alpha: 0.1)
-                                  : AppColors.incorrectRed.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(14),
+                                  ? AppColors.correctGreen.withValues(alpha: 0.12)
+                                  : AppColors.incorrectRed.withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(16),
                               border: Border.all(
                                 color: state.selectedOptionIndex == q.correctOptionIndex
-                                    ? AppColors.correctGreen.withValues(alpha: 0.4)
-                                    : AppColors.incorrectRed.withValues(alpha: 0.4),
+                                    ? AppColors.correctGreen.withValues(alpha: 0.45)
+                                    : AppColors.incorrectRed.withValues(alpha: 0.45),
+                                width: 1.2,
                               ),
                             ),
                             child: Column(
@@ -262,32 +299,41 @@ class ActiveQuizScreen extends ConsumerWidget {
                                       state.selectedOptionIndex == q.correctOptionIndex
                                           ? Icons.check_circle_rounded
                                           : Icons.info_outline_rounded,
-                                      size: 18,
+                                      size: 20,
                                       color: state.selectedOptionIndex == q.correctOptionIndex
                                           ? AppColors.correctGreen
                                           : AppColors.incorrectRed,
                                     ),
                                     const SizedBox(width: 8),
-                                    Text(
-                                      state.selectedOptionIndex == q.correctOptionIndex
-                                          ? 'Correct!'
-                                          : 'Explanation',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 14,
-                                        color: state.selectedOptionIndex == q.correctOptionIndex
-                                            ? AppColors.correctGreen
-                                            : AppColors.incorrectRed,
+                                    Expanded(
+                                      child: Text(
+                                        state.selectedOptionIndex == q.correctOptionIndex
+                                            ? 'Correct!'
+                                            : 'Explanation',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 15,
+                                          color: state.selectedOptionIndex == q.correctOptionIndex
+                                              ? AppColors.correctGreen
+                                              : AppColors.incorrectRed,
+                                        ),
                                       ),
+                                    ),
+                                    AudioPronounceButton(
+                                      id: 'quiz_q_${currentNum}_explanation',
+                                      text: q.explanation,
+                                      tooltip: 'Listen to explanation',
+                                      iconSize: 18,
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 6),
+                                const SizedBox(height: 8),
                                 Text(
                                   q.explanation,
                                   style: TextStyle(
-                                    fontSize: 13,
-                                    height: 1.4,
+                                    fontSize: 13.5,
+                                    height: 1.45,
+                                    fontWeight: FontWeight.w500,
                                     color: isDark ? Colors.white70 : Colors.black87,
                                   ),
                                 ),
@@ -316,7 +362,7 @@ class ActiveQuizScreen extends ConsumerWidget {
                     top: false,
                     child: SizedBox(
                       width: double.infinity,
-                      height: 50,
+                      height: 52,
                       child: !state.isAnswerSubmitted
                           ? ElevatedButton(
                               onPressed: state.selectedOptionIndex != null
@@ -324,9 +370,15 @@ class ActiveQuizScreen extends ConsumerWidget {
                                       ref.read(quizControllerProvider.notifier).submitAnswer();
                                     }
                                   : null,
+                              style: ElevatedButton.styleFrom(
+                                elevation: state.selectedOptionIndex != null ? 2 : 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                              ),
                               child: const Text(
                                 'Check Answer',
-                                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                               ),
                             )
                           : ElevatedButton(
@@ -335,10 +387,14 @@ class ActiveQuizScreen extends ConsumerWidget {
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.primary,
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
                               ),
                               child: Text(
                                 state.hasMoreQuestions ? 'Next Question →' : 'Finish Quiz 🎉',
-                                style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                                style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                               ),
                             ),
                     ),

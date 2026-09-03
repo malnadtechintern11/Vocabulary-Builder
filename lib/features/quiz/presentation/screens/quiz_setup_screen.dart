@@ -37,7 +37,7 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
             // Quiz Banner Card
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(22),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -47,32 +47,41 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
-                    Icons.quiz_rounded,
-                    color: Colors.white,
-                    size: 36,
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.quiz_rounded,
+                      color: Colors.white,
+                      size: 32,
+                    ),
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   const Text(
                     'Test Your Knowledge',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 22,
+                      fontSize: 23,
                       fontWeight: FontWeight.w800,
+                      letterSpacing: -0.4,
                     ),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     'Challenge yourself with randomized questions generated directly from your local vocabulary library.',
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.85),
+                      color: Colors.white.withValues(alpha: 0.9),
                       fontSize: 14,
-                      height: 1.4,
+                      height: 1.45,
                     ),
                   ),
                 ],
@@ -83,7 +92,10 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
             // Select Quiz Type Section
             Text(
               '1. Select Quiz Mode',
-              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.2,
+              ),
             ),
             const SizedBox(height: 12),
             _buildTypeOption(
@@ -119,7 +131,10 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
             // Select Difficulty
             Text(
               '2. Select Difficulty Level',
-              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.2,
+              ),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -136,6 +151,9 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                   label: Text(lvl['label']!),
                   selected: isSel,
                   showCheckmark: false,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
                   selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
                   side: BorderSide(
@@ -162,7 +180,10 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
             // Select Question Count
             Text(
               '3. Number of Questions',
-              style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w700),
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.2,
+              ),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -174,6 +195,9 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                   label: Text('$count Questions'),
                   selected: isSel,
                   showCheckmark: false,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
                   selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
                   side: BorderSide(
@@ -212,10 +236,16 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                     context.push(RoutePaths.quizActive);
                   }
                 },
+                style: ElevatedButton.styleFrom(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
                 icon: const Icon(Icons.play_arrow_rounded, size: 24),
                 label: const Text(
                   'Start Quiz Now',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
                 ),
               ),
             ),
@@ -228,17 +258,24 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                 final avg = (stats['averageScore'] as num?)?.toDouble() ?? 0.0;
                 if (total == 0) return const SizedBox.shrink();
 
-                return Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildStatItem('Completed', '$total', isDark),
-                        Container(width: 1, height: 36, color: isDark ? Colors.white10 : Colors.black12),
-                        _buildStatItem('Average Score', '${avg.toStringAsFixed(0)}%', isDark),
-                      ],
+                return Container(
+                  padding: const EdgeInsets.all(18.0),
+                  decoration: BoxDecoration(
+                    color: isDark ? AppColors.surfaceDark : Colors.white,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(
+                      color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                      width: 1.2,
                     ),
+                    boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildStatItem('Completed', '$total', isDark),
+                      Container(width: 1, height: 36, color: isDark ? Colors.white10 : Colors.black12),
+                      _buildStatItem('Average Score', '${avg.toStringAsFixed(0)}%', isDark),
+                    ],
                   ),
                 );
               },
@@ -264,68 +301,74 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
     final isDark = theme.brightness == Brightness.dark;
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
-      child: Material(
-        color: isSelected
-            ? (isDark ? AppColors.surfaceVariantDark : AppColors.primaryContainerLight)
-            : (isDark ? AppColors.surfaceDark : AppColors.surfaceLight),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-          side: BorderSide(
-            color: isSelected ? theme.colorScheme.primary : (isDark ? AppColors.borderDark : AppColors.borderLight),
-            width: isSelected ? 2 : 1,
-          ),
+      padding: const EdgeInsets.only(bottom: 12.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
         ),
-        child: InkWell(
-          onTap: () => setState(() => _selectedType = type),
-          borderRadius: BorderRadius.circular(14),
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? theme.colorScheme.primary
-                        : (isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05)),
-                    borderRadius: BorderRadius.circular(10),
+        child: Material(
+          color: isSelected
+              ? (isDark ? AppColors.surfaceVariantDark : AppColors.primaryContainerLight)
+              : (isDark ? AppColors.surfaceDark : Colors.white),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: BorderSide(
+              color: isSelected ? theme.colorScheme.primary : (isDark ? AppColors.borderDark : AppColors.borderLight),
+              width: isSelected ? 2 : 1.2,
+            ),
+          ),
+          child: InkWell(
+            onTap: () => setState(() => _selectedType = type),
+            borderRadius: BorderRadius.circular(16),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: isSelected
+                          ? theme.colorScheme.primary
+                          : (isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Icon(
+                      icon,
+                      size: 22,
+                      color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                    ),
                   ),
-                  child: Icon(
-                    icon,
-                    size: 22,
-                    color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                          color: isSelected ? (isDark ? Colors.white : AppColors.primaryDark) : null,
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 15.5,
+                            color: isSelected ? (isDark ? Colors.white : AppColors.primaryDark) : null,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        description,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: isDark ? Colors.white60 : Colors.black54,
+                        const SizedBox(height: 3),
+                        Text(
+                          description,
+                          style: TextStyle(
+                            fontSize: 12.5,
+                            color: isDark ? Colors.white60 : Colors.black54,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Icon(
-                  isSelected ? Icons.radio_button_checked_rounded : Icons.radio_button_off_rounded,
-                  color: isSelected ? theme.colorScheme.primary : (isDark ? Colors.white38 : Colors.black38),
-                ),
-              ],
+                  Icon(
+                    isSelected ? Icons.radio_button_checked_rounded : Icons.radio_button_off_rounded,
+                    color: isSelected ? theme.colorScheme.primary : (isDark ? Colors.white38 : Colors.black38),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

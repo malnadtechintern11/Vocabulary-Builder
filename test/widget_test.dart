@@ -95,5 +95,27 @@ void main() {
       expect(find.text('Contextual Example Sentence'), findsOneWidget);
       expect(find.text('Add Word to Vocabulary'), findsOneWidget);
     });
+
+    testWidgets('AddWordScreen has no overflow on narrow mobile screens (320x640)', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(320, 640);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: AddWordScreen(),
+          ),
+        ),
+      );
+
+      // Verify no exceptions or overflows thrown
+      expect(tester.takeException(), isNull);
+      expect(find.text('Add New Word'), findsOneWidget);
+      expect(find.text('Add Word to Vocabulary'), findsOneWidget);
+    });
   });
 }

@@ -1,11 +1,12 @@
 import '../../models/sentence.dart';
 
-/// Static collection of 200 sentences
+/// Static collection of 200 offline sentences with English and Kannada meanings
 const List<Sentence> beginnerSentences = [
   Sentence(
     id: 'b001',
     text: "Good morning, it is wonderful to see you today.",
     meaning: "A cheerful morning greeting expressing joy at meeting someone.",
+    kannadaMeaning: "ಶುಭೋದಯ, ಇಂದು ನಿಮ್ಮನ್ನು ನೋಡಿ ತುಂಬಾ ಸಂತೋಷವಾಯಿತು.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -17,6 +18,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b002',
     text: "How have you been doing since we last spoke?",
     meaning: "Asking a friend or acquaintance how their life has been going.",
+    kannadaMeaning: "ನಾವು ಕೊನೆಯ ಬಾರಿ ಮಾತನಾಡಿದ ನಂತರ ನೀವು ಹೇಗಿದ್ದೀರಿ?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -28,6 +30,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b003',
     text: "I am doing very well, thank you for asking.",
     meaning: "A polite positive reply to a friendly greeting.",
+    kannadaMeaning: "ನಾನು ತುಂಬಾ ಚೆನ್ನಾಗಿದ್ದೇನೆ, ವಿಚಾರಿಸಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -39,6 +42,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b004',
     text: "Could you please speak a little slower for me?",
     meaning: "A polite request for someone to reduce their speaking speed.",
+    kannadaMeaning: "ದಯವಿಟ್ಟು ನನಗಾಗಿ ಸ್ವಲ್ಪ ನಿಧಾನವಾಗಿ ಮಾತನಾಡಬಹುದೇ?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -50,6 +54,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b005',
     text: "Nice to meet you, my name is Alex.",
     meaning: "A classic introduction when greeting a new person.",
+    kannadaMeaning: "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದಕ್ಕೆ ಸಂತೋಷ, ನನ್ನ ಹೆಸರು ಅಲೆಕ್ಸ್.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -61,6 +66,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b006',
     text: "Have a pleasant weekend and see you on Monday!",
     meaning: "Wishing someone an enjoyable Saturday and Sunday.",
+    kannadaMeaning: "ವಾರಾಂತ್ಯವು ಸಂತೋಷಕರವಾಗಿರಲಿ, ಸೋಮವಾರ ಭೇಟಿಯಾಗೋಣ!",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -72,6 +78,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b007',
     text: "Excuse me, could you tell me what time it is?",
     meaning: "A polite way to ask a stranger for the current time.",
+    kannadaMeaning: "ಕ್ಷಮಿಸಿ, ಈಗ ಸಮಯ ಎಷ್ಟು ಎಂದು ಹೇಳುವಿರಾ?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -83,6 +90,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b008',
     text: "I am really sorry for being a few minutes late.",
     meaning: "An apology for arriving shortly after the scheduled time.",
+    kannadaMeaning: "ಕೆಲವು ನಿಮಿಷ ತಡವಾಗಿ ಬಂದಿದ್ದಕ್ಕೆ ನಿಜವಾಗಿಯೂ ಕ್ಷಮಿಸಿ.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -94,6 +102,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b009',
     text: "It was truly a pleasure talking with you this morning.",
     meaning: "Politely wrapping up an enjoyable discussion.",
+    kannadaMeaning: "ಇಂದು ಬೆಳಿಗ್ಗೆ ನಿಮ್ಮೊಂದಿಗೆ ಮಾತನಾಡಿದ್ದು ನಿಜವಾಗಿಯೂ ಸಂತೋಷ ನೀಡಿತು.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -105,6 +114,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b010',
     text: "Where are you planning to go after work today?",
     meaning: "Inquiring about someone's evening plans.",
+    kannadaMeaning: "ಇಂದು ಕೆಲಸದ ನಂತರ ನೀವು ಎಲ್ಲಿಗೆ ಹೋಗಲು ಯೋಜಿಸುತ್ತಿದ್ದೀರಿ?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -116,6 +126,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b011',
     text: "Can you repeat that sentence one more time please?",
     meaning: "Asking someone to say something again clearly.",
+    kannadaMeaning: "ದಯವಿಟ್ಟು ಆ ವಾಕ್ಯವನ್ನು ಇನ್ನೊಮ್ಮೆ ಪುನರಾವರ್ತಿಸಬಹುದೇ?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -127,6 +138,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b012',
     text: "I completely agree with what you just mentioned.",
     meaning: "Expressing total agreement with another person's statement.",
+    kannadaMeaning: "ನೀವು ಈಗ ಹೇಳಿದ ಮಾತನ್ನು ನಾನು ಸಂಪೂರ್ಣವಾಗಿ ಒಪ್ಪುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -138,6 +150,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b013',
     text: "What is your favorite topic to talk about?",
     meaning: "Asking about the subject someone enjoys discussing most.",
+    kannadaMeaning: "ನೀವು ಮಾತನಾಡಲು ಇಷ್ಟಪಡುವ ನೆಚ್ಚಿನ ವಿಷಯ ಯಾವುದು?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -149,6 +162,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b014',
     text: "I hope you have a safe journey back home.",
     meaning: "Wishing someone safety on their commute or trip home.",
+    kannadaMeaning: "ನಿಮ್ಮ ಮನೆಗೆ ಸುರಕ್ಷಿತ ಪ್ರಯಾಣವಾಗಲಿ ಎಂದು ಆಶಿಸುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -160,6 +174,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b015',
     text: "Could you help me carry this box for a moment?",
     meaning: "Asking for brief physical assistance with a package.",
+    kannadaMeaning: "ಈ ಪೆಟ್ಟಿಗೆಯನ್ನು ಹೊರಲು ನನಗೆ ಒಂದು ಕ್ಷಣ ಸಹಾಯ ಮಾಡುವಿರಾ?",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -171,6 +186,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b016',
     text: "Thank you so much for your kind advice yesterday.",
     meaning: "Expressing heartfelt appreciation for someone's guidance.",
+    kannadaMeaning: "ನಿನ್ನೆ ನೀಡಿದ ಒಳ್ಳೆಯ ಸಲಹೆಗಾಗಿ ತುಂಬಾ ಧನ್ಯವಾದಗಳು.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -182,6 +198,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b017',
     text: "Let us meet right outside the library at four o'clock.",
     meaning: "Proposing a specific meeting location and hour.",
+    kannadaMeaning: "ನಾವು ನಾಲ್ಕು ಗಂಟೆಗೆ ಗ್ರಂಥಾಲಯದ ಹೊರಗಡೆ ಭೇಟಿಯಾಗೋಣ.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -193,6 +210,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b018',
     text: "I think this is an excellent idea for our group.",
     meaning: "Giving positive encouragement to a suggestion.",
+    kannadaMeaning: "ಇದು ನಮ್ಮ ಗುಂಪಿಗೆ ಅತ್ಯುತ್ತಮವಾದ ಆಲೋಚನೆ ಎಂದು ನಾನು ಭಾವಿಸುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Daily Conversation',
     vocabularyWords: [
@@ -204,6 +222,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b019',
     text: "My parents live in a quiet countryside house.",
     meaning: "Describing the peaceful home of one's mother and father.",
+    kannadaMeaning: "ನನ್ನ ಪೋಷಕರು ಪ್ರಶಾಂತವಾದ ಹಳ್ಳಿಯ ಮನೆಯೊಂದರಲ್ಲಿ ವಾಸಿಸುತ್ತಿದ್ದಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -215,6 +234,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b020',
     text: "I have an older sister and a younger brother.",
     meaning: "Describing one's siblings and their relative ages.",
+    kannadaMeaning: "ನನಗೆ ಒಬ್ಬ ಅಕ್ಕ ಮತ್ತು ಒಬ್ಬ ತಮ್ಮ ಇದ್ದಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -226,6 +246,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b021',
     text: "We always eat dinner together around the dining table.",
     meaning: "A family tradition of sharing the evening meal together.",
+    kannadaMeaning: "ನಾವು ಯಾವಾಗಲೂ ಊಟದ ಮೇಜಿನ ಸುತ್ತ ಒಟ್ಟಿಗೆ ರಾತ್ರಿಯ ಊಟ ಮಾಡುತ್ತೇವೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -237,6 +258,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b022',
     text: "My grandfather tells funny stories from his youth.",
     meaning: "An elderly family member sharing humorous childhood memories.",
+    kannadaMeaning: "ನನ್ನ ತಾತ ತಮ್ಮ ಯೌವನದ ತಮಾಷೆಯ ಕಥೆಗಳನ್ನು ಹೇಳುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -248,6 +270,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b023',
     text: "Her mother works as a dedicated nurse at the clinic.",
     meaning: "Describing a family member's healthcare profession.",
+    kannadaMeaning: "ಆಕೆಯ ತಾಯಿ ಚಿಕಿತ್ಸಾಲಯದಲ್ಲಿ ಶ್ರದ್ಧೆಯುಳ್ಳ ದಾದಿಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -259,6 +282,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b024',
     text: "We celebrate all family birthdays with homemade cake.",
     meaning: "A cheerful custom of baking celebratory sweets at home.",
+    kannadaMeaning: "ನಾವು ಕುಟುಂಬದ ಎಲ್ಲಾ ಜನ್ಮದಿನಗಳನ್ನು ಮನೆಯಲ್ಲೇ ತಯಾರಿಸಿದ ಕೇಕ್‌ನೊಂದಿಗೆ ಆಚರಿಸುತ್ತೇವೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -270,6 +294,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b025',
     text: "My uncle taught me how to fish by the river.",
     meaning: "A relative sharing an outdoor recreational skill.",
+    kannadaMeaning: "ನನ್ನ ಚಿಕ್ಕಪ್ಪ ನದಿಯ ದಡದಲ್ಲಿ ಮೀನು ಹಿಡಿಯುವುದನ್ನು ನನಗೆ ಕಲಿಸಿದರು.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -281,6 +306,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b026',
     text: "She looks very similar to her elder grandmother.",
     meaning: "Noticing a clear family facial resemblance.",
+    kannadaMeaning: "ಆಕೆಯು ತನ್ನ ಹಿರಿಯ ಅಜ್ಜಿಯಂತೆಯೇ ಕಾಣುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -292,6 +318,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b027',
     text: "Our family goes on a summer vacation every July.",
     meaning: "An annual mid-year family holiday trip.",
+    kannadaMeaning: "ನಮ್ಮ ಕುಟುಂಬವು ಪ್ರತಿ ಜುಲೈನಲ್ಲಿ ಬೇಸಿಗೆಯ ರಜೆಯ ಪ್ರವಾಸಕ್ಕೆ ಹೋಗುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -303,6 +330,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b028',
     text: "He loves spending quiet evenings with his cousins.",
     meaning: "Enjoying calm family time with aunt's and uncle's kids.",
+    kannadaMeaning: "ಅವನು ತನ್ನ ಸೋದರಸಂಬಂಧಿಗಳೊಂದಿಗೆ ಶಾಂತ ಸಂಜೆಗಳನ್ನು ಕಳೆಯಲು ಇಷ್ಟಪಡುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -314,6 +342,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b029',
     text: "My little niece started walking for the first time.",
     meaning: "A joyful developmental milestone of a young child.",
+    kannadaMeaning: "ನನ್ನ ಪುಟ್ಟ ಅಣ್ಣನ ಮಗಳು ಮೊದಲ ಬಾರಿಗೆ ನಡೆಯಲು ಪ್ರಾರಂಭಿಸಿದಳು.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -325,6 +354,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b030',
     text: "They help their grandparents take care of the vegetable garden.",
     meaning: "Young family members assisting elders with farming.",
+    kannadaMeaning: "ಅವರು ತಮ್ಮ ಅಜ್ಜ-ಅಜ್ಜಿಗೆ ತರಕಾರಿ ತೋಟ ನೋಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -336,6 +366,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b031',
     text: "My father drives me to school whenever it rains heavily.",
     meaning: "A father providing a car ride during bad weather.",
+    kannadaMeaning: "ಭಾರೀ ಮಳೆ ಬಂದಾಗಲೆಲ್ಲಾ ನನ್ನ ತಂದೆ ನನ್ನನ್ನು ಶಾಲೆಗೆ ಕರೆದೊಯ್ಯುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -347,6 +378,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b032',
     text: "We took a big family portrait during the holiday gathering.",
     meaning: "Capturing a group keepsake photograph of relatives.",
+    kannadaMeaning: "ರಜಾದಿನದ ಕೂಟದ ಸಮಯದಲ್ಲಿ ನಾವು ದೊಡ್ಡ ಕುಟುಂಬ ಭಾವಚಿತ್ರ ತೆಗೆದುಕೊಂಡೆವು.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -358,6 +390,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b033',
     text: "She takes after her mother in her love for music.",
     meaning: "Inheriting a parental talent or interest in melodies.",
+    kannadaMeaning: "ಸಂಗೀತದ ಮೇಲಿನ ಪ್ರೀತಿಯಲ್ಲಿ ಆಕೆಯು ತನ್ನ ತಾಯಿಯಂತೆಯೇ ಇದ್ದಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -369,6 +402,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b034',
     text: "My parents have been happily married for thirty years.",
     meaning: "Celebrating a long and loving marital bond.",
+    kannadaMeaning: "ನನ್ನ ಪೋಷಕರು ಮದುವೆಯಾಗಿ ಮೂವತ್ತು ವರ್ಷಗಳಿಂದ ಸಂತೋಷವಾಗಿದ್ದಾರೆ.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -380,6 +414,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b035',
     text: "Brothers and sisters should always support each other.",
     meaning: "An encouraging truth about sibling solidarity.",
+    kannadaMeaning: "ಅಣ್ಣ-ತಮ್ಮಂದಿರು ಮತ್ತು ಅಕ್ಕ-ತಂಗಿಯರು ಯಾವಾಗಲೂ ಪರಸ್ಪರ ಬೆಂಬಲಿಸಬೇಕು.",
     difficulty: 'Beginner',
     category: 'Family',
     vocabularyWords: [
@@ -391,6 +426,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b036',
     text: "The school bell rings at eight o'clock sharp.",
     meaning: "The signal indicating the official start of classes.",
+    kannadaMeaning: "ಶಾಲೆಯ ಗಂಟೆಯು ಸರಿಯಾಗಿ ಎಂಟು ಗಂಟೆಗೆ ಬಾರಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -402,6 +438,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b037',
     text: "Our teacher writes the new lesson on the chalkboard.",
     meaning: "An instructor presenting instructional material.",
+    kannadaMeaning: "ನಮ್ಮ ಶಿಕ್ಷಕರು ಹೊಸ ಪಾಠವನ್ನು ಕಪ್ಪುಹಲಗೆಯ ಮೇಲೆ ಬರೆಯುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -413,6 +450,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b038',
     text: "I need to buy a notebook and two black pens.",
     meaning: "Purchasing essential writing stationery for class.",
+    kannadaMeaning: "ನಾನು ಒಂದು ನೋಟ್‌ಬುಕ್ ಮತ್ತು ಎರಡು ಕಪ್ಪು ಪೆನ್ನುಗಳನ್ನು ಖರೀದಿಸಬೇಕು.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -424,6 +462,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b039',
     text: "Students read silent books in the school library.",
     meaning: "Children practicing quiet reading in study halls.",
+    kannadaMeaning: "ವಿದ್ಯಾರ್ಥಿಗಳು ಶಾಲಾ ಗ್ರಂಥಾಲಯದಲ್ಲಿ ನಿಶ್ಯಬ್ದವಾಗಿ ಪುಸ್ತಕಗಳನ್ನು ಓದುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -435,6 +474,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b040',
     text: "Science is my most interesting class this semester.",
     meaning: "Expressing an academic subject preference.",
+    kannadaMeaning: "ಈ ಸೆಮಿಸ್ಟರ್‌ನಲ್ಲಿ ವಿಜ್ಞಾನವು ನನ್ನ ಅತ್ಯಂತ ಆಸಕ್ತಿದಾಯಕ ವಿಷಯವಾಗಿದೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -446,6 +486,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b041',
     text: "Please raise your hand if you know the correct answer.",
     meaning: "A customary classroom rule for speaking up politely.",
+    kannadaMeaning: "ಸರಿಯಾದ ಉತ್ತರ ತಿಳಿದಿದ್ದರೆ ದಯವಿಟ್ಟು ಕೈ ಎತ್ತಿ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -457,6 +498,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b042',
     text: "We have a short fifteen-minute recess after math.",
     meaning: "A brief playtime break between academic periods.",
+    kannadaMeaning: "ಗಣಿತ ತರಗತಿಯ ನಂತರ ನಮಗೆ ಹದಿನೈದು ನಿಮಿಷಗಳ ಸಣ್ಣ ವಿರಾಮವಿದೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -468,6 +510,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b043',
     text: "She always finishes her homework before watching television.",
     meaning: "A disciplined study habit before leisure time.",
+    kannadaMeaning: "ಆಕೆ ಟಿವಿ ನೋಡುವ ಮೊದಲು ಯಾವಾಗಲೂ ತನ್ನ ಮನೆಕೆಲಸವನ್ನು ಮುಗಿಸುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -479,6 +522,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b044',
     text: "The history exam will take place next Tuesday morning.",
     meaning: "Scheduling an assessment on historical events.",
+    kannadaMeaning: "ಇತಿಹಾಸ ಪರೀಕ್ಷೆಯು ಮುಂದಿನ ಮಂಗಳವಾರ ಬೆಳಿಗ್ಗೆ ನಡೆಯಲಿದೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -490,6 +534,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b045',
     text: "Do you want to study for the test together in the cafeteria?",
     meaning: "An invitation to study collaboratively with a peer.",
+    kannadaMeaning: "ಕ್ಯಾಂಟೀನ್‌ನಲ್ಲಿ ಒಟ್ಟಿಗೆ ಪರೀಕ್ಷೆಗೆ ಓದಿಕೊಳ್ಳಲು ನೀವು ಬಯಸುವಿರಾ?",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -501,6 +546,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b046',
     text: "He forgot to bring his colored pencils for art class.",
     meaning: "Misplacing drawing supplies needed for painting.",
+    kannadaMeaning: "ಅವನು ಕಲಾ ತರಗತಿಗೆ ಬಣ್ಣದ ಪೆನ್ಸಿಲ್‌ಗಳನ್ನು ತರಲು ಮರೆತನು.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -512,6 +558,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b047',
     text: "Our principal gave a warm welcoming speech this morning.",
     meaning: "The head of the school greeting the student body.",
+    kannadaMeaning: "ನಮ್ಮ ಶಾಲೆಯ ಪ್ರಾಂಶುಪಾಲರು ಇಂದು ಬೆಳಿಗ್ಗೆ ಹೃತ್ಪೂರ್ವಕ ಸ್ವಾಗತ ಭಾಷಣ ಮಾಡಿದರು.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -523,6 +570,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b048',
     text: "I borrowed an English dictionary to check this word.",
     meaning: "Using a reference book to look up vocabulary.",
+    kannadaMeaning: "ಈ ಪದವನ್ನು ಪರೀಕ್ಷಿಸಲು ನಾನು ಇಂಗ್ಲಿಷ್ ನಿಘಂಟನ್ನು ಎರವಲು ಪಡೆದೆನು.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -534,6 +582,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b049',
     text: "We sit in pairs during English conversation practice.",
     meaning: "Arranging students in twos for language drills.",
+    kannadaMeaning: "ಇಂಗ್ಲಿಷ್ ಸಂಭಾಷಣೆ ಅಭ್ಯಾಸದ ಸಮಯದಲ್ಲಿ ನಾವು ಜೋಡಿಯಾಗಿ ಕುಳಿತುಕೊಳ್ಳುತ್ತೇವೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -545,6 +594,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b050',
     text: "Write your full name at the top of the exam paper.",
     meaning: "Instruction to identify one's testing sheet.",
+    kannadaMeaning: "ಪರೀಕ್ಷಾ ಹಾಳೆಯ ಮೇಲ್ಭಾಗದಲ್ಲಿ ನಿಮ್ಮ ಪೂರ್ಣ ಹೆಸರನ್ನು ಬರೆಯಿರಿ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -556,6 +606,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b051',
     text: "The biology teacher brought a microscope to our class.",
     meaning: "Using scientific magnification tools in school.",
+    kannadaMeaning: "ಜೀವಶಾಸ್ತ್ರ ಶಿಕ್ಷಕರು ನಮ್ಮ ತರಗತಿಗೆ ಸೂಕ್ಷ್ಮದರ್ಶಕವನ್ನು ತಂದರು.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -567,6 +618,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b052',
     text: "Hard work and curiosity make any student successful.",
     meaning: "A guiding encouragement for classroom success.",
+    kannadaMeaning: "ಕಠಿಣ ಪರಿಶ್ರಮ ಮತ್ತು ಕುತೂಹಲವು ಯಾವುದೇ ವಿದ್ಯಾರ್ಥಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'School',
     vocabularyWords: [
@@ -578,6 +630,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b053',
     text: "He arrives at his office desk before eight thirty.",
     meaning: "Punctual arrival at a corporate workplace.",
+    kannadaMeaning: "ಅವನು ಎಂಟು ಮೂವತ್ತರ ಮುಂಚೆಯೇ ತನ್ನ ಕಚೇರಿಯ ಮೇಜಿನ ಬಳಿಗೆ ತಲುಪುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -589,6 +642,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b054',
     text: "I will check my work emails first thing this morning.",
     meaning: "A routine habit of reading electronic messages.",
+    kannadaMeaning: "ಇಂದು ಬೆಳಿಗ್ಗೆ ನಾನು ಮೊದಲು ನನ್ನ ಕೆಲಸದ ಇಮೇಲ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -600,6 +654,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b055',
     text: "The weekly staff meeting begins in ten minutes.",
     meaning: "An upcoming team briefing in the conference room.",
+    kannadaMeaning: "ಸಾಪ್ತಾಹಿಕ ಸಿಬ್ಬಂದಿ ಸಭೆಯು ಹತ್ತು ನಿಮಿಷಗಳಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -611,6 +666,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b056',
     text: "Please print a paper copy of this report for me.",
     meaning: "Requesting a physical printout of documentation.",
+    kannadaMeaning: "ದಯವಿಟ್ಟು ನನಗಾಗಿ ಈ ವರದಿಯ ಕಾಗದದ ಪ್ರತಿಯನ್ನು ಮುದ್ರಿಸಿ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -622,6 +678,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b057',
     text: "She works as an efficient receptionist at the front desk.",
     meaning: "Describing front-office client greeting duties.",
+    kannadaMeaning: "ಆಕೆಯು ಸ್ವಾಗತ ಕೌಂಟರ್‌ನಲ್ಲಿ ದಕ್ಷ ಸ್ವಾಗತಕಾರಿಣಿಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -633,6 +690,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b058',
     text: "We take our lunch break together in the employee cafeteria.",
     meaning: "Colleagues enjoying food together at midday.",
+    kannadaMeaning: "ನಾವು ನೌಕರರ ಕ್ಯಾಂಟೀನ್‌ನಲ್ಲಿ ಒಟ್ಟಿಗೆ ಮಧ್ಯಾಹ್ನದ ಊಟದ ವಿರಾಮ ತೆಗೆದುಕೊಳ್ಳುತ್ತೇವೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -644,6 +702,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b059',
     text: "Could you help me send this fax to the regional office?",
     meaning: "Asking a coworker for administrative help.",
+    kannadaMeaning: "ಈ ಫ್ಯಾಕ್ಸ್ ಅನ್ನು ಪ್ರಾದೇಶಿಕ ಕಚೇರಿಗೆ ಕಳುಹಿಸಲು ನನಗೆ ಸಹಾಯ ಮಾಡುವಿರಾ?",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -655,6 +714,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b060',
     text: "He received a positive review from his team manager.",
     meaning: "Praiseworthy feedback on workplace performance.",
+    kannadaMeaning: "ಅವನಿಗೆ ತಂಡದ ವ್ಯವಸ್ಥಾಪಕರಿಂದ ಸಕಾರಾತ್ಮಕ ವಿಮರ್ಶೆ ದೊರೆಯಿತು.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -666,6 +726,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b061',
     text: "I need to update my professional resume this weekend.",
     meaning: "Refining one's career summary for job opportunities.",
+    kannadaMeaning: "ಈ ವಾರಾಂತ್ಯದಲ್ಲಿ ನಾನು ನನ್ನ ವೃತ್ತಿಪರ ರೆಸ್ಯೂಮ್ ಅನ್ನು ನವೀಕರಿಸಬೇಕು.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -677,6 +738,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b062',
     text: "We have a new project starting on the first of next month.",
     meaning: "An announcement about upcoming teamwork tasks.",
+    kannadaMeaning: "ಮುಂದಿನ ತಿಂಗಳ ಮೊದಲ ತಾರೀಖಿನಂದು ನಮಗೆ ಹೊಸ ಪ್ರಾಜೆಕ್ಟ್ ಆರಂಭವಾಗಲಿದೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -688,6 +750,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b063',
     text: "She answered all customer phone calls very politely.",
     meaning: "Handling customer care inquiries with courtesy.",
+    kannadaMeaning: "ಆಕೆಯು ಗ್ರಾಹಕರ ಎಲ್ಲಾ ಫೋನ್ ಕರೆಗಳಿಗೆ ಅತ್ಯಂತ ವಿನಮ್ರವಾಗಿ ಉತ್ತರಿಸಿದಳು.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -699,6 +762,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b064',
     text: "Remember to save your digital documents before closing the laptop.",
     meaning: "A reminder to prevent loss of computerized work.",
+    kannadaMeaning: "ಲ್ಯಾಪ್ಟಾಪ್ ಮುಚ್ಚುವ ಮೊದಲು ನಿಮ್ಮ ಡಿಜಿಟಲ್ ದಾಖಲೆಗಳನ್ನು ಉಳಿಸಲು ಮರೆಯಬೇಡಿ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -710,6 +774,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b065',
     text: "The company provides health insurance to all full-time workers.",
     meaning: "An important corporate benefit for employees.",
+    kannadaMeaning: "ಕಂಪನಿಯು ಎಲ್ಲಾ ಪೂರ್ಣಾವಧಿ ನೌಕರರಿಗೆ ಆರೋಗ್ಯ ವಿಮೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -721,6 +786,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b066',
     text: "He works five days a week from Monday to Friday.",
     meaning: "A standard full-time office work schedule.",
+    kannadaMeaning: "ಅವನು ಸೋಮವಾರದಿಂದ ಶುಕ್ರವಾರದವರೆಗೆ ವಾರಕ್ಕೆ ಐದು ದಿನ ಕೆಲಸ ಮಾಡುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -732,6 +798,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b067',
     text: "Please turn off your office computer screen before you leave.",
     meaning: "Promoting power conservation at the workplace.",
+    kannadaMeaning: "ಹೋಗುವ ಮುನ್ನ ದಯವಿಟ್ಟು ನಿಮ್ಮ ಕಚೇರಿಯ ಕಂಪ್ಯೂಟರ್ ಪರದೆಯನ್ನು ಆಫ್ ಮಾಡಿ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -743,6 +810,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b068',
     text: "A friendly attitude creates a peaceful working environment.",
     meaning: "Positive teamwork culture benefits everyone.",
+    kannadaMeaning: "ಸ್ನೇಹಪರ ನಡವಳಿಕೆಯು ಪ್ರಶಾಂತವಾದ ಕೆಲಸದ ವಾತಾವರಣವನ್ನು ಸೃಷ್ಟಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Work',
     vocabularyWords: [
@@ -754,6 +822,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b069',
     text: "The airport terminal is crowded with excited travelers.",
     meaning: "A bustling transit hub full of airline passengers.",
+    kannadaMeaning: "ವಿಮಾನ ನಿಲ್ದಾಣದ ಟರ್ಮಿನಲ್ ಉತ್ಸಾಹಿ ಪ್ರಯಾಣಿಕರಿಂದ ತುಂಬಿದೆ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -765,6 +834,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b070',
     text: "Where can I buy a round-trip train ticket?",
     meaning: "Inquiring about purchasing railway transportation passes.",
+    kannadaMeaning: "ಹೋಗಿ ಬರುವ ರೈಲು ಟಿಕೆಟ್ ಅನ್ನು ನಾನು ಎಲ್ಲಿ ಖರೀದಿಸಬಹುದು?",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -776,6 +846,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b071',
     text: "Please keep your boarding pass and passport in your hand.",
     meaning: "Airport security and gate check-in instructions.",
+    kannadaMeaning: "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಬೋರ್ಡಿಂಗ್ ಪಾಸ್ ಮತ್ತು ಪಾಸ್‌ಪೋರ್ಟ್ ಅನ್ನು ಕೈಯಲ್ಲೇ ಇಟ್ಟುಕೊಳ್ಳಿ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -787,6 +858,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b072',
     text: "The local bus stops directly across from the hotel.",
     meaning: "Convenient public transit near overnight lodging.",
+    kannadaMeaning: "ಸ್ಥಳೀಯ ಬಸ್ಸು ಹೋಟೆಲ್‌ನ ನೇರ ಎದುರುಗಡೆಯೇ ನಿಲ್ಲುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -798,6 +870,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b073',
     text: "I packed two suitcases with summer clothes for the trip.",
     meaning: "Getting luggage prepared for warm-weather travel.",
+    kannadaMeaning: "ಪ್ರವಾಸಕ್ಕಾಗಿ ನಾನು ಬೇಸಿಗೆಯ ಬಟ್ಟೆಗಳೊಂದಿಗೆ ಎರಡು ಸೂಟ್‌ಕೇಸ್‌ಗಳನ್ನು ಪ್ಯಾಕ್ ಮಾಡಿದೆ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -809,6 +882,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b074',
     text: "Is there a tourist information desk located nearby?",
     meaning: "Asking where visitors can get maps and guidance.",
+    kannadaMeaning: "ಹತ್ತಿರದಲ್ಲಿ ಎಲ್ಲಾದರೂ ಪ್ರವಾಸಿ ಮಾಹಿತಿ ಕೇಂದ್ರವಿದೆಯೇ?",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -820,6 +894,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b075',
     text: "We rented a small yellow car to explore the island.",
     meaning: "Hiring personal transportation to tour a vacation destination.",
+    kannadaMeaning: "ದ್ವೀಪವನ್ನು ಸುತ್ತಿ ನೋಡಲು ನಾವು ಸಣ್ಣ ಹಳದಿ ಕಾರನ್ನು ಬಾಡಿಗೆಗೆ ಪಡೆದೆವು.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -831,6 +906,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b076',
     text: "The airplane took off smoothly into the clear sky.",
     meaning: "The aircraft ascending into the air at departure.",
+    kannadaMeaning: "ವಿಮಾನವು ಸ್ಪಷ್ಟ ಆಕಾಶಕ್ಕೆ ಸರಾಗವಾಗಿ ಹಾರಿತು.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -842,6 +918,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b077',
     text: "Our hotel room has a breathtaking view of the ocean.",
     meaning: "A lodging room with an impressive seaside vista.",
+    kannadaMeaning: "ನಮ್ಮ ಹೋಟೆಲ್ ಕೋಣೆಯಿಂದ ಸಮುದ್ರದ ಅದ್ಭುತ ನೋಟ ಕಾಣಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -853,6 +930,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b078',
     text: "Always hold the escalator handrail firmly when riding.",
     meaning: "A travel transit safety instruction.",
+    kannadaMeaning: "ಎಸ್ಕೆಲೇಟರ್‌ನಲ್ಲಿ ಹೋಗುವಾಗ ಯಾವಾಗಲೂ ಹ್ಯಾಂಡ್‌ರೇಲ್ ಅನ್ನು ಗಟ್ಟಿಯಾಗಿ ಹಿಡಿದುಕೊಳ್ಳಿ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -864,6 +942,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b079',
     text: "Can you take a photo of us in front of the monument?",
     meaning: "Asking a passerby to take a holiday picture.",
+    kannadaMeaning: "ಸ್ಮಾರಕದ ಮುಂದೆ ನಮ್ಮದೊಂದು ಫೋಟೋ ತೆಗೆಯುವಿರಾ?",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -875,6 +954,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b080',
     text: "The train conductor checked everyone's travel tickets.",
     meaning: "An official verifying transit fare on a passenger train.",
+    kannadaMeaning: "ರೈಲ್ವೆ ಟಿಕೆಟ್ ಪರೀಕ್ಷಕರು ಎಲ್ಲರ ಪ್ರಯಾಣ ಟಿಕೆಟ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸಿದರು.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -886,6 +966,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b081',
     text: "We visited a peaceful botanical garden in the city center.",
     meaning: "Exploring a public park full of exotic plants.",
+    kannadaMeaning: "ನಾವು ನಗರದ ಕೇಂದ್ರಭಾಗದಲ್ಲಿರುವ ಸುಂದರ ಸಸ್ಯಶಾಸ್ತ್ರೀಯ ಉದ್ಯಾನವನಕ್ಕೆ ಭೇಟಿ ನೀಡಿದೆವು.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -897,6 +978,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b082',
     text: "What time will our tour guide meet us tomorrow morning?",
     meaning: "Confirming an itinerary meeting with an excursion leader.",
+    kannadaMeaning: "ನಾಳೆ ಬೆಳಿಗ್ಗೆ ನಮ್ಮ ಪ್ರವಾಸಿ ಮಾರ್ಗದರ್ಶಕರು ಎಷ್ಟು ಗಂಟೆಗೆ ನಮ್ಮನ್ನು ಭೇಟಿಯಾಗುತ್ತಾರೆ?",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -908,6 +990,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b083',
     text: "Do not leave your backpack unattended at the station.",
     meaning: "A security warning against leaving luggage alone.",
+    kannadaMeaning: "ನಿಲ್ದಾಣದಲ್ಲಿ ನಿಮ್ಮ ಬೆನ್ನುಚೀಲವನ್ನು ಗಮನಿಸದೆ ಹಾಗೆಯೇ ಬಿಡಬೇಡಿ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -919,6 +1002,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b084',
     text: "We bought colorful souvenir postcards for our friends back home.",
     meaning: "Purchasing mementos to send to loved ones.",
+    kannadaMeaning: "ನಾವು ಊರಿನಲ್ಲಿರುವ ನಮ್ಮ ಸ್ನೇಹಿತರಿಗಾಗಿ ಬಣ್ಣಬಣ್ಣದ ಸ್ಮರಣಿಕೆ ಪೋಸ್ಟ್‌ಕಾರ್ಡ್‌ಗಳನ್ನು ಖರೀದಿಸಿದೆವು.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -930,6 +1014,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b085',
     text: "Travel opens your eyes to new languages and cultures.",
     meaning: "A timeless insight into the value of journeys.",
+    kannadaMeaning: "ಪ್ರಯಾಣವು ಹೊಸ ಭಾಷೆಗಳು ಮತ್ತು ಸಂಸ್ಕೃತಿಗಳ ಬಗ್ಗೆ ನಮ್ಮ ಕಣ್ಣುಗಳನ್ನು ತೆರೆಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Travel',
     vocabularyWords: [
@@ -941,6 +1026,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b086',
     text: "How much does this red cotton shirt cost?",
     meaning: "Inquiring about the retail price of clothing.",
+    kannadaMeaning: "ಈ ಕೆಂಪು ಹತ್ತಿ ಶರ್ಟ್‌ನ ಬೆಲೆ ಎಷ್ಟು?",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -952,6 +1038,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b087',
     text: "Can I pay for my groceries using a credit card?",
     meaning: "Asking about available electronic payment methods.",
+    kannadaMeaning: "ದಿನಸಿ ವಸ್ತುಗಳಿಗೆ ನಾನು ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ ಬಳಸಿ ಹಣ ಪಾವತಿಸಬಹುದೇ?",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -963,6 +1050,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b088',
     text: "The fitting room is located near the back of the shop.",
     meaning: "Finding the private cubicle to try on garments.",
+    kannadaMeaning: "ಬಟ್ಟೆ ಟ್ರಯಲ್ ಕೊಠಡಿಯು ಅಂಗಡಿಯ ಹಿಂಭಾಗದಲ್ಲಿದೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -974,6 +1062,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b089',
     text: "This winter jacket is on sale at fifty percent discount.",
     meaning: "A great promotional bargain on cold-weather coats.",
+    kannadaMeaning: "ಈ ಚಳಿಗಾಲದ ಜಾಕೆಟ್ ಶೇಕಡಾ ಐವತ್ತರ ರಿಯಾಯಿತಿಯಲ್ಲಿ ಮಾರಾಟಕ್ಕಿದೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -985,6 +1074,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b090',
     text: "I would like to return this dress because it is too small.",
     meaning: "Requesting a product return due to incorrect sizing.",
+    kannadaMeaning: "ಈ ಉಡುಪು ತುಂಬಾ ಚಿಕ್ಕದಾಗಿರುವುದರಿಂದ ನಾನು ಇದನ್ನು ವಾಪಸ್ ಮಾಡಲು ಬಯಸುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -996,6 +1086,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b091',
     text: "Please keep your store receipt in case you want an exchange.",
     meaning: "Store staff reminding shoppers of exchange policies.",
+    kannadaMeaning: "ವಸ್ತು ಬದಲಾಯಿಸಿಕೊಳ್ಳಲು ಬಯಸಿದರೆ ದಯವಿಟ್ಟು ಅಂಗಡಿಯ ರಸೀದಿಯನ್ನು ಇಟ್ಟುಕೊಳ್ಳಿ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1007,6 +1098,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b092',
     text: "The shopping mall is very busy on Saturday afternoons.",
     meaning: "Crowds of shoppers visiting retail stores on the weekend.",
+    kannadaMeaning: "ಶನಿವಾರ ಮಧ್ಯಾಹ್ನ ಶಾಪಿಂಗ್ ಮಾಲ್‌ನಲ್ಲಿ ತುಂಬಾ ಜನಸಂದಣಿ ಇರುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1018,6 +1110,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b093',
     text: "Do you have these leather shoes in a larger size?",
     meaning: "Asking a shoe shop associate for an alternative size.",
+    kannadaMeaning: "ಈ ಚರ್ಮದ ಶೂಗಳು ದೊಡ್ಡ ಅಳತೆಯಲ್ಲಿ ಲಭ್ಯವಿದೆಯೇ?",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1029,6 +1122,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b094',
     text: "I need to buy a dozen fresh eggs from the market.",
     meaning: "Purchasing twelve eggs for home cooking.",
+    kannadaMeaning: "ನಾನು ಮಾರುಕಟ್ಟೆಯಿಂದ ಒಂದು ಡಜನ್ ತಾಜಾ ಮೊಟ್ಟೆಗಳನ್ನು ಖರೀದಿಸಬೇಕಾಗಿದೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1040,6 +1134,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b095',
     text: "She carries a reusable cloth tote bag for grocery shopping.",
     meaning: "An eco-friendly habit of carrying sustainable shopping bags.",
+    kannadaMeaning: "ದಿನಸಿ ಖರೀದಿಗೆ ಆಕೆ ಮರುಬಳಕೆ ಮಾಡಬಹುದಾದ ಬಟ್ಟೆಯ ಚೀಲವನ್ನು ತೆಗೆದುಕೊಂಡು ಹೋಗುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1051,6 +1146,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b096',
     text: "Is there an elevator that goes to the clothing department?",
     meaning: "Finding accessible transit within a multi-story department store.",
+    kannadaMeaning: "ಬಟ್ಟೆ ವಿಭಾಗಕ್ಕೆ ಹೋಗುವ ಲಿಫ್ಟ್ ಇದೆಯೇ?",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1062,6 +1158,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b097',
     text: "These ripe bananas are very sweet and affordable today.",
     meaning: "Finding inexpensive fresh fruit at the stall.",
+    kannadaMeaning: "ಈ ಹಣ್ಣಾದ ಬಾಳೆಹಣ್ಣುಗಳು ಇಂದು ತುಂಬಾ ಸಿಹಿಯಾಗಿವೆ ಮತ್ತು ಕಡಿಮೆ ಬೆಲೆಗೆ ಸಿಗುತ್ತಿವೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1073,6 +1170,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b098',
     text: "The bakery down the street sells freshly baked bread.",
     meaning: "Finding warm, fragrant baked goods at a local shop.",
+    kannadaMeaning: "ರಸ್ತೆಯ ಕೊನೆಯಲ್ಲಿರುವ ಬೇಕರಿಯಲ್ಲಿ ತಾಜಾ ಬೇಯಿಸಿದ ಬ್ರೆಡ್ ಮಾರಾಟ ಮಾಡುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1084,6 +1182,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b099',
     text: "We stood in line at the checkout counter for ten minutes.",
     meaning: "Waiting to pay for items at the cashier register.",
+    kannadaMeaning: "ನಾವು ಬಿಲ್ಲಿಂಗ್ ಕೌಂಟರ್‌ನಲ್ಲಿ ಹತ್ತು ನಿಮಿಷಗಳ ಕಾಲ ಸಾಲಿನಲ್ಲಿ ನಿಂತೆವು.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1095,6 +1194,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b100',
     text: "The bookstore has a wide selection of children's storybooks.",
     meaning: "A bookshop offering varied titles for young readers.",
+    kannadaMeaning: "ಪುಸ್ತಕ ಮಳಿಗೆಯಲ್ಲಿ ಮಕ್ಕಳ ಕಥಾಪುಸ್ತಕಗಳ ದೊಡ್ಡ ಸಂಗ್ರಹವಿದೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1106,6 +1206,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b101',
     text: "You can find shampoo and soap in the personal care aisle.",
     meaning: "Directing a shopper to personal hygiene supplies.",
+    kannadaMeaning: "ವೈಯಕ್ತಿಕ ಆರೈಕೆ ವಿಭಾಗದಲ್ಲಿ ಶಾಂಪೂ ಮತ್ತು ಸೋಪ್ ಕಾಣಬಹುದು.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1117,6 +1218,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b102',
     text: "Smart shoppers compare prices before making expensive purchases.",
     meaning: "Wise consumer habits save money over time.",
+    kannadaMeaning: "ಜಾಣ ಗ್ರಾಹಕರು ದುಬಾರಿ ವಸ್ತುಗಳನ್ನು ಖರೀದಿಸುವ ಮೊದಲು ಬೆಲೆಗಳನ್ನು ಹೋಲಿಕೆ ಮಾಡುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Shopping',
     vocabularyWords: [
@@ -1128,6 +1230,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b103',
     text: "Breakfast is ready on the kitchen table, come and eat!",
     meaning: "Calling family members to enjoy the morning meal.",
+    kannadaMeaning: "ಅಡುಗೆ ಮನೆಯ ಮೇಜಿನ ಮೇಲೆ ಉಪಹಾರ ಸಿದ್ಧವಾಗಿದೆ, ಬನ್ನಿ ಊಟ ಮಾಡಿ!",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1139,6 +1242,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b104',
     text: "I would like to order a warm bowl of chicken soup.",
     meaning: "Ordering soothing, hot broth at a restaurant.",
+    kannadaMeaning: "ನಾನು ಒಂದು ಬಿಸಿ ಚಿಕನ್ ಸೂಪ್ ಆರ್ಡರ್ ಮಾಡಲು ಬಯಸುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1150,6 +1254,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b105',
     text: "Could we please see the dessert menu after our meal?",
     meaning: "Asking the waiter for the list of sweets and pastries.",
+    kannadaMeaning: "ಊಟದ ನಂತರ ನಾವು ಸಿಹಿ ತಿಂಡಿಗಳ ಮೆನು ನೋಡಬಹುದೇ?",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1161,6 +1266,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b106',
     text: "She adds a teaspoon of honey to her green tea.",
     meaning: "Sweetening hot beverages with natural honey.",
+    kannadaMeaning: "ಆಕೆ ತನ್ನ ಗ್ರೀನ್ ಟೀಗೆ ಒಂದು ಚಮಚ ಜೇನುತುಪ್ಪವನ್ನು ಸೇರಿಸುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1172,6 +1278,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b107',
     text: "The grilled fish is served with roasted potatoes and vegetables.",
     meaning: "Describing a balanced, wholesome restaurant entree.",
+    kannadaMeaning: "ಹುರಿದ ಮೀನಿನ ಜೊತೆಗೆ ಆಲೂಗಡ್ಡೆ ಮತ್ತು ತರಕಾರಿಗಳನ್ನು ಬಡಿಸಲಾಗುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1183,6 +1290,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b108',
     text: "Is this curry spicy, or is it mild enough for children?",
     meaning: "Inquiring about the heat level of chili in a dish.",
+    kannadaMeaning: "ಈ ಕರಿ ಖಾರವಾಗಿದೆಯೇ ಅಥವಾ ಮಕ್ಕಳು ತಿನ್ನುವಷ್ಟು ಹದವಾಗಿದೆಯೇ?",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1194,6 +1302,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b109',
     text: "We toasted bread and spread strawberry jam on top.",
     meaning: "Preparing a simple, tasty morning toast snack.",
+    kannadaMeaning: "ನಾವು ಬ್ರೆಡ್ ಟೋಸ್ಟ್ ಮಾಡಿ ಅದರ ಮೇಲೆ ಸ್ಟ್ರಾಬೆರಿ ಜಾಮ್ ಸವರಿದೆವು.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1205,6 +1314,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b110',
     text: "Can I get a glass of cold tap water with lemon, please?",
     meaning: "Requesting a complimentary refreshing beverage.",
+    kannadaMeaning: "ನನಗೆ ನಿಂಬೆಹಣ್ಣು ಹಾಕಿದ ಒಂದು ಲೋಟ ತಣ್ಣೀರು ಸಿಗಬಹುದೇ, ದಯವಿಟ್ಟು?",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1216,6 +1326,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b111',
     text: "He loves eating crunchy green salads with olive oil dressing.",
     meaning: "Enjoying crisp, nutritious vegetable bowls.",
+    kannadaMeaning: "ಅವನು ಆಲಿವ್ ಎಣ್ಣೆ ಹಾಕಿದ ಗರಿಗರಿಯಾದ ಹಸಿರು ಸಲಾಡ್ ತಿನ್ನಲು ಇಷ್ಟಪಡುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1227,6 +1338,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b112',
     text: "The restaurant chef prepares fresh homemade pasta every day.",
     meaning: "Crafting authentic noodles by hand on the premises.",
+    kannadaMeaning: "ರೆಸ್ಟೋರೆಂಟ್‌ನ ಬಾಣಸಿಗ ಪ್ರತಿದಿನ ತಾಜಾ ಮನೆಯ ಶೈಲಿಯ ಪಾಸ್ಟಾ ತಯಾರಿಸುತ್ತಾರೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1238,6 +1350,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b113',
     text: "Don't forget to chew your food slowly and carefully.",
     meaning: "Healthy digestive advice for eating meals.",
+    kannadaMeaning: "ಆಹಾರವನ್ನು ನಿಧಾನವಾಗಿ ಮತ್ತು ಚೆನ್ನಾಗಿ ಜಗಿದು ತಿನ್ನಲು ಮರೆಯಬೇಡಿ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1249,6 +1362,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b114',
     text: "They reserved a window table for two at seven o'clock.",
     meaning: "Booking an intimate dinner reservation in advance.",
+    kannadaMeaning: "ಅವರು ಏಳು ಗಂಟೆಗೆ ಕಿಟಕಿಯ ಪಕ್ಕದ ಎರಡು ಜನರ ಮೇಜನ್ನು ಕಾಯ್ದಿರಿಸಿದರು.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1260,6 +1374,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b115',
     text: "I prefer drinking freshly squeezed orange juice in the morning.",
     meaning: "Choosing pure natural citrus drinks with breakfast.",
+    kannadaMeaning: "ಬೆಳಿಗ್ಗೆ ತಾಜಾ ಕಿತ್ತಳೆ ರಸ ಕುಡಿಯಲು ನಾನು ಇಷ್ಟಪಡುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1271,6 +1386,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b116',
     text: "The waiter brought us complimentary bread rolls and butter.",
     meaning: "Free starter appetizers provided before an entree.",
+    kannadaMeaning: "ಮಾಣಿ ನಮಗೆ ಉಚಿತ ಬ್ರೆಡ್ ರೋಲ್ಸ್ ಮತ್ತು ಬೆಣ್ಣೆಯನ್ನು ತಂದುಕೊಟ್ಟರು.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1282,6 +1398,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b117',
     text: "We celebrated her graduation with an Italian pasta dinner.",
     meaning: "Commemorating educational success with delicious food.",
+    kannadaMeaning: "ನಾವು ಇಟಾಲಿಯನ್ ಪಾಸ್ಟಾ ಊಟದೊಂದಿಗೆ ಆಕೆಯ ಪದವಿ ಆಚರಿಸಿದೆವು.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1293,6 +1410,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b118',
     text: "Cooking fresh meals at home is healthy and saves money.",
     meaning: "The double benefit of home meal preparation.",
+    kannadaMeaning: "ಮನೆಯಲ್ಲೇ ತಾಜಾ ಊಟ ತಯಾರಿಸುವುದು ಆರೋಗ್ಯಕರ ಮತ್ತು ಹಣವನ್ನು ಉಳಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Food',
     vocabularyWords: [
@@ -1304,6 +1422,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b119',
     text: "She plays the acoustic guitar in her bedroom every evening.",
     meaning: "Practicing string instruments during personal leisure hours.",
+    kannadaMeaning: "ಆಕೆಯು ಪ್ರತಿದಿನ ಸಂಜೆ ತನ್ನ ಕೋಣೆಯಲ್ಲಿ ಗಿಟಾರ್ ನುಡಿಸುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1315,6 +1434,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b120',
     text: "I enjoy planting colorful flowers in my backyard garden.",
     meaning: "Engaging in gardening as a peaceful outdoor pastime.",
+    kannadaMeaning: "ನನ್ನ ಹಿತ್ತಲಿನ ತೋಟದಲ್ಲಿ ಬಣ್ಣಬಣ್ಣದ ಹೂವುಗಳನ್ನು ನೆಡಲು ನಾನು ಇಷ್ಟಪಡುತ್ತೇನೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1326,6 +1446,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b121',
     text: "He likes building model wooden airplanes on weekends.",
     meaning: "Assembling scale miniature crafts with patience.",
+    kannadaMeaning: "ವಾರಾಂತ್ಯದಲ್ಲಿ ಮರದ ವಿಮಾನ ಮಾದರಿಗಳನ್ನು ತಯಾರಿಸಲು ಅವನು ಇಷ್ಟಪಡುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1337,6 +1458,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b122',
     text: "We take long hikes through the mountain trails on Sundays.",
     meaning: "Recreational walking in natural woodland landscapes.",
+    kannadaMeaning: "ನಾವು ಭಾನುವಾರಗಳಂದು ಪರ್ವತದ ಹಾದಿಗಳಲ್ಲಿ ದೀರ್ಘ ನಡಿಗೆಗೆ ಹೋಗುತ್ತೇವೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1348,6 +1470,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b123',
     text: "She paints watercolor landscapes of the countryside.",
     meaning: "Expressing creativity through brush and watercolor pigments.",
+    kannadaMeaning: "ಆಕೆಯು ಗ್ರಾಮೀಣ ಪ್ರದೇಶಗಳ ವಾಟರ್ ಕಲರ್ ಚಿತ್ರಗಳನ್ನು ಬಿಡಿಸುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1359,6 +1482,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b124',
     text: "Knitting warm wool socks is my favorite winter hobby.",
     meaning: "Handcrafting warm clothing with needles and yarn.",
+    kannadaMeaning: "ಬೆಚ್ಚಗಿನ ಉಣ್ಣೆಯ ಸಾಕ್ಸ್ ಹೆಣೆಯುವುದು ನನ್ನ ನೆಚ್ಚಿನ ಚಳಿಗಾಲದ ಹವ್ಯಾಸ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1370,6 +1494,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b125',
     text: "My brother collects vintage stamps from all around the world.",
     meaning: "A philatelist hobby gathering postal stamps.",
+    kannadaMeaning: "ನನ್ನ ಸಹೋದರ ಪ್ರಪಂಚದಾದ್ಯಂತದ ಹಳೆಯ ಅಂಚೆ ಚೀಟಿಗಳನ್ನು ಸಂಗ್ರಹಿಸುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1381,6 +1506,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b126',
     text: "She loves dancing to energetic Latin salsa music.",
     meaning: "Physical creative expression through rhythmic body movement.",
+    kannadaMeaning: "ಉತ್ಸಾಹಭರಿತ ಸಾಲ್ಸಾ ಸಂಗೀತಕ್ಕೆ ನೃತ್ಯ ಮಾಡಲು ಆಕೆ ಇಷ್ಟಪಡುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1392,6 +1518,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b127',
     text: "Photography allows you to capture precious memories forever.",
     meaning: "The art of preserving moments using camera technology.",
+    kannadaMeaning: "ಛಾಯಾಗ್ರಹಣವು ಅಮೂಲ್ಯ ನೆನಪುಗಳನ್ನು ಶಾಶ್ವತವಾಗಿ ಸೆರೆಹಿಡಿಯಲು ಅನುಮತಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1403,6 +1530,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b128',
     text: "He plays chess with his grandfather every Saturday afternoon.",
     meaning: "A strategic board game tradition between generations.",
+    kannadaMeaning: "ಅವನು ಪ್ರತಿ ಶನಿವಾರ ಮಧ್ಯಾಹ್ನ ತನ್ನ ತಾತನೊಂದಿಗೆ ಚದುರಂಗ ಆಡುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1414,6 +1542,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b129',
     text: "Reading mystery novels keeps my mind sharp and engaged.",
     meaning: "Engaging the intellect with thrilling detective fiction.",
+    kannadaMeaning: "ನಿಗೂಢ ಕಾದಂಬರಿಗಳನ್ನು ಓದುವುದು ನನ್ನ ಮನಸ್ಸನ್ನು ಚುರುಕಾಗಿರಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1425,6 +1554,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b130',
     text: "We enjoy singing cheerful songs around the outdoor campfire.",
     meaning: "Group musical recreation during camping trips.",
+    kannadaMeaning: "ಕ್ಯಾಂಪ್‌ಫೈರ್ ಸುತ್ತ ಕುಳಿತು ಸಂತೋಷದ ಹಾಡುಗಳನ್ನು ಹಾಡುವುದನ್ನು ನಾವು ಆನಂದಿಸುತ್ತೇವೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1436,6 +1566,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b131',
     text: "She practices yoga postures on her mat every morning.",
     meaning: "Promoting flexibility and calm through mindful stretching.",
+    kannadaMeaning: "ಆಕೆಯು ಪ್ರತಿದಿನ ಬೆಳಿಗ್ಗೆ ತನ್ನ ಮ್ಯಾಟ್ ಮೇಲೆ ಯೋಗಾಸನಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1447,6 +1578,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b132',
     text: "Baking chocolate chip cookies is a fun activity for children.",
     meaning: "A joyful culinary activity shared with little ones.",
+    kannadaMeaning: "ಚಾಕೊಲೇಟ್ ಕುಕೀಸ್ ತಯಾರಿಸುವುದು ಮಕ್ಕಳಿಗೆ ಮೋಜಿನ ಚಟುವಟಿಕೆಯಾಗಿದೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1458,6 +1590,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b133',
     text: "He enjoys cycling along the scenic lakeside path.",
     meaning: "Pedaling a bicycle beside pleasant waterside views.",
+    kannadaMeaning: "ಸರೋವರದ ಸುಂದರ ಹಾದಿಯಲ್ಲಿ ಸೈಕಲ್ ಸವಾರಿ ಮಾಡುವುದನ್ನು ಅವನು ಆನಂದಿಸುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1469,6 +1602,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b134',
     text: "Birdwatching requires a good pair of binoculars and patience.",
     meaning: "An observational nature pastime identifying avian species.",
+    kannadaMeaning: "ಪಕ್ಷಿ ವೀಕ್ಷಣೆಗೆ ಉತ್ತಮ ದುರ್ಬೀನು ಮತ್ತು ತಾಳ್ಮೆ ಅಗತ್ಯ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1480,6 +1614,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b135',
     text: "Having a creative hobby relieves everyday work stress.",
     meaning: "Pursuing personal interests fosters mental wellness.",
+    kannadaMeaning: "ಸೃಜನಶೀಲ ಹವ್ಯಾಸವನ್ನು ಹೊಂದುವುದು ದೈನಂದಿನ ಕೆಲಸದ ಒತ್ತಡವನ್ನು ನಿವಾರಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1491,6 +1626,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b136',
     text: "Drinking plenty of clean water keeps your body hydrated.",
     meaning: "An essential principle of daily physical wellness.",
+    kannadaMeaning: "ಸಾಕಷ್ಟು ಶುದ್ಧ ನೀರನ್ನು ಕುಡಿಯುವುದು ನಿಮ್ಮ ದೇಹವನ್ನು ತೇವಾಂಶದಿಂದ ಇಡುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1502,6 +1638,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b137',
     text: "He goes for a thirty-minute brisk walk every morning.",
     meaning: "A dependable aerobic exercise habit for heart health.",
+    kannadaMeaning: "ಅವನು ಪ್ರತಿದಿನ ಬೆಳಿಗ್ಗೆ ಮೂವತ್ತು ನಿಮಿಷಗಳ ಕಾಲ ಬಿರುಸಿನ ನಡಿಗೆಗೆ ಹೋಗುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1513,6 +1650,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b138',
     text: "Eating fresh vegetables provides essential vitamins and minerals.",
     meaning: "Nutritional benefits of a green plant-based diet.",
+    kannadaMeaning: "ತಾಜಾ ತರಕಾರಿಗಳನ್ನು ತಿನ್ನುವುದು ಅಗತ್ಯ ಜೀವಸತ್ವಗಳು ಮತ್ತು ಖನಿಜಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1524,6 +1662,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b139',
     text: "Make sure you get at least eight hours of sleep tonight.",
     meaning: "Sufficient rest is foundational to physical recovery.",
+    kannadaMeaning: "ಇಂದು ರಾತ್ರಿ ನೀವು ಕನಿಷ್ಠ ಎಂಟು ಗಂಟೆಗಳ ಕಾಲ ನಿದ್ರಿಸುವುದನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1535,6 +1674,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b140',
     text: "Wash your hands thoroughly with soap before eating meals.",
     meaning: "A vital hygiene practice to prevent bacterial spread.",
+    kannadaMeaning: "ಊಟ ಮಾಡುವ ಮೊದಲು ನಿಮ್ಮ ಕೈಗಳನ್ನು ಸೋಪಿನಿಂದ ಚೆನ್ನಾಗಿ ತೊಳೆದುಕೊಳ್ಳಿ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1546,6 +1686,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b141',
     text: "The doctor listened to my heartbeat using a stethoscope.",
     meaning: "A routine clinical medical examination.",
+    kannadaMeaning: "ವೈದ್ಯರು ಸ್ಟೆತಸ್ಕೋಪ್ ಬಳಸಿ ನನ್ನ ಹೃದಯ ಬಡಿತವನ್ನು ಆಲಿಸಿದರು.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1557,6 +1698,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b142',
     text: "She takes a daily multivitamin tablet after her breakfast.",
     meaning: "Supplementing one's diet with essential nutrients.",
+    kannadaMeaning: "ಆಕೆ ಉಪಹಾರದ ನಂತರ ಪ್ರತಿದಿನ ಒಂದು ಮಲ್ಟಿವಿಟಮಿನ್ ಮಾತ್ರೆ ತೆಗೆದುಕೊಳ್ಳುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1568,6 +1710,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b143',
     text: "Remember to cover your mouth whenever you cough or sneeze.",
     meaning: "Considerate manners protecting public respiratory health.",
+    kannadaMeaning: "ಕೆಮ್ಮುವಾಗ ಅಥವಾ ಸೀನುವಾಗ ಯಾವಾಗಲೂ ಬಾಯಿ ಮುಚ್ಚಿಕೊಳ್ಳಲು ನೆನಪಿಡಿ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1579,6 +1722,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b144',
     text: "He visited the dentist for a routine dental cleaning.",
     meaning: "Regular oral hygiene care prevents tooth decay.",
+    kannadaMeaning: "ಅವನು ನಿಯಮಿತ ಹಲ್ಲು ತಪಾಸಣೆಗಾಗಿ ದಂತವೈದ್ಯರನ್ನು ಭೇಟಿ ಮಾಡಿದನು.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1590,6 +1734,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b145',
     text: "Wearing sunscreen protects your sensitive skin from sunburn.",
     meaning: "Shielding skin cells from harmful ultraviolet solar rays.",
+    kannadaMeaning: "ಸನ್‌ಸ್ಕ್ರೀನ್ ಹಚ್ಚಿಕೊಳ್ಳುವುದು ನಿಮ್ಮ ಸೂಕ್ಷ್ಮ ಚರ್ಮವನ್ನು ಸೂರ್ಯನ ಬಿಸಿಲಿನಿಂದ ರಕ್ಷಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1601,6 +1746,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b146',
     text: "Taking deep breaths helps you stay calm under pressure.",
     meaning: "A simple mindfulness relaxation technique for stress.",
+    kannadaMeaning: "ದೀರ್ಘ ಉಸಿರಾಟವು ಒತ್ತಡದ ಸಂದರ್ಭದಲ್ಲಿ ಶಾಂತರಾಗಿರಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1612,6 +1758,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b147',
     text: "She twisted her ankle while jogging and applied an ice pack.",
     meaning: "First aid care for minor ligament sprains.",
+    kannadaMeaning: "ಜಾಗಿಂಗ್ ಮಾಡುವಾಗ ಆಕೆಯ ಹಿಮ್ಮಡಿ ಉಳುಕಿತು, ಅದಕ್ಕೆ ಆಕೆ ಐಸ್ ಪ್ಯಾಕ್ ಇಟ್ಟಳು.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1623,6 +1770,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b148',
     text: "The pharmacist explained how to take the prescribed medication.",
     meaning: "A healthcare expert instructing on safe medicine dosages.",
+    kannadaMeaning: "ಔಷಧ ಅಂಗಡಿಯವರು ವೈದ್ಯರು ಬರೆದ ಔಷಧವನ್ನು ಹೇಗೆ ತೆಗೆದುಕೊಳ್ಳಬೇಕೆಂದು ವಿವರಿಸಿದರು.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1634,6 +1782,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b149',
     text: "Exercising outdoors boosts your mood and energy levels.",
     meaning: "The synergistic emotional uplift of nature and movement.",
+    kannadaMeaning: "ಹೊರಾಂಗಣದಲ್ಲಿ ವ್ಯಾಯಾಮ ಮಾಡುವುದು ನಿಮ್ಮ ಮನಸ್ಥಿತಿ ಮತ್ತು ಶಕ್ತಿಯ ಮಟ್ಟವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1645,6 +1794,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b150',
     text: "Avoid eating too much refined sugar to maintain dental health.",
     meaning: "Limiting sweets prevents cavities and weight gain.",
+    kannadaMeaning: "ಹಲ್ಲಿನ ಆರೋಗ್ಯವನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಲು ಅತಿಯಾದ ಸಕ್ಕರೆ ಸೇವನೆಯನ್ನು ತಪ್ಪಿಸಿ.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1656,6 +1806,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b151',
     text: "She stretched her arms and legs after the workout.",
     meaning: "Cooling down muscle groups after physical exercise.",
+    kannadaMeaning: "ವ್ಯಾಯಾಮದ ನಂತರ ಆಕೆ ತನ್ನ ಕೈ ಮತ್ತು ಕಾಲುಗಳನ್ನು ಸ್ಟ್ರೆಚ್ ಮಾಡಿದಳು.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1667,6 +1818,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b152',
     text: "Good health is the greatest wealth anyone can possess.",
     meaning: "A wise proverb reminding us to treasure our bodies.",
+    kannadaMeaning: "ಉತ್ತಮ ಆರೋಗ್ಯವೇ ಯಾರೊಬ್ಬರೂ ಹೊಂದಬಹುದಾದ ಅತಿದೊಡ್ಡ ಸಂಪತ್ತು.",
     difficulty: 'Beginner',
     category: 'Health',
     vocabularyWords: [
@@ -1678,6 +1830,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b153',
     text: "The morning sun is shining brightly across the blue sky.",
     meaning: "A cheerful start to a clear, pleasant day.",
+    kannadaMeaning: "ಮುಂಜಾನೆಯ ಸೂರ್ಯ ನೀಲಿ ಆಕಾಶದಲ್ಲಿ ಪ್ರಕಾಶಮಾನವಾಗಿ ಹೊಳೆಯುತ್ತಿದ್ದಾನೆ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1689,6 +1842,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b154',
     text: "Dark storm clouds are gathering on the distant horizon.",
     meaning: "Indications that heavy rainfall is approaching soon.",
+    kannadaMeaning: "ದೂರದ ದಿಗಂತದಲ್ಲಿ ಕಪ್ಪು ಮಳೆಮೋಡಗಳು ಕವಿಯುತ್ತಿವೆ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1700,6 +1854,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b155',
     text: "It is raining outside, so do not forget your umbrella.",
     meaning: "A practical reminder for wet rainy weather.",
+    kannadaMeaning: "ಹೊರಗೆ ಮಳೆ ಬರುತ್ತಿದೆ, ಆದ್ದರಿಂದ ನಿಮ್ಮ ಛತ್ರಿಯನ್ನು ಮರೆಯಬೇಡಿ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1711,6 +1866,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b156',
     text: "A gentle cooling breeze blew through the open window.",
     meaning: "Soft, refreshing air circulation in a room.",
+    kannadaMeaning: "ತೆರೆದ ಕಿಟಕಿಯ ಮೂಲಕ ತಂಪಾದ ಮೃದುವಾದ ಗಾಳಿ ಬೀಸಿತು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1722,6 +1878,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b157',
     text: "The temperature dropped sharply after the sunset tonight.",
     meaning: "Noticeable cooling as evening darkness arrives.",
+    kannadaMeaning: "ಇಂದು ರಾತ್ರಿ ಸೂರ್ಯಾಸ್ತದ ನಂತರ ತಾಪಮಾನವು ತೀವ್ರವಾಗಿ ಕುಸಿಯಿತು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1733,6 +1890,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b158',
     text: "Thick white fog made it hard to see the highway road.",
     meaning: "Dense moisture particles reducing travel visibility.",
+    kannadaMeaning: "ದಟ್ಟವಾದ ಬಿಳಿ ಮಂಜು ಹೆದ್ದಾರಿ ರಸ್ತೆಯನ್ನು ನೋಡಲು ಕಷ್ಟವಾಗಿಸಿತು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1744,6 +1902,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b159',
     text: "Children rushed outside to build a snowman in the yard.",
     meaning: "Winter excitement as fresh snowfall covers the ground.",
+    kannadaMeaning: "ಮಕ್ಕಳು ಅಂಗಳದಲ್ಲಿ ಹಿಮಮಾನವ ಮಾಡಲು ಹೊರಗೆ ಓಡಿದರು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1755,6 +1914,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b160',
     text: "The weather forecast predicts sunny skies for the weekend.",
     meaning: "Encouraging meteorological news for outdoor plans.",
+    kannadaMeaning: "ಹವಾಮಾನ ಮುನ್ಸೂಚನೆಯು ವಾರಾಂತ್ಯದಲ್ಲಿ ಬಿಸಿಲಿನ ವಾತಾವರಣವನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1766,6 +1926,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b161',
     text: "Thunder rumbled loudly after the bright flash of lightning.",
     meaning: "The natural sound and visual pair of a storm.",
+    kannadaMeaning: "ಮಿಂಚಿನ ಪ್ರಕಾಶಮಾನವಾದ ಬೆಳಕಿನ ನಂತರ ಗುಡುಗು ಜೋರಾಗಿ ಮೊಳಗಿತು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1777,6 +1938,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b162',
     text: "Autumn leaves turn red and golden before falling down.",
     meaning: "The beautiful natural color transition of fall foliage.",
+    kannadaMeaning: "ಶರತ್ಕಾಲದ ಎಲೆಗಳು ಕೆಳಗೆ ಉದುರುವ ಮೊದಲು ಕೆಂಪು ಮತ್ತು ಚಿನ್ನದ ಬಣ್ಣಕ್ಕೆ ತಿರುಗುತ್ತವೆ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1788,6 +1950,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b163',
     text: "The midday heat was so intense that the streets were empty.",
     meaning: "Summer weather keeping residents indoors during noon.",
+    kannadaMeaning: "ಮಧ್ಯಾಹ್ನದ ಬಿಸಿಲು ಎಷ್ಟು ತೀವ್ರವಾಗಿತ್ತೆಂದರೆ ರಸ್ತೆಗಳೆಲ್ಲ ಬಿಕೋ ಎನ್ನುತ್ತಿದ್ದವು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1799,6 +1962,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b164',
     text: "A beautiful colorful rainbow appeared across the valley.",
     meaning: "An optical arc of color following a rain shower.",
+    kannadaMeaning: "ಕಣಿವೆಯುದ್ದಕ್ಕೂ ಸುಂದರವಾದ ವರ್ಣರಂಜಿತ ಕಾಮನಬಿಲ್ಲು ಕಾಣಿಸಿಕೊಂಡಿತು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1810,6 +1974,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b165',
     text: "Snowflakes fell gently onto the frozen pine trees.",
     meaning: "A picturesque winter landscape in northern woods.",
+    kannadaMeaning: "ಹಿಮದ ಕಣಗಳು ಪೈನ್ ಮರಗಳ ಮೇಲೆ ನಿಧಾನವಾಗಿ ಬಿದ್ದವು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1821,6 +1986,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b166',
     text: "The spring flowers begin to bloom as the snow melts.",
     meaning: "Nature reviving as warmer weather returns in spring.",
+    kannadaMeaning: "ಹಿಮ ಕರಗುತ್ತಿದ್ದಂತೆ ವಸಂತಕಾಲದ ಹೂವುಗಳು ಅರಳಲು ಪ್ರಾರಂಭಿಸುತ್ತವೆ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1832,6 +1998,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b167',
     text: "Heavy hail stones bounced off the metal car roofs.",
     meaning: "Small chunks of ice pelting down during a severe storm.",
+    kannadaMeaning: "ಭಾರೀ ಆಲಿಕಲ್ಲುಗಳು ಕಾರಿನ ಲೋಹದ ಮೇಲ್ಛಾವಣಿಯ ಮೇಲೆ ಬಡಿದು ಹಾರಿದವು.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1843,6 +2010,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b168',
     text: "Every season of the year brings its own unique charm.",
     meaning: "Appreciating the changing weather throughout the calendar.",
+    kannadaMeaning: "ವರ್ಷದ ಪ್ರತಿಯೊಂದು ಋತುವೂ ತನ್ನದೇ ಆದ ವಿಶಿಷ್ಟ ಆಕರ್ಷಣೆಯನ್ನು ತರುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Weather',
     vocabularyWords: [
@@ -1854,6 +2022,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b169',
     text: "He unlocked his smartphone with a fast fingerprint sensor.",
     meaning: "Modern biometric convenience on personal handheld gadgets.",
+    kannadaMeaning: "ಅವನು ವೇಗದ ಫಿಂಗರ್‌ಪ್ರಿಂಟ್ ಸೆನ್ಸರ್‌ನಿಂದ ತನ್ನ ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಅನ್‌ಲಾಕ್ ಮಾಡಿದನು.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1865,6 +2034,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b170',
     text: "The wireless internet connection is fast and dependable.",
     meaning: "Smooth digital connectivity without cords in the house.",
+    kannadaMeaning: "ವೈರ್‌ಲೆಸ್ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವು ವೇಗವಾಗಿದೆ ಮತ್ತು ವಿಶ್ವಾಸಾರ್ಹವಾಗಿದೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1876,6 +2046,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b171',
     text: "I downloaded a language learning application on my tablet.",
     meaning: "Installing educational mobile software for self-study.",
+    kannadaMeaning: "ನಾನು ನನ್ನ ಟ್ಯಾಬ್ಲೆಟ್‌ನಲ್ಲಿ ಭಾಷಾ ಕಲಿಕೆಯ ಅಪ್ಲಿಕೇಶನ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿಕೊಂಡೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1887,6 +2058,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b172',
     text: "Please plug the charging cable into the wall socket.",
     meaning: "Powering up the battery of an electronic device.",
+    kannadaMeaning: "ದಯವಿಟ್ಟು ಚಾರ್ಜಿಂಗ್ ಕೇಬಲ್ ಅನ್ನು ಗೋಡೆಯ ಸಾಕೆಟ್‌ಗೆ ಸಿಕ್ಕಿಸಿ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1898,6 +2070,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b173',
     text: "She types quickly on her ergonomic desktop keyboard.",
     meaning: "Efficient typing on a comfortable computer peripheral.",
+    kannadaMeaning: "ಆಕೆಯು ಡೆಸ್ಕ್‌ಟಾಪ್ ಕೀಬೋರ್ಡ್‌ನಲ್ಲಿ ವೇಗವಾಗಿ ಟೈಪ್ ಮಾಡುತ್ತಾಳೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1909,6 +2082,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b174',
     text: "You can send instant text messages to your friends online.",
     meaning: "Instant digital communication across long distances.",
+    kannadaMeaning: "ನೀವು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಸ್ನೇಹಿತರಿಗೆ ತಕ್ಷಣದ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಬಹುದು.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1920,6 +2094,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b175',
     text: "He listens to educational podcasts using wireless earbuds.",
     meaning: "Personal audio enjoyment on the commute.",
+    kannadaMeaning: "ಅವನು ವೈರ್‌ಲೆಸ್ ಇಯರ್‌ಬಡ್ಸ್ ಬಳಸಿ ಶೈಕ್ಷಣಿಕ ಪಾಡ್‌ಕಾಸ್ಟ್‌ಗಳನ್ನು ಕೇಳುತ್ತಾನೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1931,6 +2106,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b176',
     text: "Always choose a strong secret password for your accounts.",
     meaning: "Basic cybersecurity advice for protecting personal data.",
+    kannadaMeaning: "ನಿಮ್ಮ ಖಾತೆಗಳಿಗಾಗಿ ಯಾವಾಗಲೂ ಬಲವಾದ ರಹಸ್ಯ ಪಾಸ್‌ವರ್ಡ್ ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1942,6 +2118,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b177',
     text: "The digital tablet screen automatically dims in the dark.",
     meaning: "Smart display brightness adjustment for eye comfort.",
+    kannadaMeaning: "ಕತ್ತಲೆಯಲ್ಲಿ ಡಿಜಿಟಲ್ ಟ್ಯಾಬ್ಲೆಟ್ ಪರದೆಯು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮಂದವಾಗುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1953,6 +2130,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b178',
     text: "You can save thousands of family photographs on memory cards.",
     meaning: "Digital photo storage on microscopic flash chips.",
+    kannadaMeaning: "ಮೆಮೊರಿ ಕಾರ್ಡ್‌ಗಳಲ್ಲಿ ನೀವು ಸಾವಿರಾರು ಕುಟುಂಬದ ಫೋಟೋಗಳನ್ನು ಉಳಿಸಬಹುದು.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1964,6 +2142,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b179',
     text: "The smart watch tracks how many steps you walk daily.",
     meaning: "Wearable fitness gadget recording physical activity.",
+    kannadaMeaning: "ಸ್ಮಾರ್ಟ್ ವಾಚ್ ನೀವು ಪ್ರತಿದಿನ ಎಷ್ಟು ಹೆಜ್ಜೆ ನಡೆಯುತ್ತೀರಿ ಎಂಬುದನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1975,6 +2154,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b180',
     text: "She turned up the speaker volume to hear the audio clearly.",
     meaning: "Adjusting the loudness level of sound output.",
+    kannadaMeaning: "ಆಡಿಯೋ ಸ್ಪಷ್ಟವಾಗಿ ಕೇಳಲು ಆಕೆ ಸ್ಪೀಕರ್ ವಾಲ್ಯೂಮ್ ಹೆಚ್ಚಿಸಿದಳು.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1986,6 +2166,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b181',
     text: "He backed up all his school essays onto a flash drive.",
     meaning: "Safeguarding academic homework on portable storage.",
+    kannadaMeaning: "ಅವನು ತನ್ನ ಶಾಲಾ ಪ್ರಬಂಧಗಳನ್ನೆಲ್ಲ ಫ್ಲ್ಯಾಷ್ ಡ್ರೈವ್‌ನಲ್ಲಿ ಬ್ಯಾಕಪ್ ಮಾಡಿದನು.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -1997,6 +2178,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b182',
     text: "The television remote control needs a new pair of batteries.",
     meaning: "Replacing electrochemical cells in household remotes.",
+    kannadaMeaning: "ಟಿವಿ ರಿಮೋಟ್ ಕಂಟ್ರೋಲ್‌ಗೆ ಹೊಸ ಜೋಡಿ ಬ್ಯಾಟರಿಗಳು ಬೇಕಾಗಿವೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -2008,6 +2190,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b183',
     text: "Technology makes learning English easier and more accessible.",
     meaning: "How modern software empowers learners worldwide.",
+    kannadaMeaning: "ತಂತ್ರಜ್ಞಾನವು ಇಂಗ್ಲಿಷ್ ಕಲಿಯುವುದನ್ನು ಸುಲಭ ಮತ್ತು ಹೆಚ್ಚು ಸುಲಭಲಭ್ಯವಾಗಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -2019,6 +2202,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b184',
     text: "Remember to mute your microphone during virtual meetings.",
     meaning: "Proper video call etiquette when others are speaking.",
+    kannadaMeaning: "ವರ್ಚುವಲ್ ಸಭೆಗಳಲ್ಲಿ ನಿಮ್ಮ ಮೈಕ್ರೊಫೋನ್ ಅನ್ನು ಮ್ಯೂಟ್ ಮಾಡಲು ನೆನಪಿಡಿ.",
     difficulty: 'Beginner',
     category: 'Technology',
     vocabularyWords: [
@@ -2030,6 +2214,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b185',
     text: "Practice makes perfect, so keep trying your best every day.",
     meaning: "A comforting classic proverb on the power of persistence.",
+    kannadaMeaning: "ಅಭ್ಯಾಸದಿಂದ ಎಲ್ಲವೂ ಸಿದ್ಧಿಸುತ್ತದೆ, ಆದ್ದರಿಂದ ಪ್ರತಿದಿನ ನಿಮ್ಮ ಅತ್ಯುತ್ತಮ ಪ್ರಯತ್ನ ಮಾಡಿ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2041,6 +2226,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b186',
     text: "Actions speak much louder than words ever can.",
     meaning: "What people do reveals far more than what they say.",
+    kannadaMeaning: "ಮಾತಗಿಂತ ಕೃತಿ ಲೇಸು; ನುಡಿಗಿಂತ ಕ್ರಿಯೆಯೇ ಹೆಚ್ಚು ಮುಖ್ಯ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2052,6 +2238,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b187',
     text: "Better late than never to start learning a new language.",
     meaning: "It is always worthwhile to begin, no matter the timing.",
+    kannadaMeaning: "ಹೊಸ ಭಾಷೆಯನ್ನು ಕಲಿಯಲು ಪ್ರಾರಂಭಿಸಲು ತಡವಾದರೂ ಪರವಾಗಿಲ್ಲ, ಇಂದೇ ಪ್ರಾರಂಭಿಸಿ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2063,6 +2250,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b188',
     text: "Where there is a will, there is always a way forward.",
     meaning: "Determination finds a path through any obstacle.",
+    kannadaMeaning: "ಮನಸ್ಸಿದ್ದರೆ ಮಾರ್ಗ; ಇಚ್ಛಾಶಕ್ತಿ ಇದ್ದರೆ ಯಾವಾಗಲೂ ದಾರಿ ಇದ್ದೇ ಇರುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2074,6 +2262,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b189',
     text: "Every cloud has a silver lining, even in tough times.",
     meaning: "Every difficult situation contains a positive aspect.",
+    kannadaMeaning: "ಪ್ರತಿಯೊಂದು ಕಷ್ಟದಲ್ಲೂ ಒಂದು ಒಳಿತಿನ ಆಶಾಕಿರಣ ಇದ್ದೇ ಇರುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2085,6 +2274,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b190',
     text: "Do not judge a book simply by its colorful cover.",
     meaning: "Character matters far more than outward appearance.",
+    kannadaMeaning: "ಪುಸ್ತಕದ ಹೊರಪುಟ ನೋಡಿ ಅದರ ಗುಣಮಟ್ಟವನ್ನು ನಿರ್ಧರಿಸಬೇಡಿ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2096,6 +2286,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b191',
     text: "Time flies when you are having fun with good companions.",
     meaning: "Enjoyable moments seem to pass by very quickly.",
+    kannadaMeaning: "ಒಳ್ಳೆಯ ಸ್ನೇಹಿತರೊಂದಿಗೆ ಮೋಜು ಮಾಡುವಾಗ ಸಮಯ ಹೇಗೆ ಕಳೆಯುತ್ತದೆ ಎಂದೇ ತಿಳಿಯುವುದಿಲ್ಲ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2107,6 +2298,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b192',
     text: "Honesty is always the best and safest policy in life.",
     meaning: "Truthfulness builds lasting trust and clear conscience.",
+    kannadaMeaning: "ಪ್ರಾಮಾಣಿಕತೆಯೇ ಯಾವಾಗಲೂ ಜೀವನದ ಅತ್ಯುತ್ತಮ ಮತ್ತು ಸುರಕ್ಷಿತ ನೀತಿ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2118,6 +2310,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b193',
     text: "A journey of a thousand miles begins with a single step.",
     meaning: "Great achievements start with small initial actions.",
+    kannadaMeaning: "ಸಾವಿರ ಮೈಲುಗಳ ಸುದೀರ್ಘ ಪ್ರಯಾಣವೂ ಒಂದು ಸಣ್ಣ ಹೆಜ್ಜೆಯಿಂದಲೇ ಆರಂಭವಾಗುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2129,6 +2322,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b194',
     text: "Kind words cost nothing, but they mean everything to others.",
     meaning: "Gentle courtesy carries immense emotional value.",
+    kannadaMeaning: "ಒಳ್ಳೆಯ ಮಾತುಗಳಿಗೆ ಯಾವುದೇ ಖರ್ಚಿಲ್ಲ, ಆದರೆ ಅವು ಇತರರಿಗೆ ಅಪಾರ ಬೆಲೆ ತರುತ್ತವೆ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2140,6 +2334,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b195',
     text: "Look before you leap so you avoid unnecessary accidents.",
     meaning: "Think through consequences before taking hasty actions.",
+    kannadaMeaning: "ಅನಗತ್ಯ ಅಪಘಾತಗಳನ್ನು ತಪ್ಪಿಸಲು ಯೋಚಿಸಿ ಮುನ್ನಡೆಯಿರಿ; ಮುಂಚೂಣಿ ನೋಡಿ ಹೆಜ್ಜೆಯಿಡಿ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2151,6 +2346,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b196',
     text: "Laughter is truly the best medicine for a weary spirit.",
     meaning: "Humor brings relief and rejuvenation to tired hearts.",
+    kannadaMeaning: "ದಣಿದ ಮನಸ್ಸಿಗೆ ನಗು ನಿಜವಾಗಿಯೂ ಅತ್ಯುತ್ತಮ ಔಷಧ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2162,6 +2358,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b197',
     text: "When in doubt, never hesitate to ask a polite question.",
     meaning: "Curiosity and questions resolve confusion effectively.",
+    kannadaMeaning: "ಸಂಶಯವಿದ್ದಾಗ ವಿನಮ್ರವಾಗಿ ಪ್ರಶ್ನೆ ಕೇಳಲು ಎಂದಿಗೂ ಹಿಂಜರಿಯಬೇಡಿ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2173,6 +2370,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b198',
     text: "A friend in need is a genuine friend indeed.",
     meaning: "Real companions show their loyalty during hard times.",
+    kannadaMeaning: "ಆಪತ್ತಿನಲ್ಲಿ ಸಹಾಯಕ್ಕೆ ಬರುವವನೇ ನಿಜವಾದ ಮಿತ್ರ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2184,6 +2382,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b199',
     text: "Early to bed and early to rise keeps you healthy and wise.",
     meaning: "Traditional wisdom promoting restorative sleep routines.",
+    kannadaMeaning: "ಬೇಗ ಮಲಗಿ ಬೇಗ ಏಳುವುದು ನಿಮ್ಮನ್ನು ಆರೋಗ್ಯವಾಗಿ ಮತ್ತು ಬುದ್ಧಿವಂತರಾಗಿ ಇರಿಸುತ್ತದೆ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2195,6 +2394,7 @@ const List<Sentence> beginnerSentences = [
     id: 'b200',
     text: "Never give up on your dreams, for they guide your path.",
     meaning: "Inspirational encouragement to hold on to aspirations.",
+    kannadaMeaning: "ನಿಮ್ಮ ಕನಸುಗಳನ್ನು ಎಂದಿಗೂ ಬಿಟ್ಟುಕೊಡಬೇಡಿ, ಏಕೆಂದರೆ ಅವು ನಿಮ್ಮ ದಾರಿಯನ್ನು ಮುನ್ನಡೆಸುತ್ತವೆ.",
     difficulty: 'Beginner',
     category: 'Everyday English',
     vocabularyWords: [

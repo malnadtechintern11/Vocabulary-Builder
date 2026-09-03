@@ -34,11 +34,12 @@ class SentenceWord {
   int get hashCode => word.hashCode ^ meaning.hashCode;
 }
 
-/// Model representing a learning sentence with difficulty, category, meaning, and key vocabulary
+/// Model representing a learning sentence with difficulty, category, English meaning, Kannada meaning, and key vocabulary
 class Sentence {
   final String id;
   final String text;
-  final String meaning;
+  final String meaning; // English meaning
+  final String kannadaMeaning; // Kannada meaning translation
   final List<SentenceWord> vocabularyWords;
   final String difficulty; // 'Beginner', 'Intermediate', 'Advanced'
   final String category; // e.g. 'Daily Conversation', 'Work & Career', 'Travel', etc.
@@ -49,6 +50,7 @@ class Sentence {
     required this.id,
     required this.text,
     required this.meaning,
+    this.kannadaMeaning = '',
     required this.vocabularyWords,
     required this.difficulty,
     required this.category,
@@ -56,10 +58,14 @@ class Sentence {
     this.isPracticed = false,
   });
 
+  /// Alias for meaning for clearer semantic distinction from kannadaMeaning
+  String get englishMeaning => meaning;
+
   Sentence copyWith({
     String? id,
     String? text,
     String? meaning,
+    String? kannadaMeaning,
     List<SentenceWord>? vocabularyWords,
     String? difficulty,
     String? category,
@@ -70,6 +76,7 @@ class Sentence {
       id: id ?? this.id,
       text: text ?? this.text,
       meaning: meaning ?? this.meaning,
+      kannadaMeaning: kannadaMeaning ?? this.kannadaMeaning,
       vocabularyWords: vocabularyWords ?? this.vocabularyWords,
       difficulty: difficulty ?? this.difficulty,
       category: category ?? this.category,
@@ -83,6 +90,7 @@ class Sentence {
       id: json['id'] as String? ?? '',
       text: json['text'] as String? ?? '',
       meaning: json['meaning'] as String? ?? '',
+      kannadaMeaning: json['kannadaMeaning'] as String? ?? '',
       vocabularyWords: (json['vocabularyWords'] as List<dynamic>? ?? [])
           .map((item) => SentenceWord.fromJson(item as Map<String, dynamic>))
           .toList(),
@@ -98,6 +106,7 @@ class Sentence {
       'id': id,
       'text': text,
       'meaning': meaning,
+      'kannadaMeaning': kannadaMeaning,
       'vocabularyWords': vocabularyWords.map((v) => v.toJson()).toList(),
       'difficulty': difficulty,
       'category': category,
@@ -114,3 +123,4 @@ class Sentence {
   @override
   int get hashCode => id.hashCode;
 }
+

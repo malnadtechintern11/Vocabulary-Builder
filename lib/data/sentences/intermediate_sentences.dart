@@ -1,11 +1,12 @@
 import '../../models/sentence.dart';
 
-/// Static collection of 200 sentences
+/// Static collection of 200 offline sentences with English and Kannada meanings
 const List<Sentence> intermediateSentences = [
   Sentence(
     id: 'i001',
     text: "Could you provide a brief status update on the marketing campaign deliverables?",
     meaning: "Politely requesting current information on scheduled marketing goals.",
+    kannadaMeaning: "ಮಾರ್ಕೆಟಿಂಗ್ ಅಭಿಯಾನದ ಫಲಿತಾಂಶಗಳ ಕುರಿತು ಸಂಕ್ಷಿಪ್ತ ಮಾಹಿತಿ ನೀಡುವಿರಾ?",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -17,6 +18,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i002',
     text: "The quarterly financial report indicated a substantial increase in international sales.",
     meaning: "Corporate reports show meaningful profit growth across foreign markets.",
+    kannadaMeaning: "ತ್ರೈಮಾಸಿಕ ಹಣಕಾಸು ವರದಿಯು ಅಂತಾರಾಷ್ಟ್ರೀಯ ಮಾರಾಟದಲ್ಲಿ ಗಣನೀಯ ಏರಿಕೆಯನ್ನು ತೋರಿಸಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -28,6 +30,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i003',
     text: "We need to schedule a follow-up meeting to finalize the contractual terms.",
     meaning: "Arranging another conference to complete legal agreements.",
+    kannadaMeaning: "ಒಪ್ಪಂದದ ನಿಯಮಗಳನ್ನು ಅಂತಿಮಗೊಳಿಸಲು ನಾವು ಮುಂದಿನ ಸಭೆಯನ್ನು ನಿಗದಿಪಡಿಸಬೇಕು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -39,6 +42,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i004',
     text: "She demonstrated impressive leadership skills when navigating the sudden workplace crisis.",
     meaning: "Displaying composure and guidance when unexpected challenges arise.",
+    kannadaMeaning: "ಕಚೇರಿಯ ಹಠಾತ್ ಬಿಕ್ಕಟ್ಟನ್ನು ನಿಭಾಯಿಸುವಾಗ ಆಕೆಯು ಪ್ರಭಾವಶಾಲಿ ನಾಯಕತ್ವದ ಕೌಶಲ್ಯವನ್ನು ಪ್ರದರ್ಶಿಸಿದಳು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -50,6 +54,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i005',
     text: "Employees are encouraged to submit innovative proposals for optimizing workflow.",
     meaning: "Inviting staff to suggest creative improvements for office productivity.",
+    kannadaMeaning: "ಕೆಲಸದ ದಕ್ಷತೆಯನ್ನು ಸುಧಾರಿಸಲು ನವೀನ ಪ್ರಸ್ತಾಪಗಳನ್ನು ಸಲ್ಲಿಸಲು ಉದ್ಯೋಗಿಗಳನ್ನು ಪ್ರೋತ್ಸಾಹಿಸಲಾಗುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -61,6 +66,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i006',
     text: "I would appreciate your feedback on the presentation slides before tomorrow's seminar.",
     meaning: "Seeking constructive critiques on lecture slides prior to public speaking.",
+    kannadaMeaning: "ನಾಳೆಯ ವಿಚಾರ ಸಂಕಿರಣದ ಮುಂಚೆ ಪ್ರಸ್ತುತಿ ಸ್ಲೈಡ್‌ಗಳ ಬಗ್ಗೆ ನಿಮ್ಮ ಅಭಿಪ್ರಾಯವನ್ನು ನೀಡಿದರೆ ಉಪಯುಕ್ತವಾಗುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -72,6 +78,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i007',
     text: "The human resources department announced updated policies regarding remote work flexibility.",
     meaning: "Company officials sharing new guidelines for working from home.",
+    kannadaMeaning: "ಮಾನವ ಸಂಪನ್ಮೂಲ ಇಲಾಖೆಯು ಮನೆಯಿಂದ ಕೆಲಸ ಮಾಡುವ ಸೌಲಭ್ಯದ ಕುರಿತು ನವೀಕೃತ ನಿಯಮಗಳನ್ನು ಪ್ರಕಟಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -83,6 +90,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i008',
     text: "He negotiated effectively with suppliers to secure reasonable wholesale prices.",
     meaning: "Skillful bargaining resulted in favorable terms from goods distributors.",
+    kannadaMeaning: "ಸಮಂಜಸವಾದ ಸಗಟು ದರಗಳನ್ನು ಪಡೆಯಲು ಅವನು ಸರಬರಾಜುದಾರರೊಂದಿಗೆ ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಚರ್ಚಿಸಿದನು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -94,6 +102,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i009',
     text: "Balancing client expectations with strict budget constraints requires diplomatic tact.",
     meaning: "Managing client desires within funding limitations takes careful communication.",
+    kannadaMeaning: "ಗ್ರಾಹಕರ ನಿರೀಕ್ಷೆ ಮತ್ತು ಕಟ್ಟುನಿಟ್ಟಾದ ಬಜೆಟ್ ಮಿತಿಗಳನ್ನು ಸಮತೋಲನಗೊಳಿಸಲು ರಾಜತಾಂತ್ರಿಕ ಜಾಣ್ಮೆ ಬೇಕು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -105,6 +114,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i010',
     text: "The newly implemented software streamlined the internal invoice approval process.",
     meaning: "Modern automated programs made payment processing quicker and smoother.",
+    kannadaMeaning: "ಹೊಸದಾಗಿ ಅಳವಡಿಸಲಾದ ಸಾಫ್ಟ್‌ವೇರ್ ಆಂತರಿಕ ಬಿಲ್ ಅನುಮೋದನೆ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸುಲಭಗೊಳಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -116,6 +126,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i011',
     text: "She received well-deserved recognition for mentoring junior colleagues in the firm.",
     meaning: "Being honored for voluntarily helping and guiding newer staff members.",
+    kannadaMeaning: "ಸಂಸ್ಥೆಯಲ್ಲಿ ಕಿರಿಯ ಸಹೋದ್ಯೋಗಿಗಳಿಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಿದ್ದಕ್ಕಾಗಿ ಆಕೆಗೆ ಅರ್ಹ ಮನ್ನಣೆ ದೊರೆಯಿತು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -127,6 +138,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i012',
     text: "Cross-functional collaboration between engineering and design accelerated product launch.",
     meaning: "Teamwork across different departments speeded up product development.",
+    kannadaMeaning: "ಇಂಜಿನಿಯರಿಂಗ್ ಮತ್ತು ವಿನ್ಯಾಸ ತಂಡಗಳ ಸಹಯೋಗವು ಉತ್ಪನ್ನ ಬಿಡುಗಡೆಯನ್ನು ವೇಗಗೊಳಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -138,6 +150,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i013',
     text: "We should identify potential operational bottlenecks before scaling up manufacturing.",
     meaning: "Spotting points of congestion before expanding factory production.",
+    kannadaMeaning: "ಉತ್ಪಾದನೆಯನ್ನು ಹೆಚ್ಚಿಸುವ ಮೊದಲು ನಾವು ಕಾರ್ಯಾಚರಣೆಯ ಅಡೆತಡೆಗಳನ್ನು ಗುರುತಿಸಬೇಕು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -149,6 +162,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i014',
     text: "Maintaining work-life balance is crucial for long-term career satisfaction and health.",
     meaning: "Avoiding overwork sustains happiness and longevity in one's occupation.",
+    kannadaMeaning: "ದೀರ್ಘಾವಧಿಯ ವೃತ್ತಿ ತೃಪ್ತಿ ಮತ್ತು ಆರೋಗ್ಯಕ್ಕೆ ಕೆಲಸ ಹಾಗೂ ಜೀವನದ ಸಮತೋಲನ ಕಾಪಾಡುವುದು ಬಹಳ ಮುಖ್ಯ.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -160,6 +174,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i015',
     text: "He outlined clear performance milestones for each member of the engineering division.",
     meaning: "Setting explicit goals to track developer progress over time.",
+    kannadaMeaning: "ಅವನು ಇಂಜಿನಿಯರಿಂಗ್ ವಿಭಾಗದ ಪ್ರತಿಯೊಬ್ಬ ಸದಸ್ಯರಿಗೂ ಸ್ಪಷ್ಟ ಕಾರ್ಯಕ್ಷಮತೆಯ ಗುರಿಗಳನ್ನು ನಿಗದಿಪಡಿಸಿದನು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -171,6 +186,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i016',
     text: "The annual performance evaluation highlighted both his achievements and growth areas.",
     meaning: "Yearly review acknowledging strengths while pointing out skills to cultivate.",
+    kannadaMeaning: "ವಾರ್ಷಿಕ ಕಾರ್ಯಕ್ಷಮತೆ ಮೌಲ್ಯಮಾಪನವು ಅವನ ಸಾಧನೆಗಳು ಮತ್ತು ಸುಧಾರಣೆಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಎತ್ತಿ ತೋರಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -182,6 +198,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i017',
     text: "Clear communication prevents misunderstandings among members of multinational teams.",
     meaning: "Articulate messages stop confusion in diverse international companies.",
+    kannadaMeaning: "ಸ್ಪಷ್ಟ ಸಂವಹನವು ಬಹುರಾಷ್ಟ್ರೀಯ ತಂಡಗಳ ಸದಸ್ಯರಲ್ಲಿ ತಪ್ಪು ತಿಳುವಳಿಕೆಗಳನ್ನು ತಡೆಯುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -193,6 +210,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i018',
     text: "They drafted a detailed contingency plan in case the supply shipment was delayed.",
     meaning: "Preparing a backup protocol against potential logistic delays.",
+    kannadaMeaning: "ಸರಕು ಸಾಗಣೆ ವಿಳಂಬವಾದರೆ ಪರ್ಯಾಯವಾಗಿ ಏನು ಮಾಡಬೇಕೆಂಬ ವಿವರವಾದ ಯೋಜನೆಯನ್ನು ಅವರು ಸಿದ್ಧಪಡಿಸಿದರು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -204,6 +222,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i019',
     text: "Make sure to check visa requirements well in advance of your international travel.",
     meaning: "Verifying entry permissions early avoids airport complications.",
+    kannadaMeaning: "ಅಂತಾರಾಷ್ಟ್ರೀಯ ಪ್ರಯಾಣಕ್ಕೆ ಮುಂಚಿತವಾಗಿ ವೀಸಾ ಅಗತ್ಯತೆಗಳನ್ನು ಖಚಿತವಾಗಿ ಪರಿಶೀಲಿಸಿಕೊಳ್ಳಿ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -215,6 +234,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i020',
     text: "Our flight itinerary included a three-hour layover in Frankfurt before heading to Rome.",
     meaning: "A brief scheduled pause between connecting international flights.",
+    kannadaMeaning: "ನಮ್ಮ ವಿಮಾನ ಪ್ರಯಾಣ ಪಟ್ಟಿಯಲ್ಲಿ ರೋಮ್‌ಗೆ ಹೋಗುವ ಮುನ್ನ ಫ್ರಾಂಕ್‌ಫರ್ಟ್‌ನಲ್ಲಿ ಮೂರು ಗಂಟೆಗಳ ಕಾಲಾವಕಾಶವಿತ್ತು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -226,6 +246,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i021',
     text: "The picturesque coastal highway offered sweeping panoramic vistas of the Mediterranean.",
     meaning: "Scenic seaside routes displaying magnificent ocean panoramas.",
+    kannadaMeaning: "ಸುಂದರ ಕರಾವಳಿ ಹೆದ್ದಾರಿಯು ಮೆಡಿಟರೇನಿಯನ್ ಸಮುದ್ರದ ವಿಸ್ತಾರವಾದ ವಿಹಂಗಮ ನೋಟವನ್ನು ಒದಗಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -237,6 +258,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i022',
     text: "We reserved an authentic boutique hotel situated in the historical heart of the old city.",
     meaning: "Booking unique lodging nestled inside the antique quarter of town.",
+    kannadaMeaning: "ನಾವು ಹಳೆಯ ನಗರದ ಐತಿಹಾಸಿಕ ಕೇಂದ್ರದಲ್ಲಿರುವ ಒಂದು ಸುಂದರ ಹೋಟೆಲ್ ಅನ್ನು ಕಾಯ್ದಿರಿಸಿದೆವು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -248,6 +270,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i023',
     text: "Navigating a foreign subway network requires paying close attention to transit maps.",
     meaning: "Successfully using overseas underground trains by studying station diagrams.",
+    kannadaMeaning: "ವಿದೇಶಿ ಮೆಟ್ರೋ ಜಾಲದಲ್ಲಿ ಪ್ರಯಾಣಿಸಲು ಸಾರಿಗೆ ನಕ್ಷೆಯನ್ನು ಸೂಕ್ಷ್ಮವಾಗಿ ಗಮನಿಸುವುದು ಅಗತ್ಯ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -259,6 +282,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i024',
     text: "She exchanged currency at the airport bank to have local cash for taxi fares.",
     meaning: "Converting domestic money into local bills for ground transport.",
+    kannadaMeaning: "ಟ್ಯಾಕ್ಸಿ ಬಾಡಿಗೆಗೆ ಸ್ಥಳೀಯ ಹಣ ಹೊಂದಲು ಆಕೆ ವಿಮಾನ ನಿಲ್ದಾಣದ ಬ್ಯಾಂಕಿನಲ್ಲಿ ಕರೆನ್ಸಿ ವಿನಿಮಯ ಮಾಡಿಕೊಂಡಳು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -270,6 +294,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i025',
     text: "Pack lightweight, versatile clothing that can be layered comfortably across changing climates.",
     meaning: "Selecting adaptable apparel suitable for shifting weather conditions.",
+    kannadaMeaning: "ಬದಲಾಗುವ ಹವಾಮಾನಕ್ಕೆ ತಕ್ಕಂತೆ ಧರಿಸಬಹುದಾದ ಹಗುರವಾದ ಬಟ್ಟೆಗಳನ್ನು ಪ್ಯಾಕ್ ಮಾಡಿ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -281,6 +306,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i026',
     text: "The guided walking tour provided fascinating historical insights into ancient architecture.",
     meaning: "Learning captivating architectural heritage from a local historian.",
+    kannadaMeaning: "ಮಾರ್ಗದರ್ಶಿ ನಡಿಗೆ ಪ್ರವಾಸವು ಪ್ರಾಚೀನ ವಾಸ್ತುಶಿಲ್ಪದ ಬಗ್ಗೆ ಆಕರ್ಷಕ ಐತಿಹಾಸಿಕ ಒಳನೋಟಗಳನ್ನು ನೀಡಿತು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -292,6 +318,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i027',
     text: "Always secure your passport and valuables in the hotel room digital safe.",
     meaning: "Guarding critical identity documents and money while exploring overseas.",
+    kannadaMeaning: "ನಿಮ್ಮ ಪಾಸ್‌ಪೋರ್ಟ್ ಮತ್ತು ಬೆಲೆಬಾಳುವ ವಸ್ತುಗಳನ್ನು ಯಾವಾಗಲೂ ಹೋಟೆಲ್ ರೂಮಿನ ಡಿಜಿಟಲ್ ಲಾಕರ್‌ನಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿಡಿ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -303,6 +330,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i028',
     text: "Traveling alone fosters self-reliance and broadens your perspective on the world.",
     meaning: "Solo adventures cultivate personal independence and global empathy.",
+    kannadaMeaning: "ಒಂಟಿಯಾಗಿ ಪ್ರಯಾಣಿಸುವುದು ಸ್ವಾವಲಂಬನೆಯನ್ನು ಬೆಳೆಸುತ್ತದೆ ಮತ್ತು ಪ್ರಪಂಚದ ಬಗ್ಗೆ ವಿಶಾಲ ದೃಷ್ಟಿಕೋನವನ್ನು ನೀಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -314,6 +342,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i029',
     text: "Due to adverse weather conditions, our ferry departure was postponed until evening.",
     meaning: "Bad sea storms pushed back passenger boat sailing times.",
+    kannadaMeaning: "ಪ್ರತಿಕೂಲ ಹವಾಮಾನ ಪರಿಸ್ಥಿತಿಗಳಿಂದಾಗಿ ನಮ್ಮ ದೋಣಿ ಪ್ರಯಾಣವನ್ನು ಸಂಜೆಯವರೆಗೆ ಮುಂದೂಡಲಾಯಿತು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -325,6 +354,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i030',
     text: "We sampled delectable street food delicacies while strolling through the evening night market.",
     meaning: "Enjoying mouthwatering local culinary specialties in Asian bazaars.",
+    kannadaMeaning: "ಸಂಜೆಯ ನೈಟ್ ಮಾರ್ಕೆಟ್‌ನಲ್ಲಿ ಸುತ್ತಾಡುತ್ತಾ ನಾವು ರುಚಿಕರವಾದ ಬೀದಿಬದಿಯ ತಿಂಡಿಗಳನ್ನು ಸವಿದೆವು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -336,6 +366,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i031',
     text: "The ancient cathedral spire dominates the city skyline for miles around.",
     meaning: "A tall church tower serving as the prominent architectural landmark.",
+    kannadaMeaning: "ಪ್ರಾಚೀನ ಚರ್ಚ್ ಗೋಪುರವು ಮೈಲುಗಳ ದೂರದಿಂದ ನಗರದ ಆಕಾಶದಲ್ಲಿ ಪ್ರಮುಖವಾಗಿ ಕಾಣುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -347,6 +378,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i032',
     text: "Make sure your luggage complies with airline weight and size restrictions.",
     meaning: "Checking that baggage meets airline baggage allowance policies.",
+    kannadaMeaning: "ನಿಮ್ಮ ಲಗೇಜ್ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಯ ತೂಕ ಮತ್ತು ಗಾತ್ರದ ನಿಯಮಗಳಿಗೆ ಸರಿಹೊಂದುತ್ತದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -358,6 +390,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i033',
     text: "Immersing yourself in local customs enriches your travel experience tremendously.",
     meaning: "Participating in cultural traditions deepens the rewards of journeying.",
+    kannadaMeaning: "ಸ್ಥಳೀಯ ಸಂಸ್ಕೃತಿ ಮತ್ತು ಪದ್ಧತಿಗಳಲ್ಲಿ ಭಾಗಿಯಾಗುವುದು ನಿಮ್ಮ ಪ್ರಯಾಣದ ಅನುಭವವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -369,6 +402,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i034',
     text: "We hiked through verdant alpine valleys surrounded by towering snow-capped peaks.",
     meaning: "Trekking through lush green mountain passes framed by white summits.",
+    kannadaMeaning: "ನಾವು ಹಿಮದಿಂದ ಆವೃತವಾದ ಎತ್ತರದ ಶಿಖರಗಳಿಂದ ಸುತ್ತುವರಿದ ಹಸಿರು ಪರ್ವತ ಕಣಿವೆಗಳಲ್ಲಿ ಚಾರಣ ಮಾಡಿದೆವು.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -380,6 +414,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i035',
     text: "A courteous demeanor will help you overcome language barriers when traveling abroad.",
     meaning: "Kind, respectful body language builds bridges when words fail.",
+    kannadaMeaning: "ವಿದೇಶ ಪ್ರವಾಸ ಮಾಡುವಾಗ ವಿನಯಶೀಲ ವರ್ತನೆಯು ಭಾಷೆಯ ಅಡಚಣೆಯನ್ನು ನಿವಾರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -391,6 +426,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i036',
     text: "Critical thinking enables students to analyze complex arguments logically and objectively.",
     meaning: "Logical analysis lets learners dissect complicated propositions smartly.",
+    kannadaMeaning: "ವಿಮರ್ಶಾತ್ಮಕ ಚಿಂತನೆಯು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಸಂಕೀರ್ಣ ವಾದಗಳನ್ನು ತಾರ್ಕಿಕವಾಗಿ ಮತ್ತು ವಸ್ತುನಿಷ್ಠವಾಗಿ ವಿಶ್ಲೇಷಿಸಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -402,6 +438,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i037',
     text: "She submitted an impeccably researched thesis on renewable energy alternatives.",
     meaning: "Handing in a flawless academic paper on clean energy technology.",
+    kannadaMeaning: "ಆಕೆಯು ನವೀಕರಿಸಬಹುದಾದ ಇಂಧನ ಪರ್ಯಾಯಗಳ ಬಗ್ಗೆ ಅತ್ಯುತ್ತಮವಾಗಿ ಸಂಶೋಧಿಸಿದ ಪ್ರಬಂಧವನ್ನು ಸಲ್ಲಿಸಿದಳು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -413,6 +450,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i038',
     text: "Active participation in seminar discussions broadens your intellectual comprehension.",
     meaning: "Speaking up in classroom debates expands understanding of subjects.",
+    kannadaMeaning: "ವಿಚಾರ ಸಂಕಿರಣ ಚರ್ಚೆಗಳಲ್ಲಿ ಸಕ್ರಿಯವಾಗಿ ಭಾಗವಹಿಸುವುದು ನಿಮ್ಮ ಬೌದ್ಧಿಕ ತಿಳುವಳಿಕೆಯನ್ನು ವಿಸ್ತರಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -424,6 +462,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i039',
     text: "The university library offers extensive digital archives for scholarly research.",
     meaning: "Higher education facilities provide deep databases of historical journals.",
+    kannadaMeaning: "ವಿಶ್ವವಿದ್ಯಾನಿಲಯದ ಗ್ರಂಥಾಲಯವು ಶೈಕ್ಷಣಿಕ ಸಂಶೋಧನೆಗಾಗಿ ವಿಶಾಲವಾದ ಡಿಜಿಟಲ್ ಆರ್ಕೈವ್‌ಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -435,6 +474,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i040',
     text: "Developing structured study schedules prevents anxiety before major final examinations.",
     meaning: "Disciplined time planning avoids last-minute academic panic.",
+    kannadaMeaning: "ಯೋಜಿತ ಅಧ್ಯಯನ ವೇಳಾಪಟ್ಟಿಯನ್ನು ರೂಪಿಸುವುದು ಪ್ರಮುಖ ಅಂತಿಮ ಪರೀಕ್ಷೆಗಳ ಮುಂಚಿನ ಆತಂಕವನ್ನು ತಡೆಯುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -446,6 +486,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i041',
     text: "The professor challenged the undergraduate class to formulate their own hypotheses.",
     meaning: "A teacher nudging college students to conceive scientific theories.",
+    kannadaMeaning: "ಪ್ರೊಫೆಸರ್ ಪದವಿಪೂರ್ವ ತರಗತಿಗೆ ತಮ್ಮದೇ ಆದ ಸಿದ್ಧಾಂತಗಳನ್ನು ರೂಪಿಸಲು ಸವಾಲು ಹಾಕಿದರು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -457,6 +498,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i042',
     text: "Collaborative group assignments foster essential teamwork and communication skills.",
     meaning: "Team projects teach interpersonal abilities vital for future careers.",
+    kannadaMeaning: "ಗುಂಪು ಯೋಜನೆಗಳು ವಿದ್ಯಾರ್ಥಿಗಳಲ್ಲಿ ತಂಡದ ಕೆಲಸ ಮತ್ತು ಸಂವಹನ ಕೌಶಲ್ಯಗಳನ್ನು ಬೆಳೆಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -468,6 +510,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i043',
     text: "He received an academic scholarship based on his exceptional performance in mathematics.",
     meaning: "Winning tuition funding through outstanding numerical achievement.",
+    kannadaMeaning: "ಗಣಿತದಲ್ಲಿನ ಅತ್ಯುತ್ತಮ ಸಾಧನೆಯ ಆಧಾರದ ಮೇಲೆ ಅವನಿಗೆ ಶೈಕ್ಷಣಿಕ ವಿದ್ಯಾರ್ಥಿವೇತನ ದೊರೆಯಿತು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -479,6 +522,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i044',
     text: "Effective note-taking strategies involve summarizing key concepts in your own words.",
     meaning: "Recording lectures by distilling main ideas aids long-term retention.",
+    kannadaMeaning: "ಪರಿಣಾಮಕಾರಿ ನೋಟ್ಸ್ ಬರೆಯುವ ವಿಧಾನವು ಪ್ರಮುಖ ಪರಿಕಲ್ಪನೆಗಳನ್ನು ನಿಮ್ಮ ಸ್ವಂತ ಮಾತುಗಳಲ್ಲಿ ಸಾರಾಂಶ ಮಾಡುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -490,6 +534,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i045',
     text: "The chemistry laboratory enforces strict safety protocols including protective eyewear.",
     meaning: "Science classrooms mandate goggles to protect eyes against chemical splashes.",
+    kannadaMeaning: "ರಸಾಯನಶಾಸ್ತ್ರ ಪ್ರಯೋಗಾಲಯವು ರಕ್ಷಣಾತ್ಮಕ ಕನ್ನಡಕ ಸೇರಿದಂತೆ ಕಟ್ಟುನಿಟ್ಟಾದ ಸುರಕ್ಷತಾ ನಿಯಮಗಳನ್ನು ಜಾರಿಗೆ ತರುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -501,6 +546,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i046',
     text: "Reading classic literature improves your vocabulary range and descriptive eloquence.",
     meaning: "Exploring timeless books develops rich expression and word knowledge.",
+    kannadaMeaning: "ಶ್ರೇಷ್ಠ ಸಾಹಿತ್ಯವನ್ನು ಓದುವುದು ನಿಮ್ಮ ಶಬ್ದಕೋಶದ ವ್ಯಾಪ್ತಿ ಮತ್ತು ಅಭಿವ್ಯಕ್ತಿ ಕೌಶಲ್ಯವನ್ನು ಸುಧಾರಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -512,6 +558,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i047',
     text: "Students are required to cite all external references to avoid academic plagiarism.",
     meaning: "Giving proper credit to sources ensures academic honesty in papers.",
+    kannadaMeaning: "ಸಾಹಿತ್ಯ ಕೃತಿಚೌರ್ಯವನ್ನು ತಪ್ಪಿಸಲು ವಿದ್ಯಾರ್ಥಿಗಳು ಎಲ್ಲಾ ಮೂಲಗಳನ್ನು ಉಲ್ಲೇಖಿಸುವುದು ಕಡ್ಡಾಯವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -523,6 +570,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i048',
     text: "She attended an informative workshop on public speaking and presentation techniques.",
     meaning: "Participating in training to become a confident orator.",
+    kannadaMeaning: "ಆಕೆ ಸಾರ್ವಜನಿಕ ಭಾಷಣ ಮತ್ತು ಪ್ರಸ್ತುತಿ ಕೌಶಲ್ಯಗಳ ಕುರಿತಾದ ಉಪಯುಕ್ತ ಕಾರ್ಯಾಗಾರದಲ್ಲಿ ಭಾಗವಹಿಸಿದಳು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -534,6 +582,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i049',
     text: "Extracurricular activities help students develop well-rounded character and leadership.",
     meaning: "Clubs and sports outside of class build character and social skills.",
+    kannadaMeaning: "ಪಠ್ಯೇತರ ಚಟುವಟಿಕೆಗಳು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಸಮಗ್ರ ವ್ಯಕ್ತಿತ್ವ ಮತ್ತು ನಾಯಕತ್ವವನ್ನು ಬೆಳೆಸಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -545,6 +594,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i050',
     text: "He demonstrated a deep understanding of historical contexts during the debate.",
     meaning: "Showing mastery of historical circumstances in a competitive argument.",
+    kannadaMeaning: "ಚರ್ಚೆಯ ಸಮಯದಲ್ಲಿ ಅವನು ಐತಿಹಾಸಿಕ ಸಂದರ್ಭಗಳ ಬಗ್ಗೆ ಆಳವಾದ ತಿಳುವಳಿಕೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿದನು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -556,6 +606,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i051',
     text: "Peer review allows students to receive constructive feedback on their writing drafts.",
     meaning: "Classmates critiquing each other's essays to refine style and logic.",
+    kannadaMeaning: "ಸಹಪಾಠಿಗಳ ವಿಮರ್ಶೆಯು ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ತಮ್ಮ ಬರಹದ ಕರಡುಗಳ ಬಗ್ಗೆ ರಚನಾತ್ಮಕ ಪ್ರತಿಕ್ರಿಯೆ ಪಡೆಯಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -567,6 +618,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i052',
     text: "Education is not merely acquiring facts, but training the mind to think critically.",
     meaning: "True learning cultivates sharp reasoning rather than rote memorization.",
+    kannadaMeaning: "ಶಿಕ್ಷಣವೆಂದರೆ ಕೇವಲ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುವುದಲ್ಲ, ಬದಲಿಗೆ ವಿಮರ್ಶಾತ್ಮಕವಾಗಿ ಯೋಚಿಸಲು ಮನಸ್ಸಿಗೆ ತರಬೇತಿ ನೀಡುವುದು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -578,6 +630,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i053',
     text: "Cloud computing enables seamless synchronization of data across multiple devices.",
     meaning: "Storing files online lets phones and computers share files instantly.",
+    kannadaMeaning: "ಕ್ಲೌಡ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಅನೇಕ ಸಾಧನಗಳ ನಡುವೆ ಡೇಟಾವನ್ನು ಸರಾಗವಾಗಿ ಸಿಂಕ್ ಮಾಡಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -589,6 +642,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i054',
     text: "Artificial intelligence algorithms are transforming modern healthcare diagnostics.",
     meaning: "Smart computer models are speeding up the detection of medical illnesses.",
+    kannadaMeaning: "ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ ಅಲ್ಗಾರಿದಮ್‌ಗಳು ಆಧುನಿಕ ಆರೋಗ್ಯ ರಕ್ಷಣಾ ರೋಗನಿರ್ಣಯವನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಪರಿವರ್ತಿಸುತ್ತಿವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -600,6 +654,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i055',
     text: "Always activate two-factor authentication to secure your sensitive personal accounts.",
     meaning: "Using phone verification codes adds a strong barrier against hackers.",
+    kannadaMeaning: "ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಖಾತೆಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿರಿಸಲು ಯಾವಾಗಲೂ ಟು-ಫ್ಯಾಕ್ಟರ್ ದೃಢೀಕರಣವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -611,6 +666,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i056',
     text: "The smartphone battery optimization feature significantly extends daily battery life.",
     meaning: "Smart power settings conserve phone electricity throughout the day.",
+    kannadaMeaning: "ಸ್ಮಾರ್ಟ್‌ಫೋನ್ ಬ್ಯಾಟರಿ ಆಪ್ಟಿಮೈಸೇಶನ್ ವೈಶಿಷ್ಟ್ಯವು ದೈನಂದಿನ ಬ್ಯಾಟರಿ ಬಾಳಿಕೆಯನ್ನು ಗಮನಾರ್ಹವಾಗಿ ವಿಸ್ತರಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -622,6 +678,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i057',
     text: "High-speed fiber optic cables transmit vast volumes of information across continents.",
     meaning: "Glass light cables move international internet data at lightning speeds.",
+    kannadaMeaning: "ಹೈ-ಸ್ಪೀಡ್ ಆಪ್ಟಿಕಲ್ ಫೈಬರ್ ಕೇಬಲ್‌ಗಳು ಖಂಡಗಳ ನಡುವೆ ಅಪಾರ ಪ್ರಮಾಣದ ಮಾಹಿತಿಯನ್ನು ರವಾನಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -633,6 +690,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i058',
     text: "Virtual reality headsets create immersive simulations for education and training.",
     meaning: "3D digital goggles place learners inside lifelike simulated worlds.",
+    kannadaMeaning: "ವರ್ಚುವಲ್ ರಿಯಾಲಿಟಿ ಹೆಡ್‌ಸೆಟ್‌ಗಳು ಶಿಕ್ಷಣ ಮತ್ತು ತರಬೇತಿಗಾಗಿ ನೈಜ ಸಿಮ್ಯುಲೇಶನ್‌ಗಳನ್ನು ಸೃಷ್ಟಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -644,6 +702,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i059',
     text: "Automated software updates patch critical security vulnerabilities in the operating system.",
     meaning: "Background patches repair computer flaws before cyber criminals find them.",
+    kannadaMeaning: "ಸ್ವಯಂಚಾಲಿತ ಸಾಫ್ಟ್‌ವೇರ್ ಅಪ್‌ಡೇಟ್‌ಗಳು ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್‌ನಲ್ಲಿನ ಪ್ರಮುಖ ಸುರಕ್ಷತಾ ದೋಷಗಳನ್ನು ಸರಿಪಡಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -655,6 +714,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i060',
     text: "She learned how to write clean, maintainable code using modern programming frameworks.",
     meaning: "Crafting readable software architecture that other developers can easily update.",
+    kannadaMeaning: "ಆಕೆಯು ಆಧುನಿಕ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಚೌಕಟ್ಟುಗಳನ್ನು ಬಳಸಿ ಸ್ವಚ್ಛ ಮತ್ತು ನಿರ್ವಹಿಸಬಹುದಾದ ಕೋಡ್ ಬರೆಯುವುದನ್ನು ಕಲಿತಳು.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -666,6 +726,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i061',
     text: "Digital literacy has become an essential prerequisite for modern workplace productivity.",
     meaning: "Knowing how to navigate computers is now mandatory for office jobs.",
+    kannadaMeaning: "ಆಧುನಿಕ ಕೆಲಸದ ಸ್ಥಳದ ಉತ್ಪಾದಕತೆಗೆ ಡಿಜಿಟಲ್ ಸಾಕ್ಷರತೆಯು ಅತ್ಯಗತ್ಯ ಪೂರ್ವಾಪೇಕ್ಷಿತವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -677,6 +738,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i062',
     text: "The mobile application features an intuitive interface designed for seamless navigation.",
     meaning: "Software layout that is naturally easy to understand and browse without instructions.",
+    kannadaMeaning: "ಮೊಬೈಲ್ ಅಪ್ಲಿಕೇಶನ್ ಸುಲಭ ನ್ಯಾವಿಗೇಷನ್‌ಗಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಅರ್ಥಗರ್ಭಿತ ಇಂಟರ್‌ಫೇಸ್ ಅನ್ನು ಒಳಗೊಂಡಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -688,6 +750,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i063',
     text: "Smart home devices allow homeowners to control thermostats and lighting remotely.",
     meaning: "Connected appliances adjust temperatures and bulbs from smartphone apps.",
+    kannadaMeaning: "ಸ್ಮಾರ್ಟ್ ಹೋಮ್ ಸಾಧನಗಳು ಮನೆಯ ಮಾಲೀಕರಿಗೆ ತಾಪಮಾನ ಮತ್ತು ಬೆಳಕನ್ನು ದೂರದಿಂದಲೇ ನಿಯಂತ್ರಿಸಲು ಅನುಮತಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -699,6 +762,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i064',
     text: "Cybersecurity specialists work diligently to prevent unauthorized data breaches.",
     meaning: "Security engineers protect confidential customer databases from hackers.",
+    kannadaMeaning: "ಅನಧಿಕೃತ ಡೇಟಾ ಸೋರಿಕೆಯನ್ನು ತಡೆಯಲು ಸೈಬರ್ ಭದ್ರತಾ ತಜ್ಞರು ಶ್ರದ್ಧೆಯಿಂದ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -710,6 +774,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i065',
     text: "The rapid advancement of quantum computing promises to revolutionize cryptography.",
     meaning: "Next-generation physics-based computing will transform data encryption.",
+    kannadaMeaning: "ಕ್ವಾಂಟಮ್ ಕಂಪ್ಯೂಟಿಂಗ್‌ನ ಕ್ಷಿಪ್ರ ಪ್ರಗತಿಯು ಗೂಢಲಿಪೀಕರಣ ಕ್ಷೇತ್ರದಲ್ಲಿ ಕ್ರಾಂತಿಯನ್ನುಂಟುಮಾಡಲಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -721,6 +786,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i066',
     text: "E-commerce platforms utilize sophisticated recommendation engines to personalize shopping.",
     meaning: "Online stores analyze user habits to suggest items tailored to their tastes.",
+    kannadaMeaning: "ಇ-ಕಾಮರ್ಸ್ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್‌ಗಳು ಶಾಪಿಂಗ್ ಅನ್ನು ವೈಯಕ್ತೀಕರಿಸಲು ಅತ್ಯಾಧುನಿಕ ಶಿಫಾರಸು ಎಂಜಿನ್‌ಗಳನ್ನು ಬಳಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -732,6 +798,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i067',
     text: "Excessive screen time before bedtime can disrupt your natural circadian sleep rhythm.",
     meaning: "Late-night phone glare interferes with the brain's melatonin production.",
+    kannadaMeaning: "ಮಲಗುವ ಮುನ್ನ ಅತಿಯಾದ ಸ್ಕ್ರೀನ್ ಬಳಕೆ ನೈಸರ್ಗಿಕ ನಿದ್ರೆಯ ಚಕ್ರವನ್ನು ಏರುಪೇರು ಮಾಡಬಹುದು.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -743,6 +810,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i068',
     text: "Open-source software allows global developers to inspect, modify, and enhance source code.",
     meaning: "Public code repositories foster worldwide technical collaboration.",
+    kannadaMeaning: "ಓಪನ್ ಸೋರ್ಸ್ ಸಾಫ್ಟ್‌ವೇರ್ ಪ್ರಪಂಚದಾದ್ಯಂತದ ಡೆವಲಪರ್‌ಗಳಿಗೆ ಮೂಲ ಕೋಡ್ ಅನ್ನು ಪರೀಕ್ಷಿಸಲು ಮತ್ತು ಸುಧಾರಿಸಲು ಅನುಮತಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -754,6 +822,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i069',
     text: "Regular aerobic exercise strengthens the cardiovascular system and boosts mental clarity.",
     meaning: "Cardio workouts benefit heart function and clear mental fogginess.",
+    kannadaMeaning: "ನಿಯಮಿತ ಏರೋಬಿಕ್ ವ್ಯಾಯಾಮವು ಹೃದಯರಕ್ತನಾಳದ ವ್ಯವಸ್ಥೆಯನ್ನು ಬಲಪಡಿಸುತ್ತದೆ ಮತ್ತು ಮಾನಸಿಕ ಸ್ಪಷ್ಟತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -765,6 +834,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i070',
     text: "A balanced diet rich in leafy greens and lean proteins promotes sustained energy.",
     meaning: "Nutritious meals keep blood sugar stable and prevent afternoon crashes.",
+    kannadaMeaning: "ಹಸಿರು ತರಕಾರಿಗಳು ಮತ್ತು ಪ್ರೋಟೀನ್‌ಗಳಿಂದ ಕೂಡಿದ ಸಮತೋಲಿತ ಆಹಾರವು ನಿರಂತರ ಶಕ್ತಿಯನ್ನು ನೀಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -776,6 +846,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i071',
     text: "Chronic sleep deprivation severely impairs cognitive function and immune response.",
     meaning: "Long-term lack of rest damages brain memory and lowers resistance to sickness.",
+    kannadaMeaning: "ದೀರ್ಘಕಾಲದ ನಿದ್ರಾಹೀನತೆಯು ಜ್ಞಾಪಕ ಶಕ್ತಿ ಮತ್ತು ರೋಗನಿರೋಧಕ ಶಕ್ತಿಯನ್ನು ತೀವ್ರವಾಗಿ ಕುಂಠಿತಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -787,6 +858,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i072',
     text: "Practicing mindfulness meditation reduces psychological stress and emotional reactivity.",
     meaning: "Quiet meditation cultivates calm thinking and dampens panic responses.",
+    kannadaMeaning: "ಧ್ಯಾನವನ್ನು ಅಭ್ಯಾಸ ಮಾಡುವುದು ಮಾನಸಿಕ ಒತ್ತಡವನ್ನು ಮತ್ತು ಭಾವನಾತ್ಮಕ ಪ್ರಕ್ಷುಬ್ಧತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -798,6 +870,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i073',
     text: "Staying sufficiently hydrated throughout the day prevents headaches and fatigue.",
     meaning: "Drinking enough water wards off afternoon sluggishness and temple pain.",
+    kannadaMeaning: "ದಿನವಿಡೀ ಸಾಕಷ್ಟು ನೀರು ಕುಡಿಯುವುದು ತಲೆನೋವು ಮತ್ತು ಆಯಾಸವನ್ನು ತಡೆಯುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -809,6 +882,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i074',
     text: "His orthopedic doctor recommended physical therapy exercises to rehabilitate his knee.",
     meaning: "Specialized clinic workouts to restore strength to an injured joint.",
+    kannadaMeaning: "ಅವರ ಮೂಳೆ ವೈದ್ಯರು ಮಂಡಿ ಪುನಶ್ಚೇತನಕ್ಕಾಗಿ ದೈಹಿಕ ಚಿಕಿತ್ಸಾ ವ್ಯಾಯಾಮಗಳನ್ನು ಶಿಫಾರಸು ಮಾಡಿದರು.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -820,6 +894,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i075',
     text: "Excessive consumption of processed foods is linked to increased metabolic health risks.",
     meaning: "Eating too many factory packaged snacks damages long-term physical wellness.",
+    kannadaMeaning: "ಸಂಸ್ಕರಿಸಿದ ಆಹಾರಗಳ ಅತಿಯಾದ ಸೇವನೆಯು ಚಯಾಪಚಯ ಆರೋಗ್ಯದ ಅಪಾಯಗಳನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -831,6 +906,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i076',
     text: "She incorporated daily hamstring and shoulder stretches to improve joint mobility.",
     meaning: "Stretching muscle bands prevents stiffness and improves posture.",
+    kannadaMeaning: "ಕೀಲುಗಳ ಚಲನಶೀಲತೆಯನ್ನು ಸುಧಾರಿಸಲು ಆಕೆ ದೈನಂದಿನ ಸ್ಟ್ರೆಚಿಂಗ್ ವ್ಯಾಯಾಮಗಳನ್ನು ರೂಢಿಸಿಕೊಂಡಳು.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -842,6 +918,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i077',
     text: "Taking short breaks during prolonged desk work alleviates eyestrain and back tension.",
     meaning: "Standing up periodically prevents posture stiffness and digital eye fatigue.",
+    kannadaMeaning: "ಮೇಜಿನ ಮುಂದೆ ದೀರ್ಘಕಾಲ ಕೆಲಸ ಮಾಡುವಾಗ ಸಣ್ಣ ವಿರಾಮಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುವುದು ಕಣ್ಣಿನ ಆಯಾಸವನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -853,6 +930,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i078',
     text: "A strong social support network is fundamental to emotional resilience and happiness.",
     meaning: "Having dependable friends and family helps people withstand life crises.",
+    kannadaMeaning: "ಬಲವಾದ ಸಾಮಾಜಿಕ ಬೆಂಬಲ ಜಾಲವು ಭಾವನಾತ್ಮಕ ಸ್ಥೈರ್ಯ ಮತ್ತು ಸಂತೋಷಕ್ಕೆ ಮೂಲಭೂತವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -864,6 +942,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i079',
     text: "The nutritionist advised incorporating diverse whole grains into daily morning meals.",
     meaning: "Dietary guidance favoring oats, brown rice, and whole-wheat alternatives.",
+    kannadaMeaning: "ಪೌಷ್ಟಿಕತಜ್ಞರು ದೈನಂದಿನ ಉಪಹಾರದಲ್ಲಿ ವಿವಿಧ ಧಾನ್ಯಗಳನ್ನು ಸೇರಿಸಲು ಸಲಹೆ ನೀಡಿದರು.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -875,6 +954,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i080',
     text: "Adequate sunlight exposure stimulates the body's natural production of vitamin D.",
     meaning: "Spending time outdoors promotes bone strength through solar synthesis.",
+    kannadaMeaning: "ಸಾಕಷ್ಟು ಸೂರ್ಯನ ಬೆಳಕಿಗೆ ಮೈಯೊಡ್ಡುವುದು ದೇಹದಲ್ಲಿ ವಿಟಮಿನ್ ಡಿ ನೈಸರ್ಗಿಕ ಉತ್ಪಾದನೆಯನ್ನು ಪ್ರಚೋದಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -886,6 +966,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i081',
     text: "She practices progressive muscle relaxation techniques to unwind before going to sleep.",
     meaning: "Tensing and releasing muscle groups to induce tranquil evening sleep.",
+    kannadaMeaning: "ಮಲಗುವ ಮುನ್ನ ಆಕೆಯು ವಿಶ್ರಾಂತಿ ಪಡೆಯಲು ಸ್ನಾಯು ವಿಶ್ರಾಂತಿ ತಂತ್ರಗಳನ್ನು ಅಭ್ಯಾಸ ಮಾಡುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -897,6 +978,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i082',
     text: "Routine dental checkups every six months detect tooth decay and gum disease early.",
     meaning: "Biannual dental appointments prevent severe oral infections.",
+    kannadaMeaning: "ಪ್ರತಿ ಆರು ತಿಂಗಳಿಗೊಮ್ಮೆ ದಂತ ಪರೀಕ್ಷೆ ಮಾಡಿಸಿಕೊಳ್ಳುವುದು ಹಲ್ಲಿನ ಹುಳುಕು ಮತ್ತು ವಸಡು ಕಾಯಿಲೆಗಳನ್ನು ಮೊದಲೇ ಪತ್ತೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -908,6 +990,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i083',
     text: "Physical activity releases natural endorphins that elevate mood and alleviate anxiety.",
     meaning: "Exercise chemicals naturally lift spirits and chase away melancholy.",
+    kannadaMeaning: "ದೈಹಿಕ ಚಟುವಟಿಕೆಯು ಮನಸ್ಸನ್ನು ಉಲ್ಲಾಸಗೊಳಿಸುವ ನೈಸರ್ಗಿಕ ಎಂಡಾರ್ಫಿನ್‌ಗಳನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -919,6 +1002,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i084',
     text: "Listening to your body's signals helps you avoid overtraining and sports injuries.",
     meaning: "Heeding signs of tiredness stops athletes from pulling muscles.",
+    kannadaMeaning: "ದೇಹದ ಸಂಕೇತಗಳನ್ನು ಆಲಿಸುವುದು ಕ್ರೀಡಾ ಗಾಯಗಳು ಮತ್ತು ಅತಿಯಾದ ದಣಿವನ್ನು ತಪ್ಪಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -930,6 +1014,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i085',
     text: "Mental health is just as vital to overall well-being as physical fitness.",
     meaning: "Emotional wellness and bodily health are equally indispensable partners.",
+    kannadaMeaning: "ದೈಹಿಕ ಸಾಮರ್ಥ್ಯದಷ್ಟೇ ಮಾನಸಿಕ ಆರೋಗ್ಯವೂ ಒಟ್ಟಾರೆ ಯೋಗಕ್ಷೇಮಕ್ಕೆ ಅತ್ಯಂತ ಪ್ರಮುಖವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -941,6 +1026,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i086',
     text: "The aroma of freshly brewed Colombian coffee filled the cozy morning kitchen.",
     meaning: "The warm fragrance of roasted coffee beans welcoming early risers.",
+    kannadaMeaning: "ತಾಜಾ ಬಿಸಿ ಕಾಫಿಯ ಸುವಾಸನೆಯು ಬೆಳಗಿನ ಹಿತಕರವಾದ ಅಡುಗೆಮನೆಯನ್ನು ತುಂಬಿತು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -952,6 +1038,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i087',
     text: "The restaurant specializes in authentic Mediterranean cuisine featuring olive oil and herbs.",
     meaning: "A dining venue celebrated for southern European coastal dishes.",
+    kannadaMeaning: "ಈ ರೆಸ್ಟೋರೆಂಟ್ ಆಲಿವ್ ಎಣ್ಣೆ ಮತ್ತು ಗಿಡಮೂಲಿಕೆಗಳನ್ನು ಒಳಗೊಂಡ ಸಾಂಪ್ರದಾಯಿಕ ಮೆಡಿಟರೇನಿಯನ್ ಪಾಕಪದ್ಧತಿಯಲ್ಲಿ ಪರಿಣತಿ ಹೊಂದಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -963,6 +1050,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i088',
     text: "She seasoned the roasted vegetables with aromatic garlic, rosemary, and sea salt.",
     meaning: "Sprinkling flavorful garden herbs on baked vegetable slices.",
+    kannadaMeaning: "ಆಕೆಯು ಹುರಿದ ತರಕಾರಿಗಳಿಗೆ ಬೆಳ್ಳುಳ್ಳಿ, ರೋಸ್‌ಮೆರಿ ಮತ್ತು ಉಪ್ಪನ್ನು ಸೇರಿಸಿ ಹದಗೊಳಿಸಿದಳು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -974,6 +1062,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i089',
     text: "The pastry chef demonstrated the intricate technique of folding flaky butter dough.",
     meaning: "A baker explaining how layers of pastry achieve light, crisp texture.",
+    kannadaMeaning: "ಪೇಸ್ಟ್ರಿ ಬಾಣಸಿಗರು ಬೆಣ್ಣೆಯ ಹಿಟ್ಟನ್ನು ಮಡಚುವ ಸೂಕ್ಷ್ಮ ತಂತ್ರವನ್ನು ಪ್ರದರ್ಶಿಸಿದರು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -985,6 +1074,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i090',
     text: "Could you recommend a vegetarian dish that is both nutritious and satisfying?",
     meaning: "Seeking a meatless entree that delivers robust flavor and nutrition.",
+    kannadaMeaning: "ಪೌಷ್ಟಿಕ ಮತ್ತು ತೃಪ್ತಿಕರವಾದ ಸಸ್ಯಾಹಾರಿ ಖಾದ್ಯವನ್ನು ನೀವು ಶಿಫಾರಸು ಮಾಡಬಹುದೇ?",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -996,6 +1086,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i091',
     text: "We savored every single bite of the creamy artisanal pistachio ice cream.",
     meaning: "Deliberately tasting and enjoying high-end handcrafted frozen sweets.",
+    kannadaMeaning: "ನಾವು ಪಿಸ್ತಾ ಐಸ್ ಕ್ರೀಮ್‌ನ ಪ್ರತಿಯೊಂದು ತುತ್ತನ್ನೂ ಅತ್ಯಂತ ಆನಂದದಿಂದ ಸವಿದೆವು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1007,6 +1098,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i092',
     text: "The dinner banquet featured an assortment of freshly caught seafood delicacies.",
     meaning: "A lavish celebratory spread showcasing ocean harvest delicacies.",
+    kannadaMeaning: "ರಾತ್ರಿಯ ಔತಣಕೂಟದಲ್ಲಿ ತಾಜಾ ಸಮುದ್ರ ಆಹಾರದ ವಿವಿಧ ಖಾದ್ಯಗಳನ್ನು ಬಡಿಸಲಾಯಿತು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1018,6 +1110,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i093',
     text: "Fermented foods like yogurt and kimchi promote a healthy balance of gut bacteria.",
     meaning: "Cultured foods containing probiotic microbes benefit digestion.",
+    kannadaMeaning: "ಮೊಸರಿನಂತಹ ಹುದುಗಿಸಿದ ಆಹಾರಗಳು ಕರುಳಿನ ಬ್ಯಾಕ್ಟೀರಿಯಾದ ಆರೋಗ್ಯಕರ ಸಮತೋಲನವನ್ನು ಹೆಚ್ಚಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1029,6 +1122,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i094',
     text: "He politely requested that the waiter prepare his dressing on the side.",
     meaning: "Asking for salad vinaigrette in a separate small dish.",
+    kannadaMeaning: "ಸಲಾಡ್ ಡ್ರೆಸ್ಸಿಂಗ್ ಅನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ ಬಡಿಸುವಂತೆ ಅವನು ಮಾಣಿಯನ್ನು ವಿನಮ್ರವಾಗಿ ವಿನಂತಿಸಿದನು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1040,6 +1134,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i095',
     text: "The ripe tropical mango was bursting with sweet, refreshing, succulent juice.",
     meaning: "Juicy and delectable seasonal fruit at peak summertime ripeness.",
+    kannadaMeaning: "ಮಾಗಿದ ಮಾವಿನ ಹಣ್ಣು ಸಿಹಿಯಾದ ಮತ್ತು ರಸಭರಿತವಾದ ರಸದಿಂದ ತುಂಬಿತ್ತು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1051,6 +1146,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i096',
     text: "She prefers whole-grain sourdough bread for its distinct flavor and easier digestion.",
     meaning: "Choosing traditionally fermented loaves over factory white bread.",
+    kannadaMeaning: "ವಿಶಿಷ್ಟ ರುಚಿ ಮತ್ತು ಸುಲಭ ಜೀರ್ಣಕ್ರಿಯೆಗಾಗಿ ಆಕೆಯು ಸೋರ್ಡಫ್ ಬ್ರೆಡ್ ಅನ್ನು ಆದ್ಯತೆ ನೀಡುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1062,6 +1158,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i097',
     text: "The dinner host graciously accommodated guests with diverse dietary restrictions.",
     meaning: "A thoughtful host ensuring everyone has safe, appetizing dishes to eat.",
+    kannadaMeaning: "ಔತಣಕೂಟದ ಆತಿಥೇಯರು ಅತಿಥಿಗಳ ಆಹಾರ ನಿರ್ಬಂಧಗಳಿಗೆ ತಕ್ಕಂತೆ ಸಂತೋಷದಿಂದ ಹೊಂದಾಣಿಕೆ ಮಾಡಿದರು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1073,6 +1170,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i098',
     text: "A dash of freshly ground black pepper enhances the savoriness of homemade soup.",
     meaning: "Adding a small spice pinch to elevate hot broth flavors.",
+    kannadaMeaning: "ತಾಜಾ ಪುಡಿಮಾಡಿದ ಕಪ್ಪು ಮೆಣಸು ಮನೆಯ ಸೂಪ್‌ನ ರುಚಿಯನ್ನು ಇನ್ನಷ್ಟು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1084,6 +1182,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i099',
     text: "The sommelier recommended an aromatic chilled white wine to pair with the seafood.",
     meaning: "A certified beverage expert matching the perfect vintage to fish.",
+    kannadaMeaning: "ಸಮುದ್ರಾಹಾರದೊಂದಿಗೆ ಸೇವಿಸಲು ಉತ್ತಮ ವೈನ್ ಅನ್ನು ಪರಿಣತರು ಶಿಫಾರಸು ಮಾಡಿದರು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1095,6 +1194,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i100',
     text: "Mindful eating involves paying full sensory attention to textures, colors, and flavors.",
     meaning: "Eating consciously without smartphone distractions improves pleasure.",
+    kannadaMeaning: "ಗಮನವಿಟ್ಟು ಊಟ ಮಾಡುವುದು ಆಹಾರದ ವಿನ್ಯಾಸ, ಬಣ್ಣ ಮತ್ತು ಸುವಾಸನೆಯನ್ನು ಪೂರ್ಣವಾಗಿ ಆನಂದಿಸುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1106,6 +1206,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i101',
     text: "Local farmers' markets connect community residents directly with regional food producers.",
     meaning: "Neighborhood stands bringing farm-fresh goods to urban consumers.",
+    kannadaMeaning: "ವ್ಯಾಯಾಮದ ನಂತರ ಪ್ರೋಟೀನ್ ಶೇಕ್ ಕುಡಿಯುವುದು ಸ್ನಾಯುಗಳ ಚೇತರಿಕೆಗೆ ಸಹಕಾರಿಯಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1117,6 +1218,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i102',
     text: "Sharing a home-cooked meal around the table strengthens interpersonal family bonds.",
     meaning: "Dining together creates warm memories and strengthens connections.",
+    kannadaMeaning: "ಅಡುಗೆ ಮಾಡುವಾಗ ವಿವಿಧ ಮಸಾಲೆಗಳನ್ನು ಸರಿಯಾಗಿ ಬಳಸುವುದು ಆಹಾರದ ರುಚಿಯನ್ನು ಅದ್ಭುತವಾಗಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1128,6 +1230,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i103',
     text: "She practices intricate classical piano sonatas for two hours every afternoon.",
     meaning: "Devoting serious discipline to mastering demanding musical compositions.",
+    kannadaMeaning: "ಅವನು ಪ್ರಕೃತಿಯ ಫೋಟೋಗಳನ್ನು ತೆಗೆಯಲು ವಾರಾಂತ್ಯದಲ್ಲಿ ಕಾಡಿನ ಹಾದಿಗಳಲ್ಲಿ ಅಡ್ಡಾಡುತ್ತಾನೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1139,6 +1242,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i104',
     text: "Landscape photography requires keen observational patience and mastery of natural lighting.",
     meaning: "Capturing outdoor beauty depends on understanding sunrise and shadows.",
+    kannadaMeaning: "ಸಂಗೀತ ವಾದ್ಯವನ್ನು ನುಡಿಸುವುದು ಮೆದುಳಿನ ಕಾರ್ಯಕ್ಷಮತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1150,6 +1254,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i105',
     text: "He restored an antique wooden desk by sanding the timber and applying natural varnish.",
     meaning: "Refurbishing vintage furniture with careful craftsmanship.",
+    kannadaMeaning: "ಆಕೆಯು ಸುಂದರವಾದ ಮಣ್ಣಿನ ಮಡಕೆಗಳು ಮತ್ತು ಹೂದಾನಿಗಳನ್ನು ಮಾಡುವ ಕುಂಬಾರಿಕೆಯನ್ನು ಕಲಿತಳು.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1161,6 +1266,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i106',
     text: "Backpacking through pristine wilderness trails fosters deep respect for natural ecology.",
     meaning: "Hiking in untouched parks deepens appreciation for wildlife.",
+    kannadaMeaning: "ಚದುರಂಗ ಆಟವು ಕಾರ್ಯತಂತ್ರದ ಯೋಚನೆ ಮತ್ತು ಆಳವಾದ ತಾಳ್ಮೆಯನ್ನು ಬಯಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1172,6 +1278,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i107',
     text: "She joined an amateur theater troupe to explore acting and overcome stage fright.",
     meaning: "Participating in local community theater to build public confidence.",
+    kannadaMeaning: "ತೋಟಗಾರಿಕೆಯು ದೈನಂದಿನ ಜಂಜಾಟದಿಂದ ಮನಸ್ಸಿಗೆ ಮುಕ್ತಿ ನೀಡಿ ವಿಶ್ರಾಂತಿ ಒದಗಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1183,6 +1290,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i108',
     text: "Gardening teaches the profound virtues of patience, consistent care, and seasonal rhythm.",
     meaning: "Cultivating plants demonstrates that beautiful things require time.",
+    kannadaMeaning: "ಅವನು ಹಳೆಯ ಕ್ಲಾಸಿಕ್ ಕಾರುಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸುವ ಹವ್ಯಾಸವನ್ನು ಬೆಳೆಸಿಕೊಂಡಿದ್ದಾನೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1194,6 +1302,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i109',
     text: "He learned how to bind handmade leather journals with parchment pages and thick thread.",
     meaning: "Creating antique handcrafted writing books using traditional binding.",
+    kannadaMeaning: "ಆಕೆಯು ವಾರಾಂತ್ಯದಲ್ಲಿ ಅನಾಥಾಶ್ರಮದಲ್ಲಿ ಸ್ವಯಂಸೇವಕಿಯಾಗಿ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1205,6 +1314,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i110',
     text: "Participating in distance running competitions tests mental stamina and physical resilience.",
     meaning: "Marathon races challenge the spirit as much as leg muscles.",
+    kannadaMeaning: "ಹೊಸ ಭಾಷೆಯನ್ನು ಕಲಿಯುವುದು ಹೊಸ ಸಂಸ್ಕೃತಿಗಳ ಬಾಗಿಲುಗಳನ್ನು ತೆರೆಯುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1216,6 +1326,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i111',
     text: "She enjoys capturing candid urban street portraits that tell silent, compelling stories.",
     meaning: "Snapping spontaneous human moments in public spaces with a camera.",
+    kannadaMeaning: "ಅವಳು ತನ್ನ ಬಿಡುವಿನ ವೇಳೆಯಲ್ಲಿ ಕವನಗಳನ್ನು ಮತ್ತು ಸಣ್ಣ ಕಥೆಗಳನ್ನು ಬರೆಯುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1227,6 +1338,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i112',
     text: "Playing complex strategy board games exercises tactical deduction and long-term planning.",
     meaning: "Engaging in multiplayer strategy contests trains analytical reasoning.",
+    kannadaMeaning: "ಚಾರಣ ಮಾಡುವಾಗ ಸೂಕ್ತ ಪರ್ವತಾರೋಹಣ ಬೂಟುಗಳು ಮತ್ತು ನೀರಿನ ಬಾಟಲಿ ಅತ್ಯಗತ್ಯ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1238,6 +1350,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i113',
     text: "He discovered birdwatching as an enriching method to unwind in peaceful nature reserves.",
     meaning: "Spotting feathered wildlife provides calm serenity outside noisy cities.",
+    kannadaMeaning: "ಶಾಂತ ಪ್ರಕೃತಿಯ ನಡುವೆ ವಿಶ್ರಾಂತಿ ಪಡೆಯಲು ಪಕ್ಷಿ ವೀಕ್ಷಣೆ ಉತ್ತಮ ವಿಧಾನವೆಂದು ಅವನು ಕಂಡುಕೊಂಡನು.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1249,6 +1362,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i114',
     text: "She knits intricate woolen sweaters and donates them to local community shelters.",
     meaning: "Crafting warm handmade clothing to help vulnerable community members.",
+    kannadaMeaning: "ಆಕೆ ಸುಂದರವಾದ ಉಣ್ಣೆಯ ಸ್ವೆಟರ್‌ಗಳನ್ನು ಹೆಣೆದು ಸ್ಥಳೀಯ ಆಶ್ರಮಗಳಿಗೆ ದಾನ ಮಾಡುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1260,6 +1374,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i115',
     text: "Learning a musical instrument stimulates neuroplasticity and strengthens cognitive connections.",
     meaning: "Practicing scales and chords enhances lifelong brain health.",
+    kannadaMeaning: "ಸಂಗೀತ ವಾದ್ಯ ಕಲಿಯುವುದು ಮೆದುಳಿನ ನರಮಂಡಲದ ಸಂಪರ್ಕಗಳನ್ನು ಬಲಪಡಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1271,6 +1386,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i116',
     text: "He enjoys restoring vintage motorcycles in his garage during rainy weekend afternoons.",
     meaning: "Tinkering with classic mechanical engines as a hands-on technical hobby.",
+    kannadaMeaning: "ಮಳೆಯ ಸಂಜೆಗಳಲ್ಲಿ ಅವನು ಗ್ಯಾರೇಜ್‌ನಲ್ಲಿ ಹಳೆಯ ಮೋಟಾರ್ ಸೈಕಲ್‌ಗಳನ್ನು ರಿಪೇರಿ ಮಾಡುವುದನ್ನು ಆನಂದಿಸುತ್ತಾನೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1282,6 +1398,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i117',
     text: "Astronomy enthusiasts use powerful telescopes to observe lunar craters and distant nebulae.",
     meaning: "Gazing at celestial wonders in deep night skies.",
+    kannadaMeaning: "ಖಗೋಳಶಾಸ್ತ್ರದ ಆಸಕ್ತರು ಶಕ್ತಿಯುತ ದೂರದರ್ಶಕ ಬಳಸಿ ಚಂದ್ರನ ಕುಳಿಗಳನ್ನು ವೀಕ್ಷಿಸುತ್ತಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1293,6 +1410,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i118',
     text: "Painting with acrylics on canvas provides an outlet for deep emotional self-expression.",
     meaning: "Channeling moods onto canvases with vibrant pigments.",
+    kannadaMeaning: "ಕ್ಯಾನ್ವಾಸ್ ಮೇಲೆ ಚಿತ್ರ ಬಿಡಿಸುವುದು ಆಳವಾದ ಭಾವನೆಗಳನ್ನು ವ್ಯಕ್ತಪಡಿಸಲು ಉತ್ತಮ ಮಾಧ್ಯಮವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1304,6 +1422,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i119',
     text: "Recreational pursuits provide meaningful balance against demanding professional obligations.",
     meaning: "Hobbies safeguard mental peace against workplace burnout.",
+    kannadaMeaning: "ಮನರಂಜನಾ ಹವ್ಯಾಸಗಳು ಕೆಲಸದ ಒತ್ತಡಕ್ಕೆ ಉತ್ತಮ ಸಮತೋಲನವನ್ನು ಒದಗಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1315,6 +1434,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i120',
     text: "When negotiating contractual terms, it is essential to read between the lines carefully.",
     meaning: "Discerning unspoken nuances beneath formal written statements.",
+    kannadaMeaning: "ಒಪ್ಪಂದದ ನಿಯಮಗಳನ್ನು ಚರ್ಚಿಸುವಾಗ ಸಾಲುಗಳ ನಡುವಿನ ಅರ್ಥವನ್ನು ಸೂಕ್ಷ್ಮವಾಗಿ ಗ್ರಹಿಸುವುದು ಅಗತ್ಯ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1326,6 +1446,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i121',
     text: "The sudden stock market drop caught both seasoned investors and beginners off guard.",
     meaning: "Surprising financial traders who were unprepared for a downturn.",
+    kannadaMeaning: "ಷೇರು ಮಾರುಕಟ್ಟೆಯ ಹಠಾತ್ ಕುಸಿತವು ಹೂಡಿಕೆದಾರರನ್ನು ಅಚ್ಚರಿಗೆ ತಳ್ಳಿತು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1337,6 +1458,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i122',
     text: "Don't put all your eggs in one basket; diversify your investments and career options.",
     meaning: "Spread risks across multiple ventures rather than relying on one.",
+    kannadaMeaning: "ಎಲ್ಲಾ ಮೊಟ್ಟೆಗಳನ್ನು ಒಂದೇ ಬುಟ್ಟಿಯಲ್ಲಿ ಇಡಬೇಡಿ; ನಿಮ್ಮ ಹೂಡಿಕೆಗಳನ್ನು ವೈವಿಧ್ಯಗೊಳಿಸಿ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1348,6 +1470,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i123',
     text: "She decided to bite the bullet and have an uncomfortable but necessary conversation.",
     meaning: "Facing up to a dreaded task with brave resolve.",
+    kannadaMeaning: "ಆಕೆಯು ಅಹಿತಕರವಾದರೂ ಅಗತ್ಯವಾದ ಆ ಸಂಭಾಷಣೆಯನ್ನು ಮುಂದುವರಿಸಲು ನಿರ್ಧರಿಸಿದಳು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1359,6 +1482,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i124',
     text: "Her brilliant explanation hit the nail on the head and clarified the dilemma immediately.",
     meaning: "Expressing the exact truth of a tricky situation accurately.",
+    kannadaMeaning: "ಆಕೆಯ ನಿಖರ ವಿವರಣೆಯು ಗೊಂದಲವನ್ನು ತಕ್ಷಣವೇ ಪರಿಹರಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1370,6 +1494,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i125',
     text: "They were on the fence about moving abroad until they received a stellar job offer.",
     meaning: "Remaining undecided between two choices until decisive news arrives.",
+    kannadaMeaning: "ಉತ್ತಮ ಉದ್ಯೋಗಾವಕಾಶ ಸಿಗುವವರೆಗೆ ಅವರು ವಿದೇಶಕ್ಕೆ ಹೋಗುವ ಬಗ್ಗೆ ಸಂದಿಗ್ಧತೆಯಲ್ಲಿದ್ದರು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1381,6 +1506,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i126',
     text: "Learning to manage your personal finances properly is a blessing in disguise for life.",
     meaning: "A disciplined habit that seems tough at first but brings lifelong peace.",
+    kannadaMeaning: "ವೈಯಕ್ತಿಕ ಹಣಕಾಸು ನಿರ್ವಹಣೆಯನ್ನು ಕಲಿಯುವುದು ಜೀವನಕ್ಕೆ ಮರೆಯಲಾಗದ ವರವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1392,6 +1518,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i127',
     text: "He burned the midnight oil for three weeks to finish his master's thesis on schedule.",
     meaning: "Working late into the dark hours of the night on scholarly projects.",
+    kannadaMeaning: "ತನ್ನ ಸ್ನಾತಕೋತ್ತರ ಪ್ರಬಂಧವನ್ನು ಮುಗಿಸಲು ಅವನು ಮೂರು ವಾರಗಳ ಕಾಲ ರಾತ್ರಿ ಪೂರ್ತಿ ಕಷ್ಟಪಟ್ಟು ಕೆಲಸ ಮಾಡಿದನು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1403,6 +1530,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i128',
     text: "You should take his boastful claims with a grain of salt until verified by evidence.",
     meaning: "Approaching exaggerated boasts with healthy skepticism.",
+    kannadaMeaning: "ಸಾಕ್ಷ್ಯಾಧಾರಗಳಿಲ್ಲದ ಅವನ ಬಡಾಯಿ ಮಾತುಗಳನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ನಂಬಬೇಡಿ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1414,6 +1542,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i129',
     text: "Breaking the ice with an amusing story helped ease tension in the boardroom.",
     meaning: "Using light humor to help strangers feel comfortable talking.",
+    kannadaMeaning: "ಒಂದು ತಮಾಷೆಯ ಕಥೆಯೊಂದಿಗೆ ಮಾತು ಆರಂಭಿಸಿದ್ದು ಸಭೆಯಲ್ಲಿದ್ದ ಬಿಗುವಿನ ವಾತಾವರಣವನ್ನು ಸಡಿಲಗೊಳಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1425,6 +1554,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i130',
     text: "We need to see eye to eye on foundational values before entering a business partnership.",
     meaning: "Reaching mutual agreement on ethics before signing contracts.",
+    kannadaMeaning: "ವ್ಯಾಪಾರ ಪಾಲುದಾರಿಕೆ ಆರಂಭಿಸುವ ಮುನ್ನ ನಾವು ಮೂಲಭೂತ ಮೌಲ್ಯಗಳಲ್ಲಿ ಒಮ್ಮತ ಹೊಂದಿರಬೇಕು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1436,6 +1566,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i131',
     text: "The new administrative rules are set in stone and cannot be altered easily.",
     meaning: "Rigid policies that are permanent and non-negotiable.",
+    kannadaMeaning: "ಹೊಸ ಆಡಳಿತ ನಿಯಮಗಳು ಕಟ್ಟುನಿಟ್ಟಾಗಿದ್ದು ಅವುಗಳನ್ನು ಸುಲಭವಾಗಿ ಬದಲಾಯಿಸಲಾಗುವುದಿಲ್ಲ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1447,6 +1578,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i132',
     text: "She let the cat out of the bag regarding the secret birthday party plans.",
     meaning: "Accidentally revealing confidential information before the celebration.",
+    kannadaMeaning: "ಆಕೆಯು ರಹಸ್ಯ ಹುಟ್ಟುಹಬ್ಬದ ಪಾರ್ಟಿ ಯೋಜನೆಯನ್ನು ಎಲ್ಲರೆದುರು ಬಾಯಿಬಿಟ್ಟುಬಿಟ್ಟಳು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1458,6 +1590,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i133',
     text: "Cutting corners during building construction inevitably leads to structural hazards later.",
     meaning: "Doing cheap, shoddy work produces dangerous structural problems.",
+    kannadaMeaning: "ಕಟ್ಟಡ ನಿರ್ಮಾಣದಲ್ಲಿ ಗುಣಮಟ್ಟವನ್ನು ನಿರ್ಲಕ್ಷಿಸುವುದು ಮುಂದೆ ಅಪಾಯಕ್ಕೆ ಕಾರಣವಾಗುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1469,6 +1602,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i134',
     text: "He managed to kill two birds with one stone by exercising while listening to lectures.",
     meaning: "Accomplishing two productive aims in a single time-efficient action.",
+    kannadaMeaning: "ಉಪನ್ಯಾಸಗಳನ್ನು ಕೇಳುತ್ತಾ ವ್ಯಾಯಾಮ ಮಾಡುವ ಮೂಲಕ ಅವನು ಒಂದೇ ಕಲ್ಲಿನಲ್ಲಿ ಎರಡು ಹಕ್ಕಿ ಹೊಡೆದನು.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1480,6 +1614,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i135',
     text: "In the heat of the moment, people often say words they subsequently regret.",
     meaning: "Emotional impulsiveness leading to unfortunate statements.",
+    kannadaMeaning: "ಕೋಪದ ಭರದಲ್ಲಿ ಜನರು ಸಾಮಾನ್ಯವಾಗಿ ನಂತರ ಪಶ್ಚಾತ್ತಾಪ ಪಡುವ ಮಾತುಗಳನ್ನು ಆಡುತ್ತಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1491,6 +1626,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i136',
     text: "Patience and perseverance will always carry you through life's most arduous storms.",
     meaning: "Steadfast persistence overcomes severe trials and challenges.",
+    kannadaMeaning: "ತಾಳ್ಮೆ ಮತ್ತು ದೃಢತೆ ನಿಮ್ಮನ್ನು ಜೀವನದ ಅತ್ಯಂತ ಕಠಿಣ ಪರಿಸ್ಥಿತಿಗಳಿಂದಲೂ ಪಾರುಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1502,6 +1638,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i137',
     text: "Open communication and mutual trust are the bedrock of enduring relationships.",
     meaning: "Honest talking and loyalty keep marriages and partnerships resilient.",
+    kannadaMeaning: "ಮುಕ್ತ ಸಂವಹನ ಮತ್ತು ಪರಸ್ಪರ ನಂಬಿಕೆಯು ದೀರ್ಘಕಾಲಿಕ ಸಂಬಂಧಗಳ ಅಡಿಪಾಯವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1513,6 +1650,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i138',
     text: "She maintains close emotional ties with her siblings despite living across oceans.",
     meaning: "Geographic distance does not diminish heartfelt brotherly love.",
+    kannadaMeaning: "ಸಾಗರದಾಚೆ ವಾಸಿಸುತ್ತಿದ್ದರೂ ಆಕೆಯು ತನ್ನ ಒಡಹುಟ್ಟಿದವರೊಂದಿಗೆ ನಿಕಟ ಬಾಂಧವ್ಯವನ್ನು ಹೊಂದಿದ್ದಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1524,6 +1662,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i139',
     text: "Parents serve as primary role models in teaching moral integrity to young children.",
     meaning: "Mothers and fathers lead by moral example in everyday choices.",
+    kannadaMeaning: "ಮಕ್ಕಳಿಗೆ ನೈತಿಕ ಮೌಲ್ಯಗಳನ್ನು ಕಲಿಸುವಲ್ಲಿ ಪೋಷಕರೇ ಪ್ರಾಥಮಿಕ ಆದರ್ಶಪ್ರಾಯರಾಗಿದ್ದಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1535,6 +1674,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i140',
     text: "They resolved their heated family disagreement through empathetic listening and calm patience.",
     meaning: "Resolving domestic arguments by trying to understand the other's view.",
+    kannadaMeaning: "ಅವರು ತಮ್ಮ ಕುಟುಂಬದ ಭಿನ್ನಾಭಿಪ್ರಾಯವನ್ನು ತಾಳ್ಮೆಯ ಆಲಿಸುವಿಕೆಯಿಂದ ಪರಿಹರಿಸಿಕೊಂಡರು.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1546,6 +1686,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i141',
     text: "Family traditions passed down through generations foster a profound sense of identity.",
     meaning: "Cherished customs connect children to their ancestral heritage.",
+    kannadaMeaning: "ತಲೆಮಾರುಗಳಿಂದ ಬಂದ ಕುಟುಂಬ ಸಂಪ್ರದಾಯಗಳು ಬಲವಾದ ಗುರುತಿನ ಭಾವನೆಯನ್ನು ಬೆಳೆಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1557,6 +1698,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i142',
     text: "He stepped up responsibly to support his elderly parents during medical hardships.",
     meaning: "Devoted adult children caring for ailing mothers and fathers.",
+    kannadaMeaning: "ಆರೋಗ್ಯ ಸಮಸ್ಯೆಗಳ ಸಮಯದಲ್ಲಿ ತನ್ನ ವೃದ್ಧ ಪೋಷಕರನ್ನು ಬೆಂಬಲಿಸಲು ಅವನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ಮುಂದಾದನು.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1568,6 +1710,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i143',
     text: "Spending quality undivided time with your children builds lasting emotional security.",
     meaning: "Focused parental presence makes kids feel deeply loved and valued.",
+    kannadaMeaning: "ಮಕ್ಕಳೊಂದಿಗೆ ಗುಣಮಟ್ಟದ ಸಮಯ ಕಳೆಯುವುದು ಅವರಲ್ಲಿ ಭಾವನಾತ್ಮಕ ಭದ್ರತೆಯನ್ನು ನಿರ್ಮಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1579,6 +1722,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i144',
     text: "She expresses deep gratitude for the sacrifices her immigrant parents made for her.",
     meaning: "Honoring the hard labor parents endured to provide educational opportunities.",
+    kannadaMeaning: "ತನ್ನ ಪೋಷಕರು ತನಗಾಗಿ ಮಾಡಿದ ತ್ಯಾಗಗಳಿಗೆ ಆಕೆ ಅಪಾರ ಕೃತಜ್ಞತೆ ವ್ಯಕ್ತಪಡಿಸುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1590,6 +1734,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i145',
     text: "Active listening and compromise are indispensable when resolving marital conflicts.",
     meaning: "Willingness to meet in the middle preserves harmony in home life.",
+    kannadaMeaning: "ವೈವಾಹಿಕ ಭಿನ್ನಾಭಿಪ್ರಾಯಗಳನ್ನು ಬಗೆಹರಿಸಿಕೊಳ್ಳಲು ಸಮಾಧಾನದಿಂದ ಆಲಿಸುವುದು ಮತ್ತು ಹೊಂದಾಣಿಕೆ ಅತ್ಯಗತ್ಯ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1601,6 +1746,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i146',
     text: "Family reunions allow long-separated cousins to rekindle fond childhood memories.",
     meaning: "Gatherings bring relatives together to reminisce about past days.",
+    kannadaMeaning: "ಕುಟುಂಬ ಸಮ್ಮಿಲನಗಳು ಬಾಲ್ಯದ ನೆನಪುಗಳನ್ನು ಮರುಕಳಿಸಲು ಬಂಧುಗಳಿಗೆ ಅವಕಾಶ ನೀಡುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1612,6 +1758,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i147',
     text: "Grandparents provide grandchildren with unconditional love and timeless life wisdom.",
     meaning: "Elder family members enrich youngsters with gentle guidance.",
+    kannadaMeaning: "ಅಜ್ಜ-ಅಜ್ಜಿಯರು ಮೊಮ್ಮಕ್ಕಳಿಗೆ ಅಪಾರ ಪ್ರೀತಿ ಮತ್ತು ಕಾಲಾತೀತ ಜೀವನದ ಜ್ಞಾನವನ್ನು ನೀಡುತ್ತಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1623,6 +1770,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i148',
     text: "Patience and consistent encouragement help teenagers navigate emotional transitions.",
     meaning: "Gentle support guides adolescents through turbulent growing-up years.",
+    kannadaMeaning: "ತಾಳ್ಮೆ ಮತ್ತು ನಿರಂತರ ಪ್ರೋತ್ಸಾಹವು ಹದಿಹರೆಯದವರ ಭಾವನಾತ್ಮಕ ಬೆಳವಣಿಗೆಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1634,6 +1782,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i149',
     text: "A nurturing home environment empowers children to explore their unique creative talents.",
     meaning: "Loving household atmospheres encourage youngsters to flourish.",
+    kannadaMeaning: "ಪ್ರೀತಿಯ ಮನೆಯ ವಾತಾವರಣವು ಮಕ್ಕಳಿಗೆ ತಮ್ಮ ಸೃಜನಶೀಲ ಪ್ರತಿಭೆಗಳನ್ನು ಹೊರತರಲು ಶಕ್ತಿ ನೀಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1645,6 +1794,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i150',
     text: "They shared laughter and nostalgic stories while flipping through ancient photo albums.",
     meaning: "Reliving family memories preserved in dusty black-and-white pictures.",
+    kannadaMeaning: "ಹಳೆಯ ಫೋಟೋ ಆಲ್ಬಂಗಳನ್ನು ನೋಡುತ್ತಾ ಅವರು ನಗು ಮತ್ತು ನೆನಪುಗಳನ್ನು ಹಂಚಿಕೊಂಡರು.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1656,6 +1806,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i151',
     text: "Sibling camaraderie often evolves into one of life's most dependable friendships.",
     meaning: "Brothers and sisters become our lifelong confidants as adults.",
+    kannadaMeaning: "ಒಡಹುಟ್ಟಿದವರ ಒಡನಾಟವು ಜೀವನದ ಅತ್ಯಂತ ವಿಶ್ವಾಸಾರ್ಹ ಸ್ನೇಹವಾಗಿ ಬೆಳೆಯುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1667,6 +1818,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i152',
     text: "Forgiveness and empathy heal emotional rifts within estranged family relationships.",
     meaning: "Letting go of grudges restores harmony between separated relatives.",
+    kannadaMeaning: "ಕ್ಷಮೆ ಮತ್ತು ಸಹಾನುಭೂತಿಯು ಕುಟುಂಬದ ಸಂಬಂಧಗಳಲ್ಲಿನ ಬಿರುಕುಗಳನ್ನು ಸರಿಪಡಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1678,6 +1830,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i153',
     text: "The true wealth of any household resides in the love shared between its members.",
     meaning: "Affection and loyalty outshine material possessions every time.",
+    kannadaMeaning: "ಕುಟುಂಬದ ನಿಜವಾದ ಸಂಪತ್ತು ಅದರ ಸದಸ್ಯರ ನಡುವಿನ ಪ್ರೀತಿಯಲ್ಲಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1689,6 +1842,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i154',
     text: "Meteorologists issued a severe weather warning regarding torrential monsoon downpours.",
     meaning: "Weather forecasters warning the public against heavy tropical rains.",
+    kannadaMeaning: "ಭಾರೀ ಮುಂಗಾರು ಮಳೆಯ ಬಗ್ಗೆ ಹವಾಮಾನ ತಜ್ಞರು ತೀವ್ರ ಎಚ್ಚರಿಕೆ ನೀಡಿದ್ದಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1700,6 +1854,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i155',
     text: "Dense morning mist gradually dissipated as the warm afternoon sun emerged.",
     meaning: "Heavy fog dissolving under the pleasant heat of daytime sunshine.",
+    kannadaMeaning: "ಮಧ್ಯಾಹ್ನದ ಬೆಚ್ಚಗಿನ ಬಿಸಿಲು ಬರುತ್ತಿದ್ದಂತೆ ಬೆಳಗಿನ ದಟ್ಟ ಮಂಜು ಕರಗಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1711,6 +1866,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i156',
     text: "The sudden barometric pressure drop indicated an approaching coastal cyclone.",
     meaning: "Atmospheric sensor readings warning ships of approaching maritime storms.",
+    kannadaMeaning: "ವಾತಾವರಣದ ಒತ್ತಡದ ಹಠಾತ್ ಕುಸಿತವು ಕರಾವಳಿ ಚಂಡಮಾರುತದ ಆಗಮನವನ್ನು ಸೂಚಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1722,6 +1878,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i157',
     text: "Dry autumn foliage crunches crisply underfoot during peaceful woodland strolls.",
     meaning: "Walking on crisp fallen leaves along forest paths in October.",
+    kannadaMeaning: "ಕಾಡಿನ ನಡಿಗೆಯ ಸಮಯದಲ್ಲಿ ಒಣ ಶರತ್ಕಾಲದ ಎಲೆಗಳು ಪಾದಗಳ ಕೆಳಗೆ ಕರಕರ ಶಬ್ದ ಮಾಡುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1733,6 +1890,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i158',
     text: "Unusually high humidity made the summer heat feel stifling and oppressive.",
     meaning: "Excess moisture in the atmosphere compounding the intensity of heatwaves.",
+    kannadaMeaning: "ಅತಿಯಾದ ತೇವಾಂಶವು ಬೇಸಿಗೆಯ ಬಿಸಿಯನ್ನು ಉಸಿರುಗಟ್ಟಿಸುವಂತೆ ಮಾಡಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1744,6 +1902,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i159',
     text: "The serene mountain lake mirrored the snow-draped alpine summits with crystal clarity.",
     meaning: "Still waters creating a perfect reflection of frozen peaks.",
+    kannadaMeaning: "ಶಾಂತ ಪರ್ವತ ಸರೋವರವು ಹಿಮಾವೃತ ಶಿಖರಗಳನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಪ್ರತಿಬಿಂಬಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1755,6 +1914,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i160',
     text: "Sub-zero temperatures froze the waterfall into magnificent cascading ice pillars.",
     meaning: "Extreme arctic freezes transforming roaring waters into frozen sculptures.",
+    kannadaMeaning: "ಶೂನ್ಯಕ್ಕಿಂತ ಕಡಿಮೆಯಾದ ತಾಪಮಾನವು ಜಲಪಾತವನ್ನು ಭವ್ಯವಾದ ಮಂಜುಗಡ್ಡೆಯ ಸ್ತಂಭಗಳಾಗಿ ಹೆಪ್ಪುಗಟ್ಟಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1766,6 +1926,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i161',
     text: "A refreshing thunderstorm swept away the lingering heat and revived wilted plants.",
     meaning: "Rain bringing relief to parched soil after weeks of drought.",
+    kannadaMeaning: "ಹಿತಕರ ಗುಡುಗು ಸಹಿತ ಮಳೆಯು ಸುಡುಬಿಸಿಲನ್ನು ತಣಿಸಿ ಒಣಗಿದ ಗಿಡಗಳಿಗೆ ಜೀವ ತುಂಬಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1777,6 +1938,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i162',
     text: "Conserving water during prolonged summer droughts is a civic responsibility for all.",
     meaning: "Voluntary water rationing preserves municipal reservoirs during dry spells.",
+    kannadaMeaning: "ದೀರ್ಘಕಾಲದ ಬೇಸಿಗೆಯ ಬರಗಾಲದಲ್ಲಿ ನೀರನ್ನು ಸಂರಕ್ಷಿಸುವುದು ಪ್ರತಿಯೊಬ್ಬ ನಾಗರಿಕನ ಜವಾಬ್ದಾರಿಯಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1788,6 +1950,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i163',
     text: "The luminous full moon cast silvery reflections across the tranquil ocean waves.",
     meaning: "Nighttime lunar light creating shimmering paths upon calm seas.",
+    kannadaMeaning: "ಪ್ರಕಾಶಮಾನವಾದ ಹುಣ್ಣಿಮೆಯ ಚಂದ್ರನು ಸಾಗರದ ಅಲೆಗಳ ಮೇಲೆ ಬೆಳ್ಳಿಯ ಪ್ರತಿಬಿಂಬವನ್ನು ಚೆಲ್ಲಿದನು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1799,6 +1962,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i164',
     text: "Gale-force winds snapped tree branches and caused temporary municipal power outages.",
     meaning: "Violent wind gusts knocking down power cables across city streets.",
+    kannadaMeaning: "ಬಿರುಗಾಳಿಯು ಮರದ ಕೊಂಬೆಗಳನ್ನು ಮುರಿದು ವಿದ್ಯುತ್ ವ್ಯತ್ಯಯವನ್ನು ಉಂಟುಮಾಡಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1810,6 +1974,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i165',
     text: "Environmental conservation efforts protect fragile coral reefs from rising sea temperatures.",
     meaning: "Marine initiatives safeguarding ocean ecosystems against climate shifts.",
+    kannadaMeaning: "ಪರಿಸರ ಸಂರಕ್ಷಣಾ ಪ್ರಯತ್ನಗಳು ಹವಳದ ದಿಬ್ಬಗಳನ್ನು ಹೆಚ್ಚುತ್ತಿರುವ ತಾಪಮಾನದಿಂದ ರಕ್ಷಿಸುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1821,6 +1986,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i166',
     text: "Dewdrops sparkled like tiny diamonds on fresh spiderwebs at early dawn.",
     meaning: "Morning moisture glistening in the first rays of horizontal sunlight.",
+    kannadaMeaning: "ಮುಂಜಾನೆಯ ಜೇಡರ ಬಲೆಗಳ ಮೇಲೆ ಇಬ್ಬನಿಯ ಹನಿಗಳು ಸಣ್ಣ ವಜ್ರಗಳಂತೆ ಹೊಳೆಯುತ್ತಿದ್ದವು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1832,6 +1998,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i167',
     text: "A blanket of powdery snow muffled all urban noise and created peaceful silence.",
     meaning: "Fresh snowfall absorbing street sounds to produce quiet stillness.",
+    kannadaMeaning: "ಹಿಮದ ಹೊದಿಕೆಯು ನಗರದ ಎಲ್ಲಾ ಸದ್ದುಗಳನ್ನು ಅಡಗಿಸಿ ಪ್ರಶಾಂತ ಮೌನವನ್ನು ಸೃಷ್ಟಿಸಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1843,6 +2010,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i168',
     text: "The transition from winter to spring brings longer days and vibrant blossom petals.",
     meaning: "The delightful shift toward warmer sunlight and blooming floral buds.",
+    kannadaMeaning: "ಚಳಿಗಾಲದಿಂದ ವಸಂತಕಾಲಕ್ಕೆ ಬದಲಾಗುವುದು ದೀರ್ಘ ಹಗಲುಗಳನ್ನು ಮತ್ತು ಸುಂದರ ಹೂವುಗಳನ್ನು ತರುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1854,6 +2022,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i169',
     text: "Global climate consciousness encourages renewable energy adoption across the world.",
     meaning: "Growing eco-awareness pushing nations toward solar and wind power.",
+    kannadaMeaning: "ಜಾಗತಿಕ ಹವಾಮಾನ ಜಾಗೃತಿಯು ಪ್ರಪಂಚದಾದ್ಯಂತ ನವೀಕರಿಸಬಹುದಾದ ಇಂಧನ ಬಳಕೆಯನ್ನು ಪ್ರೋತ್ಸಾಹಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1865,6 +2034,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i170',
     text: "The city council implemented green energy subsidies to encourage residential solar panel installations.",
     meaning: "Local government offering discounts to homeowners who install solar power on roofs.",
+    kannadaMeaning: "ಮನೆಗಳಲ್ಲಿ ಸೋಲಾರ್ ಪ್ಯಾನಲ್ ಅಳವಡಿಕೆಯನ್ನು ಪ್ರೋತ್ಸಾಹಿಸಲು ನಗರ ಸಭೆಯು ಸಬ್ಸಿಡಿಯನ್ನು ನೀಡಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -1876,6 +2046,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i171',
     text: "He demonstrated great tact and composure when dealing with angry, dissatisfied retail customers.",
     meaning: "Remaining calm and polite while resolving customer store grievances.",
+    kannadaMeaning: "ಅಸಮಾಧಾನಗೊಂಡ ಗ್ರಾಹಕರೊಂದಿಗೆ ವ್ಯವಹರಿಸುವಾಗ ಅವನು ಅಪಾರ ತಾಳ್ಮೆ ಮತ್ತು ಸಂಯಮವನ್ನು ತೋರಿದನು.",
     difficulty: 'Intermediate',
     category: 'Shopping',
     vocabularyWords: [
@@ -1887,6 +2058,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i172',
     text: "Always check the expiration date on dairy items before placing them in your grocery cart.",
     meaning: "Looking at milk cartons to ensure freshness before checkout.",
+    kannadaMeaning: "ದಿನಸಿ ಬುಟ್ಟಿಗೆ ಹಾಕುವ ಮೊದಲು ಹಾಲಿನ ಉತ್ಪನ್ನಗಳ ಮುಕ್ತಾಯ ದಿನಾಂಕವನ್ನು ತಪ್ಪದೇ ಪರಿಶೀಲಿಸಿ.",
     difficulty: 'Intermediate',
     category: 'Shopping',
     vocabularyWords: [
@@ -1898,6 +2070,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i173',
     text: "The culinary festival offered live cooking demonstrations from renowned pastry chefs.",
     meaning: "A food fair where top bakers teach audience members how to make tarts.",
+    kannadaMeaning: "ಆಹಾರ ಮೇಳದಲ್ಲಿ ಪ್ರಸಿದ್ಧ ಬಾಣಸಿಗರಿಂದ ಅಡುಗೆ ಪ್ರಾತ್ಯಕ್ಷಿಕೆಗಳು ನಡೆದವು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1909,6 +2082,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i174',
     text: "She prefers taking the scenic rural bypass to avoid downtown peak-hour traffic jams.",
     meaning: "Driving on country roads to bypass crowded city center vehicle jams.",
+    kannadaMeaning: "ನಗರದ ಟ್ರಾಫಿಕ್ ಜಾಮ್ ತಪ್ಪಿಸಲು ಆಕೆಯು ಸುಂದರವಾದ ಗ್ರಾಮೀಣ ಬೈಪಾಸ್ ರಸ್ತೆಯನ್ನು ಆರಿಸಿಕೊಳ್ಳುತ್ತಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -1920,6 +2094,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i175',
     text: "Maintaining regular communication with elderly relatives prevents feelings of loneliness and isolation.",
     meaning: "Calling grandparents frequently keeps them emotionally connected and happy.",
+    kannadaMeaning: "ಹಿರಿಯ ಸಂಬಂಧಿಗಳೊಂದಿಗೆ ನಿಯಮಿತವಾಗಿ ಸಂಪರ್ಕದಲ್ಲಿರುವುದು ಅವರ ಒಂಟಿತನವನ್ನು ನಿವಾರಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -1931,6 +2106,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i176',
     text: "The school board approved funding for updated science laboratory equipment and safety gear.",
     meaning: "Investing municipal money into high-tech school chemistry and physics labs.",
+    kannadaMeaning: "ಶಾಲಾ ಮಂಡಳಿಯು ಹೊಸ ವಿಜ್ಞಾನ ಪ್ರಯೋಗಾಲಯ ಉಪಕರಣಗಳು ಮತ್ತು ಸುರಕ್ಷತಾ ಸಾಧನಗಳಿಗೆ ಅನುದಾನ ನೀಡಿತು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -1942,6 +2118,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i177',
     text: "He downloaded an audio recording application to review lecture discussions during commutes.",
     meaning: "Using smartphone apps to replay college lectures on the bus.",
+    kannadaMeaning: "ಪ್ರಯಾಣದ ಸಮಯದಲ್ಲಿ ಉಪನ್ಯಾಸಗಳನ್ನು ಮರುಕೇಳಲು ಅವನು ಆಡಿಯೋ ರೆಕಾರ್ಡಿಂಗ್ ಅಪ್ಲಿಕೇಶನ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದನು.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -1953,6 +2130,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i178',
     text: "The boutique clothing store offers customized alterations to ensure garments fit impeccably.",
     meaning: "A garment shop tailoring trousers and jackets to match body measurements.",
+    kannadaMeaning: "ಬಟ್ಟೆಗಳು ಸರಿಯಾಗಿ ಹೊಂದಿಕೊಳ್ಳುವಂತೆ ಬಟ್ಟೆ ಅಂಗಡಿಯು ಸೂಕ್ತ ಹೊಲಿಗೆ ಮಾರ್ಪಾಡುಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Shopping',
     vocabularyWords: [
@@ -1964,6 +2142,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i179',
     text: "She seasoned the pan-seared salmon with freshly squeezed lemon juice and dill weed.",
     meaning: "Cooking delicious pink fish fillets with herbal seasonings and citrus.",
+    kannadaMeaning: "ಆಕೆಯು ಮೀನಿನ ಖಾದ್ಯಕ್ಕೆ ತಾಜಾ ನಿಂಬೆ ರಸ ಮತ್ತು ಗಿಡಮೂಲಿಕೆಗಳನ್ನು ಬೆರೆಸಿದಳು.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -1975,6 +2154,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i180',
     text: "Outdoor rock climbing requires physical agility, mental focus, and specialized safety harnesses.",
     meaning: "Scaling stone cliffs demands balance, courage, and certified ropes.",
+    kannadaMeaning: "ಬಂಡೆ ಹತ್ತುವ ಕ್ರೀಡೆಗೆ ದೈಹಿಕ ಚುರುಕುತನ, ಮಾನಸಿಕ ಏಕಾಗ್ರತೆ ಮತ್ತು ಸುರಕ್ಷತಾ ಸಾಧನಗಳು ಬೇಕಾಗುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1986,6 +2166,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i181',
     text: "Regular preventative dental care saves you from painful toothaches and expensive procedures.",
     meaning: "Visiting the dentist twice a year stops severe oral problems before they start.",
+    kannadaMeaning: "ಮುನ್ನೆಚ್ಚರಿಕೆಯ ಹಲ್ಲಿನ ಆರೈಕೆಯು ನೋವಿನ ಹಲ್ಲುನೋವು ಮತ್ತು ದುಬಾರಿ ಚಿಕಿತ್ಸೆಗಳಿಂದ ನಿಮ್ಮನ್ನು ಉಳಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -1997,6 +2178,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i182',
     text: "The morning fog gradually lifted to reveal a clear view of the sunlit valley below.",
     meaning: "Mist clearing away to display bright green countryside vistas.",
+    kannadaMeaning: "ಬೆಳಗಿನ ಮಂಜು ನಿಧಾನವಾಗಿ ಸರಿದು ಕೆಳಗಿನ ಸುಂದರ ಕಣಿವೆಯ ದೃಶ್ಯವನ್ನು ತೆರೆದಿಟ್ಟಿತು.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -2008,6 +2190,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i183',
     text: "Always log out of banking websites when using shared public computer terminals.",
     meaning: "Protecting financial passwords by signing out on public cyber computers.",
+    kannadaMeaning: "ಸಾರ್ವಜನಿಕ ಕಂಪ್ಯೂಟರ್‌ಗಳನ್ನು ಬಳಸುವಾಗ ಬ್ಯಾಂಕಿಂಗ್ ವೆಬ್‌ಸೈಟ್‌ಗಳಿಂದ ಯಾವಾಗಲೂ ಲಾಗ್ ಔಟ್ ಆಗಿ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -2019,6 +2202,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i184',
     text: "Honest communication is the cornerstone of any healthy, enduring friendship.",
     meaning: "Sincere conversations sustain lifelong trust between companions.",
+    kannadaMeaning: "ಪ್ರಾಮಾಣಿಕ ಸಂವಹನವೇ ಯಾವುದೇ ಆರೋಗ್ಯಕರ ಮತ್ತು ನಿರಂತರ ಸ್ನೇಹದ ಮೂಲಾಧಾರವಾಗಿದೆ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2030,6 +2214,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i185',
     text: "They decorated the nursery with pastel colors and whimsical wall murals for the baby.",
     meaning: "Painting soft gentle colors in an infant's bedroom.",
+    kannadaMeaning: "ಅವರು ಮಗುವಿನ ಕೋಣೆಯನ್ನು ಸುಂದರ ವರ್ಣಚಿತ್ರಗಳಿಂದ ಆಕರ್ಷಕವಾಗಿ ಅಲಂಕರಿಸಿದರು.",
     difficulty: 'Intermediate',
     category: 'Family',
     vocabularyWords: [
@@ -2041,6 +2226,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i186',
     text: "The geography teacher displayed an interactive satellite map on the classroom projector.",
     meaning: "Using orbital imagery to teach world continents and river basins.",
+    kannadaMeaning: "ಭೂಗೋಳ ಶಿಕ್ಷಕರು ತರಗತಿಯ ಪ್ರೊಜೆಕ್ಟರ್‌ನಲ್ಲಿ ಸಂವಾದಾತ್ಮಕ ಉಪಗ್ರಹ ನಕ್ಷೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿದರು.",
     difficulty: 'Intermediate',
     category: 'School',
     vocabularyWords: [
@@ -2052,6 +2238,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i187',
     text: "He negotiated a flexible work arrangement that allowed two remote days each week.",
     meaning: "Agreeing with management on a hybrid office schedule.",
+    kannadaMeaning: "ವಾರದಲ್ಲಿ ಎರಡು ದಿನ ಮನೆಯಿಂದಲೇ ಕೆಲಸ ಮಾಡಲು ಅವನು ಕಚೇರಿಯಲ್ಲಿ ಒಪ್ಪಂದ ಮಾಡಿಕೊಂಡನು.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -2063,6 +2250,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i188',
     text: "The airport shuttle bus runs between international terminals every fifteen minutes.",
     meaning: "Free airport transport shuttling airline passengers between flight gates.",
+    kannadaMeaning: "ವಿಮಾನ ನಿಲ್ದಾಣದ ಶಟಲ್ ಬಸ್ ಪ್ರತಿ ಹದಿನೈದು ನಿಮಿಷಗಳಿಗೊಮ್ಮೆ ಟರ್ಮಿನಲ್‌ಗಳ ನಡುವೆ ಚಲಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -2074,6 +2262,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i189',
     text: "Check customer reviews before ordering expensive electronics from unfamiliar online vendors.",
     meaning: "Reading shopper testimonials prevents online shopping scams.",
+    kannadaMeaning: "ಅಪರಿಚಿತ ಆನ್‌ಲೈನ್ ಮಾರಾಟಗಾರರಿಂದ ದುಬಾರಿ ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಖರೀದಿಸುವ ಮುನ್ನ ಗ್ರಾಹಕರ ವಿಮರ್ಶೆಗಳನ್ನು ಓದಿ.",
     difficulty: 'Intermediate',
     category: 'Shopping',
     vocabularyWords: [
@@ -2085,6 +2274,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i190',
     text: "The farm-to-table cafe uses ingredients sourced exclusively from regional organic farms.",
     meaning: "A bistro celebrating local vegetables picked the very same morning.",
+    kannadaMeaning: "ಈ ಕೆಫೆಯು ಸ್ಥಳೀಯ ಸಾವಯವ ಕೃಷಿ ಫಾರ್ಮ್‌ಗಳಿಂದ ತಂದ ತಾಜಾ ಪದಾರ್ಥಗಳನ್ನು ಮಾತ್ರ ಬಳಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Food',
     vocabularyWords: [
@@ -2096,6 +2286,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i191',
     text: "She discovered watercolor landscape painting as a wonderful way to express inner emotions.",
     meaning: "Expressing creativity with water-soluble paint and soft brushes.",
+    kannadaMeaning: "ಜಲವರ್ಣ ಚಿತ್ರಕಲೆಯು ಆಂತರಿಕ ಭಾವನೆಗಳನ್ನು ಅಭಿವ್ಯಕ್ತಿಗೊಳಿಸಲು ಅದ್ಭುತ ಮಾರ್ಗವೆಂದು ಆಕೆ ಕಂಡುಕೊಂಡಳು.",
     difficulty: 'Intermediate',
     category: 'Hobbies',
     vocabularyWords: [
@@ -2107,6 +2298,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i192',
     text: "Consistent aerobic exercise improves insulin sensitivity and supports cardiovascular longevity.",
     meaning: "Regular running or cycling keeps blood sugars balanced and hearts strong.",
+    kannadaMeaning: "ನಿಯಮಿತ ವ್ಯಾಯಾಮವು ಇನ್ಸುಲಿನ್ ಸಂವೇದನೆಯನ್ನು ಸುಧಾರಿಸುತ್ತದೆ ಮತ್ತು ಹೃದಯದ ಆಯಸ್ಸನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -2118,6 +2310,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i193',
     text: "The weather forecast predicts a sudden drop in barometric pressure accompanied by storms.",
     meaning: "Meteorologists expecting heavy rains and dropping atmospheric readings.",
+    kannadaMeaning: "ಹವಾಮಾನ ವರದಿಯು ಚಂಡಮಾರುತದೊಂದಿಗೆ ವಾತಾವರಣದ ಒತ್ತಡದ ಹಠಾತ್ ಕುಸಿತವನ್ನು ಮುನ್ಸೂಚಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Weather',
     vocabularyWords: [
@@ -2129,6 +2322,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i194',
     text: "Digital cloud backup services provide peace of mind in case of sudden hardware failure.",
     meaning: "Offsite data copies save family photos if laptops crash.",
+    kannadaMeaning: "ಕ್ಲೌಡ್ ಬ್ಯಾಕಪ್ ಸೇವೆಗಳು ಹಾರ್ಡ್‌ವೇರ್ ವೈಫಲ್ಯದ ಸಂದರ್ಭದಲ್ಲಿ ಮಾನಸಿಕ ನೆಮ್ಮದಿಯನ್ನು ನೀಡುತ್ತವೆ.",
     difficulty: 'Intermediate',
     category: 'Technology',
     vocabularyWords: [
@@ -2140,6 +2334,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i195',
     text: "Actions speak louder than promises, so let your deeds demonstrate your true character.",
     meaning: "Proving moral trustworthiness through behavior rather than speeches.",
+    kannadaMeaning: "ಮಾತಗಿಂತ ಕೃತಿ ಲೇಸು, ನಿಮ್ಮ ನಡತೆಯೇ ನಿಮ್ಮ ನಿಜವಾದ ಗುಣವನ್ನು ತೋರಿಸಲಿ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2151,6 +2346,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i196',
     text: "She maintains an open-door policy so her team members feel comfortable seeking guidance.",
     meaning: "A welcoming management approach that encourages frequent questions.",
+    kannadaMeaning: "ತಂಡದ ಸದಸ್ಯರು ಮುಕ್ತವಾಗಿ ಸಲಹೆ ಕೇಳಲು ಅನುಕೂಲವಾಗುವಂತೆ ಆಕೆ ಸದಾ ಮುಕ್ತ ನೀತಿಯನ್ನು ಹೊಂದಿದ್ದಾಳೆ.",
     difficulty: 'Intermediate',
     category: 'Work',
     vocabularyWords: [
@@ -2162,6 +2358,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i197',
     text: "Remember to validate your parking ticket at the customer service desk before leaving.",
     meaning: "Stamping garage tickets to receive discounted shopping parking.",
+    kannadaMeaning: "ಹೊರಡುವ ಮುನ್ನ ಗ್ರಾಹಕ ಸೇವಾ ಕೌಂಟರ್‌ನಲ್ಲಿ ಪಾರ್ಕಿಂಗ್ ಟಿಕೆಟ್ ಅನ್ನು ದೃಢೀಕರಿಸಿಕೊಳ್ಳಲು ಮರೆಯಬೇಡಿ.",
     difficulty: 'Intermediate',
     category: 'Shopping',
     vocabularyWords: [
@@ -2173,6 +2370,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i198',
     text: "A brisk thirty-minute walk in natural surroundings lowers stress hormones naturally.",
     meaning: "Walking among trees calms the central nervous system.",
+    kannadaMeaning: "ನಿಸರ್ಗದ ಮಡಿಲಿನಲ್ಲಿ ಅರ್ಧ ಗಂಟೆಯ ಬಿರುಸಿನ ನಡಿಗೆಯು ಒತ್ತಡದ ಹಾರ್ಮೋನ್‌ಗಳನ್ನು ನೈಸರ್ಗಿಕವಾಗಿ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Health',
     vocabularyWords: [
@@ -2184,6 +2382,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i199',
     text: "The high-speed rail network connects major metropolitan hubs in under two hours.",
     meaning: "Bullet trains linking big cities with rapid, clean electric transit.",
+    kannadaMeaning: "ಹೈ-ಸ್ಪೀಡ್ ರೈಲು ಜಾಲವು ಪ್ರಮುಖ ಮಹಾನಗರಗಳನ್ನು ಎರಡು ಗಂಟೆಗಿಂತ ಕಡಿಮೆ ಅವಧಿಯಲ್ಲಿ ಸಂಪರ್ಕಿಸುತ್ತದೆ.",
     difficulty: 'Intermediate',
     category: 'Travel',
     vocabularyWords: [
@@ -2195,6 +2394,7 @@ const List<Sentence> intermediateSentences = [
     id: 'i200',
     text: "True friends celebrate your personal triumphs as enthusiastically as their own.",
     meaning: "Loyal companions rejoice sincerely when you accomplish great things.",
+    kannadaMeaning: "ನಿಜವಾದ ಸ್ನೇಹಿತರು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಗೆಲುವನ್ನು ತಮ್ಮದೇ ಗೆಲುವಿನಂತೆ ಸಂಭ್ರಮಿಸುತ್ತಾರೆ.",
     difficulty: 'Intermediate',
     category: 'Everyday English',
     vocabularyWords: [

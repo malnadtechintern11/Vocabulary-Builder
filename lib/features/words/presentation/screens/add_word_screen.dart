@@ -242,77 +242,61 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 24),
 
-              // 1. English Word & Part of Speech
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'English Word *',
-                          style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        const SizedBox(height: 6),
-                        TextFormField(
-                          controller: _wordController,
-                          textCapitalization: TextCapitalization.words,
-                          decoration: const InputDecoration(
-                            hintText: 'e.g. Resilient',
-                            prefixIcon: Icon(Icons.title_rounded),
-                          ),
-                          validator: (val) {
-                            if (val == null || val.trim().isEmpty) {
-                              return 'Please enter a word';
-                            }
-                            return null;
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    flex: 2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Part of Speech',
-                          style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        const SizedBox(height: 6),
-                        DropdownButtonFormField<String>(
-                          initialValue: _selectedPartOfSpeech,
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-                          ),
-                          items: _partsOfSpeech.map((pos) {
-                            return DropdownMenuItem(
-                              value: pos,
-                              child: Text(
-                                pos[0].toUpperCase() + pos.substring(1),
-                                style: const TextStyle(fontSize: 13),
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (val) {
-                            if (val != null) {
-                              setState(() => _selectedPartOfSpeech = val);
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              // 1. English Word
+              Text(
+                'English Word *',
+                style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 6),
+              TextFormField(
+                controller: _wordController,
+                textCapitalization: TextCapitalization.words,
+                decoration: const InputDecoration(
+                  hintText: 'e.g. Resilient',
+                  prefixIcon: Icon(Icons.title_rounded),
+                ),
+                validator: (val) {
+                  if (val == null || val.trim().isEmpty) {
+                    return 'Please enter a word';
+                  }
+                  return null;
+                },
               ),
 
               const SizedBox(height: 18),
 
-              // 2. Phonetic (Optional)
+              // 2. Part of Speech
+              Text(
+                'Part of Speech',
+                style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 6),
+              DropdownButtonFormField<String>(
+                isExpanded: true,
+                initialValue: _selectedPartOfSpeech,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.category_outlined),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                ),
+                items: _partsOfSpeech.map((pos) {
+                  return DropdownMenuItem(
+                    value: pos,
+                    child: Text(
+                      pos[0].toUpperCase() + pos.substring(1),
+                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    ),
+                  );
+                }).toList(),
+                onChanged: (val) {
+                  if (val != null) {
+                    setState(() => _selectedPartOfSpeech = val);
+                  }
+                },
+              ),
+
+              const SizedBox(height: 18),
+
+              // 3. Phonetic (Optional)
               Text(
                 'Pronunciation / Phonetic (Optional)',
                 style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -328,7 +312,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 18),
 
-              // 3. English Meaning
+              // 4. English Meaning
               Text(
                 'English Meaning / Definition *',
                 style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -351,7 +335,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 18),
 
-              // 4. Kannada Meaning
+              // 5. Kannada Meaning
               Text(
                 'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning) *',
                 style: theme.textTheme.titleSmall?.copyWith(
@@ -386,7 +370,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 18),
 
-              // 5. Example Sentence
+              // 6. Example Sentence
               Text(
                 'Contextual Example Sentence',
                 style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -403,7 +387,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 18),
 
-              // 6. Difficulty Level
+              // 7. Difficulty Level
               Text(
                 'Difficulty Level',
                 style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -411,6 +395,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
               const SizedBox(height: 8),
               Wrap(
                 spacing: 10,
+                runSpacing: 8,
                 children: [
                   {'key': 'basic', 'label': 'Basic'},
                   {'key': 'intermediate', 'label': 'Intermediate'},
@@ -445,13 +430,14 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 18),
 
-              // 7. Topic / Category Selector
+              // 8. Topic / Category Selector
               Text(
                 'Topic / Category',
                 style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
               ),
               const SizedBox(height: 6),
               DropdownButtonFormField<String>(
+                isExpanded: true,
                 initialValue: _selectedCategory,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.category_rounded),
@@ -460,7 +446,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                 items: _topics.map((t) {
                   return DropdownMenuItem(
                     value: t,
-                    child: Text(t),
+                    child: Text(t, overflow: TextOverflow.ellipsis),
                   );
                 }).toList(),
                 onChanged: (val) {
@@ -493,49 +479,34 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
               const SizedBox(height: 18),
 
-              // 8. Synonyms & Antonyms (Optional)
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Synonyms (comma separated)',
-                          style: theme.textTheme.titleSmall?.copyWith(fontSize: 12),
-                        ),
-                        const SizedBox(height: 6),
-                        TextFormField(
-                          controller: _synonymsController,
-                          decoration: const InputDecoration(
-                            hintText: 'tough, flexible',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Antonyms (comma separated)',
-                          style: theme.textTheme.titleSmall?.copyWith(fontSize: 12),
-                        ),
-                        const SizedBox(height: 6),
-                        TextFormField(
-                          controller: _antonymsController,
-                          decoration: const InputDecoration(
-                            hintText: 'fragile, weak',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              // 9. Synonyms (Optional)
+              Text(
+                'Synonyms (optional)',
+                style: theme.textTheme.titleSmall?.copyWith(fontSize: 13, fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 6),
+              TextFormField(
+                controller: _synonymsController,
+                decoration: const InputDecoration(
+                  hintText: 'e.g. tough, flexible, robust',
+                  prefixIcon: Icon(Icons.compare_arrows_rounded),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // 10. Antonyms (Optional)
+              Text(
+                'Antonyms (optional)',
+                style: theme.textTheme.titleSmall?.copyWith(fontSize: 13, fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 6),
+              TextFormField(
+                controller: _antonymsController,
+                decoration: const InputDecoration(
+                  hintText: 'e.g. fragile, weak, delicate',
+                  prefixIcon: Icon(Icons.swap_horiz_rounded),
+                ),
               ),
 
               const SizedBox(height: 32),

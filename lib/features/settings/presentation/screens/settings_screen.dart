@@ -16,15 +16,53 @@ class SettingsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.14),
+                borderRadius: BorderRadius.circular(11),
+              ),
+              child: Icon(
+                Icons.tune_rounded,
+                size: 21,
+                color: isDark ? AppColors.primaryLight : AppColors.primary,
+              ),
+            ),
+            const SizedBox(width: 11),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Settings',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -0.3,
+                  ),
+                ),
+                Text(
+                  'Theme & App Configuration',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         children: [
           // Section 1: Appearance & Theme
           _buildSectionHeader(
             context,
-            icon: Icons.palette_outlined,
+            icon: Icons.palette_rounded,
             title: 'Appearance',
             subtitle: 'Choose how Vocabulary Builder looks on your device',
           ),
@@ -73,59 +111,60 @@ class SettingsScreen extends ConsumerWidget {
           // Section 2: Vocabulary Library Info
           _buildSectionHeader(
             context,
-            icon: Icons.library_books_outlined,
+            icon: Icons.library_books_rounded,
             title: 'Vocabulary Library',
             subtitle: 'Embedded offline dictionary & learning tools',
           ),
           const SizedBox(height: 12),
 
-          Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-              side: BorderSide(
+          Container(
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.surfaceDark : Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
                 color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                width: 1.2,
               ),
+              boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  _buildInfoRow(
-                    context,
-                    icon: Icons.auto_stories_rounded,
-                    title: 'Total Vocabulary',
-                    value: '1,350 Words',
-                  ),
-                  const Divider(height: 20),
-                  _buildInfoRow(
-                    context,
-                    icon: Icons.category_rounded,
-                    title: 'Topics / Categories',
-                    value: '27 Topics (50+ each)',
-                  ),
-                  const Divider(height: 20),
-                  _buildInfoRow(
-                    context,
-                    icon: Icons.stairs_rounded,
-                    title: 'Difficulty Levels',
-                    value: 'Basic, Intermediate, Advanced',
-                  ),
-                  const Divider(height: 20),
-                  _buildInfoRow(
-                    context,
-                    icon: Icons.translate_rounded,
-                    title: 'Kannada Meanings',
-                    value: 'ಕನ್ನಡ ಅರ್ಥಗಳು ಸೇರಿಸಲಾಗಿದೆ',
-                  ),
-                  const Divider(height: 20),
-                  _buildInfoRow(
-                    context,
-                    icon: Icons.wifi_off_rounded,
-                    title: 'Storage & Access',
-                    value: '100% Offline SQLite',
-                  ),
-                ],
-              ),
+            padding: const EdgeInsets.all(18),
+            child: Column(
+              children: [
+                _buildInfoRow(
+                  context,
+                  icon: Icons.auto_stories_rounded,
+                  title: 'Total Vocabulary',
+                  value: '1,350 Words',
+                ),
+                const Divider(height: 22),
+                _buildInfoRow(
+                  context,
+                  icon: Icons.category_rounded,
+                  title: 'Topics / Categories',
+                  value: '27 Topics (50+ each)',
+                ),
+                const Divider(height: 22),
+                _buildInfoRow(
+                  context,
+                  icon: Icons.stairs_rounded,
+                  title: 'Difficulty Levels',
+                  value: 'Basic, Intermediate, Advanced',
+                ),
+                const Divider(height: 22),
+                _buildInfoRow(
+                  context,
+                  icon: Icons.translate_rounded,
+                  title: 'Kannada Meanings',
+                  value: 'ಕನ್ನಡ ಅರ್ಥಗಳು ಸೇರಿಸಲಾಗಿದೆ',
+                ),
+                const Divider(height: 22),
+                _buildInfoRow(
+                  context,
+                  icon: Icons.wifi_off_rounded,
+                  title: 'Storage & Access',
+                  value: '100% Offline SQLite',
+                ),
+              ],
             ),
           ),
 
@@ -134,73 +173,95 @@ class SettingsScreen extends ConsumerWidget {
           // Section 3: About App
           _buildSectionHeader(
             context,
-            icon: Icons.info_outline_rounded,
+            icon: Icons.info_rounded,
             title: 'About',
             subtitle: 'Application details & version',
           ),
           const SizedBox(height: 12),
 
-          Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-              side: BorderSide(
+          Container(
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.surfaceDark : Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              border: Border.all(
                 color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                width: 1.2,
               ),
+              boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Icon(
-                      Icons.school_rounded,
-                      color: isDark ? AppColors.primaryLight : AppColors.primary,
-                      size: 26,
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppConstants.appName,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          AppConstants.appTagline,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-                          ),
-                        ),
+            padding: const EdgeInsets.all(18),
+            child: Row(
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        isDark ? AppColors.primaryLight : AppColors.primary,
+                        AppColors.primaryDark,
                       ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      'v1.0.0',
-                      style: theme.textTheme.labelSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: [
+                      BoxShadow(
+                        color: (isDark ? AppColors.primaryLight : AppColors.primary)
+                            .withValues(alpha: 0.3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 3),
                       ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.school_rounded,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppConstants.appName,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 3),
+                      Text(
+                        AppConstants.appTagline,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: isDark ? AppColors.borderDark : const Color(0xFFCBD5E1),
                     ),
                   ),
-                ],
-              ),
+                  child: Text(
+                    'v1.0.0',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 11.5,
+                      color: isDark ? AppColors.primaryLight : AppColors.primary,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
 
@@ -218,33 +279,43 @@ class SettingsScreen extends ConsumerWidget {
   }) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final primary = isDark ? AppColors.primaryLight : AppColors.primary;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            Icon(
-              icon,
-              size: 20,
-              color: isDark ? AppColors.primaryLight : AppColors.primary,
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: primary.withValues(alpha: 0.12),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                icon,
+                size: 16,
+                color: primary,
+              ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 10),
             Text(
               title,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.2,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 2),
+        const SizedBox(height: 3),
         Padding(
-          padding: const EdgeInsets.only(left: 28),
+          padding: const EdgeInsets.only(left: 32),
           child: Text(
             subtitle,
             style: theme.textTheme.bodySmall?.copyWith(
               color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
@@ -267,89 +338,98 @@ class SettingsScreen extends ConsumerWidget {
         ? primaryColor
         : (isDark ? AppColors.borderDark : AppColors.borderLight);
 
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(16),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? (primaryColor.withValues(alpha: isDark ? 0.15 : 0.08))
-              : (isDark ? AppColors.surfaceDark : AppColors.surfaceLight),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+      ),
+      child: Material(
+        color: isSelected
+            ? (primaryColor.withValues(alpha: isDark ? 0.15 : 0.08))
+            : (isDark ? AppColors.surfaceDark : Colors.white),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(
+          side: BorderSide(
             color: borderColor,
-            width: isSelected ? 2.0 : 1.0,
+            width: isSelected ? 2.0 : 1.2,
           ),
         ),
-        child: Row(
-          children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: isSelected
-                    ? primaryColor.withValues(alpha: 0.2)
-                    : (isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(
-                icon,
-                color: isSelected
-                    ? primaryColor
-                    : (isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight),
-                size: 22,
-              ),
-            ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      fontWeight: isSelected ? FontWeight.bold : FontWeight.w600,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            child: Row(
+              children: [
+                Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: isSelected
+                        ? primaryColor.withValues(alpha: 0.2)
+                        : (isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: isSelected
+                        ? primaryColor
+                        : (isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight),
+                    size: 22,
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                          fontSize: 15,
+                          color: isSelected
+                              ? primaryColor
+                              : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        subtitle,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isSelected ? primaryColor : Colors.transparent,
+                    border: Border.all(
                       color: isSelected
                           ? primaryColor
-                          : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
+                          : (isDark ? AppColors.borderDark : AppColors.borderLight),
+                      width: 2,
                     ),
                   ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 8),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: isSelected ? primaryColor : Colors.transparent,
-                border: Border.all(
-                  color: isSelected
-                      ? primaryColor
-                      : (isDark ? AppColors.borderDark : AppColors.borderLight),
-                  width: 2,
+                  child: isSelected
+                      ? const Icon(
+                          Icons.check,
+                          size: 16,
+                          color: Colors.white,
+                        )
+                      : null,
                 ),
-              ),
-              child: isSelected
-                  ? const Icon(
-                      Icons.check,
-                      size: 16,
-                      color: Colors.white,
-                    )
-                  : null,
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -363,19 +443,28 @@ class SettingsScreen extends ConsumerWidget {
   }) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final primary = isDark ? AppColors.primaryLight : AppColors.primary;
 
     return Row(
       children: [
-        Icon(
-          icon,
-          size: 18,
-          color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+        Container(
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            color: primary.withValues(alpha: 0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            icon,
+            size: 16,
+            color: primary,
+          ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 12),
         Expanded(
           child: Text(
             title,
             style: theme.textTheme.bodyMedium?.copyWith(
+              fontWeight: FontWeight.w600,
               color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
             ),
           ),
@@ -383,7 +472,8 @@ class SettingsScreen extends ConsumerWidget {
         Text(
           value,
           style: theme.textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w800,
+            fontSize: 13.5,
             color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
           ),
         ),

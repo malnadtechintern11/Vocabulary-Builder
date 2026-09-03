@@ -49,4 +49,55 @@ class AppColors {
   // Quiz Status Colors
   static const Color correctGreen = Color(0xFF22C55E);
   static const Color incorrectRed = Color(0xFFEF4444);
+
+  // Subtle Card Shadows
+  static const List<BoxShadow> cardShadowLight = [
+    BoxShadow(
+      color: Color(0x0A0F172A), // 4% Slate 900
+      blurRadius: 10,
+      offset: Offset(0, 3),
+      spreadRadius: 0,
+    ),
+    BoxShadow(
+      color: Color(0x060F172A),
+      blurRadius: 3,
+      offset: Offset(0, 1),
+      spreadRadius: 0,
+    ),
+  ];
+
+  static const List<BoxShadow> cardShadowDark = [
+    BoxShadow(
+      color: Color(0x35000000),
+      blurRadius: 12,
+      offset: Offset(0, 4),
+      spreadRadius: 0,
+    ),
+  ];
+
+  // Elevated Shadows for interactive cards & active dialogs
+  static const List<BoxShadow> elevatedShadowLight = [
+    BoxShadow(
+      color: Color(0x120F172A),
+      blurRadius: 16,
+      offset: Offset(0, 6),
+      spreadRadius: 0,
+    ),
+  ];
+
+  static const List<BoxShadow> elevatedShadowDark = [
+    BoxShadow(
+      color: Color(0x50000000),
+      blurRadius: 16,
+      offset: Offset(0, 6),
+      spreadRadius: 0,
+    ),
+  ];
+
+  // Primary Gradient
+  static const LinearGradient primaryGradient = LinearGradient(
+    colors: [Color(0xFF4F46E5), Color(0xFF6366F1)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }

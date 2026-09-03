@@ -25,19 +25,45 @@ class WordsListScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vocabulary Builder'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.record_voice_over_rounded),
-            tooltip: 'English Sentences',
-            onPressed: () => context.push(RoutePaths.sentences),
-          ),
-          IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            tooltip: 'Settings',
-            onPressed: () => context.go(RoutePaths.settings),
-          ),
-        ],
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.14),
+                borderRadius: BorderRadius.circular(11),
+              ),
+              child: Icon(
+                Icons.school_rounded,
+                size: 21,
+                color: isDark ? AppColors.primaryLight : AppColors.primary,
+              ),
+            ),
+            const SizedBox(width: 11),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Vocabulary Builder',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -0.3,
+                  ),
+                ),
+                Text(
+                  'English & ಕನ್ನಡ Learning Hub',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [
@@ -48,96 +74,116 @@ class WordsListScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // English Sentences Home Card Banner
-                InkWell(
-                  onTap: () => context.push(RoutePaths.sentences),
-                  borderRadius: BorderRadius.circular(16),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: isDark
-                            ? [const Color(0xFF312E81), const Color(0xFF1E1B4B)]
-                            : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: isDark
-                            ? AppColors.primaryLight.withValues(alpha: 0.3)
-                            : AppColors.primaryLight.withValues(alpha: 0.25),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: isDark
-                                ? AppColors.primaryLight.withValues(alpha: 0.25)
-                                : Colors.white,
-                            shape: BoxShape.circle,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(18),
+                    child: InkWell(
+                      onTap: () => context.push(RoutePaths.sentences),
+                      borderRadius: BorderRadius.circular(18),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: isDark
+                                ? [const Color(0xFF1E1B4B), const Color(0xFF312E81)]
+                                : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
-                          child: Icon(
-                            Icons.record_voice_over_rounded,
-                            color: isDark ? AppColors.primaryLight : AppColors.primary,
-                            size: 22,
+                          borderRadius: BorderRadius.circular(18),
+                          border: Border.all(
+                            color: isDark
+                                ? AppColors.primaryLight.withValues(alpha: 0.35)
+                                : AppColors.primaryLight.withValues(alpha: 0.3),
+                            width: 1.2,
                           ),
                         ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'English Sentences',
-                                    style: TextStyle(
-                                      fontSize: 14.5,
-                                      fontWeight: FontWeight.w700,
-                                      color: isDark
-                                          ? AppColors.textPrimaryDark
-                                          : AppColors.primaryDark,
-                                    ),
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(9),
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? AppColors.primaryLight.withValues(alpha: 0.25)
+                                    : Colors.white,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
+                                    blurRadius: 4,
+                                    offset: const Offset(0, 2),
                                   ),
-                                  const SizedBox(width: 8),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                                    decoration: BoxDecoration(
-                                      color: isDark ? AppColors.primaryLight : AppColors.primary,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: const Text(
-                                      '600+ Sentences',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white,
+                                ],
+                              ),
+                              child: Icon(
+                                Icons.record_voice_over_rounded,
+                                color: isDark ? AppColors.primaryLight : AppColors.primary,
+                                size: 22,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'English Sentences',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w800,
+                                          letterSpacing: -0.2,
+                                          color: isDark
+                                              ? AppColors.textPrimaryDark
+                                              : AppColors.primaryDark,
+                                        ),
                                       ),
+                                      const SizedBox(width: 8),
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
+                                        decoration: BoxDecoration(
+                                          color: isDark ? AppColors.primaryLight : AppColors.primary,
+                                          borderRadius: BorderRadius.circular(8),
+                                        ),
+                                        child: const Text(
+                                          '600+ Sentences',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w800,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 3),
+                                  Text(
+                                    'Beginner, Intermediate & Advanced with audio',
+                                    style: TextStyle(
+                                      fontSize: 11.5,
+                                      fontWeight: FontWeight.w500,
+                                      color: isDark
+                                          ? AppColors.textSecondaryDark
+                                          : AppColors.textSecondaryLight,
                                     ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 2),
-                              Text(
-                                'Beginner, Intermediate & Advanced with audio',
-                                style: TextStyle(
-                                  fontSize: 11.5,
-                                  color: isDark
-                                      ? AppColors.textSecondaryDark
-                                      : AppColors.textSecondaryLight,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 15,
+                              color: isDark ? AppColors.primaryLight : AppColors.primary,
+                            ),
+                          ],
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 15,
-                          color: isDark ? AppColors.primaryLight : AppColors.primary,
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -159,6 +205,9 @@ class WordsListScreen extends ConsumerWidget {
                             label: const Text('All Topics'),
                             selected: selectedCategory == 'all',
                             showCheckmark: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                             backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
                             selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
                             side: BorderSide(
@@ -187,6 +236,9 @@ class WordsListScreen extends ConsumerWidget {
                                 label: Text(cat[0].toUpperCase() + cat.substring(1)),
                                 selected: isSel,
                                 showCheckmark: false,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
                                 backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
                                 selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
                                 side: BorderSide(
@@ -219,6 +271,47 @@ class WordsListScreen extends ConsumerWidget {
             ),
           ),
           const Divider(height: 1),
+          // Results & Quick Context Strip
+          wordsAsync.maybeWhen(
+            data: (words) => words.isNotEmpty
+                ? Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 2),
+                    child: Row(
+                      children: [
+                        Text(
+                          '${words.length} ${words.length == 1 ? 'Word' : 'Words'} Listed',
+                          style: TextStyle(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                          ),
+                        ),
+                        const Spacer(),
+                        if (selectedCategory != 'all')
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+                            decoration: BoxDecoration(
+                              color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.12),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.25),
+                              ),
+                            ),
+                            child: Text(
+                              selectedCategory[0].toUpperCase() + selectedCategory.substring(1),
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w800,
+                                color: isDark ? AppColors.primaryLight : AppColors.primary,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  )
+                : const SizedBox.shrink(),
+            orElse: () => const SizedBox.shrink(),
+          ),
           // Word List Content
           Expanded(
             child: wordsAsync.when(
@@ -242,7 +335,7 @@ class WordsListScreen extends ConsumerWidget {
                     ref.invalidate(wordsListProvider);
                   },
                   child: ListView.builder(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
                     itemCount: words.length,
                     itemBuilder: (context, index) {
                       final word = words[index];

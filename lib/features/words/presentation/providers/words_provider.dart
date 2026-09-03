@@ -66,7 +66,9 @@ final wordsListProvider = FutureProvider.autoDispose<List<Word>>((ref) async {
   if (searchQuery.trim().isNotEmpty) {
     final searchUseCase = ref.watch(searchWordsUseCaseProvider);
     final results = await searchUseCase(searchQuery);
-    return results.where((w) {
+    final cleanQuery = searchQuery.trim().toLowerCase();
+
+    final filtered = results.where((w) {
       if (difficulty != 'all' && w.difficulty.toLowerCase() != difficulty.toLowerCase()) {
         return false;
       }
@@ -75,6 +77,28 @@ final wordsListProvider = FutureProvider.autoDispose<List<Word>>((ref) async {
       }
       return true;
     }).toList();
+
+    // Priority rank: exact word match (1st), prefix match (2nd), contains in word (3rd), others
+    filtered.sort((a, b) {
+      final aWord = a.word.toLowerCase();
+      final bWord = b.word.toLowerCase();
+
+      final aExact = aWord == cleanQuery ? 0 : 1;
+      final bExact = bWord == cleanQuery ? 0 : 1;
+      if (aExact != bExact) return aExact.compareTo(bExact);
+
+      final aStarts = aWord.startsWith(cleanQuery) ? 0 : 1;
+      final bStarts = bWord.startsWith(cleanQuery) ? 0 : 1;
+      if (aStarts != bStarts) return aStarts.compareTo(bStarts);
+
+      final aContains = aWord.contains(cleanQuery) ? 0 : 1;
+      final bContains = bWord.contains(cleanQuery) ? 0 : 1;
+      if (aContains != bContains) return aContains.compareTo(bContains);
+
+      return aWord.compareTo(bWord);
+    });
+
+    return filtered;
   }
 
   final getWordsUseCase = ref.watch(getWordsUseCaseProvider);

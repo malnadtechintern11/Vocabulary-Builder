@@ -1,11 +1,12 @@
 import '../../models/sentence.dart';
 
-/// Static collection of 200 sentences
+/// Static collection of 200 offline sentences with English and Kannada meanings
 const List<Sentence> advancedSentences = [
   Sentence(
     id: 'a001',
     text: "Epistemological inquiry compels scholars to scrutinize the foundational assumptions underpinning empirical knowledge.",
     meaning: "Philosophical study forces researchers to question the premises beneath observational science.",
+    kannadaMeaning: "ಜ್ಞಾನಮೀಮಾಂಸೆಯ ವಿಚಾರಣೆಯು ಜ್ಞಾನದ ಮೂಲಭೂತ ಊಹೆಗಳನ್ನು ಸೂಕ್ಷ್ಮವಾಗಿ ಪರಿಶೀಲಿಸಲು ವಿದ್ವಾಂಸರನ್ನು ಪ್ರೇರೇಪಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -17,6 +18,7 @@ const List<Sentence> advancedSentences = [
     id: 'a002',
     text: "The professor articulated a nuanced critique of post-structuralist hermeneutics and literary semiotics.",
     meaning: "An intellectual deconstruction of linguistic signs and critical interpretation theories.",
+    kannadaMeaning: "ಪ್ರಾಧ್ಯಾಪಕರು ಸಾಹಿತ್ಯಿಕ ಸಂಕೇತಶಾಸ್ತ್ರದ ಬಗ್ಗೆ ಆಳವಾದ ಮತ್ತು ಸೂಕ್ಷ್ಮವಾದ ವಿಮರ್ಶೆಯನ್ನು ಮಂಡಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -28,6 +30,7 @@ const List<Sentence> advancedSentences = [
     id: 'a003',
     text: "Human consciousness remains an irreducible phenomenon that defies purely materialistic explanations.",
     meaning: "The internal experience of awareness cannot be simplified to basic biology.",
+    kannadaMeaning: "ಮಾನವ ಪ್ರಜ್ಞೆಯು ಸಂಪೂರ್ಣವಾಗಿ ಕೇವಲ ಭೌತಿಕ ವಿವರಣೆಗಳಿಗೆ ನಿಲುಕದ ಒಂದು ಅದ್ಭುತ ವಿದ್ಯಮಾನವಾಗಿದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -39,6 +42,7 @@ const List<Sentence> advancedSentences = [
     id: 'a004',
     text: "Existential philosophy posits that individuals must forge authentic meaning amid an inherently indifferent universe.",
     meaning: "Sartrean thought argues we must construct our own purpose in life.",
+    kannadaMeaning: "ಅಸ್ತಿತ್ವವಾದಿ ತತ್ತ್ವಶಾಸ್ತ್ರವು ಮಾನವರು ಈ ಜಗತ್ತಿನಲ್ಲಿ ತಮ್ಮದೇ ಆದ ನಿಜವಾದ ಅರ್ಥವನ್ನು ಕಂಡುಕೊಳ್ಳಬೇಕೆಂದು ಪ್ರತಿಪಾದಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -50,6 +54,7 @@ const List<Sentence> advancedSentences = [
     id: 'a005',
     text: "The thesis rigorously synthesizes qualitative anthropological fieldwork with quantitative econometric modeling.",
     meaning: "Combining cultural observational notes with statistical financial analysis.",
+    kannadaMeaning: "ಈ ಸಂಶೋಧನಾ ಪ್ರಬಂಧವು ಗುಣಾತ್ಮಕ ಮಾನವಶಾಸ್ತ್ರ ಮತ್ತು ಪರಿಮಾಣಾತ್ಮಕ ಆರ್ಥಿಕ ಮಾದರಿಗಳನ್ನು ಸಮಗ್ರವಾಗಿ ಸಂಯೋಜಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -61,6 +66,7 @@ const List<Sentence> advancedSentences = [
     id: 'a006',
     text: "Cognitive dissonance emerges when an individual's core convictions conflict sharply with undeniable empirical realities.",
     meaning: "Mental discomfort caused when beliefs are disproven by visible facts.",
+    kannadaMeaning: "ಒಬ್ಬ ವ್ಯಕ್ತಿಯ ಪ್ರಮುಖ ನಂಬಿಕೆಗಳು ವಾಸ್ತವಕ್ಕೆ ವಿರುದ್ಧವಾದಾಗ ಮಾನಸಿಕ ಗೊಂದಲ ಅಥವಾ ಅಸಂಗತತೆ ಉಂಟಾಗುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -72,6 +78,7 @@ const List<Sentence> advancedSentences = [
     id: 'a007',
     text: "The symposium explored the ethical ramifications of gene editing technologies in contemporary biomedical research.",
     meaning: "A conference addressing moral consequences of altering human DNA.",
+    kannadaMeaning: "ಈ ವಿಚಾರ ಸಂಕಿರಣವು ಆಧುನಿಕ ವೈದ್ಯಕೀಯ ಸಂಶೋಧನೆಯಲ್ಲಿ ಜೀನ್ ಎಡಿಟಿಂಗ್ ತಂತ್ರಜ್ಞಾನದ ನೈತಿಕ ಪರಿಣಾಮಗಳನ್ನು ಅನ್ವೇಷಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -83,6 +90,7 @@ const List<Sentence> advancedSentences = [
     id: 'a008',
     text: "He delivered an impassioned critique highlighting the systemic inequities perpetuated by historical redlining.",
     meaning: "A forceful speech condemning housing discrimination that harms minority neighborhoods.",
+    kannadaMeaning: "ಐತಿಹಾಸಿಕ ತಾರತಮ್ಯದಿಂದ ಮುಂದುವರಿದ ವ್ಯವಸ್ಥಿತ ಅಸಮಾನತೆಗಳನ್ನು ಎತ್ತಿ ತೋರಿಸುವ ಭಾವನಾತ್ಮಕ ವಿಮರ್ಶೆಯನ್ನು ಅವರು ನೀಡಿದರು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -94,6 +102,7 @@ const List<Sentence> advancedSentences = [
     id: 'a009',
     text: "Intellectual integrity demands that researchers openly acknowledge the methodological limitations of their trials.",
     meaning: "Honest science requires admitting gaps in experiment setups.",
+    kannadaMeaning: "ಸಂಶೋಧಕರು ತಮ್ಮ ಪ್ರಯೋಗಗಳ ಮಿತಿಗಳನ್ನು ಮುಕ್ತವಾಗಿ ಒಪ್ಪಿಕೊಳ್ಳಬೇಕೆಂದು ಬೌದ್ಧಿಕ ಪ್ರಾಮಾಣಿಕತೆ ಬಯಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -105,6 +114,7 @@ const List<Sentence> advancedSentences = [
     id: 'a010',
     text: "Socratic dialogue dismantles dogmatic presumptions through relentless, disciplined questioning.",
     meaning: "Philosophical cross-examination breaks down blind assumptions step by step.",
+    kannadaMeaning: "ಸಾಕ್ರಟೀಸ್‌ನ ಸಂವಾದ ವಿಧಾನವು ನಿರಂತರ ಪ್ರಶ್ನೋತ್ತರಗಳ ಮೂಲಕ ಮೂಢನಂಬಿಕೆಗಳನ್ನು ಮತ್ತು ಪೂರ್ವಾಗ್ರಹಗಳನ್ನು ಹೋಗಲಾಡಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -116,6 +126,7 @@ const List<Sentence> advancedSentences = [
     id: 'a011',
     text: "The dialectical progression of historical events illustrates the perpetual friction between tradition and reform.",
     meaning: "History advances through continuous struggle between conservation and change.",
+    kannadaMeaning: "ಐತಿಹಾಸಿಕ ಘಟನೆಗಳು ಸಂಪ್ರದಾಯ ಮತ್ತು ಸುಧಾರಣೆಗಳ ನಡುವಿನ ನಿರಂತರ ಸಂಘರ್ಷವನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ವಿವರಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -127,6 +138,7 @@ const List<Sentence> advancedSentences = [
     id: 'a012',
     text: "Postmodern architecture subverts modernist orthodoxies by incorporating whimsical ornamentation and historical pastiche.",
     meaning: "Designers mocking rigid minimalism with playful, historic styles.",
+    kannadaMeaning: "ಉತ್ತರ-ಆಧುನಿಕ ವಾಸ್ತುಶಿಲ್ಪವು ಐತಿಹಾಸಿಕ ಅಲಂಕಾರಗಳನ್ನು ಅಳವಡಿಸಿಕೊಳ್ಳುವ ಮೂಲಕ ಆಧುನಿಕ ಕಟ್ಟುಪಾಡುಗಳನ್ನು ಮೀರುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -138,6 +150,7 @@ const List<Sentence> advancedSentences = [
     id: 'a013',
     text: "Her dissertation investigates the sociolinguistic determinants of dialect preservation in marginalized communities.",
     meaning: "Academic study of social factors keeping regional vernaculars alive.",
+    kannadaMeaning: "ಆಕೆಯ ಪ್ರಬಂಧವು ಹಿಂದುಳಿದ ಸಮುದಾಯಗಳಲ್ಲಿ ಭಾಷಾ ಉಪಭಾಷೆಗಳ ಉಳಿವಿಗೆ ಕಾರಣವಾಗುವ ಅಂಶಗಳನ್ನು ತನಿಖೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -149,6 +162,7 @@ const List<Sentence> advancedSentences = [
     id: 'a014',
     text: "Utilitarian ethics posits that the moral rectitude of any action is judged strictly by its net consequences.",
     meaning: "The philosophy that right and wrong is defined by maximizing happiness for most.",
+    kannadaMeaning: "ಯಾವುದೇ ಕ್ರಿಯೆಯ ನೈತಿಕ ಮೌಲ್ಯವನ್ನು ಅದರ ಅಂತಿಮ ಪರಿಣಾಮಗಳ ಆಧಾರದ ಮೇಲೆ ಅಳೆಯಲಾಗುತ್ತದೆ ಎಂದು ಪ್ರಯೋಜನವಾದ ಹೇಳುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -160,6 +174,7 @@ const List<Sentence> advancedSentences = [
     id: 'a015',
     text: "The philosopher argued that linguistic constraints subtly delineate the perimeter of human conceptualization.",
     meaning: "Grammar and words define and restrict what humans can think.",
+    kannadaMeaning: "ಭಾಷಾ ಮಿತಿಗಳು ಮಾನವನ ಆಲೋಚನಾ ವ್ಯಾಪ್ತಿಯನ್ನು ನಿರ್ಧರಿಸುತ್ತವೆ ಎಂದು ತತ್ವಜ್ಞಾನಿ ವಾದಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -171,6 +186,7 @@ const List<Sentence> advancedSentences = [
     id: 'a016',
     text: "A teleological worldview presumes that the cosmos is imbued with intrinsic purpose and directional intention.",
     meaning: "The belief that nature is governed by ultimate goals rather than random physics.",
+    kannadaMeaning: "ವಿಶ್ವವು ಒಂದು ಅಂತರ್ಗತ ಉದ್ದೇಶ ಮತ್ತು ನಿರ್ದೇಶನವನ್ನು ಹೊಂದಿದೆ ಎಂದು ಉದ್ದೇಶಶಾಸ್ತ್ರೀಯ ದೃಷ್ಟಿಕೋನವು ನಂಬುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -182,6 +198,7 @@ const List<Sentence> advancedSentences = [
     id: 'a017',
     text: "The archival discovery precipitated a paradigm shift in scholarly interpretations of the Industrial Revolution.",
     meaning: "Finding antique letters altered how historians view factory history.",
+    kannadaMeaning: "ದಾಖಲೆಗಳ ಶೋಧನೆಯು ಕೈಗಾರಿಕಾ ಕ್ರಾಂತಿಯ ಬಗೆಗಿನ ವಿದ್ವಾಂಸರ ವ್ಯಾಖ್ಯಾನಗಳಲ್ಲಿ ಆಮೂಲಾಗ್ರ ಬದಲಾವಣೆಯನ್ನು ತಂದಿತು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -193,6 +210,7 @@ const List<Sentence> advancedSentences = [
     id: 'a018',
     text: "Scholastic debate flourished as opposing delegations presented meticulously corroborated historiographical evidence.",
     meaning: "Rigorous academic arguments back up claims with verified antique documents.",
+    kannadaMeaning: "ವಿರೋಧಿ ನಿಯೋಗಗಳು ನಿಖರವಾದ ಐತಿಹಾಸಿಕ ಪುರಾವೆಗಳನ್ನು ಮಂಡಿಸಿದಾಗ ಪಾಂಡಿತ್ಯಪೂರ್ಣ ಚರ್ಚೆಯು ಕಳೆಗಟ್ಟಿತು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -204,6 +222,7 @@ const List<Sentence> advancedSentences = [
     id: 'a019',
     text: "Ontological skepticism challenges whether perception corresponds faithfully to objective external realities.",
     meaning: "Doubting whether our human senses accurately perceive the real universe.",
+    kannadaMeaning: "ನಮ್ಮ ಗ್ರಹಿಕೆಯು ಬಾಹ್ಯ ನೈಜತೆಗೆ ನಿಖರವಾಗಿ ಹೊಂದಿಕೊಳ್ಳುತ್ತದೆಯೇ ಎಂದು ತಾತ್ವಿಕ ಸಂದೇಹವಾದವು ಪ್ರಶ್ನಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -215,6 +234,7 @@ const List<Sentence> advancedSentences = [
     id: 'a020',
     text: "Moral relativism argues that ethical principles are culturally contingent rather than universal absolutes.",
     meaning: "The view that right and wrong depends on local cultural norms.",
+    kannadaMeaning: "ನೈತಿಕ ತತ್ವಗಳು ಸಾರ್ವತ್ರಿಕ ನಿಯಮಗಳಲ್ಲ, ಬದಲಿಗೆ ಸಂಸ್ಕೃತಿಗೆ ತಕ್ಕಂತೆ ಬದಲಾಗುತ್ತವೆ ಎಂದು ನೈತಿಕ ಸಾಪೇಕ್ಷತಾವಾದ ವಾದಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -226,6 +246,7 @@ const List<Sentence> advancedSentences = [
     id: 'a021',
     text: "The corporate merger stalled indefinitely amid protracted disagreements over governance and equity allocation.",
     meaning: "A company buyout halted because executives argued over stock and control.",
+    kannadaMeaning: "ಆಡಳಿತ ಮತ್ತು ಷೇರು ಹಂಚಿಕೆಯ ಮೇಲಿನ ಸುದೀರ್ಘ ಭಿನ್ನಾಭಿಪ್ರಾಯಗಳಿಂದಾಗಿ ಕಂಪನಿಗಳ ವಿಲೀನವು ಅನಿರ್ದಿಷ್ಟವಾಗಿ ಸ್ಥಗಿತಗೊಂಡಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -237,6 +258,7 @@ const List<Sentence> advancedSentences = [
     id: 'a022',
     text: "Diplomats strived tirelessly to engineer an amicable consensus amid contentious multilateral negotiations.",
     meaning: "International envoys worked to build a friendly peace pact among rivals.",
+    kannadaMeaning: "ಬಹುಪಕ್ಷೀಯ ಮಾತುಕತೆಗಳ ನಡುವೆ ಸೌಹಾರ್ದಯುತ ಒಮ್ಮತವನ್ನು ಮೂಡಿಸಲು ರಾಜತಾಂತ್ರಿಕರು ದಣಿವರಿಯದೆ ಶ್ರಮಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -248,6 +270,7 @@ const List<Sentence> advancedSentences = [
     id: 'a023',
     text: "Fostering psychological safety within executive teams accelerates innovation and mitigates catastrophic oversights.",
     meaning: "Letting staff speak candidly without fear prevents corporate disasters.",
+    kannadaMeaning: "ನಾಯಕತ್ವ ತಂಡಗಳಲ್ಲಿ ಮಾನಸಿಕ ಸುರಕ್ಷತೆಯನ್ನು ಬೆಳೆಸುವುದು ಹೊಸ ಆವಿಷ್ಕಾರವನ್ನು ವೇಗಗೊಳಿಸುತ್ತದೆ ಮತ್ತು ತಪ್ಪುಗಳನ್ನು ತಡೆಯುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -259,6 +282,7 @@ const List<Sentence> advancedSentences = [
     id: 'a024',
     text: "The chief financial officer instituted stringent austerity protocols to withstand impending economic turbulence.",
     meaning: "Strict corporate spending curbs were ordered to survive recessions.",
+    kannadaMeaning: "ಮುಂಬರುವ ಆರ್ಥಿಕ ಬಿಕ್ಕಟ್ಟನ್ನು ತಡೆದುಕೊಳ್ಳಲು ಮುಖ್ಯ ಹಣಕಾಸು ಅಧಿಕಾರಿಯು ಕಟ್ಟುನಿಟ್ಟಾದ ಮಿತವ್ಯಯ ಕ್ರಮಗಳನ್ನು ಜಾರಿಗೆ ತಂದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -270,6 +294,7 @@ const List<Sentence> advancedSentences = [
     id: 'a025',
     text: "Cross-border acquisitions demand rigorous due diligence to uncover latent regulatory and financial liabilities.",
     meaning: "Buying overseas companies requires exhaustive audits to find hidden debts.",
+    kannadaMeaning: "ಗಡಿಯಾಚೆಗಿನ ಕಂಪನಿ ಖರೀದಿಗಳು ಸುಪ್ತ ನಿಯಂತ್ರಕ ಮತ್ತು ಆರ್ಥಿಕ ಹೊಣೆಗಾರಿಕೆಗಳನ್ನು ಬಹಿರಂಗಪಡಿಸಲು ಸೂಕ್ತ ಪರಿಶೀಲನೆ ಬಯಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -281,6 +306,7 @@ const List<Sentence> advancedSentences = [
     id: 'a026',
     text: "She navigated the precarious corporate hierarchy with diplomatic finesse, astute discernment, and quiet resolve.",
     meaning: "Climbing the office ladder using keen judgment and respectful poise.",
+    kannadaMeaning: "ಆಕೆಯು ಕಾರ್ಪೊರೇಟ್ ವಲಯದ ಕಠಿಣ ಪರಿಸ್ಥಿತಿಗಳನ್ನು ರಾಜತಾಂತ್ರಿಕ ಜಾಣ್ಮೆ ಮತ್ತು ದೃಢ ಸಂಕಲ್ಪದಿಂದ ನಿಭಾಯಿಸಿದಳು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -292,6 +318,7 @@ const List<Sentence> advancedSentences = [
     id: 'a027',
     text: "The enterprise established a decentralized governance structure to empower regional business units autonomously.",
     meaning: "Granting local branch managers independence to make fast decisions.",
+    kannadaMeaning: "ಪ್ರಾದೇಶಿಕ ವ್ಯಾಪಾರ ಘಟಕಗಳಿಗೆ ಸ್ವಾಯತ್ತ ಅಧಿಕಾರ ನೀಡಲು ಸಂಸ್ಥೆಯು ವಿಕೇಂದ್ರೀಕೃತ ಆಡಳಿತ ರಚನೆಯನ್ನು ಸ್ಥಾಪಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -303,6 +330,7 @@ const List<Sentence> advancedSentences = [
     id: 'a028',
     text: "Fierce competitive pressures compelled the telecommunications incumbent to disrupt its traditional business model.",
     meaning: "Market rivals forced the established giant to invent new digital plans.",
+    kannadaMeaning: "ತೀವ್ರ ಮಾರುಕಟ್ಟೆ ಸ್ಪರ್ಧೆಯು ಟೆಲಿಕಾಂ ಸಂಸ್ಥೆಯನ್ನು ತನ್ನ ಸಾಂಪ್ರದಾಯಿಕ ವ್ಯಾಪಾರ ಮಾದರಿಯನ್ನು ಬದಲಾಯಿಸಲು ಒತ್ತಾಯಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -314,6 +342,7 @@ const List<Sentence> advancedSentences = [
     id: 'a029',
     text: "Stakeholders scrutinized the company's environmental, social, and governance disclosures with utmost skepticism.",
     meaning: "Investors examined corporate green claims with severe critical doubt.",
+    kannadaMeaning: "ಷೇರುದಾರರು ಕಂಪನಿಯ ಪರಿಸರ ಮತ್ತು ಆಡಳಿತ ವರದಿಗಳನ್ನು ತೀವ್ರ ಪರಿಶೀಲನೆಗೆ ಒಳಪಡಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -325,6 +354,7 @@ const List<Sentence> advancedSentences = [
     id: 'a030',
     text: "The restructuring initiative entailed widespread departmental consolidation to eliminate redundant operational overhead.",
     meaning: "Reorganizing the company merged overlapping branches to save money.",
+    kannadaMeaning: "ಕಾರ್ಯಾಚರಣೆಯ ವೆಚ್ಚವನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಪುನರ್ರಚನಾ ಉಪಕ್ರಮವು ಇಲಾಖೆಗಳ ವಿಲೀನವನ್ನು ಒಳಗೊಂಡಿತ್ತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -336,6 +366,7 @@ const List<Sentence> advancedSentences = [
     id: 'a031',
     text: "He negotiated an equitable severance package that included comprehensive healthcare and career transition services.",
     meaning: "Securing fair compensation and medical coverage when leaving a post.",
+    kannadaMeaning: "ಅವನು ಸಮಗ್ರ ಆರೋಗ್ಯ ಮತ್ತು ವೃತ್ತಿ ಪರಿವರ್ತನಾ ಸೇವೆಗಳನ್ನು ಒಳಗೊಂಡ ಉತ್ತಮ ಪರಿಹಾರ ಪ್ಯಾಕೇಜ್ ಪಡೆದುಕೊಂಡನು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -347,6 +378,7 @@ const List<Sentence> advancedSentences = [
     id: 'a032',
     text: "Strategic diversification across uncorrelated asset classes mitigates vulnerability to macroeconomic downturns.",
     meaning: "Spreading investment capital shields wealth against market crashes.",
+    kannadaMeaning: "ವಿವಿಧ ಆಸ್ತಿ ವರ್ಗಗಳಲ್ಲಿ ಕಾರ್ಯತಂತ್ರದ ಹೂಡಿಕೆ ಮಾಡುವುದು ಆರ್ಥಿಕ ಹಿಂಜರಿತದ ಅಪಾಯವನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -358,6 +390,7 @@ const List<Sentence> advancedSentences = [
     id: 'a033',
     text: "The executive committee convened an emergency symposium to formulate a unified response to the cyber incident.",
     meaning: "Leaders met urgently to devise a combined strategy against data hackers.",
+    kannadaMeaning: "ಸೈಬರ್ ದಾಳಿಗೆ ಒಗ್ಗಟ್ಟಿನ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ರೂಪಿಸಲು ಕಾರ್ಯಕಾರಿ ಸಮಿತಿಯು ತುರ್ತು ಸಭೆಯನ್ನು ಕರೆಯಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -369,6 +402,7 @@ const List<Sentence> advancedSentences = [
     id: 'a034',
     text: "Her articulate rebuttal systematically dismantled each spurious allegation levied by the opposition.",
     meaning: "Her eloquent counterargument tore down false claims made by adversaries.",
+    kannadaMeaning: "ಆಕೆಯ ಸ್ಪಷ್ಟ ಮತ್ತು ಸಶಕ್ತ ಉತ್ತರವು ವಿರೋಧಿಗಳು ಹೊರಿಸಿದ ಪ್ರತಿಯೊಂದು ಆಧಾರರಹಿತ ಆರೋಪವನ್ನೂ ವ್ಯವಸ್ಥಿತವಾಗಿ ಹುಸಿಮಾಡಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -380,6 +414,7 @@ const List<Sentence> advancedSentences = [
     id: 'a035',
     text: "The enterprise fostered an egalitarian culture where junior associates could pitch transformative proposals.",
     meaning: "A flat workplace culture encouraging young staff to propose big ideas.",
+    kannadaMeaning: "ಕಿರಿಯ ಸಹೋದ್ಯೋಗಿಗಳೂ ಹೊಸ ಆಲೋಚನೆಗಳನ್ನು ಮಂಡಿಸಬಹುದಾದ ಸಮಾನತೆಯ ಸಂಸ್ಕೃತಿಯನ್ನು ಸಂಸ್ಥೆಯು ಬೆಳೆಸಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -391,6 +426,7 @@ const List<Sentence> advancedSentences = [
     id: 'a036',
     text: "Fiduciary responsibility obligates corporate boards to prioritize the long-term solvency of the organization.",
     meaning: "Legal duties require trustees to protect the financial life of the firm.",
+    kannadaMeaning: "ಸಂಸ್ಥೆಯ ದೀರ್ಘಾವಧಿಯ ಆರ್ಥಿಕ ಸ್ಥಿರತೆಗೆ ಆದ್ಯತೆ ನೀಡುವುದು ಕಾರ್ಪೊರೇಟ್ ಮಂಡಳಿಗಳ ಕಾನೂನಾತ್ಮಕ ಜವಾಬ್ದಾರಿಯಾಗಿದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -402,6 +438,7 @@ const List<Sentence> advancedSentences = [
     id: 'a037',
     text: "Proactive stakeholder engagement mitigates contentious friction during sensitive municipal zoning reforms.",
     meaning: "Consulting residents early avoids neighborhood protests over building permits.",
+    kannadaMeaning: "ನಾಗರಿಕರ ಸಕ್ರಿಯ ಪಾಲ್ಗೊಳ್ಳುವಿಕೆಯು ನಗರ ವಲಯ ಸುಧಾರಣೆಗಳ ಸಮಯದಲ್ಲಿ ಉಂಟಾಗುವ ಸಂಘರ್ಷವನ್ನು ತಗ್ಗಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -413,6 +450,7 @@ const List<Sentence> advancedSentences = [
     id: 'a038',
     text: "The multinational conglomerate divested its unprofitable retail assets to concentrate on high-margin cloud infrastructure.",
     meaning: "Selling off retail stores to focus exclusively on lucrative tech servers.",
+    kannadaMeaning: "ಲಾಭದಾಯಕ ಕ್ಲೌಡ್ ತಂತ್ರಜ್ಞಾನದ ಮೇಲೆ ಗಮನಹರಿಸಲು ಸಂಸ್ಥೆಯು ನಷ್ಟದಲ್ಲಿದ್ದ ಚಿಲ್ಲರೆ ವ್ಯಾಪಾರಗಳನ್ನು ಮಾರಾಟ ಮಾಡಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -424,6 +462,7 @@ const List<Sentence> advancedSentences = [
     id: 'a039',
     text: "Diplomatic reticence often proves far more effective than inflammatory rhetoric during delicate negotiations.",
     meaning: "Remaining quietly composed beats shouting insults during peace talks.",
+    kannadaMeaning: "ಸೂಕ್ಷ್ಮ ಮಾತುಕತೆಗಳ ಸಮಯದಲ್ಲಿ ಪ್ರಚೋದನಕಾರಿ ಭಾಷಣಕ್ಕಿಂತ ರಾಜತಾಂತ್ರಿಕ ಮೌನವೇ ಹೆಚ್ಚು ಪರಿಣಾಮಕಾರಿಯಾಗುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -435,6 +474,7 @@ const List<Sentence> advancedSentences = [
     id: 'a040',
     text: "Sustainable profitability hinges upon striking an optimal balance between customer retention and acquisition.",
     meaning: "Long-term profit requires keeping existing clients while winning new ones.",
+    kannadaMeaning: "ಗ್ರಾಹಕರನ್ನು ಉಳಿಸಿಕೊಳ್ಳುವುದು ಮತ್ತು ಹೊಸ ಗ್ರಾಹಕರನ್ನು ಗಳಿಸುವುದರ ನಡುವಿನ ಸಮತೋಲನವೇ ಶಾಶ್ವತ ಲಾಭದ ಗುಟ್ಟು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -446,6 +486,7 @@ const List<Sentence> advancedSentences = [
     id: 'a041',
     text: "Quantum supremacy promises computational processing speeds that render contemporary encryption paradigms obsolete.",
     meaning: "Physics-based supercomputing will shatter traditional internet ciphers.",
+    kannadaMeaning: "ಕ್ವಾಂಟಮ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಪ್ರಸ್ತುತ ಎನ್‌ಕ್ರಿಪ್ಶನ್ ಪದ್ಧತಿಗಳನ್ನು ಮೀರಿಸುವ ಅಗಾಧ ಕಂಪ್ಯೂಟಿಂಗ್ ವೇಗವನ್ನು ನೀಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -457,6 +498,7 @@ const List<Sentence> advancedSentences = [
     id: 'a042',
     text: "Algorithmic biases ingrained in predictive policing models can perpetuate institutional discrimination systematically.",
     meaning: "Biased computer data can unfairly target disadvantaged neighborhoods.",
+    kannadaMeaning: "ಅಲ್ಗಾರಿದಮ್‌ಗಳಲ್ಲಿನ ಪೂರ್ವಾಗ್ರಹಗಳು ವ್ಯವಸ್ಥಿತ ತಾರತಮ್ಯವನ್ನು ಮುಂದುವರಿಸುವ ಅಪಾಯವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -468,6 +510,7 @@ const List<Sentence> advancedSentences = [
     id: 'a043',
     text: "Autonomous vehicular systems depend on real-time sensor fusion combining lidar, radar, and stereoscopic cameras.",
     meaning: "Self-driving cars combine lasers and cameras to navigate roads safely.",
+    kannadaMeaning: "ಸ್ವಯಂಚಾಲಿತ ವಾಹನಗಳು ಲಿಡಾರ್, ರೇಡಾರ್ ಮತ್ತು ಕ್ಯಾಮೆರಾಗಳ ನೈಜ ಸಮಯದ ಸಂಯೋಜನೆಯ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿವೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -479,6 +522,7 @@ const List<Sentence> advancedSentences = [
     id: 'a044',
     text: "The transition toward decentralized ledger technology heralds unprecedented transparency in global logistics.",
     meaning: "Blockchains allow worldwide tracking of freight shipments with tamperproof proof.",
+    kannadaMeaning: "ವಿಕೇಂದ್ರೀಕೃತ ತಂತ್ರಜ್ಞಾನಕ್ಕೆ ಪರಿವರ್ತನೆಯಾಗುವುದು ಜಾಗತಿಕ ಸರಕು ಸಾಗಣೆಯಲ್ಲಿ ಅಭೂತಪೂರ್ವ ಪಾರದರ್ಶಕತೆಯನ್ನು ತರುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -490,6 +534,7 @@ const List<Sentence> advancedSentences = [
     id: 'a045',
     text: "Synthetic biology facilitates the bioengineering of customized microorganisms to synthesize complex therapeutic pharmaceuticals.",
     meaning: "Gene-edited yeast brews life-saving cancer medicines in bioreactors.",
+    kannadaMeaning: "ಜೈವಿಕ ತಂತ್ರಜ್ಞಾನವು ಜೀವ ಉಳಿಸುವ ಔಷಧಿಗಳನ್ನು ಸಂಶ್ಲೇಷಿಸಲು ಕಸ್ಟಮೈಸ್ ಮಾಡಿದ ಸೂಕ್ಷ್ಮಜೀವಿಗಳ ಬಳಕೆಯನ್ನು ಸುಲಭಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -501,6 +546,7 @@ const List<Sentence> advancedSentences = [
     id: 'a046',
     text: "Ubiquitous computing seamlessly integrates ambient intelligence into our domestic and metropolitan environments.",
     meaning: "Smart sensors embedded in walls and streets assist citizens automatically.",
+    kannadaMeaning: "ಸರ್ವವ್ಯಾಪಿ ಕಂಪ್ಯೂಟಿಂಗ್ ತಂತ್ರಜ್ಞಾನವು ನಮ್ಮ ಮನೆ ಮತ್ತು ನಗರ ಪರಿಸರದಲ್ಲಿ ಬುದ್ಧಿವಂತಿಕೆಯನ್ನು ಸರಾಗವಾಗಿ ಸಂಯೋಜಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -512,6 +558,7 @@ const List<Sentence> advancedSentences = [
     id: 'a047',
     text: "Machine learning models necessitate rigorous data sanitization to prevent the propagation of erroneous inferences.",
     meaning: "Cleaning training data prevents artificial intelligence from learning false logic.",
+    kannadaMeaning: "ಯಂತ್ರ ಕಲಿಕೆಯ ಮಾದರಿಗಳು ತಪ್ಪು ತೀರ್ಮಾನಗಳನ್ನು ತಡೆಯಲು ಕಟ್ಟುನಿಟ್ಟಾದ ಡೇಟಾ ಶುದ್ಧೀಕರಣವನ್ನು ಬಯಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -523,6 +570,7 @@ const List<Sentence> advancedSentences = [
     id: 'a048',
     text: "The proliferation of deepfake technology introduces profound epistemological challenges regarding digital evidence.",
     meaning: "Realistic AI fake videos make it hard to verify what is true in court.",
+    kannadaMeaning: "ಡೀಪ್‌ಫೇಕ್ ತಂತ್ರಜ್ಞಾನದ ಹರಡುವಿಕೆಯು ಡಿಜಿಟಲ್ ಸಾಕ್ಷ್ಯಗಳ ಸತ್ಯಾಸತ್ಯತೆಯ ಬಗ್ಗೆ ಗಂಭೀರ ಸವಾಲುಗಳನ್ನು ಒಡ್ಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -534,6 +582,7 @@ const List<Sentence> advancedSentences = [
     id: 'a049',
     text: "Cloud architecture resilience demands geographically distributed redundancy to insulate against catastrophic server outages.",
     meaning: "Backup data centers across continents keep websites running during fires.",
+    kannadaMeaning: "ಸರ್ವರ್ ಸ್ಥಗಿತದಿಂದ ರಕ್ಷಣೆ ಪಡೆಯಲು ಕ್ಲೌಡ್ ವ್ಯವಸ್ಥೆಯಲ್ಲಿ ಭೌಗೋಳಿಕವಾಗಿ ಹರಡಿದ ಬ್ಯಾಕಪ್ ವ್ಯವಸ್ಥೆ ಅಗತ್ಯ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -545,6 +594,7 @@ const List<Sentence> advancedSentences = [
     id: 'a050',
     text: "Biometric encryption standards must reconcile seamless user convenience with immutable constitutional privacy protections.",
     meaning: "Facial recognition must balance rapid unlocking with citizen rights.",
+    kannadaMeaning: "ಬಯೋಮೆಟ್ರಿಕ್ ಭದ್ರತಾ ಮಾನದಂಡಗಳು ಬಳಕೆದಾರರ ಅನುಕೂಲ ಮತ್ತು ಸಾಂವಿಧಾನಿಕ ಗೌಪ್ಯತೆಯ ರಕ್ಷಣೆಯನ್ನು ಸಮತೋಲನಗೊಳಿಸಬೇಕು.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -556,6 +606,7 @@ const List<Sentence> advancedSentences = [
     id: 'a051',
     text: "Natural language processing architectures simulate human syntactic comprehension through sophisticated neural networks.",
     meaning: "Large language models parse human grammar using deep computer nodes.",
+    kannadaMeaning: "ನ್ಯೂರಲ್ ನೆಟ್‌ವರ್ಕ್‌ಗಳ ಮೂಲಕ ಕಂಪ್ಯೂಟರ್ ಭಾಷಾ ಪ್ರಕ್ರಿಯೆಯು ಮಾನವನ ಭಾಷಾ ಗ್ರಹಿಕೆಯನ್ನು ಅನುಕರಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -567,6 +618,7 @@ const List<Sentence> advancedSentences = [
     id: 'a052',
     text: "Cyber warfare capabilities increasingly jeopardize the operational integrity of critical civilian infrastructure.",
     meaning: "Hostile state hacking endangers electrical power grids and water supplies.",
+    kannadaMeaning: "ಸೈಬರ್ ಯುದ್ಧ ತಂತ್ರಗಳು ನಾಗರಿಕ ಮೂಲಸೌಕರ್ಯಗಳ ಕಾರ್ಯಾಚರಣೆಯ ಸಮಗ್ರತೆಗೆ ಅಪಾಯವನ್ನುಂಟುಮಾಡುತ್ತಿವೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -578,6 +630,7 @@ const List<Sentence> advancedSentences = [
     id: 'a053',
     text: "Nanotechnology enables the atomic-level fabrication of high-tensile materials with revolutionary electrical conductivity.",
     meaning: "Arranging microscopic atoms creates ultra-strong, highly conductive wires.",
+    kannadaMeaning: "ನ್ಯಾನೊತಂತ್ರಜ್ಞಾನವು ಉತ್ತಮ ವಿದ್ಯುತ್ ವಾಹಕತೆ ಹೊಂದಿರುವ ಬಲವಾದ ವಸ್ತುಗಳ ಪರಮಾಣು ಮಟ್ಟದ ತಯಾರಿಕೆಯನ್ನು ಶಕ್ತಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -589,6 +642,7 @@ const List<Sentence> advancedSentences = [
     id: 'a054',
     text: "The rapid democratization of software development tools empowers non-technical founders to architect scalable applications.",
     meaning: "No-code tools let ordinary entrepreneurs build enterprise cloud services.",
+    kannadaMeaning: "ಸಾಫ್ಟ್‌ವೇರ್ ಉಪಕರಣಗಳ ಸುಲಭ ಲಭ್ಯತೆಯು ತಂತ್ರಜ್ಞಾನೇತರ ಸಂಸ್ಥಾಪಕರಿಗೂ ದೊಡ್ಡ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ಮಿಸಲು ಶಕ್ತಿ ನೀಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -600,6 +654,7 @@ const List<Sentence> advancedSentences = [
     id: 'a055',
     text: "Heuristic optimization techniques approximate viable solutions for computationally intractable combinatorial problems.",
     meaning: "Smart algorithms find practical answers to massive mathematical puzzles.",
+    kannadaMeaning: "ಹ್ಯೂರಿಸ್ಟಿಕ್ ತಂತ್ರಜ್ಞಾನವು ಸಂಕೀರ್ಣ ಗಣಿತದ ಸಮಸ್ಯೆಗಳಿಗೆ ಕಾರ್ಯಸಾಧ್ಯವಾದ ಅಂದಾಜು ಪರಿಹಾರಗಳನ್ನು ನೀಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -611,6 +666,7 @@ const List<Sentence> advancedSentences = [
     id: 'a056',
     text: "Edge computing minimizes latency by processing sensory data proximally to its physical point of generation.",
     meaning: "Processing drone data on the machine itself speeds up obstacle avoidance.",
+    kannadaMeaning: "ಎಡ್ಜ್ ಕಂಪ್ಯೂಟಿಂಗ್ ಡೇಟಾವನ್ನು ಅದರ ಉತ್ಪಾದನಾ ಸ್ಥಳದಲ್ಲೇ ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುವ ಮೂಲಕ ವಿಳಂಬವನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -622,6 +678,7 @@ const List<Sentence> advancedSentences = [
     id: 'a057',
     text: "The convergence of artificial intelligence and robotics is redefining the boundaries of manual automation.",
     meaning: "Smart robotic arms are taking over complex assembly jobs in factories.",
+    kannadaMeaning: "ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ ಮತ್ತು ರೊಬೊಟಿಕ್ಸ್‌ನ ಸಂಗಮವು ಮಾನವ ಶ್ರಮದ ಯಾಂತ್ರೀಕರಣದ ಗಡಿಗಳನ್ನು ಮರುವ್ಯಾಖ್ಯಾನಿಸುತ್ತಿದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -633,6 +690,7 @@ const List<Sentence> advancedSentences = [
     id: 'a058',
     text: "Stringent cryptographic hashing guarantees the immutability of historical transaction records on the blockchain.",
     meaning: "Mathematical hashes ensure no one can edit earlier financial entries.",
+    kannadaMeaning: "ಕಟ್ಟುನಿಟ್ಟಾದ ಗೂಢಲಿಪೀಕರಣವು ಬ್ಲಾಕ್‌ಚೈನ್‌ನಲ್ಲಿನ ಹಿಂದಿನ ವಹಿವಾಟು ದಾಖಲೆಗಳ ಬದಲಾಯಿಸಲಾಗದ ಸುರಕ್ಷತೆಯನ್ನು ಖಾತರಿಪಡಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -644,6 +702,7 @@ const List<Sentence> advancedSentences = [
     id: 'a059',
     text: "Technological determinism erroneously presumes that societal progress is exclusively propelled by mechanical invention.",
     meaning: "The false belief that machines alone dictate human civilization's path.",
+    kannadaMeaning: "ಸಾಮಾಜಿಕ ಪ್ರಗತಿಯು ಕೇವಲ ಯಾಂತ್ರಿಕ ಆವಿಷ್ಕಾರಗಳಿಂದಲೇ ಮುನ್ನಡೆಯುತ್ತದೆ ಎಂದು ಭಾವಿಸುವುದು ತಪ್ಪು.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -655,6 +714,7 @@ const List<Sentence> advancedSentences = [
     id: 'a060',
     text: "Interoperability standards allow disparate health information databases to synchronize medical records securely.",
     meaning: "Standard data formats let hospitals share patient charts instantly.",
+    kannadaMeaning: "ಏಕರೂಪದ ಮಾನದಂಡಗಳು ವಿವಿಧ ಆರೋಗ್ಯ ಡೇಟಾಬೇಸ್‌ಗಳಿಗೆ ವೈದ್ಯಕೀಯ ದಾಖಲೆಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಹಂಚಿಕೊಳ್ಳಲು ಅನುಮತಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -666,6 +726,7 @@ const List<Sentence> advancedSentences = [
     id: 'a061',
     text: "The author employs poignant allegorical motifs to illuminate the moral decay of an industrialized society.",
     meaning: "Using symbolic storylines to highlight the loss of human kindness.",
+    kannadaMeaning: "ಕೈಗಾರಿಕಾ ಸಮಾಜದ ನೈತಿಕ ಅವನತಿಯನ್ನು ವಿವರಿಸಲು ಲೇಖಕರು ಮಾರ್ಮಿಕ ಸಾಂಕೇತಿಕ ರೂಪಕಗಳನ್ನು ಬಳಸುತ್ತಾರೆ.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -677,6 +738,7 @@ const List<Sentence> advancedSentences = [
     id: 'a062',
     text: "Her poetic imagery resonates with melancholy introspection and evocative nostalgia for bygone eras.",
     meaning: "Heartfelt verses exploring fond, sorrowful memories of the past.",
+    kannadaMeaning: "ಆಕೆಯ ಕಾವ್ಯದ ಚಿತ್ರಣವು ಗತಕಾಲದ ನೆನಪುಗಳು ಮತ್ತು ಆತ್ಮಾವಲೋಕನದೊಂದಿಗೆ ಆಳವಾಗಿ ಧ್ವನಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -688,6 +750,7 @@ const List<Sentence> advancedSentences = [
     id: 'a063',
     text: "The maestro's nuanced interpretation of the symphony accentuated subtle chromatic harmonies and rhythmic syncopation.",
     meaning: "A conductor highlighting delicate background instruments in a classic piece.",
+    kannadaMeaning: "ಸಂಗೀತ ನಿರ್ದೇಶಕರ ಸೂಕ್ಷ್ಮ ವ್ಯಾಖ್ಯಾನವು ಸಿಂಫನಿಯ ಸೂಕ್ಷ್ಮ ನಾದಗಳು ಮತ್ತು ಲಯಬದ್ಧತೆಯನ್ನು ಎತ್ತಿ ತೋರಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -699,6 +762,7 @@ const List<Sentence> advancedSentences = [
     id: 'a064',
     text: "Literary criticism scrutinizes how patriarchal hegemony is subtly interrogated within classical Victorian fiction.",
     meaning: "Examining how 19th-century novels questioned male-dominated society.",
+    kannadaMeaning: "ವಿಕ್ಟೋರಿಯನ್ ಸಾಹಿತ್ಯದಲ್ಲಿ ಪಿತೃಪ್ರಭುತ್ವದ ಪ್ರಭಾವವನ್ನು ಹೇಗೆ ಪ್ರಶ್ನಿಸಲಾಗಿದೆ ಎಂಬುದನ್ನು ಸಾಹಿತ್ಯ ವಿಮರ್ಶೆಯು ಪರಿಶೀಲಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -710,6 +774,7 @@ const List<Sentence> advancedSentences = [
     id: 'a065',
     text: "The artist juxtaposed raw industrial concrete with delicate blossoming cherry branches in her installation.",
     meaning: "Contrasting rough grey cement with soft pink flowers in modern sculpture.",
+    kannadaMeaning: "ಕಲಾವಿದೆಯು ತನ್ನ ಕಲಾಕೃತಿಯಲ್ಲಿ ಕಚ್ಚಾ ಕಾಂಕ್ರೀಟ್ ಜೊತೆಗೆ ಅರಳಿದ ಚೆರ್ರಿ ಕೊಂಬೆಗಳನ್ನು ಅದ್ಭುತವಾಗಿ ಸಂಯೋಜಿಸಿದಳು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -721,6 +786,7 @@ const List<Sentence> advancedSentences = [
     id: 'a066',
     text: "Cinematographers utilized chiaroscuro lighting to imbue the film noir detective narrative with impending doom.",
     meaning: "High contrast shadows and bright spotlights creating suspense in movies.",
+    kannadaMeaning: "ಚಿತ್ರಮಂದಿರದ ಕತ್ತಲೆ ಮತ್ತು ಬೆಳಕಿನ ತಂತ್ರಜ್ಞಾನವು ಅಪರಾಧ ಕಥೆಗೆ ನಿಗೂಢ ಗಾಂಭೀರ್ಯವನ್ನು ತುಂಬಿತು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -732,6 +798,7 @@ const List<Sentence> advancedSentences = [
     id: 'a067',
     text: "The protagonist's tragic hubris ultimately precipitated his catastrophic downfall in the final act.",
     meaning: "Excessive arrogant pride causing a hero's ruin at the play's climax.",
+    kannadaMeaning: "ನಾಯಕನ ದುರಹಂಕಾರವು ಅಂತಿಮವಾಗಿ ನಾಟಕದ ಕೊನೆಯಲ್ಲಿ ಅವನ ದುರಂತ ಪತನಕ್ಕೆ ಕಾರಣವಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -743,6 +810,7 @@ const List<Sentence> advancedSentences = [
     id: 'a068',
     text: "Her prose style is characterized by lyrical cadences, syntactical dexterity, and evocative linguistic economy.",
     meaning: "Writing with musical rhythm, grammatical mastery, and concise beauty.",
+    kannadaMeaning: "ಆಕೆಯ ಗದ್ಯ ಶೈಲಿಯು ಸುಮಧುರ ಲಯ, ವ್ಯಾಕರಣ ಕೌಶಲ್ಯ ಮತ್ತು ಭಾಷಾ ನಿಖರತೆಯಿಂದ ಕೂಡಿದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -754,6 +822,7 @@ const List<Sentence> advancedSentences = [
     id: 'a069',
     text: "The museum retrospective chronicled six decades of avant-garde sculpture challenging traditional aesthetics.",
     meaning: "An exhibition showcasing radical modern artists who broke sculptural norms.",
+    kannadaMeaning: "ವಸ್ತುಸಂಗ್ರಹಾಲಯದ ಪ್ರದರ್ಶನವು ಸಾಂಪ್ರದಾಯಿಕ ಸೌಂದರ್ಯವನ್ನು ಸವಾಲು ಮಾಡುವ ಆರು ದಶಕಗಳ ಆಧುನಿಕ ಶಿಲ್ಪಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -765,6 +834,7 @@ const List<Sentence> advancedSentences = [
     id: 'a070',
     text: "Magical realism seamlessly blurs the boundary separating mundane domestic reality from supernatural enchantment.",
     meaning: "Stories where wondrous spells happen alongside boiling morning tea.",
+    kannadaMeaning: "ಮ್ಯಾಜಿಕಲ್ ರಿಯಲಿಸಂ ಸಾಮಾನ್ಯ ದೈನಂದಿನ ವಾಸ್ತವ ಮತ್ತು ಮಾಂತ್ರಿಕ ವಿಸ್ಮಯಗಳ ನಡುವಿನ ಗಡಿಯನ್ನು ಸರಾಗವಾಗಿ ಬೆಸೆಯುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -776,6 +846,7 @@ const List<Sentence> advancedSentences = [
     id: 'a071',
     text: "The theatrical monologue gave voice to the existential anguish of a monarch contemplating mortality.",
     meaning: "A solitary soliloquy where a king faces the reality of human death.",
+    kannadaMeaning: "ನಾಟಕದ ಏಕಪಾತ್ರಾಭಿನಯವು ಮರ್ತ್ಯತೆಯನ್ನು ಆಲೋಚಿಸುವ ರಾಜನ ಅಸ್ತಿತ್ವವಾದಿ ಆತಂಕಕ್ಕೆ ದನಿ ನೀಡಿತು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -787,6 +858,7 @@ const List<Sentence> advancedSentences = [
     id: 'a072',
     text: "Classical epic poetry venerates monumental valor, martial fortitude, and unyielding fealty to ancestral honor.",
     meaning: "Ancient heroic verse celebrates courage in battle and family loyalty.",
+    kannadaMeaning: "ಶಾಸ್ತ್ರೀಯ ಮಹಾಕಾವ್ಯಗಳು ಸಾಟಿಯಿಲ್ಲದ ಶೌರ್ಯ, ಯುದ್ಧ ಧೈರ್ಯ ಮತ್ತು ವಂಶದ ಗೌರವಕ್ಕೆ ನಿಷ್ಠೆಯನ್ನು ಕೊಂಡಾಡುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -798,6 +870,7 @@ const List<Sentence> advancedSentences = [
     id: 'a073',
     text: "The documentary illuminated how indigenous oral traditions preserve vital ecological wisdom across centuries.",
     meaning: "Films showing how tribal elders pass down plant knowledge through spoken stories.",
+    kannadaMeaning: "ಬುಡಕಟ್ಟು ಮೌಖಿಕ ಸಂಪ್ರದಾಯಗಳು ಶತಮಾನಗಳಿಂದ ಪರಿಸರ ಜ್ಞಾನವನ್ನು ಹೇಗೆ ಸಂರಕ್ಷಿಸಿವೆ ಎಂಬುದನ್ನು ಸಾಕ್ಷ್ಯಚಿತ್ರವು ತೋರಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Travel',
     vocabularyWords: [
@@ -809,6 +882,7 @@ const List<Sentence> advancedSentences = [
     id: 'a074',
     text: "His satirical commentary lampoons the ostentatious vanity and vapid consumerism of contemporary social media elites.",
     meaning: "Humorous critiques mocking influencers who brag about luxury possessions.",
+    kannadaMeaning: "ಅವರ ವಿಡಂಬನಾತ್ಮಕ ಬರಹವು ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮದ ಶ್ರೀಮಂತರ ದುರಹಂಕಾರ ಮತ್ತು ಆಡಂಬರವನ್ನು ಹಾಸ್ಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -820,6 +894,7 @@ const List<Sentence> advancedSentences = [
     id: 'a075',
     text: "The minimalist composer constructs mesmerizing sonic landscapes through micro-tonal shifts and gradual permutation.",
     meaning: "Composing hypnotic music using tiny chord changes over extended minutes.",
+    kannadaMeaning: "ಸರಳತಾವಾದಿ ಸಂಗೀತ ಸಂಯೋಜಕರು ಸೂಕ್ಷ್ಮ ಸ್ವರ ಬದಲಾವಣೆಗಳ ಮೂಲಕ ಮೋಡಿಮಾಡುವ ನಾದಲೋಕವನ್ನು ಸೃಷ್ಟಿಸುತ್ತಾರೆ.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -831,6 +906,7 @@ const List<Sentence> advancedSentences = [
     id: 'a076',
     text: "Folklore serves as an anthropological repository of collective subconscious archetypes and moral admonitions.",
     meaning: "Fairy tales preserving ancient warnings and human behavioral wisdom.",
+    kannadaMeaning: "ಜಾನಪದ ಕಥೆಗಳು ಸಾಮೂಹಿಕ ಸುಪ್ತ ಮನಸ್ಸಿನ ನಂಬಿಕೆಗಳು ಮತ್ತು ನೈತಿಕ ಎಚ್ಚರಿಕೆಗಳ ಮಾನವಶಾಸ್ತ್ರೀಯ ಭಂಡಾರವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -842,6 +918,7 @@ const List<Sentence> advancedSentences = [
     id: 'a077',
     text: "The novelist captures the ephemeral beauty of youth against the inexorable backdrop of societal metamorphosis.",
     meaning: "A book depicting transient teenage joy amid rapid national modernization.",
+    kannadaMeaning: "ಸಾಮಾಜಿಕ ಬದಲಾವಣೆಯ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಕಾದಂಬರಿಕಾರರು ಯೌವನದ ಕ್ಷಣಿಕ ಸೌಂದರ್ಯವನ್ನು ಸುಂದರವಾಗಿ ಸೆರೆಹಿಡಿಯುತ್ತಾರೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -853,6 +930,7 @@ const List<Sentence> advancedSentences = [
     id: 'a078',
     text: "Architectural preservationists strived to salvage historical baroque facades from callous urban demolition.",
     meaning: "Activists fighting to protect ornate 18th-century walls from city bulldozers.",
+    kannadaMeaning: "ವಾಸ್ತುಶಿಲ್ಪಿಗಳು ಐತಿಹಾಸಿಕ ಕಟ್ಟಡಗಳನ್ನು ನಗರದ ಕೆಡವftÂುವಿಕೆಯಿಂದ ರಕ್ಷಿಸಲು ಶ್ರಮಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Travel',
     vocabularyWords: [
@@ -864,6 +942,7 @@ const List<Sentence> advancedSentences = [
     id: 'a079',
     text: "Sublime natural vistas evoke profound reverence by exposing humanity's infinitesimal stature within the cosmos.",
     meaning: "Vast starry skies reminding people of their small place in the universe.",
+    kannadaMeaning: "ಭವ್ಯ ನೈಸರ್ಗಿಕ ನೋಟಗಳು ಬ್ರಹ್ಮಾಂಡದಲ್ಲಿ ಮಾನವನ ಅಲ್ಪ ಅಸ್ತಿತ್ವವನ್ನು ನೆನಪಿಸಿ ವಿನಮ್ರ ಗೌರವವನ್ನು ಮೂಡಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Travel',
     vocabularyWords: [
@@ -875,6 +954,7 @@ const List<Sentence> advancedSentences = [
     id: 'a080',
     text: "The dramatist masterfully orchestrates psychological tension through pregnant silences and loaded subtext.",
     meaning: "A playwright creating suspense by what characters deliberately leave unsaid.",
+    kannadaMeaning: "ನಾಟಕಕಾರರು ಮೌನ ಮತ್ತು ಮಾರ್ಮಿಕ ಸಂಭಾಷಣೆಗಳ ಮೂಲಕ ಮಾನಸಿಕ ಆತಂಕವನ್ನು ಅದ್ಭುತವಾಗಿ ನಿರ್ಮಿಸುತ್ತಾರೆ.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -886,6 +966,7 @@ const List<Sentence> advancedSentences = [
     id: 'a081',
     text: "The central bank enacted monetary tightening measures to counteract spiraling inflationary pressures.",
     meaning: "Financial regulators raising interest rates to curb rising consumer prices.",
+    kannadaMeaning: "ಏರುತ್ತಿರುವ ಹಣದುಬ್ಬರದ ಒತ್ತಡವನ್ನು ಎದುರಿಸಲು ಕೇಂದ್ರ ಬ್ಯಾಂಕ್ ಹಣಕಾಸಿನ ಬಿಗಿ ಕ್ರಮಗಳನ್ನು ಜಾರಿಗೆ ತಂದಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -897,6 +978,7 @@ const List<Sentence> advancedSentences = [
     id: 'a082',
     text: "Geopolitical tensions exacerbated global supply chain disruptions and triggered commodity volatility.",
     meaning: "International conflicts intensified shipping delays and wild price swings for oil and grain.",
+    kannadaMeaning: "ಭೌಗೋಳಿಕ ರಾಜಕೀಯ ಉದ್ವಿಗ್ನತೆಯು ಜಾಗತಿಕ ಪೂರೈಕೆ ಸರಪಳಿಗಳನ್ನು ಅಸ್ತವ್ಯಸ್ತಗೊಳಿಸಿತು ಮತ್ತು ಸರಕುಗಳ ಬೆಲೆ ಏರಿಕೆಗೆ ಕಾರಣವಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -908,6 +990,7 @@ const List<Sentence> advancedSentences = [
     id: 'a083',
     text: "Diplomats sought to de-escalate maritime brinkmanship by establishing direct military communication hotlines.",
     meaning: "Envoys creating hotline channels to avoid accidental naval warfare.",
+    kannadaMeaning: "ನೇರ ಮಿಲಿಟರಿ ಸಂಪರ್ಕ ಮಾರ್ಗಗಳನ್ನು ಸ್ಥಾಪಿಸುವ ಮೂಲಕ ರಾಜತಾಂತ್ರಿಕರು ಸಮುದ್ರ ಗಡಿ ಬಿಕ್ಕಟ್ಟನ್ನು ತಗ್ಗಿಸಲು ಯತ್ನಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -919,6 +1002,7 @@ const List<Sentence> advancedSentences = [
     id: 'a084',
     text: "Fiscal austerity programs frequently trigger widespread public demonstrations and political disenfranchisement.",
     meaning: "Cutting state welfare budgets leads to protests from struggling citizens.",
+    kannadaMeaning: "ಹಣಕಾಸಿನ ಮಿತವ್ಯಯ ಕಾರ್ಯಕ್ರಮಗಳು ಸಾರ್ವಜನಿಕ ಪ್ರತಿಭಟನೆಗಳು ಮತ್ತು ರಾಜಕೀಯ ಅಸಮಾಧಾನಕ್ಕೆ ಕಾರಣವಾಗುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -930,6 +1014,7 @@ const List<Sentence> advancedSentences = [
     id: 'a085',
     text: "Sovereign wealth funds allocate capital strategically across diversified international portfolios.",
     meaning: "State-owned investment funds spreading national assets across global equities.",
+    kannadaMeaning: "ಸಾರ್ವಭೌಮ ಸಂಪತ್ತು ನಿಧಿಗಳು ವಿವಿಧ ಅಂತಾರಾಷ್ಟ್ರೀಯ ಪೋರ್ಟ್‌ಫೋಲಿಯೊಗಳಲ್ಲಿ ಕಾರ್ಯತಂತ್ರದ ಬಂಡವಾಳ ಹೂಡಿಕೆ ಮಾಡುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -941,6 +1026,7 @@ const List<Sentence> advancedSentences = [
     id: 'a086',
     text: "The multilateral trade pact eliminated onerous tariffs and harmonized cross-border customs procedures.",
     meaning: "An international treaty dropping import taxes to accelerate global commerce.",
+    kannadaMeaning: "ಬಹುಪಕ್ಷೀಯ ವ್ಯಾಪಾರ ಒಪ್ಪಂದವು ಕಠಿಣ ಸುಂಕಗಳನ್ನು ರದ್ದುಗೊಳಿಸಿತು ಮತ್ತು ಗಡಿಯಾಚೆಗಿನ ಕಸ್ಟಮ್ಸ್ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಸುಲಭಗೊಳಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -952,6 +1038,7 @@ const List<Sentence> advancedSentences = [
     id: 'a087',
     text: "Judicial independence constitutes the bedrock of democratic accountability and constitutional governance.",
     meaning: "Unbiased judges safeguard citizen rights against authoritarian overreach.",
+    kannadaMeaning: "ನ್ಯಾಯಾಂಗ ಸ್ವಾತಂತ್ರ್ಯವು ಪ್ರಜಾಪ್ರಭುತ್ವದ ಹೊಣೆಗಾರಿಕೆ ಮತ್ತು ಸಾಂವಿಧಾನಿಕ ಆಡಳಿತದ ಮೂಲಾಧಾರವಾಗಿದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -963,6 +1050,7 @@ const List<Sentence> advancedSentences = [
     id: 'a088',
     text: "The company faced severe regulatory repercussions for violating antitrust statutes and monopolizing search traffic.",
     meaning: "A tech giant fined for crushing rival competition in online search markets.",
+    kannadaMeaning: "ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಏಕಸ್ವಾಮ್ಯ ಸಾಧಿಸಲು ಯತ್ನಿಸಿದ್ದಕ್ಕಾಗಿ ಮತ್ತು ನಿಯಮ ಉಲ್ಲಂಘಿಸಿದ್ದಕ್ಕಾಗಿ ಕಂಪನಿಯು ತೀವ್ರ ದಂಡವನ್ನು ಎದುರಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -974,6 +1062,7 @@ const List<Sentence> advancedSentences = [
     id: 'a089',
     text: "Bilateral treaties establish clear parameters regarding consular assistance and mutual legal extradition.",
     meaning: "Formal agreements between two nations on handling detained foreign citizens.",
+    kannadaMeaning: "ದ್ವಿಪಕ್ಷೀಯ ಒಪ್ಪಂದಗಳು ರಾಯಭಾರ ನೆರವು ಮತ್ತು ಕಾನೂನು ಹಸ್ತಾಂತರಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಸ್ಪಷ್ಟ ನಿಯಮಗಳನ್ನು ಸ್ಥಾಪಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -985,6 +1074,7 @@ const List<Sentence> advancedSentences = [
     id: 'a090',
     text: "Widespread municipal corruption erodes institutional trust and undermines civic infrastructure development.",
     meaning: "Dishonest officials stealing public funds ruins city water and transport systems.",
+    kannadaMeaning: "ವ್ಯಾಪಕ ಭ್ರಷ್ಟಾಚಾರವು ಸಾಂಸ್ಥಿಕ ನಂಬಿಕೆಯನ್ನು ಕುಂದಿಸುತ್ತದೆ ಮತ್ತು ನಾಗರಿಕ ಮೂಲಸೌಕರ್ಯ ಅಭಿವೃದ್ಧಿಯನ್ನು ಹಾಳುಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -996,6 +1086,7 @@ const List<Sentence> advancedSentences = [
     id: 'a091',
     text: "Skeptical venture capitalists demanded concrete unit economics before committing secondary financing.",
     meaning: "Cautious angel investors asking for profit metrics before writing checks.",
+    kannadaMeaning: "ಹೂಡಿಕೆದಾರರು ಮುಂದಿನ ಹಣಕಾಸು ಒದಗಿಸುವ ಮೊದಲು ಘಟಕ ಆರ್ಥಿಕತೆಯ ಸ್ಪಷ್ಟ ಪುರಾವೆಗಳನ್ನು ಕೋರಿದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1007,6 +1098,7 @@ const List<Sentence> advancedSentences = [
     id: 'a092',
     text: "The regulatory body imposed stringent carbon emissions caps to accelerate the decarbonization of heavy industry.",
     meaning: "Government agencies limiting factory pollution to push clean manufacturing.",
+    kannadaMeaning: "ಭಾರೀ ಕೈಗಾರಿಕೆಗಳಲ್ಲಿ ಇಂಗಾಲದ ಹೊರಸೂಸುವಿಕೆಯನ್ನು ತಗ್ಗಿಸಲು ನಿಯಂತ್ರಕ ಸಂಸ್ಥೆಯು ಕಟ್ಟುನಿಟ್ಟಾದ ಮಿತಿಗಳನ್ನು ವಿಧಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Weather',
     vocabularyWords: [
@@ -1018,6 +1110,7 @@ const List<Sentence> advancedSentences = [
     id: 'a093',
     text: "Discrepancies in corporate governance disclosures triggered an extensive independent forensic accounting audit.",
     meaning: "Inconsistent company balance sheets prompted external investigators to comb records.",
+    kannadaMeaning: "ಕಾರ್ಪೊರೇಟ್ ವರದಿಗಳಲ್ಲಿನ ವ್ಯತ್ಯಾಸಗಳು ಸ್ವತಂತ್ರ ವಿಧಿವಿಜ್ಞಾನ ಲೆಕ್ಕಪರಿಶೋಧನೆಗೆ ಕಾರಣವಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1029,6 +1122,7 @@ const List<Sentence> advancedSentences = [
     id: 'a094',
     text: "Equitable wealth distribution fosters long-term social cohesion and mitigates systemic civil unrest.",
     meaning: "Fair economic opportunity prevents riots and stabilizes societies.",
+    kannadaMeaning: "ಸಮಾನ ಸಂಪತ್ತು ಹಂಚಿಕೆಯು ದೀರ್ಘಕಾಲೀನ ಸಾಮಾಜಿಕ ಸೌಹಾರ್ದತೆಯನ್ನು ಬೆಳೆಸುತ್ತದೆ ಮತ್ತು ನಾಗರಿಕ ಅಶಾಂತಿಯನ್ನು ತಗ್ಗಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1040,6 +1134,7 @@ const List<Sentence> advancedSentences = [
     id: 'a095',
     text: "Diplomatic neutrality enables third-party intermediaries to broker durable ceasefires between belligerent states.",
     meaning: "Impartial nations successfully mediate peace between warring neighbors.",
+    kannadaMeaning: "ರಾಜತಾಂತ್ರಿಕ ತಟಸ್ಥತೆಯು ಮೂರನೇ ವ್ಯಕ್ತಿಯ ಮಧ್ಯಸ್ಥಗಾರರಿಗೆ ಯುದ್ಧನಿರತ ರಾಷ್ಟ್ರಗಳ ನಡುವೆ ಕದನವಿರಾಮ ತರಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1051,6 +1146,7 @@ const List<Sentence> advancedSentences = [
     id: 'a096',
     text: "Macroeconomic forecasting models struggle to anticipate unprecedented black swan disruptions.",
     meaning: "Economic predictive software failing to forecast sudden pandemic shocks.",
+    kannadaMeaning: "ಸ್ಥೂಲ ಆರ್ಥಿಕ ಮುನ್ಸೂಚನಾ ಮಾದರಿಗಳು ಅನಿರೀಕ್ಷಿತ ಜಾಗತಿಕ ಬಿಕ್ಕಟ್ಟುಗಳನ್ನು ಊಹಿಸಲು ಹೆಣಗಾಡುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1062,6 +1158,7 @@ const List<Sentence> advancedSentences = [
     id: 'a097',
     text: "The statutory tribunal arbitrated the complex maritime boundary dispute between the neighboring island states.",
     meaning: "A maritime court resolving ocean fishing border claims between islands.",
+    kannadaMeaning: "ಕಾನೂನು ನ್ಯಾಯಮಂಡಳಿಯು ನೆರೆಯ ದ್ವೀಪ ರಾಷ್ಟ್ರಗಳ ನಡುವಿನ ಸಂಕೀರ್ಣ ಕಡಲ ಗಡಿ ವಿವಾದವನ್ನು ಇತ್ಯರ್ಥಪಡಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Travel',
     vocabularyWords: [
@@ -1073,6 +1170,7 @@ const List<Sentence> advancedSentences = [
     id: 'a098',
     text: "Corporate insolvency practitioners orchestrated a comprehensive debt restructuring to avert liquidation.",
     meaning: "Turnaround specialists salvaging bankrupt companies from total collapse.",
+    kannadaMeaning: "ಕಂಪನಿ ಮುಚ್ಚಿಹೋಗುವುದನ್ನು ತಪ್ಪಿಸಲು ತಜ್ಞರು ಸಮಗ್ರ ಸಾಲ ಮರುಹೊಂದಾಣಿಕೆಯನ್ನು ಯೋಜಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1084,6 +1182,7 @@ const List<Sentence> advancedSentences = [
     id: 'a099',
     text: "Tax havens undermine national fiscal sovereignty by facilitating aggressive international profit shifting.",
     meaning: "Offshore shell companies draining tax revenue from domestic public services.",
+    kannadaMeaning: "ತೆರಿಗೆ ಸ್ವರ್ಗಗಳು ಅಂತರರಾಷ್ಟ್ರೀಯ ಲಾಭ ವರ್ಗಾವಣೆಯನ್ನು ಸುಗಮಗೊಳಿಸುವ ಮೂಲಕ ರಾಷ್ಟ್ರೀಯ ತೆರಿಗೆ ಸಾರ್ವಭೌಮತ್ವವನ್ನು ಕುಗ್ಗಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1095,6 +1194,7 @@ const List<Sentence> advancedSentences = [
     id: 'a100',
     text: "Civic engagement and public discourse are vital safeguards against authoritarian political encroachments.",
     meaning: "Active citizen participation in town halls protects freedom against tyranny.",
+    kannadaMeaning: "ನಾಗರಿಕ ಜಾಗೃತಿ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಚರ್ಚೆಗಳು ಸರ್ವಾಧಿಕಾರಿ ರಾಜಕೀಯ ಪ್ರವೃತ್ತಿಗಳಿಗೆ ಪ್ರಬಲ ರಕ್ಷಣಾ ಕವಚಗಳಾಗಿವೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1106,6 +1206,7 @@ const List<Sentence> advancedSentences = [
     id: 'a101',
     text: "The conglomerate divested non-core operational subsidiaries to optimize operational agility and shareholder returns.",
     meaning: "Selling off sideline businesses to focus on premier corporate operations.",
+    kannadaMeaning: "ಕಾರ್ಯಾಚರಣೆಯ ಚುರುಕುತನ ಮತ್ತು ಷೇರುದಾರರ ಲಾಭವನ್ನು ಹೆಚ್ಚಿಸಲು ಸಂಸ್ಥೆಯು ಅಪ್ರಮುಖ ಅಂಗಸಂಸ್ಥೆಗಳನ್ನು ಮಾರಾಟ ಮಾಡಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1117,6 +1218,7 @@ const List<Sentence> advancedSentences = [
     id: 'a102',
     text: "Bipartisan legislation was ratified to revitalize decaying national transportation infrastructure.",
     meaning: "Two political parties joining together to pass bridge and highway funding.",
+    kannadaMeaning: "ಶಿಥಿಲಗೊಂಡಿರುವ ರಾಷ್ಟ್ರೀಯ ಸಾರಿಗೆ ಮೂಲಸೌಕರ್ಯವನ್ನು ನವೀಕರಿಸಲು ಉಭಯಪಕ್ಷೀಯ ಶಾಸನವನ್ನು ಅನುಮೋದಿಸಲಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1128,6 +1230,7 @@ const List<Sentence> advancedSentences = [
     id: 'a103',
     text: "Economic sanctions were calibrated meticulously to target illicit arms proliferation networks.",
     meaning: "International trade penalties tuned specifically against black-market weapon dealers.",
+    kannadaMeaning: "ಕಾನೂನುಬಾಹಿರ ಶಸ್ತ್ರಾಸ್ತ್ರ ಜಾಲಗಳನ್ನು ಗುರಿಯಾಗಿಸಲು ಆರ್ಥಿಕ ನಿರ್ಬಂಧಗಳನ್ನು ನಿಖರವಾಗಿ ರೂಪಿಸಲಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1139,6 +1242,7 @@ const List<Sentence> advancedSentences = [
     id: 'a104',
     text: "The currency experienced precipitous devaluation following sudden sovereign debt downgrades.",
     meaning: "A nation's money crashing after rating agencies downgrade government bonds.",
+    kannadaMeaning: "ಸಾಲದ ರೇಟಿಂಗ್ ಕುಸಿತದ ನಂತರ ದೇಶದ ಕರೆನ್ಸಿ ಮೌಲ್ಯವು ತೀವ್ರವಾಗಿ ಕುಸಿಯಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1150,6 +1254,7 @@ const List<Sentence> advancedSentences = [
     id: 'a105',
     text: "International arbitration awards are enforced across sovereign borders under the New York Convention.",
     meaning: "Global business tribunals enforcing financial settlements worldwide.",
+    kannadaMeaning: "ನ್ಯೂಯಾರ್ಕ್ ಕನ್ವೆನ್ಷನ್ ಅಡಿಯಲ್ಲಿ ಅಂತರರಾಷ್ಟ್ರೀಯ ಮಧ್ಯಸ್ಥಿಕೆ ತೀರ್ಪುಗಳನ್ನು ಗಡಿಯಾಚೆ ಜಾರಿಗೆ ತರಲಾಗುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1161,6 +1266,7 @@ const List<Sentence> advancedSentences = [
     id: 'a106',
     text: "Systemic liquidity shortages in overnight interbank lending markets required central bank interventions.",
     meaning: "Bank reserves drying up until emergency state loans restored cashflow.",
+    kannadaMeaning: "ಅಂತರ್-ಬ್ಯಾಂಕ್ ಸಾಲ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿನ ನಗದು ಕೊರತೆಯು ಕೇಂದ್ರೀಯ ಬ್ಯಾಂಕಿನ ಮಧ್ಯಸ್ಥಿಕೆಯನ್ನು ಬಯಸಿತು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1172,6 +1278,7 @@ const List<Sentence> advancedSentences = [
     id: 'a107',
     text: "The environmental treaty mandates binding multilateral commitments toward wetland preservation.",
     meaning: "A signed international agreement forcing nations to protect marsh wildlife.",
+    kannadaMeaning: "ಪರಿಸರ ಒಪ್ಪಂದವು ಜೌಗು ಪ್ರದೇಶಗಳ ಸಂರಕ್ಷಣೆಗಾಗಿ ಬಹುಪಕ್ಷೀಯ ಬದ್ಧತೆಗಳನ್ನು ಕಡ್ಡಾಯಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Weather',
     vocabularyWords: [
@@ -1183,6 +1290,7 @@ const List<Sentence> advancedSentences = [
     id: 'a108',
     text: "Antitrust regulators blocked the proposed telecom merger citing anticompetitive consolidation hazards.",
     meaning: "Consumer watchdog officials stopping phone giants from uniting into a monopoly.",
+    kannadaMeaning: "ಸ್ಪರ್ಧಾತ್ಮಕ ಮಾರುಕಟ್ಟೆ ಅಪಾಯಗಳನ್ನು ಉಲ್ಲೇಖಿಸಿ ನಿಯಂತ್ರಕರು ಟೆಲಿಕಾಂ ವಿಲೀನವನ್ನು ತಡೆದರು.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -1194,6 +1302,7 @@ const List<Sentence> advancedSentences = [
     id: 'a109',
     text: "Profound demographic aging poses immense fiscal challenges for pay-as-you-go pension architectures.",
     meaning: "An aging population straining government retirement funding systems.",
+    kannadaMeaning: "ಹೆಚ್ಚುತ್ತಿರುವ ವೃದ್ಧಾಪ್ಯದ ಜನಸಂಖ್ಯೆಯು ಪಿಂಚಣಿ ವ್ಯವಸ್ಥೆಗೆ ಅಗಾಧ ಆರ್ಥಿಕ ಸವಾಲುಗಳನ್ನು ಒಡ್ಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Family',
     vocabularyWords: [
@@ -1205,6 +1314,7 @@ const List<Sentence> advancedSentences = [
     id: 'a110',
     text: "Transparent regulatory frameworks cultivate foreign direct investment and stimulate sustained economic growth.",
     meaning: "Clear, honest national business laws attract overseas investment.",
+    kannadaMeaning: "ಪಾರದರ್ಶಕ ನಿಯಮಗಳು ವಿದೇಶಿ ನೇರ ಹೂಡಿಕೆಯನ್ನು ಆಕರ್ಷಿಸುತ್ತವೆ ಮತ್ತು ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆಯನ್ನು ಉತ್ತೇಜಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1216,6 +1326,7 @@ const List<Sentence> advancedSentences = [
     id: 'a111',
     text: "Neuroimaging investigations revealed marked neuroplastic adaptations following cognitive behavioral interventions.",
     meaning: "Brain scans showing physical rewiring after therapy treatments.",
+    kannadaMeaning: "ಅರಿವಿನ ಚಿಕಿತ್ಸೆಯ ನಂತರ ಮೆದುಳಿನ ನರಮಂಡಲದಲ್ಲಿ ಗಮನಾರ್ಹ ಸಕಾರಾತ್ಮಕ ಹೊಂದಾಣಿಕೆಗಳು ಕಂಡುಬಂದವು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1227,6 +1338,7 @@ const List<Sentence> advancedSentences = [
     id: 'a112',
     text: "The epidemiology department chronicled the zoonotic transmission pathway of the emergent pathogen.",
     meaning: "Disease detectives tracing how an animal virus jumped into human populations.",
+    kannadaMeaning: "ಸೋಂಕುಶಾಸ್ತ್ರ ವಿಭಾಗವು ಪ್ರಾಣಿಗಳಿಂದ ಹರಡಿದ ಹೊಸ ರೋಗಾಣುವಿನ ಮಾರ್ಗವನ್ನು ದಾಖಲಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1238,6 +1350,7 @@ const List<Sentence> advancedSentences = [
     id: 'a113',
     text: "Pharmacogenomic profiling allows oncologists to calibrate chemotherapy dosages to individual genetic profiles.",
     meaning: "Gene tests tailoring cancer treatments to each patient's unique biology.",
+    kannadaMeaning: "ವೈಯಕ್ತಿಕ ಆನುವಂಶಿಕ ವಿವರಗಳಿಗೆ ಅನುಗುಣವಾಗಿ ಕೀಮೋಥೆರಪಿ ಪ್ರಮಾಣವನ್ನು ನಿಗದಿಪಡಿಸಲು ತಳಿಶಾಸ್ತ್ರವು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1249,6 +1362,7 @@ const List<Sentence> advancedSentences = [
     id: 'a114',
     text: "Epigenetic modifications modulate gene expression without altering the underlying nucleotide sequences.",
     meaning: "Chemical tags switching genes on and off without mutating DNA letters.",
+    kannadaMeaning: "ಎಪಿಜೆನೆಟಿಕ್ ಬದಲಾವಣೆಗಳು ಡಿಎನ್‌ಎ ಮೂಲ ರಚನೆಯನ್ನು ಬದಲಾಯಿಸದೆ ಜೀನ್ ಕಾರ್ಯನಿರ್ವಹಣೆಯನ್ನು ನಿಯಂತ್ರಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1260,6 +1374,7 @@ const List<Sentence> advancedSentences = [
     id: 'a115',
     text: "Prolonged cortisol elevation caused by chronic psychosocial stress impairs immunological surveillance.",
     meaning: "Long-term anxiety flooding the body with hormones that weaken white blood cells.",
+    kannadaMeaning: "ದೀರ್ಘಕಾಲದ ಮಾನಸಿಕ ಒತ್ತಡದಿಂದ ಹೆಚ್ಚಾಗುವ ಕಾರ್ಟಿಸೋಲ್ ರೋಗನಿರೋಧಕ ಶಕ್ತಿಯನ್ನು ಕುಂಠಿತಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1271,6 +1386,7 @@ const List<Sentence> advancedSentences = [
     id: 'a116',
     text: "Psychological resilience entails the cognitive flexibility to reframe acute adversity constructively.",
     meaning: "Mental strength involves finding hopeful perspectives during severe crises.",
+    kannadaMeaning: "ಮಾನಸಿಕ ಸ್ಥೈರ್ಯವು ಕಠಿಣ ಸವಾಲುಗಳನ್ನು ಸಕಾರಾತ್ಮಕವಾಗಿ ಸ್ವೀಕರಿಸುವ ಅರಿವಿನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಒಳಗೊಂಡಿದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1282,6 +1398,7 @@ const List<Sentence> advancedSentences = [
     id: 'a117',
     text: "The double-blind placebo-controlled clinical trial established the therapeutic efficacy of the novel compound.",
     meaning: "A rigorous drug test proving real medical benefits beyond sugar pills.",
+    kannadaMeaning: "ಕ್ಲಿನಿಕಲ್ ಪ್ರಯೋಗವು ಹೊಸ ಔಷಧಿಯ ಚಿಕಿತ್ಸಕ ಪರಿಣಾಮಕಾರಿತ್ವವನ್ನು ದೃಢಪಡಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1293,6 +1410,7 @@ const List<Sentence> advancedSentences = [
     id: 'a118',
     text: "Microbiome dysbiosis within the intestinal tract correlates with systemic chronic inflammatory disorders.",
     meaning: "Imbalanced stomach bacteria linked to autoimmune problems across the body.",
+    kannadaMeaning: "ಕರುಳಿನಲ್ಲಿನ ಬ್ಯಾಕ್ಟೀರಿಯಾದ ಅಸಮತೋಲನವು ದೀರ್ಘಕಾಲಿಕ ಉರಿಯೂತದ ಕಾಯಿಲೆಗಳಿಗೆ ಕಾರಣವಾಗುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1304,6 +1422,7 @@ const List<Sentence> advancedSentences = [
     id: 'a119',
     text: "Sleep architecture disruption compromises the glymphatic clearance of neurotoxic beta-amyloid plaques.",
     meaning: "Restless nights preventing the brain from washing away dementia proteins.",
+    kannadaMeaning: "ನಿದ್ರೆಯ ಭಂಗವು ಮೆದುಳಿನಲ್ಲಿನ ಹಾನಿಕಾರಕ ವಿಷಕಾರಿ ಪ್ರೋಟೀನ್‌ಗಳ ಶುದ್ಧೀಕರಣವನ್ನು ದುರ್ಬಲಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1315,6 +1434,7 @@ const List<Sentence> advancedSentences = [
     id: 'a120',
     text: "Cognitive behavioral therapy equips individuals with metacognitive tools to deconstruct catastrophic ideation.",
     meaning: "Mental therapy teaching people to disarm spiral panics through calm logic.",
+    kannadaMeaning: "ಅರಿವಿನ ವರ್ತನೆಯ ಚಿಕಿತ್ಸೆಯು ನಕಾರಾತ್ಮಕ ಆಲೋಚನೆಗಳನ್ನು ನಿವಾರಿಸಲು ಮಾನಸಿಕ ಸಾಧನಗಳನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1326,6 +1446,7 @@ const List<Sentence> advancedSentences = [
     id: 'a121',
     text: "The biomedical synthesis of biodegradable nanocarriers facilitates targeted oncological drug delivery.",
     meaning: "Dissolvable microscopic capsules delivering poison directly to cancer cells.",
+    kannadaMeaning: "ಜೈವಿಕ ವಿಘಟನೀಯ ನ್ಯಾನೊವಾಹಕಗಳ ಸಂಶ್ಲೇಷಣೆಯು ಕ್ಯಾನ್ಸರ್ ಔಷಧವನ್ನು ನಿಖರವಾಗಿ ತಲುಪಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -1337,6 +1458,7 @@ const List<Sentence> advancedSentences = [
     id: 'a122',
     text: "Hemodynamic stabilization protocols were administered urgently to counteract hemorrhagic shock.",
     meaning: "Emergency treatments restoring blood pressure after severe internal bleeding.",
+    kannadaMeaning: "ರಕ್ತಸ್ರಾವದ ಆಘಾತವನ್ನು ತಡೆಗಟ್ಟಲು ರಕ್ತದೊತ್ತಡ ಸ್ಥಿರೀಕರಣ ಚಿಕಿತ್ಸೆಯನ್ನು ತಕ್ಷಣ ನೀಡಲಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1348,6 +1470,7 @@ const List<Sentence> advancedSentences = [
     id: 'a123',
     text: "Psychosomatic symptomatology demonstrates the intricate, bidirectional communication between brain and body.",
     meaning: "Physical pains caused by emotional stress show how mind and body connect.",
+    kannadaMeaning: "ಮಾನಸಿಕ-ದೈಹಿಕ ಲಕ್ಷಣಗಳು ಮೆದುಳು ಮತ್ತು ದೇಹದ ನಡುವಿನ ನಿಕಟ ದ್ವಿಮುಖ ಸಂವಹನವನ್ನು ಪ್ರದರ್ಶಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1359,6 +1482,7 @@ const List<Sentence> advancedSentences = [
     id: 'a124',
     text: "The endocrinologist investigated circadian hormonal fluctuations governing homeostatic metabolic regulation.",
     meaning: "A hormone specialist measuring daily chemical cycles that control energy.",
+    kannadaMeaning: "ತಜ್ಞರು ಚಯಾಪಚಯ ನಿಯಂತ್ರಣಕ್ಕೆ ಕಾರಣವಾಗುವ ಹಾರ್ಮೋನುಗಳ ಏರಿಳಿತಗಳನ್ನು ತನಿಖೆ ಮಾಡಿದರು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1370,6 +1494,7 @@ const List<Sentence> advancedSentences = [
     id: 'a125',
     text: "Electrophysiological recordings confirmed localized synaptic potentiation within hippocampal circuits.",
     meaning: "Electrical neural probes detecting memory consolidation in the brain.",
+    kannadaMeaning: "ಮೆದುಳಿನ ಹಿಪೊಕ್ಯಾಂಪಸ್ ಸರ್ಕ್ಯೂಟ್‌ಗಳಲ್ಲಿ ನರಗಳ ಸಂಪರ್ಕ ಬಲವರ್ಧನೆಯನ್ನು ತಪಾಸಣೆಗಳು ಖಚಿತಪಡಿಸಿದವು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1381,6 +1506,7 @@ const List<Sentence> advancedSentences = [
     id: 'a126',
     text: "Autoimmune pathologies arise when immunological self-tolerance mechanisms malfunction precipitously.",
     meaning: "Diseases where rogue white blood cells mistakenly attack healthy body organs.",
+    kannadaMeaning: "ರೋಗನಿರೋಧಕ ವ್ಯವಸ್ಥೆಯು ತನ್ನದೇ ಜೀವಕೋಶಗಳನ್ನು ಗುರುತಿಸುವಲ್ಲಿ ವಿಫಲವಾದಾಗ ಆಟೋಇಮ್ಯೂನ್ ಕಾಯಿಲೆಗಳು ಉಂಟಾಗುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1392,6 +1518,7 @@ const List<Sentence> advancedSentences = [
     id: 'a127',
     text: "Cardiorespiratory fitness serves as a robust physiological biomarker for all-cause mortality reduction.",
     meaning: "Good stamina from running protects people against nearly all fatal diseases.",
+    kannadaMeaning: "ಹೃದಯ ಮತ್ತು ಶ್ವಾಸಕೋಶದ ಸದೃಢತೆಯು ಅಕಾಲಿಕ ಮರಣದ ಅಪಾಯವನ್ನು ತಗ್ಗಿಸುವ ಪ್ರಮುಖ ಜೈವಿಕ ಸೂಚಕವಾಗಿದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1403,6 +1530,7 @@ const List<Sentence> advancedSentences = [
     id: 'a128',
     text: "Neurotransmitter dysregulation in prefrontal neural networks precipitates executive dysfunction.",
     meaning: "Chemical imbalances in front brain regions impairing impulse control.",
+    kannadaMeaning: "ಮೆದುಳಿನ ನರಪ್ರೇಕ್ಷಕಗಳ ಅಸಮತೋಲನವು ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳುವ ಸಾಮರ್ಥ್ಯವನ್ನು ಕುಂಠಿತಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1414,6 +1542,7 @@ const List<Sentence> advancedSentences = [
     id: 'a129',
     text: "Telomere attrition is widely recognized as a fundamental cellular hallmark of biological aging.",
     meaning: "The wearing down of chromosome tips marking how human cells age.",
+    kannadaMeaning: "ಟೆಲೋಮಿಯರ್ ಸವೆತವು ಜೈವಿಕ ವಯಸ್ಸಾಗುವಿಕೆಯ ಮೂಲಭೂತ ಜೀವಕೋಶದ ಲಕ್ಷಣವೆಂದು ಗುರುತಿಸಲ್ಪಟ್ಟಿದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1425,6 +1554,7 @@ const List<Sentence> advancedSentences = [
     id: 'a130',
     text: "Nutritional epidemiology corroborates that plant-predominant dietary patterns optimize metabolic parameters.",
     meaning: "Long-term studies proving whole-plant food prevents diabetes and obesity.",
+    kannadaMeaning: "ಸಸ್ಯ ಆಧಾರಿತ ಆಹಾರ ಪದ್ಧತಿಯು ಚಯಾಪಚಯ ಆರೋಗ್ಯವನ್ನು ಉತ್ತಮಗೊಳಿಸುತ್ತದೆ ಎಂದು ಪೌಷ್ಟಿಕತಜ್ಞರು ದೃಢಪಡಿಸಿದ್ದಾರೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1436,6 +1566,7 @@ const List<Sentence> advancedSentences = [
     id: 'a131',
     text: "Empirical clinical investigations substantiate the therapeutic utility of mindful breath regulation.",
     meaning: "Controlled hospital trials proving deep breathing lowers blood pressure.",
+    kannadaMeaning: "ಗಮನವಿಟ್ಟು ಉಸಿರಾಟ ನಿಯಂತ್ರಣ ಮಾಡುವುದು ಆರೋಗ್ಯಕ್ಕೆ ಅತ್ಯಂತ ಉಪಯುಕ್ತವೆಂದು ಸಂಶೋಧನೆಗಳು ಸಾಬೀತುಪಡಿಸಿವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1447,6 +1578,7 @@ const List<Sentence> advancedSentences = [
     id: 'a132',
     text: "Vascular endothelial dysfunction constitutes the foundational pathophysiology underlying atherosclerosis.",
     meaning: "Damaged artery inner linings leading to cholesterol blockage buildup.",
+    kannadaMeaning: "ರಕ್ತನಾಳಗಳ ಒಳಪದರದ ಅಪಸಾಮಾನ್ಯ ಕ್ರಿಯೆಯು ಅಪಧಮನಿ ಕಾಯಿಲೆಗಳಿಗೆ ಮೂಲ ಕಾರಣವಾಗಿದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1458,6 +1590,7 @@ const List<Sentence> advancedSentences = [
     id: 'a133',
     text: "The psychiatrist differentiated between reactive situational grief and persistent major depressive disorders.",
     meaning: "Distinguishing normal sadness after bereavement from clinical depression.",
+    kannadaMeaning: "ಮನೋವೈದ್ಯರು ತಾತ್ಕಾಲಿಕ ಪರಿಸ್ಥಿತಿಯ ದುಃಖ ಮತ್ತು ದೀರ್ಘಕಾಲದ ಖಿನ್ನತೆಯ ನಡುವಿನ ವ್ಯತ್ಯಾಸವನ್ನು ಸ್ಪಷ್ಟಪಡಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1469,6 +1602,7 @@ const List<Sentence> advancedSentences = [
     id: 'a134',
     text: "Musculoskeletal rehabilitation requires progressive eccentric loading to restore tendon tensile strength.",
     meaning: "Physical therapy using muscle lengthening exercises to mend stiff tendons.",
+    kannadaMeaning: "ಸ್ನಾಯು ಪುನಶ್ಚೇತನಕ್ಕೆ ಸ್ನಾಯುರಜ್ಜು ಬಲವನ್ನು ಮರಳಿ ಪಡೆಯಲು ಕ್ರಮೇಣ ವ್ಯಾಯಾಮದ ಅಗತ್ಯವಿದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1480,6 +1614,7 @@ const List<Sentence> advancedSentences = [
     id: 'a135',
     text: "Genomic sequencing isolated the pathogenic mutation predisposing infants to rare metabolic syndromes.",
     meaning: "DNA analysis finding the genetic flaw causing infant digestive failure.",
+    kannadaMeaning: "ತಳಿ ಅನುಕ್ರಮಣಿಕೆಯು ಅಪರೂಪದ ಚಯಾಪಚಯ ಕಾಯಿಲೆಗೆ ಕಾರಣವಾಗುವ ವಂಶವಾಹಿ ರೂಪಾಂತರವನ್ನು ಪ್ರತ್ಯೇಕಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1491,6 +1626,7 @@ const List<Sentence> advancedSentences = [
     id: 'a136',
     text: "Psychological catharsis through creative expressive arts fosters profound emotional rejuvenation.",
     meaning: "Expressing trauma through painting or acting unburdens heavy spirits.",
+    kannadaMeaning: "ಸೃಜನಶೀಲ ಕಲೆಗಳ ಮೂಲಕ ಭಾವನೆಗಳನ್ನು ವ್ಯಕ್ತಪಡಿಸುವುದು ಆಳವಾದ ಮಾನಸಿಕ ನವಚೈತನ್ಯವನ್ನು ನೀಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1502,6 +1638,7 @@ const List<Sentence> advancedSentences = [
     id: 'a137',
     text: "Circadian misalignment impairs glucose tolerance and exacerbates nocturnal hypertension.",
     meaning: "Late-night shift work ruining sugar processing and elevating night blood pressure.",
+    kannadaMeaning: "ನೈಸರ್ಗಿಕ ನಿದ್ರೆಯ ಚಕ್ರದ ಏರುಪೇರು ಗ್ಲೂಕೋಸ್ ಸಹಿಷ್ಣುತೆಯನ್ನು ಕುಂದಿಸುತ್ತದೆ ಮತ್ತು ರಕ್ತದೊತ್ತಡವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1513,6 +1650,7 @@ const List<Sentence> advancedSentences = [
     id: 'a138',
     text: "The orthopedic surgeon performed minimally invasive arthroscopic reconstruction on the torn meniscus.",
     meaning: "Tiny camera surgeries repairing knee cartilage through puncture holes.",
+    kannadaMeaning: "ಮೂಳೆ ಶಸ್ತ್ರಚಿಕಿತ್ಸಕರು ಹರಿದ ಮಂಡಿಯ ಕಾರ್ಟಿಲೆಜ್ ಮೇಲೆ ಕನಿಷ್ಠ ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಮಾಡಿದರು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1524,6 +1662,7 @@ const List<Sentence> advancedSentences = [
     id: 'a139',
     text: "Systemic inflammation accelerates cognitive senescence by compromising the blood-brain barrier.",
     meaning: "Chronic body inflammation speeding up brain aging and memory loss.",
+    kannadaMeaning: "ವ್ಯವಸ್ಥಿತ ಉರಿಯೂತವು ಮೆದುಳಿನ ರಕ್ಷಣಾ ಗೋಡೆಯನ್ನು ದುರ್ಬಲಗೊಳಿಸಿ ವಯಸ್ಸಾದಂತೆ ಸ್ಮರಣಶಕ್ತಿ ಕುಗ್ಗುವಿಕೆಯನ್ನು ವೇಗಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1535,6 +1674,7 @@ const List<Sentence> advancedSentences = [
     id: 'a140',
     text: "Mindfulness-based interventions cultivate experiential acceptance rather than cognitive suppression.",
     meaning: "Embracing feelings openly instead of repressing anxious thoughts.",
+    kannadaMeaning: "ಮೈಂಡ್‌ಫುಲ್‌ನೆಸ್ ತಂತ್ರಗಳು ಆಲೋಚನೆಗಳನ್ನು ನಿಗ್ರಹಿಸುವುದಕ್ಕಿಂತ ವಾಸ್ತವವನ್ನು ಸ್ವೀಕರಿಸುವುದನ್ನು ಕಲಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1546,6 +1686,7 @@ const List<Sentence> advancedSentences = [
     id: 'a141',
     text: "Cellular autophagy eliminates dysfunctional intracellular components during extended fasting periods.",
     meaning: "Fasting prompting cells to clean up their own broken protein debris.",
+    kannadaMeaning: "ದೀರ್ಘ ಉಪವಾಸದ ಸಮಯದಲ್ಲಿ ಜೀವಕೋಶದ ಸ್ವಯಂ-ಶುದ್ಧೀಕರಣ ಪ್ರಕ್ರಿಯೆಯು ಹಾನಿಗೊಳಗಾದ ಭಾಗಗಳನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1557,6 +1698,7 @@ const List<Sentence> advancedSentences = [
     id: 'a142',
     text: "Bilateral vestibular dysfunction compromises spatial orientation and necessitates postural adaptation.",
     meaning: "Inner ear balance failures forcing patients to relearn how to walk upright.",
+    kannadaMeaning: "ಕಿವಿ ಒಳಗಿನ ಸಮತೋಲನ ವ್ಯವಸ್ಥೆಯ ದೋಷವು ದೈಹಿಕ ಸಮತೋಲನವನ್ನು ಕಷ್ಟಕರವಾಗಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1568,6 +1710,7 @@ const List<Sentence> advancedSentences = [
     id: 'a143',
     text: "Psychopharmacological interventions must be titrated meticulously to minimize deleterious adverse effects.",
     meaning: "Carefully increasing psychiatric drug doses to prevent nasty reactions.",
+    kannadaMeaning: "ಅಡ್ಡಪರಿಣಾಮಗಳನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಮನೋವೈದ್ಯಕೀಯ ಔಷಧಿಗಳನ್ನು ಅತ್ಯಂತ ಸೂಕ್ಷ್ಮವಾಗಿ ಸರಿಹೊಂದಿಸಬೇಕು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1579,6 +1722,7 @@ const List<Sentence> advancedSentences = [
     id: 'a144',
     text: "The bioethicist emphasized patient autonomy during deliberations regarding experimental life-support protocols.",
     meaning: "Medical ethicists arguing dying patients have the right to choose treatments.",
+    kannadaMeaning: "ಪ್ರಾಯೋಗಿಕ ಜೀವ ರಕ್ಷಕ ವಿಧಾನಗಳ ಚರ್ಚೆಯ ಸಮಯದಲ್ಲಿ ರೋಗಿಯ ಸ್ವಾಯತ್ತತೆಗೆ ಪ್ರಾಮುಖ್ಯತೆ ನೀಡಲಾಯಿತು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1590,6 +1734,7 @@ const List<Sentence> advancedSentences = [
     id: 'a145',
     text: "Profound emotional empathy strengthens the therapeutic alliance between clinician and patient.",
     meaning: "Heartfelt warmth from a doctor dramatically improves patient recovery rates.",
+    kannadaMeaning: "ಆಳವಾದ ಭಾವನಾತ್ಮಕ ಸಹಾನುಭೂತಿಯು ವೈದ್ಯ ಮತ್ತು ರೋಗಿಯ ನಡುವಿನ ಚಿಕಿತ್ಸಕ ನಂಬಿಕೆಯನ್ನು ಬಲಪಡಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1601,6 +1746,7 @@ const List<Sentence> advancedSentences = [
     id: 'a146',
     text: "Somatic symptom manifestations often dissipate once underlying psychological anxieties are articulated.",
     meaning: "Physical body aches fading away as soon as hidden worries are spoken.",
+    kannadaMeaning: "ಆಂತರಿಕ ಮಾನಸಿಕ ಆತಂಕಗಳನ್ನು ಮುಕ್ತವಾಗಿ ಹೇಳಿಕೊಂಡಾಗ ದೈಹಿಕ ನೋವಿನ ಲಕ್ಷಣಗಳು ಕಡಿಮೆಯಾಗುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1612,6 +1758,7 @@ const List<Sentence> advancedSentences = [
     id: 'a147',
     text: "Oxidative stress induces mitochondrial dysfunction and accelerates degenerative cellular decay.",
     meaning: "Free radical damage ruining cell power plants and hastening biological aging.",
+    kannadaMeaning: "ಆಕ್ಸಿಡೇಟಿವ್ ಒತ್ತಡವು ಜೀವಕೋಶದ ಶಕ್ತಿ ಕೇಂದ್ರಗಳನ್ನು ಹಾನಿಗೊಳಿಸುತ್ತದೆ ಮತ್ತು ಕ್ಷೀಣತೆಯನ್ನು ವೇಗಗೊಳಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1623,6 +1770,7 @@ const List<Sentence> advancedSentences = [
     id: 'a148',
     text: "Comprehensive lifestyle interventions demonstrate superior clinical efficacy in reversing early-stage atherosclerosis.",
     meaning: "Eating vegetables and exercising cleaning out blocked arteries better than pills.",
+    kannadaMeaning: "ಸಮಗ್ರ ಜೀವನಶೈಲಿ ಬದಲಾವಣೆಗಳು ಆರಂಭಿಕ ಹಂತದ ಹೃದ್ರೋಗವನ್ನು ಹಿಮ್ಮೆಟ್ಟಿಸುವಲ್ಲಿ ಅತ್ಯುತ್ತಮ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1634,6 +1782,7 @@ const List<Sentence> advancedSentences = [
     id: 'a149',
     text: "Psychological flourishing encompasses emotional vitality, purposefulness, and robust interpersonal connections.",
     meaning: "Thriving mentally means feeling lively joy, having goals, and loving friends.",
+    kannadaMeaning: "ಮಾನಸಿಕ ಸಮೃದ್ಧಿಯು ಭಾವನಾತ್ಮಕ ಹುರುಪು, ಜೀವನದ ಉದ್ದೇಶ ಮತ್ತು ಬಲವಾದ ಸಾಮಾಜಿಕ ಸಂಬಂಧಗಳನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1645,6 +1794,7 @@ const List<Sentence> advancedSentences = [
     id: 'a150',
     text: "Holistic healthcare models integrate psychosomatic interventions with conventional pharmacology seamlessly.",
     meaning: "Modern medicine treating body, mind, and diet alongside pharmaceuticals.",
+    kannadaMeaning: "ಸಮಗ್ರ ಆರೋಗ್ಯ ಮಾದರಿಗಳು ಮಾನಸಿಕ-ದೈಹಿಕ ಚಿಕಿತ್ಸೆಗಳನ್ನು ಸಾಂಪ್ರದಾಯಿಕ ವೈದ್ಯಕೀಯದೊಂದಿಗೆ ಸಂಯೋಜಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1656,6 +1806,7 @@ const List<Sentence> advancedSentences = [
     id: 'a151',
     text: "The sociological critique interrogated how cultural hegemony manufactures consent among disenfranchised populations.",
     meaning: "Scholars explaining how powerful rulers persuade poor citizens to accept injustice.",
+    kannadaMeaning: "ಸಾಂಸ್ಕೃತಿಕ ಪ್ರಾಬಲ್ಯವು ಹಿಂದುಳಿದ ಜನರ ಒಪ್ಪಿಗೆಯನ್ನು ಹೇಗೆ ಕುತಂತ್ರದಿಂದ ಪಡೆಯುತ್ತದೆ ಎಂಬುದನ್ನು ಸಮಾಜಶಾಸ್ತ್ರೀಯ ವಿಮರ್ಶೆಯು ಪ್ರಶ್ನಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1667,6 +1818,7 @@ const List<Sentence> advancedSentences = [
     id: 'a152',
     text: "Epistemological modesty compels scholars to acknowledge the provisional character of scientific paradigms.",
     meaning: "Wise researchers admitting all current theories are subject to future revision.",
+    kannadaMeaning: "ವೈಜ್ಞಾನಿಕ ಸಿದ್ಧಾಂತಗಳು ಸದಾ ತಾತ್ಕಾಲಿಕ ಮತ್ತು ಪರಿಷ್ಕರಣೆಗೆ ಮುಕ್ತವಾಗಿವೆ ಎಂದು ಜ್ಞಾನಮೀಮಾಂಸೆಯ ನಮ್ರತೆಯು ಒಪ್ಪಿಕೊಳ್ಳುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1678,6 +1830,7 @@ const List<Sentence> advancedSentences = [
     id: 'a153',
     text: "The political philosopher scrutinized whether representative democracy can withstand unfettered corporate lobbying.",
     meaning: "Can free elections survive when billionaire corporations buy political influence?",
+    kannadaMeaning: "ಪ್ರಜಾಪ್ರಭುತ್ವವು ಕಾರ್ಪೊರೇಟ್ ಪ್ರಭಾವವನ್ನು ತಡೆದುಕೊಳ್ಳಬಲ್ಲದೇ ಎಂದು ರಾಜಕೀಯ ತತ್ವಜ್ಞಾನಿ ಪರಿಶೀಲಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1689,6 +1842,7 @@ const List<Sentence> advancedSentences = [
     id: 'a154',
     text: "Existential despair is frequently exacerbated by relentless materialistic comparisons on digital platforms.",
     meaning: "Constantly viewing wealthy lifestyles on social media intensifies sadness.",
+    kannadaMeaning: "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮಗಳಲ್ಲಿನ ನಿರಂತರ ಹೋಲಿಕೆಗಳಿಂದಾಗಿ ಅಸ್ತಿತ್ವವಾದಿ ಹತಾಶೆಯು ಹೆಚ್ಚಾಗಿ ಉಲ್ಬಣಗೊಳ್ಳುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1700,6 +1854,7 @@ const List<Sentence> advancedSentences = [
     id: 'a155',
     text: "The treatise argued that genuine intellectual freedom requires vigorous exposure to adversarial viewpoints.",
     meaning: "Smart minds grow sharp by reading books they completely disagree with.",
+    kannadaMeaning: "ನಿಜವಾದ ಬೌದ್ಧಿಕ ಸ್ವಾತಂತ್ರ್ಯಕ್ಕೆ ವಿರೋಧಿ ದೃಷ್ಟಿಕೋನಗಳ ಮುಕ್ತ ಸಂಪರ್ಕ ಅತ್ಯಗತ್ಯ ಎಂದು ಪ್ರಬಂಧವು ವಾದಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1711,6 +1866,7 @@ const List<Sentence> advancedSentences = [
     id: 'a156',
     text: "Technological utopianism naively assumes that digital innovations will spontaneously resolve entrenched socio-economic divides.",
     meaning: "The foolish belief that smartphones alone will end poverty and bigotry.",
+    kannadaMeaning: "ಡಿಜಿಟಲ್ ಆವಿಷ್ಕಾರಗಳು ಆರ್ಥಿಕ ಅಸಮಾನತೆಗಳನ್ನು ತಾವಾಗಿಯೇ ಪರಿಹರಿಸುತ್ತವೆ ಎಂದು ಭಾವಿಸುವುದು ಅತಿಯಾದ ಮುಗ್ಧತೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -1722,6 +1878,7 @@ const List<Sentence> advancedSentences = [
     id: 'a157',
     text: "A flourishing civil society necessitates autonomous public spheres unconstrained by state surveillance.",
     meaning: "Free citizens need places to assemble without government monitoring.",
+    kannadaMeaning: "ಸುಸ್ಥಿರ ನಾಗರಿಕ ಸಮಾಜಕ್ಕೆ ಸರ್ಕಾರದ ಕಣ್ಗಾವಲಿನಿಂದ ಮುಕ್ತವಾದ ಸಾರ್ವಜನಿಕ ವೇದಿಕೆಗಳು ಅಗತ್ಯ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1733,6 +1890,7 @@ const List<Sentence> advancedSentences = [
     id: 'a158',
     text: "Ethical deliberations regarding artificial intelligence must prioritize transparency, accountability, and algorithmic explainability.",
     meaning: "Machine models must be able to explain why they reject loan applications.",
+    kannadaMeaning: "ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯ ಬಗೆಗಿನ ನೈತಿಕ ಚರ್ಚೆಗಳು ಪಾರದರ್ಶಕತೆ ಮತ್ತು ಹೊಣೆಗಾರಿಕೆಗೆ ಆದ್ಯತೆ ನೀಡಬೇಕು.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -1744,6 +1902,7 @@ const List<Sentence> advancedSentences = [
     id: 'a159',
     text: "Cultural appropriation trivializes sacred ancestral traditions for commercial exploitation.",
     meaning: "Turning holy indigenous ceremonies into cheap consumer products diminishes culture.",
+    kannadaMeaning: "ಪವಿತ್ರ ಸಾಂಸ್ಕೃತಿಕ ಸಂಪ್ರದಾಯಗಳನ್ನು ವಾಣಿಜ್ಯ ಲಾಭಕ್ಕಾಗಿ ದುರುಪಯೋಗಪಡಿಸಿಕೊಳ್ಳುವುದು ಸರಿಯಲ್ಲ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1755,6 +1914,7 @@ const List<Sentence> advancedSentences = [
     id: 'a160',
     text: "The historical documentary illuminated how propaganda apparatuses systematically manufactured xenophobic hysteria.",
     meaning: "Films showing how dictators brainwashed citizens into hating foreign neighbors.",
+    kannadaMeaning: "ಪ್ರಚಾರ ವ್ಯವಸ್ಥೆಗಳು ಹೇಗೆ ವಿದೇಶಿ ದ್ವೇಷದ ಉನ್ಮಾದವನ್ನು ಸೃಷ್ಟಿಸಿದವು ಎಂಬುದನ್ನು ಸಾಕ್ಷ್ಯಚಿತ್ರವು ವಿವರಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1766,6 +1926,7 @@ const List<Sentence> advancedSentences = [
     id: 'a161',
     text: "Critical pedagogy empowers marginalized learners to interrogate systemic power structures and cultivate agency.",
     meaning: "Education designed to help oppressed students challenge societal unfairness.",
+    kannadaMeaning: "ವಿಮರ್ಶಾತ್ಮಕ ಬೋಧನಾ ಪದ್ಧತಿಯು ಹಿಂದುಳಿದ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವ್ಯವಸ್ಥಿತ ಶಕ್ತಿಯನ್ನು ಪ್ರಶ್ನಿಸಲು ಮತ್ತು ಸ್ವಾವಲಂಬಿಗಳಾಗಲು ಶಕ್ತಿ ನೀಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1777,6 +1938,7 @@ const List<Sentence> advancedSentences = [
     id: 'a162',
     text: "The ecological crisis demands an ontological paradigm shift toward biocentric egalitarianism.",
     meaning: "Human survival requires valuing forests and wildlife as equals rather than timber.",
+    kannadaMeaning: "ಪರಿಸರ ಬಿಕ್ಕಟ್ಟು ಪ್ರಕೃತಿ ಕೇಂದ್ರಿತ ಸಮಾನತೆಯ ಕಡೆಗೆ ಸಂಪೂರ್ಣ ಚಿಂತನೆಯ ಬದಲಾವಣೆಯನ್ನು ಬಯಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Weather',
     vocabularyWords: [
@@ -1788,6 +1950,7 @@ const List<Sentence> advancedSentences = [
     id: 'a163',
     text: "Her scathing critique dismantled the pervasive myth of meritocracy within entrenched aristocracies.",
     meaning: "Exposing how privileged elites inherit power rather than earning it.",
+    kannadaMeaning: "ಆಕೆಯ ತೀಕ್ಷ್ಣ ವಿಮರ್ಶೆಯು ಪ್ರತಿಭೆಯ ಹೆಸರಿನಲ್ಲಿ ನಡೆಯುವ ವಂಶಪಾರಂಪರ್ಯ ಸವಲತ್ತುಗಳ ಭ್ರಮೆಯನ್ನು ಬಯಲುಮಾಡಿತು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1799,6 +1962,7 @@ const List<Sentence> advancedSentences = [
     id: 'a164',
     text: "Profound philosophical contemplation equips humans to confront the inexorable reality of mortality serenely.",
     meaning: "Deep thinking helps people face death without terror and with peaceful poise.",
+    kannadaMeaning: "ಆಳವಾದ ತಾತ್ವಿಕ ಚಿಂತನೆಯು ಸಾವಿನ ಅನಿವಾರ್ಯ ವಾಸ್ತವವನ್ನು ಶಾಂತವಾಗಿ ಎದುರಿಸಲು ಮನುಷ್ಯನಿಗೆ ಶಕ್ತಿ ನೀಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1810,6 +1974,7 @@ const List<Sentence> advancedSentences = [
     id: 'a165',
     text: "The legal scholar dissected the inherent constitutional contradictions between national security and personal privacy.",
     meaning: "Analyzing the friction between counter-terrorism surveillance and bill of rights.",
+    kannadaMeaning: "ರಾಷ್ಟ್ರೀಯ ಭದ್ರತೆ ಮತ್ತು ವೈಯಕ್ತಿಕ ಗೌಪ್ಯತೆಯ ನಡುವಿನ ಸಾಂವಿಧಾನಿಕ ಸಂಘರ್ಷಗಳನ್ನು ಕಾನೂನು ತಜ್ಞರು ವಿಶ್ಲೇಷಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1821,6 +1986,7 @@ const List<Sentence> advancedSentences = [
     id: 'a166',
     text: "Algorithmic echo chambers exacerbate sociopolitical polarization by reinforcing confirmation bias.",
     meaning: "Social feed algorithms feeding users only views they already agree with.",
+    kannadaMeaning: "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮದ ಅಲ್ಗಾರಿದಮ್‌ಗಳು ಒಂದೇ ರೀತಿಯ ಅಭಿಪ್ರಾಯಗಳನ್ನು ಬಲಪಡಿಸುವ ಮೂಲಕ ರಾಜಕೀಯ ಧ್ರುವೀಕರಣವನ್ನು ಹೆಚ್ಚಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -1832,6 +1998,7 @@ const List<Sentence> advancedSentences = [
     id: 'a167',
     text: "The author warned that historical amnesia predisposes societies to repeat catastrophic political tragedies.",
     meaning: "Forgetting the rise of fascism leads modern nations back into tyranny.",
+    kannadaMeaning: "ಇತಿಹಾಸವನ್ನು ಮರೆಯುವುದು ಸಮಾಜಗಳನ್ನು ಹಳೆಯ ರಾಜಕೀಯ ದುರಂತಗಳನ್ನು ಪುನರಾವರ್ತಿಸಲು ಪ್ರೇರೇಪಿಸುತ್ತದೆ ಎಂದು ಲೇಖಕರು ಎಚ್ಚರಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1843,6 +2010,7 @@ const List<Sentence> advancedSentences = [
     id: 'a168',
     text: "Ethical leadership demands unyielding moral courage when confronted with institutional malfeasance.",
     meaning: "True executives blow the whistle on corruption even if it costs their jobs.",
+    kannadaMeaning: "ಸಾಂಸ್ಥಿಕ ಅನ್ಯಾಯವನ್ನು ಎದುರಿಸುವಾಗ ನೈತಿಕ ನಾಯಕತ್ವವು ಅಚಲವಾದ ನೈತಿಕ ಧೈರ್ಯವನ್ನು ಬಯಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1854,6 +2022,7 @@ const List<Sentence> advancedSentences = [
     id: 'a169',
     text: "The dialectical tension between individual liberty and collective welfare defines modern constitutional jurisprudence.",
     meaning: "Balancing personal freedoms with public health requirements during emergencies.",
+    kannadaMeaning: "ವೈಯಕ್ತಿಕ ಸ್ವಾತಂತ್ರ್ಯ ಮತ್ತು ಸಾರ್ವಜನಿಕ ಕಲ್ಯಾಣದ ನಡುವಿನ ಸಮತೋಲನವು ಆಧುನಿಕ ಸಂವಿಧಾನದ ತಿರುಳಾಗಿದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1865,6 +2034,7 @@ const List<Sentence> advancedSentences = [
     id: 'a170',
     text: "Authentic wisdom resides not in the ostentatious accumulation of erudition, but in humble compassionate action.",
     meaning: "True insight is using knowledge to heal the world rather than to brag.",
+    kannadaMeaning: "ನಿಜವಾದ ಬುದ್ಧಿವಂತಿಕೆಯು ಪಾಂಡಿತ್ಯದ ಪ್ರದರ್ಶನದಲ್ಲಿಲ್ಲ, ಬದಲಿಗೆ ದಯೆ ಮತ್ತು ಕರುಣೆಯ ಕ್ರಿಯೆಯಲ್ಲಿದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1876,6 +2046,7 @@ const List<Sentence> advancedSentences = [
     id: 'a171',
     text: "The constitutional convention deliberated tirelessly to reconcile conflicting federalist and antifederalist tenets.",
     meaning: "Founding leaders debating whether state or national governments should hold supremacy.",
+    kannadaMeaning: "ವಿಭಿನ್ನ ಆಡಳಿತ ತತ್ವಗಳನ್ನು ಸರಿದೂಗಿಸಲು ಸಂವಿಧಾನ ಸಭೆಯು ದಣಿವರಿಯದೆ ಚರ್ಚಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1887,6 +2058,7 @@ const List<Sentence> advancedSentences = [
     id: 'a172',
     text: "Phenomenological sociology investigates how intersubjective lifeworlds are constructed through daily conversational rituals.",
     meaning: "Academic study of how shared human experiences become social reality.",
+    kannadaMeaning: "ದೈನಂದಿನ ಸಂಭಾಷಣೆಯ ಮೂಲಕ ಸಾಮಾಜಿಕ ಪ್ರಪಂಚವು ಹೇಗೆ ನಿರ್ಮಾಣವಾಗುತ್ತದೆ ಎಂಬುದನ್ನು ಸಮಾಜಶಾಸ್ತ್ರವು ತನಿಖೆ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1898,6 +2070,7 @@ const List<Sentence> advancedSentences = [
     id: 'a173',
     text: "The pharmaceutical consortium synthesized a peptide antagonist exhibiting profound specificity for metastatic receptors.",
     meaning: "Chemists engineering targeted proteins that block cancer spreading in tissue.",
+    kannadaMeaning: "ಔಷಧ ಕಂಪನಿಗಳ ಒಕ್ಕೂಟವು ಕ್ಯಾನ್ಸರ್ ಕೋಶಗಳನ್ನು ನಿಖರವಾಗಿ ಗುರಿಯಾಗಿಸುವ ಪೆಪ್ಟೈಡ್ ಸಂಯುಕ್ತವನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -1909,6 +2082,7 @@ const List<Sentence> advancedSentences = [
     id: 'a174',
     text: "The macroeconomic policy framework seeks to curb stagflation through targeted supply-side tax credits.",
     meaning: "Economic programs designed to lower prices while boosting employment.",
+    kannadaMeaning: "ಸ್ಥೂಲ ಆರ್ಥಿಕ ನೀತಿಯು ತೆರಿಗೆ ರಿಯಾಯಿತಿಗಳ ಮೂಲಕ ಆರ್ಥಿಕ ಜಡತೆಯನ್ನು ನಿಯಂತ್ರಿಸಲು ಪ್ರಯತ್ನಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -1920,6 +2094,7 @@ const List<Sentence> advancedSentences = [
     id: 'a175',
     text: "Legal hermeneutics distinguishes originalist intent from living constitutionalism in civil rights jurisprudence.",
     meaning: "Judicial debates over whether antique laws should be interpreted literally or adaptively.",
+    kannadaMeaning: "ಕಾನೂನು ವ್ಯಾಖ್ಯಾನವು ಸಂವಿಧಾನದ ಮೂಲ ಉದ್ದೇಶ ಮತ್ತು ಕಾಲಕ್ಕೆ ತಕ್ಕಂತೆ ಬದಲಾಗುವ ವ್ಯಾಖ್ಯಾನವನ್ನು ಪ್ರತ್ಯೇಕಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1931,6 +2106,7 @@ const List<Sentence> advancedSentences = [
     id: 'a176',
     text: "Epistemological fallibilism acknowledges that even our most rigorously verified scientific doctrines remain provisional.",
     meaning: "Humility in science acknowledging all theories may need updating.",
+    kannadaMeaning: "ನಮ್ಮ ಅತ್ಯಂತ ನಿಖರವಾದ ವೈಜ್ಞಾನಿಕ ಸಿದ್ಧಾಂತಗಳೂ ಸಹ ಪರಿಷ್ಕರಣೆಗೆ ಒಳಪಟ್ಟಿವೆ ಎಂದು ತತ್ತ್ವಶಾಸ್ತ್ರ ಒಪ್ಪಿಕೊಳ್ಳುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1942,6 +2118,7 @@ const List<Sentence> advancedSentences = [
     id: 'a177',
     text: "The architect harmonized austere brutalist masonry with flowing parabolic timber trusses in the civic hall.",
     meaning: "Blending raw concrete slabs with warm curved wooden beams in public buildings.",
+    kannadaMeaning: "ವಾಸ್ತುಶಿಲ್ಪಿ ಬಲಿಷ್ಠ ಕಲ್ಲಿನ ಕೆಲಸ ಮತ್ತು ಮರದ ಸುಂದರ ಕಮಾನುಗಳನ್ನು ನಗರ ಭವನದಲ್ಲಿ ಸಾಮರಸ್ಯದಿಂದ ಸಂಯೋಜಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -1953,6 +2130,7 @@ const List<Sentence> advancedSentences = [
     id: 'a178',
     text: "A profound sense of existential dread often accompanies the sudden disruption of cherished metaphysical certainties.",
     meaning: "Deep inner fear when lifelong religious or world beliefs crumble.",
+    kannadaMeaning: "ಆಳವಾದ ನಂಬಿಕೆಗಳು ಹಠಾತ್ ಮುರಿದುಬಿದ್ದಾಗ ತೀವ್ರ ಅಸ್ತಿತ್ವವಾದಿ ಭಯ ಉಂಟಾಗುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -1964,6 +2142,7 @@ const List<Sentence> advancedSentences = [
     id: 'a179',
     text: "Algorithmic opacity in credit scoring models perpetuates historical financial marginalization covertly.",
     meaning: "Hidden computer calculation logic locking poor families out of home mortgages.",
+    kannadaMeaning: "ಕ್ರೆಡಿಟ್ ಸ್ಕೋರಿಂಗ್ ಅಲ್ಗಾರಿದಮ್‌ಗಳ ಅಸ್ಪಷ್ಟತೆಯು ಆರ್ಥಿಕ ತಾರತಮ್ಯವನ್ನು ರಹಸ್ಯವಾಗಿ ಮುಂದುವರಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -1975,6 +2154,7 @@ const List<Sentence> advancedSentences = [
     id: 'a180',
     text: "The diplomat emphasized that multilateralism remains indispensable to addressing transboundary environmental degradation.",
     meaning: "Nations must cooperate across borders to halt global ecological damage.",
+    kannadaMeaning: "ಗಡಿಯಾಚೆಗಿನ ಪರಿಸರ ಅವನತಿಯನ್ನು ನಿಭಾಯಿಸಲು ಬಹುಪಕ್ಷೀಯ ಒಪ್ಪಂದಗಳು ಅತ್ಯಗತ್ಯ ಎಂದು ರಾಜತಾಂತ್ರಿಕರು ಒತ್ತಿ ಹೇಳಿದರು.",
     difficulty: 'Advanced',
     category: 'Weather',
     vocabularyWords: [
@@ -1986,6 +2166,7 @@ const List<Sentence> advancedSentences = [
     id: 'a181',
     text: "Critical discourse analysis exposes how state propaganda subtly manipulates semantic categories to manufacture compliance.",
     meaning: "Scholarly linguistic analysis showing how news headlines trick populations.",
+    kannadaMeaning: "ಸರ್ಕಾರಿ ಪ್ರಚಾರವು ಜನರ ಒಪ್ಪಿಗೆಯನ್ನು ಪಡೆಯಲು ಭಾಷಾ ಪದಗಳನ್ನು ಹೇಗೆ ತಿರುಚುತ್ತದೆ ಎಂಬುದನ್ನು ವಿಶ್ಲೇಷಣೆಯು ತೋರಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -1997,6 +2178,7 @@ const List<Sentence> advancedSentences = [
     id: 'a182',
     text: "The literary scholar scrutinized the dialectical interplay between determinism and human agency in naturalist tragedy.",
     meaning: "Analyzing whether doomed tragic characters have free will or are trapped by fate.",
+    kannadaMeaning: "ಸಾಹಿತ್ಯ ವಿದ್ವಾಂಸರು ನಾಟಕದಲ್ಲಿ ವಿಧಿ ಮತ್ತು ಮಾನವ ಪ್ರಯತ್ನಗಳ ನಡುವಿನ ಪರಸ್ಪರ ಕ್ರಿಯೆಯನ್ನು ಪರಿಶೀಲಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -2008,6 +2190,7 @@ const List<Sentence> advancedSentences = [
     id: 'a183',
     text: "Neuropharmacological research indicates that psychedelic compounds stimulate rapid dendritic arborization and synaptic plasticity.",
     meaning: "Brain studies showing how specialized compounds prompt nerve branches to regrow.",
+    kannadaMeaning: "ಸೈಕೆಡೆಲಿಕ್ ಸಂಯುಕ್ತಗಳು ಮೆದುಳಿನಲ್ಲಿ ನರಗಳ ಬೆಳವಣಿಗೆ ಮತ್ತು ಹೊಂದಾಣಿಕೆಯನ್ನು ಉತ್ತೇಜಿಸುತ್ತವೆ ಎಂದು ಸಂಶೋಧನೆ ತೋರಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -2019,6 +2202,7 @@ const List<Sentence> advancedSentences = [
     id: 'a184',
     text: "The sovereign nation invoked statutory maritime prerogatives to interdict illicit contraband in international waters.",
     meaning: "Coast guards using legal rights to stop smuggling ships on open seas.",
+    kannadaMeaning: "ಅಂತಾರಾಷ್ಟ್ರೀಯ ಜಲಪ್ರದೇಶದಲ್ಲಿ ಅಕ್ರಮ ಕಳ್ಳಸಾಗಣೆಯನ್ನು ತಡೆಯಲು ರಾಷ್ಟ್ರವು ತನ್ನ ಕಡಲ ಹಕ್ಕುಗಳನ್ನು ಚಲಾಯಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Travel',
     vocabularyWords: [
@@ -2030,6 +2214,7 @@ const List<Sentence> advancedSentences = [
     id: 'a185',
     text: "Philosophical pragmatism evaluates intellectual concepts not by immutable theoretical purity, but by empirical efficacy.",
     meaning: "Judging ideas by how well they solve practical real-world problems.",
+    kannadaMeaning: "ವ್ಯಾವಹಾರಿಕ ತತ್ವಜ್ಞಾನವು ಸಿದ್ಧಾಂತಗಳನ್ನು ಕೇವಲ ಕಲ್ಪನೆಯಿಂದಲ್ಲ, ಪ್ರಾಯೋಗಿಕ ಫಲಿತಾಂಶಗಳಿಂದ ಮೌಲ್ಯಮಾಪನ ಮಾಡುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2041,6 +2226,7 @@ const List<Sentence> advancedSentences = [
     id: 'a186',
     text: "The museum curator mounted an evocative retrospective interrogating the socio-political underpinnings of conceptual sculpture.",
     meaning: "An art exhibit examining the politics and social movements behind modern art.",
+    kannadaMeaning: "ವಸ್ತುಸಂಗ್ರಹಾಲಯವು ಆಧುನಿಕ ಶಿಲ್ಪಕಲೆಯ ರಾಜಕೀಯ ಆಧಾರಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುವ ಪ್ರದರ್ಶನವನ್ನು ಆಯೋಜಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Hobbies',
     vocabularyWords: [
@@ -2052,6 +2238,7 @@ const List<Sentence> advancedSentences = [
     id: 'a187',
     text: "Stringent fiduciary regulations penalize corporate officers who engage in deceptive insider trading maneuvers.",
     meaning: "Laws imposing prison time on company executives who trade stocks on secret tips.",
+    kannadaMeaning: "ಕಟ್ಟುನಿಟ್ಟಾದ ನಿಯಮಗಳು ವಂಚನೆಯ ಷೇರು ವ್ಯವಹಾರಗಳಲ್ಲಿ ತೊಡಗುವ ಕಂಪನಿ ಅಧಿಕಾರಿಗಳಿಗೆ ಶಿಕ್ಷೆ ವಿಧಿಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -2063,6 +2250,7 @@ const List<Sentence> advancedSentences = [
     id: 'a188',
     text: "Ecological resilience theory demonstrates that biodiversity buffers biomes against irreversible catastrophic state shifts.",
     meaning: "Complex ecosystems resist environmental collapses because diverse species protect each other.",
+    kannadaMeaning: "ಜೀವವೈವಿಧ್ಯತೆಯು ಪರಿಸರ ವ್ಯವಸ್ಥೆಗಳನ್ನು ಹಠಾತ್ ವಿನಾಶಕಾರಿ ಬದಲಾವಣೆಗಳಿಂದ ರಕ್ಷಿಸುತ್ತದೆ ಎಂದು ಪರಿಸರ ಸಿದ್ಧಾಂತವು ತೋರಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Weather',
     vocabularyWords: [
@@ -2074,6 +2262,7 @@ const List<Sentence> advancedSentences = [
     id: 'a189',
     text: "The senator delivered a devastating philippic repudiating executive usurpation of legislative budgetary authority.",
     meaning: "A fierce parliamentary speech condemning a president for stealing funding power.",
+    kannadaMeaning: "ಸಂಸದರು ಸಂಸತ್ತಿನ ಬಜೆಟ್ ಅಧಿಕಾರವನ್ನು ಕಾರ್ಯಾಂಗವು ಅತಿಕ್ರಮಿಸುವುದನ್ನು ತೀವ್ರವಾಗಿ ಖಂಡಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -2085,6 +2274,7 @@ const List<Sentence> advancedSentences = [
     id: 'a190',
     text: "Psychometric assessment tools require exhaustive calibration to ensure validity across diverse cultural cohorts.",
     meaning: "Personality and IQ tests must be retested to prevent cultural unfairness.",
+    kannadaMeaning: "ಮನೋವೈಜ್ಞಾನಿಕ ಮೌಲ್ಯಮಾಪನ ಸಾಧನಗಳು ವಿವಿಧ ಸಂಸ್ಕೃತಿಗಳಲ್ಲಿ ನಿಖರತೆ ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಸೂಕ್ತ ಮಾಪನಾಂಕ ನಿರ್ಣಯವನ್ನು ಬಯಸುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -2096,6 +2286,7 @@ const List<Sentence> advancedSentences = [
     id: 'a191',
     text: "The historian documented the systematic disenfranchisement of sharecroppers following the Reconstruction era.",
     meaning: "Writing the history of how impoverished farm workers were stripped of voting rights.",
+    kannadaMeaning: "ಇತಿಹಾಸಕಾರರು ನಿರ್ದಿಷ್ಟ ಯುಗದ ನಂತರ ರೈತ ಕಾರ್ಮಿಕರ ವ್ಯವಸ್ಥಿತ ಹಕ್ಕು ಕಸಿದುಕೊಳ್ಳುವಿಕೆಯನ್ನು ದಾಖಲಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -2107,6 +2298,7 @@ const List<Sentence> advancedSentences = [
     id: 'a192',
     text: "Quantum entanglement challenges local realism by exhibiting instantaneous non-local correlations across astronomical distances.",
     meaning: "Particles interacting instantaneously light-years apart defying classical physics.",
+    kannadaMeaning: "ಕ್ವಾಂಟಮ್ ಎಂಟ್ಯಾಂಗಲ್‌ಮೆಂಟ್ ನಕ್ಷತ್ರಗಳ ಅಂತರದಲ್ಲೂ ಕಣಗಳ ನಡುವಿನ ತತ್‌ಕ್ಷಣದ ವಿಚಿತ್ರ ಸಂಪರ್ಕವನ್ನು ಪ್ರದರ್ಶಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Technology',
     vocabularyWords: [
@@ -2118,6 +2310,7 @@ const List<Sentence> advancedSentences = [
     id: 'a193',
     text: "The ethicist argued that moral consideration should encompass all sentient beings capable of subjective suffering.",
     meaning: "Philosophers arguing animal protection should extend to every creature that feels pain.",
+    kannadaMeaning: "ನೋವನ್ನು ಅನುಭವಿಸುವ ಸಾಮರ್ಥ್ಯವಿರುವ ಎಲ್ಲಾ ಜೀವಿಗಳಿಗೂ ನೈತಿಕ ಕಾಳಜಿಯನ್ನು ವಿಸ್ತರಿಸಬೇಕು ಎಂದು ನೈತಿಕತಜ್ಞರು ವಾದಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2129,6 +2322,7 @@ const List<Sentence> advancedSentences = [
     id: 'a194',
     text: "Post-colonial historiography deconstructs Eurocentric narratives that systematically minimized indigenous civilizations.",
     meaning: "Modern history rewriting books to honor the true brilliance of ancient native cultures.",
+    kannadaMeaning: "ವಸಾಹತುಶಾಹಿ ನಂತರದ ಇತಿಹಾಸ ರಚನೆಯು ಸ್ಥಳೀಯ ನಾಗರಿಕತೆಗಳನ್ನು ಕಡೆಗಣಿಸಿದ ಯುರೋಪಿಯನ್ ನಿರೂಪಣೆಗಳನ್ನು ತಳ್ಳಿಹಾಕುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -2140,6 +2334,7 @@ const List<Sentence> advancedSentences = [
     id: 'a195',
     text: "The chief executive officer outlined a comprehensive turnaround strategy to counteract catastrophic market share erosion.",
     meaning: "A company leader detailing how to save a failing brand from bankruptcy.",
+    kannadaMeaning: "ಮಾರುಕಟ್ಟೆ ಪಾಲಿನ ಕುಸಿತವನ್ನು ಎದುರಿಸಲು ಮುಖ್ಯ ಕಾರ್ಯನಿರ್ವಾಹಕ ಅಧಿಕಾರಿಯು ಸಮಗ್ರ ಪುನಶ್ಚೇತನ ತಂತ್ರವನ್ನು ರೂಪಿಸಿದರು.",
     difficulty: 'Advanced',
     category: 'Work',
     vocabularyWords: [
@@ -2151,6 +2346,7 @@ const List<Sentence> advancedSentences = [
     id: 'a196',
     text: "Cognitive reappraisal exercises empower individuals to attenuate acute amygdala reactivity during traumatic recalls.",
     meaning: "Mental reframing techniques calming the brain's fear centers during panic memories.",
+    kannadaMeaning: "ಅರಿವಿನ ಮರುಮೌಲ್ಯಮಾಪನ ವ್ಯಾಯಾಮಗಳು ಆಘಾತಕಾರಿ ನೆನಪುಗಳ ಸಮಯದಲ್ಲಿ ಮೆದುಳಿನ ತೀವ್ರ ಆತಂಕದ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತವೆ.",
     difficulty: 'Advanced',
     category: 'Health',
     vocabularyWords: [
@@ -2162,6 +2358,7 @@ const List<Sentence> advancedSentences = [
     id: 'a197',
     text: "The appellate court reversed the lower ruling citing egregious procedural infractions during jury deliberations.",
     meaning: "High court throwing out a bad verdict because a jury broke rules.",
+    kannadaMeaning: "ತೀರ್ಪುಗಾರರ ಚರ್ಚೆಯ ಸಮಯದಲ್ಲಿ ನಡೆದ ಗಂಭೀರ ನಿಯಮ ಉಲ್ಲಂಘನೆಗಳನ್ನು ಉಲ್ಲೇಖಿಸಿ ಮೇಲ್ಮನವಿ ನ್ಯಾಯಾಲಯವು ಕೆಳ ನ್ಯಾಯಾಲಯದ ತೀರ್ಪನ್ನು ರದ್ದುಗೊಳಿಸಿತು.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2173,6 +2370,7 @@ const List<Sentence> advancedSentences = [
     id: 'a198',
     text: "Bioarchaeological excavations revealed profound isotopic signatures of malnutrition during the late Bronze Age collapse.",
     meaning: "Scientists analyzing ancient skeleton teeth to prove historic droughts and famines.",
+    kannadaMeaning: "ಪುರಾತತ್ತ್ವ ಶಾಸ್ತ್ರದ ಉತ್ಖನನಗಳು ಕಂಚಿನ ಯುಗದ ಪತನದ ಸಮಯದಲ್ಲಿ ಅಪೌಷ್ಟಿಕತೆಯ ಆಳವಾದ ಕುರುಹುಗಳನ್ನು ಬಹಿರಂಗಪಡಿಸಿದವು.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [
@@ -2184,6 +2382,7 @@ const List<Sentence> advancedSentences = [
     id: 'a199',
     text: "The treaty establishes rigorous verification protocols to deter covert nuclear proliferation and stockpile modernization.",
     meaning: "Global inspectors ensuring secret atomic weapons are not built.",
+    kannadaMeaning: "ರಹಸ್ಯ ಪರಮಾಣು ಪ್ರಸರಣವನ್ನು ತಡೆಯಲು ಈ ಒಪ್ಪಂದವು ಕಟ್ಟುನಿಟ್ಟಾದ ಪರಿಶೀಲನಾ ಕ್ರಮಗಳನ್ನು ಸ್ಥಾಪಿಸುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'Everyday English',
     vocabularyWords: [
@@ -2195,6 +2394,7 @@ const List<Sentence> advancedSentences = [
     id: 'a200',
     text: "Linguistic determinism posited that the grammatical structure of a mother tongue decisively shapes conceptual perception.",
     meaning: "The theory that the language you speak determines the very way your brain thinks.",
+    kannadaMeaning: "ಮಾತೃಭಾಷೆಯ ವ್ಯಾಕರಣ ರಚನೆಯು ಪ್ರಪಂಚದ ಬಗ್ಗೆ ಮನುಷ್ಯನ ಪರಿಕಲ್ಪನಾ ಗ್ರಹಿಕೆಯನ್ನು ನಿರ್ಣಾಯಕವಾಗಿ ರೂಪಿಸುತ್ತದೆ ಎಂದು ಭಾಷಾ ಸಿದ್ಧಾಂತವು ಹೇಳುತ್ತದೆ.",
     difficulty: 'Advanced',
     category: 'School',
     vocabularyWords: [

@@ -39,17 +39,21 @@ class ProgressScreen extends ConsumerWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Mastery Level Header Banner
+                      // Progress Overview Card
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(22),
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [AppColors.primary, AppColors.secondary],
+                          gradient: LinearGradient(
+                            colors: [
+                              theme.colorScheme.primary,
+                              AppColors.primaryDark,
+                            ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(22),
+                          boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,8 +65,9 @@ class ProgressScreen extends ConsumerWidget {
                                   'Vocabulary Mastery',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 19,
                                     fontWeight: FontWeight.w800,
+                                    letterSpacing: -0.3,
                                   ),
                                 ),
                                 Container(
@@ -82,7 +87,7 @@ class ProgressScreen extends ConsumerWidget {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 12),
+                            const SizedBox(height: 14),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: LinearProgressIndicator(
@@ -92,13 +97,13 @@ class ProgressScreen extends ConsumerWidget {
                                 valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
                               ),
                             ),
-                            const SizedBox(height: 8),
+                            const SizedBox(height: 10),
                             Text(
                               '${metrics.masteredWords} of ${metrics.totalWords} words mastered (${metrics.wordMasteryPercentage.toStringAsFixed(0)}%)',
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 13,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ],
@@ -216,49 +221,63 @@ class ProgressScreen extends ConsumerWidget {
                     itemCount: history.length,
                     itemBuilder: (context, index) {
                       final item = history[index];
-                      return Card(
-                        margin: const EdgeInsets.only(bottom: 10),
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                          leading: Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: item.isPassed
-                                  ? AppColors.success.withValues(alpha: 0.15)
-                                  : AppColors.incorrectRed.withValues(alpha: 0.15),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              item.isPassed ? Icons.check_rounded : Icons.close_rounded,
-                              color: item.isPassed ? AppColors.success : AppColors.incorrectRed,
-                              size: 20,
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                        ),
+                        child: Material(
+                          color: isDark ? AppColors.surfaceDark : Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            side: BorderSide(
+                              color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                              width: 1.2,
                             ),
                           ),
-                          title: Text(
-                            _getQuizTypeTitle(item.quizType),
-                            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
-                          ),
-                          subtitle: Text(
-                            '${item.correctAnswers}/${item.totalQuestions} correct • ${_formatDate(item.completedAt)}',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: isDark ? Colors.white60 : Colors.black54,
-                            ),
-                          ),
-                          trailing: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: item.isPassed
-                                  ? AppColors.success.withValues(alpha: 0.15)
-                                  : AppColors.incorrectRed.withValues(alpha: 0.15),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              '${item.scorePercentage.toStringAsFixed(0)}%',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 13,
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            leading: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: item.isPassed
+                                    ? AppColors.success.withValues(alpha: 0.15)
+                                    : AppColors.incorrectRed.withValues(alpha: 0.15),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                item.isPassed ? Icons.check_rounded : Icons.close_rounded,
                                 color: item.isPassed ? AppColors.success : AppColors.incorrectRed,
+                                size: 20,
+                              ),
+                            ),
+                            title: Text(
+                              _getQuizTypeTitle(item.quizType),
+                              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 14.5),
+                            ),
+                            subtitle: Text(
+                              '${item.correctAnswers}/${item.totalQuestions} correct • ${_formatDate(item.completedAt)}',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: isDark ? Colors.white60 : Colors.black54,
+                              ),
+                            ),
+                            trailing: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+                              decoration: BoxDecoration(
+                                color: item.isPassed
+                                    ? AppColors.success.withValues(alpha: 0.15)
+                                    : AppColors.incorrectRed.withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                '${item.scorePercentage.toStringAsFixed(0)}%',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 13,
+                                  color: item.isPassed ? AppColors.success : AppColors.incorrectRed,
+                                ),
                               ),
                             ),
                           ),
@@ -287,39 +306,42 @@ class ProgressScreen extends ConsumerWidget {
     required bool isDark,
   }) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
-        borderRadius: BorderRadius.circular(16),
+        color: isDark ? AppColors.surfaceDark : Colors.white,
+        borderRadius: BorderRadius.circular(18),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
+          width: 1.2,
         ),
+        boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(9),
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, size: 20, color: color),
+            child: Icon(icon, size: 22, color: color),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
           Text(
             value,
             style: const TextStyle(
-              fontSize: 22,
+              fontSize: 24,
               fontWeight: FontWeight.w800,
+              letterSpacing: -0.3,
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 3),
           Text(
             title,
             style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
+              fontSize: 12.5,
+              fontWeight: FontWeight.w600,
               color: isDark ? Colors.white60 : Colors.black54,
             ),
           ),

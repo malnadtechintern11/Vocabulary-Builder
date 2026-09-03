@@ -42,6 +42,7 @@ dependencies:
   flutter_animate: ^4.5.0
   shared_preferences: ^2.2.3
   flutter_tts: ^4.2.5
+  speech_to_text: ^7.4.0
 
 dev_dependencies:
   flutter_test:

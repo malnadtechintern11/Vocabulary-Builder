@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/theme/app_colors.dart';
+import '../../core/services/tts_service.dart';
+import '../../core/widgets/audio_pronounce_button.dart';
 import '../../features/sentences/providers/sentences_provider.dart';
 import '../../models/sentence.dart';
 
@@ -37,21 +39,29 @@ class SentenceCard extends ConsumerWidget {
     final currentlySpeakingId = ref.watch(ttsSpeakingSentenceIdProvider);
     final isSpeakingThis = currentlySpeakingId == sentence.id;
 
-    return Card(
-      elevation: 0,
-      margin: const EdgeInsets.only(bottom: 14),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.surfaceDark : Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(
           color: isSpeakingThis
               ? AppColors.primary
               : (isDark ? AppColors.borderDark : AppColors.borderLight),
-          width: isSpeakingThis ? 1.8 : 1.0,
+          width: isSpeakingThis ? 2.0 : 1.2,
         ),
+        boxShadow: isSpeakingThis
+            ? [
+                BoxShadow(
+                  color: AppColors.primary.withValues(alpha: isDark ? 0.35 : 0.2),
+                  blurRadius: 14,
+                  offset: const Offset(0, 4),
+                ),
+              ]
+            : (isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight),
       ),
-      color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -165,9 +175,10 @@ class SentenceCard extends ConsumerWidget {
             SelectableText(
               sentence.text,
               style: TextStyle(
-                fontSize: 16.5,
-                fontWeight: FontWeight.w600,
-                height: 1.4,
+                fontSize: 17.5,
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.2,
+                height: 1.42,
                 color: isDark
                     ? AppColors.textPrimaryDark
                     : AppColors.textPrimaryLight,
@@ -175,47 +186,129 @@ class SentenceCard extends ConsumerWidget {
             ),
             const SizedBox(height: 12),
 
-            // Simple Meaning Box
+            // English Meaning Box
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               decoration: BoxDecoration(
                 color: isDark
                     ? AppColors.surfaceVariantDark.withValues(alpha: 0.6)
                     : AppColors.surfaceVariantLight,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(
                   color: isDark
-                      ? AppColors.borderDark.withValues(alpha: 0.4)
-                      : AppColors.borderLight.withValues(alpha: 0.8),
+                      ? AppColors.borderDark.withValues(alpha: 0.5)
+                      : AppColors.borderLight,
                 ),
               ),
-              child: Row(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.lightbulb_outline_rounded,
-                    size: 17,
-                    color: isDark
-                        ? AppColors.primaryLight
-                        : AppColors.primary,
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      sentence.meaning,
-                      style: TextStyle(
-                        fontSize: 13.5,
-                        height: 1.35,
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.lightbulb_outline_rounded,
+                        size: 15,
                         color: isDark
-                            ? AppColors.textSecondaryDark
-                            : AppColors.textPrimaryLight.withValues(alpha: 0.85),
+                            ? AppColors.primaryLight
+                            : AppColors.primary,
                       ),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        child: Text(
+                          'English Meaning',
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.3,
+                            color: isDark
+                                ? AppColors.primaryLight
+                                : AppColors.primary,
+                          ),
+                        ),
+                      ),
+                      AudioPronounceButton(
+                        id: 'sentence_meaning_${sentence.id}',
+                        text: sentence.meaning,
+                        tooltip: 'Listen to English meaning',
+                        iconSize: 16,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    sentence.meaning,
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      height: 1.35,
+                      color: isDark
+                          ? AppColors.textSecondaryDark
+                          : AppColors.textPrimaryLight.withValues(alpha: 0.85),
                     ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 8),
+
+            // Kannada Meaning Box (ಕನ್ನಡ ಅರ್ಥ)
+            if (sentence.kannadaMeaning.isNotEmpty)
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                decoration: BoxDecoration(
+                  color: isDark
+                      ? const Color(0xFF064E3B).withValues(alpha: 0.22)
+                      : const Color(0xFFF0FDF4),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: isDark
+                        ? AppColors.secondary.withValues(alpha: 0.4)
+                        : const Color(0xFF86EFAC).withValues(alpha: 0.7),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.translate_rounded,
+                          size: 15,
+                          color: isDark
+                              ? AppColors.secondaryLight
+                              : AppColors.secondaryDark,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning)',
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.2,
+                            color: isDark
+                                ? AppColors.secondaryLight
+                                : AppColors.secondaryDark,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      sentence.kannadaMeaning,
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.45,
+                        fontWeight: FontWeight.w500,
+                        color: isDark
+                            ? AppColors.textPrimaryDark
+                            : const Color(0xFF14532D),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
 
             // Important Vocabulary Words Section
             if (sentence.vocabularyWords.isNotEmpty) ...[
@@ -236,42 +329,64 @@ class SentenceCard extends ConsumerWidget {
                 spacing: 8,
                 runSpacing: 6,
                 children: sentence.vocabularyWords.map((vocab) {
-                  return Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: isDark
-                          ? AppColors.primaryContainerDark.withValues(alpha: 0.45)
-                          : AppColors.primaryContainerLight,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
+                  final vocabId = 'sentence_${sentence.id}_vocab_${vocab.word}';
+                  return InkWell(
+                    onTap: () {
+                      ref.read(appTtsControllerProvider).toggleSpeak(
+                            id: vocabId,
+                            text: '${vocab.word}. ${vocab.meaning}',
+                          );
+                    },
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
                         color: isDark
-                            ? AppColors.primaryLight.withValues(alpha: 0.25)
-                            : AppColors.primaryLight.withValues(alpha: 0.2),
+                            ? AppColors.primaryContainerDark.withValues(alpha: 0.45)
+                            : AppColors.primaryContainerLight,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: isDark
+                              ? AppColors.primaryLight.withValues(alpha: 0.25)
+                              : AppColors.primaryLight.withValues(alpha: 0.2),
+                        ),
                       ),
-                    ),
-                    child: RichText(
-                      text: TextSpan(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          TextSpan(
-                            text: '${vocab.word}: ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12,
-                              color: isDark
-                                  ? AppColors.primaryLight
-                                  : AppColors.primary,
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: '${vocab.word}: ',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 12,
+                                    color: isDark
+                                        ? AppColors.primaryLight
+                                        : AppColors.primary,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: vocab.meaning,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: isDark
+                                        ? AppColors.textSecondaryDark
+                                        : const Color(0xFF334155),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          TextSpan(
-                            text: vocab.meaning,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                              color: isDark
-                                  ? AppColors.textSecondaryDark
-                                  : const Color(0xFF334155),
-                            ),
+                          const SizedBox(width: 4),
+                          AudioPronounceButton(
+                            id: vocabId,
+                            text: '${vocab.word}. ${vocab.meaning}',
+                            tooltip: 'Pronounce "${vocab.word}"',
+                            iconSize: 14,
                           ),
                         ],
                       ),
@@ -283,44 +398,17 @@ class SentenceCard extends ConsumerWidget {
 
             const SizedBox(height: 12),
             const Divider(height: 1),
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
 
             // Action Buttons Row: Speaker (TTS), Copy, Practice
             Row(
               children: [
                 // Speaker Button
-                FilledButton.tonalIcon(
-                  onPressed: () {
-                    ref.read(ttsControllerProvider).speakSentence(sentence);
-                  },
-                  icon: Icon(
-                    isSpeakingThis
-                        ? Icons.volume_up_rounded
-                        : Icons.volume_down_rounded,
-                    size: 18,
-                    color: isSpeakingThis
-                        ? Colors.white
-                        : (isDark ? AppColors.primaryLight : AppColors.primary),
-                  ),
-                  label: Text(
-                    isSpeakingThis ? 'Listening...' : 'Pronounce',
-                    style: TextStyle(
-                      fontSize: 12.5,
-                      fontWeight: FontWeight.w600,
-                      color: isSpeakingThis
-                          ? Colors.white
-                          : (isDark ? AppColors.primaryLight : AppColors.primary),
-                    ),
-                  ),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: isSpeakingThis
-                        ? AppColors.primary
-                        : (isDark
-                            ? AppColors.surfaceVariantDark
-                            : AppColors.primaryContainerLight),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    visualDensity: VisualDensity.compact,
-                  ),
+                AudioPronounceTonalButton(
+                  id: sentence.id,
+                  text: sentence.text,
+                  label: 'Pronounce',
+                  playingLabel: 'Listening...',
                 ),
                 const SizedBox(width: 8),
 
@@ -330,10 +418,13 @@ class SentenceCard extends ConsumerWidget {
                   tooltip: 'Copy sentence',
                   visualDensity: VisualDensity.compact,
                   onPressed: () {
-                    Clipboard.setData(ClipboardData(text: sentence.text));
+                    final textToCopy = sentence.kannadaMeaning.isNotEmpty
+                        ? '${sentence.text}\n(${sentence.kannadaMeaning})'
+                        : sentence.text;
+                    Clipboard.setData(ClipboardData(text: textToCopy));
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text('Sentence copied to clipboard!'),
+                        content: Text('Sentence & meaning copied to clipboard!'),
                         duration: Duration(seconds: 1),
                       ),
                     );
@@ -344,15 +435,19 @@ class SentenceCard extends ConsumerWidget {
 
                 // Practice Button
                 if (onPractice != null)
-                  TextButton.icon(
+                  FilledButton.tonalIcon(
                     onPressed: onPractice,
-                    icon: const Icon(Icons.school_outlined, size: 16),
+                    icon: const Icon(Icons.school_rounded, size: 16),
                     label: const Text(
                       'Practice',
-                      style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700),
                     ),
-                    style: TextButton.styleFrom(
+                    style: FilledButton.styleFrom(
                       visualDensity: VisualDensity.compact,
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
               ],

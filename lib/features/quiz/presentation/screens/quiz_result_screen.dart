@@ -86,32 +86,34 @@ class QuizResultScreen extends ConsumerWidget {
             // Score Card
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 20),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceLight,
-                borderRadius: BorderRadius.circular(20),
+                color: isDark ? AppColors.surfaceVariantDark : Colors.white,
+                borderRadius: BorderRadius.circular(22),
                 border: Border.all(
                   color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                  width: 1.2,
                 ),
+                boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
               ),
               child: Column(
                 children: [
                   Text(
                     '${percentage.toStringAsFixed(0)}%',
                     style: TextStyle(
-                      fontSize: 48,
+                      fontSize: 52,
                       fontWeight: FontWeight.w900,
                       color: isPassed ? AppColors.success : AppColors.primary,
-                      letterSpacing: -1,
+                      letterSpacing: -1.5,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Overall Accuracy',
                     style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: isDark ? Colors.white60 : Colors.black45,
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w700,
+                      color: isDark ? Colors.white70 : Colors.black54,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -132,31 +134,42 @@ class QuizResultScreen extends ConsumerWidget {
             // Action Buttons
             SizedBox(
               width: double.infinity,
-              height: 50,
+              height: 52,
               child: ElevatedButton.icon(
                 onPressed: () {
                   ref.read(quizControllerProvider.notifier).resetQuiz();
                   context.go(RoutePaths.quiz);
                 },
+                style: ElevatedButton.styleFrom(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
                 icon: const Icon(Icons.refresh_rounded),
                 label: const Text(
                   'Take Another Quiz',
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                 ),
               ),
             ),
             const SizedBox(height: 12),
             SizedBox(
               width: double.infinity,
-              height: 50,
+              height: 52,
               child: OutlinedButton(
                 onPressed: () {
                   ref.read(quizControllerProvider.notifier).resetQuiz();
                   context.go(RoutePaths.words);
                 },
+                style: OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
                 child: const Text(
                   'Explore Words',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
               ),
             ),
