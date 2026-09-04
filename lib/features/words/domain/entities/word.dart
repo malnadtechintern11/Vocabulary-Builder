@@ -13,6 +13,7 @@ class Word {
   final String category; // actions, nature, food, etc.
   final bool isFavorite;
   final bool isLearned;
+  final bool isOnline;
 
   /// Aliases for user-facing Level & Topic
   String get level => difficulty[0].toUpperCase() + difficulty.substring(1);
@@ -32,6 +33,7 @@ class Word {
     required this.category,
     required this.isFavorite,
     required this.isLearned,
+    this.isOnline = false,
   });
 
   Word copyWith({
@@ -48,6 +50,7 @@ class Word {
     String? category,
     bool? isFavorite,
     bool? isLearned,
+    bool? isOnline,
   }) {
     return Word(
       id: id ?? this.id,
@@ -63,6 +66,7 @@ class Word {
       category: category ?? this.category,
       isFavorite: isFavorite ?? this.isFavorite,
       isLearned: isLearned ?? this.isLearned,
+      isOnline: isOnline ?? this.isOnline,
     );
   }
 
@@ -74,8 +78,9 @@ class Word {
           id == other.id &&
           word == other.word &&
           isFavorite == other.isFavorite &&
-          isLearned == other.isLearned;
+          isLearned == other.isLearned &&
+          isOnline == other.isOnline;
 
   @override
-  int get hashCode => id.hashCode ^ word.hashCode ^ isFavorite.hashCode ^ isLearned.hashCode;
+  int get hashCode => id.hashCode ^ word.hashCode ^ isFavorite.hashCode ^ isLearned.hashCode ^ isOnline.hashCode;
 }

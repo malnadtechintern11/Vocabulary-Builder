@@ -37,7 +37,7 @@ class WordCard extends ConsumerWidget {
         borderRadius: BorderRadius.circular(18),
         child: InkWell(
           onTap: () {
-            context.push('${RoutePaths.words}/${word.id}');
+            context.push('${RoutePaths.words}/${word.id}', extra: word);
           },
           borderRadius: BorderRadius.circular(18),
           child: Padding(
@@ -45,6 +45,74 @@ class WordCard extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Online Result Banner if fetched from Web
+                if (word.isOnline) ...[
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF0D9488), Color(0xFF0284C7)],
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xFF0D9488).withValues(alpha: 0.3),
+                              blurRadius: 6,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.public_rounded, color: Colors.white, size: 12),
+                            SizedBox(width: 5),
+                            Text(
+                              'Online Dictionary Result',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 11,
+                                letterSpacing: 0.2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Spacer(),
+                      ElevatedButton.icon(
+                        onPressed: () async {
+                          final saved = await ref.read(wordControllerProvider.notifier).addWord(word);
+                          if (saved != null && context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Saved "${word.word}" to offline vocabulary!'),
+                                backgroundColor: AppColors.success,
+                                behavior: SnackBarBehavior.floating,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                              ),
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.bookmark_add_rounded, size: 14),
+                        label: const Text('Add to Vocabulary'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          textStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w800),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                ],
+
                 // Top Row: Word name, phonetic, and actions
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,13 +182,14 @@ class WordCard extends ConsumerWidget {
                     ),
                     const SizedBox(width: 4),
                     // Animated Favorite Toggle Button with micro-bounce
-                    AnimatedFavoriteButton(
-                      isFavorite: word.isFavorite,
-                      itemName: word.word,
-                      onToggle: () {
-                        ref.read(wordControllerProvider.notifier).toggleFavorite(word);
-                      },
-                    ),
+                    if (!word.isOnline)
+                      AnimatedFavoriteButton(
+                        isFavorite: word.isFavorite,
+                        itemName: word.word,
+                        onToggle: () {
+                          ref.read(wordControllerProvider.notifier).toggleFavorite(word);
+                        },
+                      ),
                   ],
                 ),
                 const SizedBox(height: 12),

@@ -49,6 +49,12 @@ class TranslationService {
   static TranslationService? _instance;
   final http.Client _client;
 
+  static const Map<String, String> _headers = {
+    'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    'Accept': 'application/json, text/plain, */*',
+  };
+
   TranslationService._({http.Client? client}) : _client = client ?? http.Client();
 
   factory TranslationService({http.Client? client}) {
@@ -108,7 +114,7 @@ class TranslationService {
         'https://translate.googleapis.com/translate_a/single?client=gtx&sl=$sourceLanguageCode&tl=$targetLanguageCode&dt=t&q=${Uri.encodeComponent(trimmedText)}',
       );
 
-      final response = await _client.get(uri).timeout(const Duration(seconds: 12));
+      final response = await _client.get(uri, headers: _headers).timeout(const Duration(seconds: 12));
 
       if (response.statusCode == 200) {
         final decoded = jsonDecode(utf8.decode(response.bodyBytes));
@@ -136,7 +142,7 @@ class TranslationService {
       final fallbackUri = Uri.parse(
         'https://api.mymemory.translated.net/get?q=${Uri.encodeComponent(trimmedText)}&langpair=$sourceLanguageCode|$targetLanguageCode',
       );
-      final fallbackResponse = await _client.get(fallbackUri).timeout(const Duration(seconds: 10));
+      final fallbackResponse = await _client.get(fallbackUri, headers: _headers).timeout(const Duration(seconds: 10));
       if (fallbackResponse.statusCode == 200) {
         final fallbackData = jsonDecode(utf8.decode(fallbackResponse.bodyBytes));
         final resData = fallbackData['responseData'];

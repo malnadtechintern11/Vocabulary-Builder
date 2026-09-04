@@ -8,6 +8,7 @@ import '../../features/quiz/presentation/screens/active_quiz_screen.dart';
 import '../../features/quiz/presentation/screens/quiz_result_screen.dart';
 import '../../features/quiz/presentation/screens/quiz_setup_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
+import '../../features/words/domain/entities/word.dart';
 import '../../features/words/presentation/screens/add_word_screen.dart';
 import '../../features/words/presentation/screens/word_detail_screen.dart';
 import '../../features/words/presentation/screens/words_list_screen.dart';
@@ -47,7 +48,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                     parentNavigatorKey: _rootNavigatorKey,
                     builder: (context, state) {
                       final id = int.tryParse(state.pathParameters['id'] ?? '') ?? 0;
-                      return WordDetailScreen(wordId: id);
+                      final extraWord = state.extra is Word ? state.extra as Word : null;
+                      return WordDetailScreen(wordId: id, initialWord: extraWord);
                     },
                   ),
                 ],

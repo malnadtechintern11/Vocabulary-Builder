@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/services/online_dictionary_service.dart';
 import '../../../progress/presentation/providers/learning_streak_provider.dart';
 import '../../../quiz/presentation/providers/quiz_controller.dart';
 import '../../data/datasources/word_local_data_source.dart';
@@ -14,6 +15,10 @@ import '../../domain/usecases/toggle_favorite_usecase.dart';
 import '../../domain/usecases/toggle_learned_usecase.dart';
 
 // --- Dependency Injection Providers ---
+
+final onlineDictionaryServiceProvider = Provider<OnlineDictionaryService>((ref) {
+  return OnlineDictionaryService();
+});
 
 final wordLocalDataSourceProvider = Provider<WordLocalDataSource>((ref) {
   return WordLocalDataSourceImpl();
@@ -80,27 +85,38 @@ final wordsListProvider = FutureProvider.autoDispose<List<Word>>((ref) async {
       return true;
     }).toList();
 
-    // Priority rank: exact word match (1st), prefix match (2nd), contains in word (3rd), others
-    filtered.sort((a, b) {
-      final aWord = a.word.toLowerCase();
-      final bWord = b.word.toLowerCase();
+    // If local database has matching words, return sorted local results immediately (100% offline)
+    if (filtered.isNotEmpty) {
+      filtered.sort((a, b) {
+        final aWord = a.word.toLowerCase();
+        final bWord = b.word.toLowerCase();
 
-      final aExact = aWord == cleanQuery ? 0 : 1;
-      final bExact = bWord == cleanQuery ? 0 : 1;
-      if (aExact != bExact) return aExact.compareTo(bExact);
+        final aExact = aWord == cleanQuery ? 0 : 1;
+        final bExact = bWord == cleanQuery ? 0 : 1;
+        if (aExact != bExact) return aExact.compareTo(bExact);
 
-      final aStarts = aWord.startsWith(cleanQuery) ? 0 : 1;
-      final bStarts = bWord.startsWith(cleanQuery) ? 0 : 1;
-      if (aStarts != bStarts) return aStarts.compareTo(bStarts);
+        final aStarts = aWord.startsWith(cleanQuery) ? 0 : 1;
+        final bStarts = bWord.startsWith(cleanQuery) ? 0 : 1;
+        if (aStarts != bStarts) return aStarts.compareTo(bStarts);
 
-      final aContains = aWord.contains(cleanQuery) ? 0 : 1;
-      final bContains = bWord.contains(cleanQuery) ? 0 : 1;
-      if (aContains != bContains) return aContains.compareTo(bContains);
+        final aContains = aWord.contains(cleanQuery) ? 0 : 1;
+        final bContains = bWord.contains(cleanQuery) ? 0 : 1;
+        if (aContains != bContains) return aContains.compareTo(bContains);
 
-      return aWord.compareTo(bWord);
-    });
+        return aWord.compareTo(bWord);
+      });
 
-    return filtered;
+      return filtered;
+    }
+
+    // If no local words found, automatically perform online dictionary lookup
+    final onlineService = ref.watch(onlineDictionaryServiceProvider);
+    try {
+      final onlineWord = await onlineService.fetchWordDetails(searchQuery.trim());
+      return [onlineWord];
+    } on WordNotFoundOnlineException {
+      return [];
+    }
   }
 
   final getWordsUseCase = ref.watch(getWordsUseCaseProvider);
@@ -150,7 +166,7 @@ class WordController extends StateNotifier<AsyncValue<void>> {
     state = const AsyncValue.loading();
     try {
       final useCase = _ref.read(addWordUseCaseProvider);
-      final created = await useCase(word);
+      final created = await useCase(word.copyWith(isOnline: false));
       _ref.invalidate(wordsListProvider);
       _ref.invalidate(categoriesProvider);
       _ref.invalidate(getWordStatisticsUseCaseProvider);

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/services/online_dictionary_service.dart';
 import '../../../../core/widgets/animated_progress_bar.dart';
 import '../../../../core/widgets/empty_state_view.dart';
 import '../../../../core/widgets/error_state_view.dart';
@@ -23,6 +24,7 @@ class WordsListScreen extends ConsumerWidget {
     final wordsAsync = ref.watch(wordsListProvider);
     final categoriesAsync = ref.watch(categoriesProvider);
     final selectedCategory = ref.watch(selectedCategoryFilterProvider);
+    final searchQuery = ref.watch(wordSearchQueryProvider);
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -43,338 +45,310 @@ class WordsListScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(width: 11),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'Vocabulary Builder',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: -0.3,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'Vocabulary Builder',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: -0.3,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                Text(
-                  'English & ಕನ್ನಡ Learning Hub',
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                  Text(
+                    'English & ಕನ್ನಡ Learning Hub',
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
       ),
-      body: Column(
-        children: [
-          // Search and Filters Area
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // English Sentences Home Card Banner
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
-                  ),
-                  child: Material(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(18),
-                    child: InkWell(
-                      onTap: () => context.push(RoutePaths.sentences),
-                      borderRadius: BorderRadius.circular(18),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: isDark
-                                ? [const Color(0xFF1E1B4B), const Color(0xFF312E81)]
-                                : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          ref.invalidate(wordsListProvider);
+        },
+        child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+          slivers: [
+            // Search and Filters Area
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // English Sentences Home Card Banner
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(18),
+                        child: InkWell(
+                          onTap: () => context.push(RoutePaths.sentences),
                           borderRadius: BorderRadius.circular(18),
-                          border: Border.all(
-                            color: isDark
-                                ? AppColors.primaryLight.withValues(alpha: 0.35)
-                                : AppColors.primaryLight.withValues(alpha: 0.3),
-                            width: 1.2,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(9),
-                              decoration: BoxDecoration(
-                                color: isDark
-                                    ? AppColors.primaryLight.withValues(alpha: 0.25)
-                                    : Colors.white,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
-                                    blurRadius: 4,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ],
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: isDark
+                                    ? [const Color(0xFF1E1B4B), const Color(0xFF312E81)]
+                                    : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
-                              child: Icon(
-                                Icons.record_voice_over_rounded,
-                                color: isDark ? AppColors.primaryLight : AppColors.primary,
-                                size: 22,
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(
+                                color: isDark
+                                    ? AppColors.primaryLight.withValues(alpha: 0.35)
+                                    : AppColors.primaryLight.withValues(alpha: 0.3),
+                                width: 1.2,
                               ),
                             ),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'English Sentences',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w800,
-                                          letterSpacing: -0.2,
-                                          color: isDark
-                                              ? AppColors.textPrimaryDark
-                                              : AppColors.primaryDark,
-                                        ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(9),
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? AppColors.primaryLight.withValues(alpha: 0.25)
+                                        : Colors.white,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
+                                        blurRadius: 4,
+                                        offset: const Offset(0, 2),
                                       ),
-                                      const SizedBox(width: 8),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
-                                        decoration: BoxDecoration(
-                                          color: isDark ? AppColors.primaryLight : AppColors.primary,
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        child: const Text(
-                                          '600+ Sentences',
-                                          style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w800,
-                                            color: Colors.white,
+                                    ],
+                                  ),
+                                  child: Icon(
+                                    Icons.record_voice_over_rounded,
+                                    color: isDark ? AppColors.primaryLight : AppColors.primary,
+                                    size: 22,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              'English Sentences',
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w800,
+                                                letterSpacing: -0.2,
+                                                color: isDark
+                                                    ? AppColors.textPrimaryDark
+                                                    : AppColors.primaryDark,
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
                                           ),
+                                          const SizedBox(width: 8),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
+                                            decoration: BoxDecoration(
+                                              color: isDark ? AppColors.primaryLight : AppColors.primary,
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                            child: const Text(
+                                              '600+ Sentences',
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 3),
+                                      Text(
+                                        'Beginner, Intermediate & Advanced with audio',
+                                        style: TextStyle(
+                                          fontSize: 11.5,
+                                          fontWeight: FontWeight.w500,
+                                          color: isDark
+                                              ? AppColors.textSecondaryDark
+                                              : AppColors.textSecondaryLight,
                                         ),
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 3),
-                                  Text(
-                                    'Beginner, Intermediate & Advanced with audio',
-                                    style: TextStyle(
-                                      fontSize: 11.5,
-                                      fontWeight: FontWeight.w500,
-                                      color: isDark
-                                          ? AppColors.textSecondaryDark
-                                          : AppColors.textSecondaryLight,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 15,
-                              color: isDark ? AppColors.primaryLight : AppColors.primary,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-
-                // Quick Learning Tools Row: Scan Text (Offline OCR) & Multi-Language Translation (Online)
-                Row(
-                  children: [
-                    // Scan Text Card (Offline OCR)
-                    Expanded(
-                      child: InkWell(
-                        onTap: () => context.push(RoutePaths.scanText),
-                        borderRadius: BorderRadius.circular(16),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                          decoration: BoxDecoration(
-                            color: isDark ? AppColors.surfaceDark : Colors.white,
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: isDark ? AppColors.borderDark : AppColors.borderLight,
-                              width: 1.2,
-                            ),
-                            boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.14),
-                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Icon(
-                                  Icons.document_scanner_rounded,
-                                  size: 18,
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: 15,
                                   color: isDark ? AppColors.primaryLight : AppColors.primary,
                                 ),
-                              ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Text(
-                                      'Scan Text',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w800,
-                                        letterSpacing: -0.2,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Offline OCR',
-                                      style: TextStyle(
-                                        fontSize: 10.5,
-                                        fontWeight: FontWeight.w600,
-                                        color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(height: 10),
 
-                    // Multi-Language Translation Card (Online)
-                    Expanded(
-                      child: InkWell(
-                        onTap: () => context.push(RoutePaths.translation),
-                        borderRadius: BorderRadius.circular(16),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                          decoration: BoxDecoration(
-                            color: isDark ? AppColors.surfaceDark : Colors.white,
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: isDark ? AppColors.borderDark : AppColors.borderLight,
-                              width: 1.2,
+                    // Multi-Language Translation Banner (with Integrated Camera & Image OCR)
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(18),
+                        child: InkWell(
+                          onTap: () => context.push(RoutePaths.translation),
+                          borderRadius: BorderRadius.circular(18),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: isDark
+                                    ? [const Color(0xFF14293D), const Color(0xFF0F3B57)]
+                                    : [const Color(0xFFF0FDF4), const Color(0xFFE0F2FE)],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(18),
+                              border: Border.all(
+                                color: isDark
+                                    ? AppColors.secondaryLight.withValues(alpha: 0.35)
+                                    : AppColors.secondary.withValues(alpha: 0.3),
+                                width: 1.2,
+                              ),
                             ),
-                            boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(9),
+                                  decoration: BoxDecoration(
+                                    color: isDark
+                                        ? AppColors.secondaryLight.withValues(alpha: 0.25)
+                                        : Colors.white,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
+                                        blurRadius: 4,
+                                        offset: const Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Icon(
+                                    Icons.g_translate_rounded,
+                                    color: AppColors.secondary,
+                                    size: 22,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              'Multi-Language Translation',
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w800,
+                                                letterSpacing: -0.2,
+                                                color: isDark
+                                                    ? AppColors.textPrimaryDark
+                                                    : const Color(0xFF0F172A),
+                                              ),
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
+                                            decoration: BoxDecoration(
+                                              color: AppColors.secondary,
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                            child: const Text(
+                                              '10 Languages',
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w800,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 3),
+                                      Text(
+                                        'Type or scan photos to translate into Kannada, Hindi & more',
+                                        style: TextStyle(
+                                          fontSize: 11.5,
+                                          fontWeight: FontWeight.w500,
+                                          color: isDark
+                                              ? AppColors.textSecondaryDark
+                                              : AppColors.textSecondaryLight,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: 15,
+                                  color: isDark ? AppColors.secondaryLight : AppColors.secondary,
+                                ),
+                              ],
+                            ),
                           ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+
+                    // Daily Learning Goal & Streak Strip
+                    _buildGoalAndStreakStrip(context, ref, isDark),
+                    const SizedBox(height: 12),
+                    const WordSearchBar(),
+                    const SizedBox(height: 12),
+                    const DifficultyFilterChips(),
+                    const SizedBox(height: 8),
+                    // Category Filter Dropdown / Row
+                    categoriesAsync.when(
+                      data: (categories) {
+                        if (categories.isEmpty) return const SizedBox.shrink();
+                        final isDark = Theme.of(context).brightness == Brightness.dark;
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: AppColors.secondary.withValues(alpha: isDark ? 0.25 : 0.14),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Icon(
-                                  Icons.g_translate_rounded,
-                                  size: 18,
-                                  color: AppColors.secondary,
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Text(
-                                      'Translate',
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w800,
-                                        letterSpacing: -0.2,
-                                      ),
-                                    ),
-                                    Text(
-                                      '10 Languages',
-                                      style: TextStyle(
-                                        fontSize: 10.5,
-                                        fontWeight: FontWeight.w600,
-                                        color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-
-                // Daily Learning Goal & Streak Strip
-                _buildGoalAndStreakStrip(context, ref, isDark),
-                const SizedBox(height: 10),
-
-                // Personalized Recommendation Card
-                _buildRecommendationCard(context, ref, isDark),
-                const SizedBox(height: 12),
-                const WordSearchBar(),
-                const SizedBox(height: 12),
-                const DifficultyFilterChips(),
-                const SizedBox(height: 8),
-                // Category Filter Dropdown / Row
-                categoriesAsync.when(
-                  data: (categories) {
-                    if (categories.isEmpty) return const SizedBox.shrink();
-                    final isDark = Theme.of(context).brightness == Brightness.dark;
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          ChoiceChip(
-                            label: const Text('All Topics'),
-                            selected: selectedCategory == 'all',
-                            showCheckmark: false,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
-                            selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
-                            side: BorderSide(
-                              color: selectedCategory == 'all'
-                                  ? (isDark ? AppColors.primaryLight : AppColors.primary)
-                                  : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
-                              width: 1,
-                            ),
-                            labelStyle: TextStyle(
-                              color: selectedCategory == 'all'
-                                  ? Colors.white
-                                  : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
-                              fontWeight: selectedCategory == 'all' ? FontWeight.w700 : FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                            onSelected: (_) {
-                              ref.read(selectedCategoryFilterProvider.notifier).state = 'all';
-                            },
-                          ),
-                          const SizedBox(width: 6),
-                          ...categories.map((cat) {
-                            final isSel = selectedCategory == cat;
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 6.0),
-                              child: ChoiceChip(
-                                label: Text(cat[0].toUpperCase() + cat.substring(1)),
-                                selected: isSel,
+                              ChoiceChip(
+                                label: const Text('All Topics'),
+                                selected: selectedCategory == 'all',
                                 showCheckmark: false,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
@@ -382,116 +356,279 @@ class WordsListScreen extends ConsumerWidget {
                                 backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
                                 selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
                                 side: BorderSide(
-                                  color: isSel
+                                  color: selectedCategory == 'all'
                                       ? (isDark ? AppColors.primaryLight : AppColors.primary)
                                       : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
                                   width: 1,
                                 ),
                                 labelStyle: TextStyle(
-                                  color: isSel
+                                  color: selectedCategory == 'all'
                                       ? Colors.white
                                       : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
-                                  fontWeight: isSel ? FontWeight.w700 : FontWeight.w600,
+                                  fontWeight: selectedCategory == 'all' ? FontWeight.w700 : FontWeight.w600,
                                   fontSize: 13,
                                 ),
                                 onSelected: (_) {
-                                  ref.read(selectedCategoryFilterProvider.notifier).state = cat;
+                                  ref.read(selectedCategoryFilterProvider.notifier).state = 'all';
                                 },
                               ),
-                            );
-                          }),
-                        ],
-                      ),
-                    );
-                  },
-                  loading: () => const SizedBox.shrink(),
-                  error: (_, _) => const SizedBox.shrink(),
-                ),
-              ],
-            ),
-          ),
-          const Divider(height: 1),
-          // Results & Quick Context Strip
-          wordsAsync.maybeWhen(
-            data: (words) => words.isNotEmpty
-                ? Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 2),
-                    child: Row(
-                      children: [
-                        Text(
-                          '${words.length} ${words.length == 1 ? 'Word' : 'Words'} Listed',
-                          style: TextStyle(
-                            fontSize: 12.5,
-                            fontWeight: FontWeight.w700,
-                            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                              const SizedBox(width: 6),
+                              ...categories.map((cat) {
+                                final isSel = selectedCategory == cat;
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 6.0),
+                                  child: ChoiceChip(
+                                    label: Text(cat[0].toUpperCase() + cat.substring(1)),
+                                    selected: isSel,
+                                    showCheckmark: false,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                                    selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                                    side: BorderSide(
+                                      color: isSel
+                                          ? (isDark ? AppColors.primaryLight : AppColors.primary)
+                                          : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                                      width: 1,
+                                    ),
+                                    labelStyle: TextStyle(
+                                      color: isSel
+                                          ? Colors.white
+                                          : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                                      fontWeight: isSel ? FontWeight.w700 : FontWeight.w600,
+                                      fontSize: 13,
+                                    ),
+                                    onSelected: (_) {
+                                      ref.read(selectedCategoryFilterProvider.notifier).state = cat;
+                                    },
+                                  ),
+                                );
+                              }),
+                            ],
                           ),
-                        ),
-                        const Spacer(),
-                        if (selectedCategory != 'all')
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
-                            decoration: BoxDecoration(
-                              color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.12),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.25),
-                              ),
-                            ),
-                            child: Text(
-                              selectedCategory[0].toUpperCase() + selectedCategory.substring(1),
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w800,
-                                color: isDark ? AppColors.primaryLight : AppColors.primary,
-                              ),
-                            ),
-                          ),
-                      ],
+                        );
+                      },
+                      loading: () => const SizedBox.shrink(),
+                      error: (_, _) => const SizedBox.shrink(),
                     ),
-                  )
-                : const SizedBox.shrink(),
-            orElse: () => const SizedBox.shrink(),
-          ),
-          // Word List Content
-          Expanded(
-            child: wordsAsync.when(
-              data: (words) {
-                if (words.isEmpty) {
-                  return EmptyStateView(
-                    icon: Icons.search_off_rounded,
-                    title: 'No Words Found',
-                    description: 'Try adjusting your search query or filter tags to discover more words.',
-                    actionLabel: 'Clear Filters',
-                    onActionPressed: () {
-                      ref.read(wordSearchQueryProvider.notifier).state = '';
-                      ref.read(selectedDifficultyFilterProvider.notifier).state = 'all';
-                      ref.read(selectedCategoryFilterProvider.notifier).state = 'all';
-                    },
-                  );
-                }
-
-                return RefreshIndicator(
-                  onRefresh: () async {
-                    ref.invalidate(wordsListProvider);
-                  },
-                  child: ListView.builder(
-                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-                    itemCount: words.length,
-                    itemBuilder: (context, index) {
-                      final word = words[index];
-                      return WordCard(key: ValueKey(word.id), word: word);
-                    },
-                  ),
-                );
-              },
-              loading: () => const LoadingView(message: 'Loading vocabulary...'),
-              error: (err, _) => ErrorStateView(
-                message: err.toString(),
-                onRetry: () => ref.invalidate(wordsListProvider),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+            const SliverToBoxAdapter(
+              child: Divider(height: 1),
+            ),
+            // Results & Quick Context Strip
+            SliverToBoxAdapter(
+              child: wordsAsync.maybeWhen(
+                data: (words) => words.isNotEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 2),
+                        child: Row(
+                          children: [
+                            if (words.length == 1 && words.first.isOnline)
+                              Row(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF0D9488).withValues(alpha: isDark ? 0.25 : 0.12),
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: const Color(0xFF0D9488).withValues(alpha: 0.3),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Icon(Icons.public_rounded, size: 13, color: Color(0xFF0D9488)),
+                                        const SizedBox(width: 5),
+                                        Text(
+                                          'Online Dictionary Result',
+                                          style: TextStyle(
+                                            fontSize: 11.5,
+                                            fontWeight: FontWeight.w800,
+                                            color: isDark ? const Color(0xFF5EEAD4) : const Color(0xFF0F766E),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            else
+                              Text(
+                                '${words.length} ${words.length == 1 ? 'Word' : 'Words'} Listed',
+                                style: TextStyle(
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w700,
+                                  color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                                ),
+                              ),
+                            const Spacer(),
+                            if (selectedCategory != 'all')
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+                                decoration: BoxDecoration(
+                                  color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.12),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.25),
+                                  ),
+                                ),
+                                child: Text(
+                                  selectedCategory[0].toUpperCase() + selectedCategory.substring(1),
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                    color: isDark ? AppColors.primaryLight : AppColors.primary,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                orElse: () => const SizedBox.shrink(),
+              ),
+            ),
+            // Word List Content
+            ...wordsAsync.when(
+              data: (words) {
+                if (words.isEmpty) {
+                  final isSearching = searchQuery.trim().isNotEmpty;
+                  return [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: EmptyStateView(
+                        icon: isSearching ? Icons.travel_explore_rounded : Icons.search_off_rounded,
+                        title: isSearching ? 'No Online or Offline Words Found' : 'No Words Found',
+                        description: isSearching
+                            ? 'We could not find definitions for "${searchQuery.trim()}" in the local library or online dictionary. Check spelling and try again.'
+                            : 'Try adjusting your search query or filter tags to discover more words.',
+                        actionLabel: isSearching ? 'Clear Search' : 'Clear Filters',
+                        onActionPressed: () {
+                          ref.read(wordSearchQueryProvider.notifier).state = '';
+                          ref.read(selectedDifficultyFilterProvider.notifier).state = 'all';
+                          ref.read(selectedCategoryFilterProvider.notifier).state = 'all';
+                        },
+                      ),
+                    ),
+                  ];
+                }
+
+                return [
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+                    sliver: SliverList.builder(
+                      itemCount: words.length,
+                      itemBuilder: (context, index) {
+                        final word = words[index];
+                        return WordCard(key: ValueKey('${word.id}_${word.word}'), word: word);
+                      },
+                    ),
+                  ),
+                ];
+              },
+              loading: () {
+                final isSearching = searchQuery.trim().isNotEmpty;
+                return [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: LoadingView(
+                      message: isSearching
+                          ? 'Searching online dictionary for "${searchQuery.trim()}"...'
+                          : 'Loading vocabulary...',
+                    ),
+                  ),
+                ];
+              },
+              error: (err, _) {
+                final isNoInternet = err is WordNoInternetException ||
+                    err.toString().toLowerCase().contains('offline') ||
+                    err.toString().toLowerCase().contains('internet') ||
+                    err.toString().toLowerCase().contains('socket') ||
+                    err.toString().toLowerCase().contains('network');
+
+                if (isNoInternet) {
+                  return [
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: AppColors.incorrectRed.withValues(alpha: isDark ? 0.2 : 0.1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.wifi_off_rounded,
+                                  size: 40,
+                                  color: AppColors.incorrectRed,
+                                ),
+                              ),
+                              const SizedBox(height: 14),
+                              const Text(
+                                'Word Not Available Offline',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: -0.3,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              const Text(
+                                'This word is not available offline. Please connect to the internet to search for it.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  height: 1.45,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              const SizedBox(height: 18),
+                              ElevatedButton.icon(
+                                onPressed: () => ref.invalidate(wordsListProvider),
+                                icon: const Icon(Icons.refresh_rounded, size: 18),
+                                label: const Text('Retry Search'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                  textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ];
+                }
+
+                return [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: ErrorStateView(
+                      message: err.toString(),
+                      onRetry: () => ref.invalidate(wordsListProvider),
+                    ),
+                  ),
+                ];
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -556,26 +693,32 @@ class WordsListScreen extends ConsumerWidget {
               onTap: () => _showDailyGoalSheet(context, ref),
               borderRadius: BorderRadius.circular(8),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Icon(
-                        isGoalMet ? Icons.check_circle_rounded : Icons.track_changes_rounded,
-                        size: 15,
-                        color: isGoalMet ? AppColors.success : AppColors.primary,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        isGoalMet ? 'Goal Completed!' : 'Daily Goal: $todayWords/$target',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w800,
-                          color: isGoalMet ? AppColors.success : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Icon(
+                          isGoalMet ? Icons.check_circle_rounded : Icons.track_changes_rounded,
+                          size: 15,
+                          color: isGoalMet ? AppColors.success : AppColors.primary,
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 6),
+                        Flexible(
+                          child: Text(
+                            isGoalMet ? 'Goal Completed!' : 'Daily Goal: $todayWords/$target',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w800,
+                              color: isGoalMet ? AppColors.success : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  const SizedBox(width: 6),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
@@ -597,90 +740,6 @@ class WordsListScreen extends ConsumerWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildRecommendationCard(BuildContext context, WidgetRef ref, bool isDark) {
-    final recAsync = ref.watch(recommendationsProvider);
-
-    return recAsync.maybeWhen(
-      data: (list) {
-        // Filter out 'daily_goal' recommendation on Explore screen because the Daily Goal strip is already here
-        final filteredList = list.where((r) => r.id != 'daily_goal').toList();
-        if (filteredList.isEmpty) return const SizedBox.shrink();
-        final rec = filteredList.first;
-
-        return InkWell(
-          onTap: () => context.go(rec.route),
-          borderRadius: BorderRadius.circular(16),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-            decoration: BoxDecoration(
-              color: rec.color.withValues(alpha: isDark ? 0.15 : 0.08),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: rec.color.withValues(alpha: isDark ? 0.35 : 0.25)),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    color: rec.color.withValues(alpha: 0.2),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(rec.icon, size: 16, color: rec.color),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        rec.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w800,
-                          color: isDark ? Colors.white : const Color(0xFF0F172A),
-                        ),
-                      ),
-                      Text(
-                        rec.subtitle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w500,
-                          color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: rec.color,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    rec.actionLabel,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 10.5,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-      orElse: () => const SizedBox.shrink(),
     );
   }
 

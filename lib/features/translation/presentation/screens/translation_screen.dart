@@ -1,14 +1,17 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../core/services/translation_service.dart';
 import '../../../../core/services/tts_service.dart';
+import '../../../ocr/presentation/providers/ocr_provider.dart';
 import '../providers/translation_provider.dart';
 
-/// Online Multi-Language Translation screen supporting 10 Indian & English languages
+/// Online Multi-Language Translation screen supporting 10 Indian & English languages with photo scanning
 class TranslationScreen extends ConsumerStatefulWidget {
   final String? initialText;
 
@@ -20,13 +23,16 @@ class TranslationScreen extends ConsumerStatefulWidget {
 
 class _TranslationScreenState extends ConsumerState<TranslationScreen> {
   late final TextEditingController _inputController;
+  XFile? _scannedImageFile;
+  bool _isScanning = false;
+  String? _scanErrorMessage;
 
   @override
   void initState() {
     super.initState();
     _inputController = TextEditingController(text: widget.initialText ?? '');
 
-    // If initial text is passed (e.g. from OCR scanner), prefill and translate
+    // If initial text is passed (e.g. from OCR scanner or external navigation), prefill and translate
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.initialText != null && widget.initialText!.trim().isNotEmpty) {
         ref.read(translationNotifierProvider.notifier).setInputText(widget.initialText!);
@@ -39,6 +45,101 @@ class _TranslationScreenState extends ConsumerState<TranslationScreen> {
   void dispose() {
     _inputController.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickAndScanText(ImageSource source) async {
+    setState(() {
+      _isScanning = true;
+      _scanErrorMessage = null;
+    });
+
+    try {
+      final ocrService = ref.read(ocrServiceProvider);
+      final xFile = await ocrService.pickImage(source: source);
+      if (xFile == null) {
+        if (mounted) setState(() => _isScanning = false);
+        return;
+      }
+
+      String finalPath = xFile.path;
+      final cropped = await ocrService.cropImage(xFile.path);
+      if (cropped != null && cropped.isNotEmpty) {
+        finalPath = cropped;
+      }
+
+      final ocrResult = await ocrService.recognizeText(finalPath);
+      final rawText = ocrResult.rawText.trim();
+
+      if (!mounted) return;
+
+      if (rawText.isEmpty) {
+        setState(() {
+          _scannedImageFile = XFile(finalPath);
+          _isScanning = false;
+          _scanErrorMessage = 'No readable text detected in this image. Try capturing clearer text or typing below.';
+        });
+        return;
+      }
+
+      _inputController.text = rawText;
+      ref.read(translationNotifierProvider.notifier).setInputText(rawText);
+
+      setState(() {
+        _scannedImageFile = XFile(finalPath);
+        _isScanning = false;
+        _scanErrorMessage = null;
+      });
+
+      // Automatically translate the scanned text into target language
+      await ref.read(translationNotifierProvider.notifier).translate(textOverride: rawText);
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isScanning = false;
+          _scanErrorMessage = 'Scan error: ${e.toString()}';
+        });
+      }
+    }
+  }
+
+  Future<void> _cropScannedImage() async {
+    if (_scannedImageFile == null) return;
+    setState(() {
+      _isScanning = true;
+      _scanErrorMessage = null;
+    });
+
+    try {
+      final ocrService = ref.read(ocrServiceProvider);
+      final cropped = await ocrService.cropImage(_scannedImageFile!.path);
+      if (cropped != null && cropped.isNotEmpty && cropped != _scannedImageFile!.path) {
+        final ocrResult = await ocrService.recognizeText(cropped);
+        final rawText = ocrResult.rawText.trim();
+
+        if (!mounted) return;
+
+        if (rawText.isNotEmpty) {
+          _inputController.text = rawText;
+          ref.read(translationNotifierProvider.notifier).setInputText(rawText);
+          await ref.read(translationNotifierProvider.notifier).translate(textOverride: rawText);
+        }
+
+        setState(() {
+          _scannedImageFile = XFile(cropped);
+          _isScanning = false;
+          _scanErrorMessage = rawText.isEmpty ? 'No readable text found in cropped area.' : null;
+        });
+      } else {
+        if (mounted) setState(() => _isScanning = false);
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isScanning = false;
+          _scanErrorMessage = 'Crop error: ${e.toString()}';
+        });
+      }
+    }
   }
 
   @override
@@ -160,7 +261,7 @@ class _TranslationScreenState extends ConsumerState<TranslationScreen> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'All other Vocabulary Builder features (Words, Sentences, Quizzes, Progress, OCR Scanner) continue to work 100% offline.',
+                    'All other Vocabulary Builder features (Words, Sentences, Quizzes, Progress) continue to work 100% offline.',
                     style: TextStyle(
                       fontSize: 11.5,
                       color: isDark ? const Color(0xFFFCA5A5) : const Color(0xFF991B1B),
@@ -189,8 +290,206 @@ class _TranslationScreenState extends ConsumerState<TranslationScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 18),
+            const SizedBox(height: 16),
           ],
+
+          // Take Photo & Choose Image OCR Scanner Card (Placed above Language Selector)
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.surfaceDark : Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: isDark ? AppColors.borderDark : AppColors.borderLight,
+                width: 1.2,
+              ),
+              boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                        color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        Icons.document_scanner_rounded,
+                        size: 16,
+                        color: isDark ? AppColors.primaryLight : AppColors.primary,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Scan Text from Image / Camera',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.2,
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF0D9488).withValues(alpha: isDark ? 0.25 : 0.12),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        'OCR Auto-Fill',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w800,
+                          color: isDark ? const Color(0xFF5EEAD4) : const Color(0xFF0F766E),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: _isScanning ? null : () => _pickAndScanText(ImageSource.camera),
+                        icon: const Icon(Icons.photo_camera_rounded, size: 18),
+                        label: const Text('Take Photo'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          elevation: 1,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          textStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: _isScanning ? null : () => _pickAndScanText(ImageSource.gallery),
+                        icon: const Icon(Icons.photo_library_rounded, size: 18),
+                        label: const Text('Choose Image'),
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          side: BorderSide(
+                            color: isDark ? AppColors.primaryLight : AppColors.primary,
+                            width: 1.2,
+                          ),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          textStyle: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                // Scanned Image Preview Thumbnail
+                if (_scannedImageFile != null) ...[
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: isDark ? AppColors.borderDark : const Color(0xFFE2E8F0),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: SizedBox(
+                            width: 46,
+                            height: 46,
+                            child: Image.file(
+                              File(_scannedImageFile!.path),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        const Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Image Scanned',
+                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800),
+                              ),
+                              SizedBox(height: 1),
+                              Text(
+                                'Text extracted & auto-filled below',
+                                style: TextStyle(fontSize: 11, color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        FilledButton.tonal(
+                          onPressed: _isScanning ? null : _cropScannedImage,
+                          style: FilledButton.styleFrom(
+                            visualDensity: VisualDensity.compact,
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          ),
+                          child: const Text('Re-crop', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
+                        ),
+                        const SizedBox(width: 4),
+                        IconButton(
+                          icon: const Icon(Icons.close_rounded, size: 16),
+                          visualDensity: VisualDensity.compact,
+                          tooltip: 'Remove Image',
+                          onPressed: () {
+                            setState(() {
+                              _scannedImageFile = null;
+                              _scanErrorMessage = null;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+
+                // Scanning Progress Indicator
+                if (_isScanning) ...[
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Scanning and extracting text from image...',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? AppColors.primaryLight : AppColors.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+
+                // Scanning Error Message
+                if (_scanErrorMessage != null && !_isScanning) ...[
+                  const SizedBox(height: 10),
+                  Text(
+                    _scanErrorMessage!,
+                    style: const TextStyle(fontSize: 11.5, color: AppColors.error, fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 14),
 
           // Language Selector Card
           Container(

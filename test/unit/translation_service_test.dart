@@ -44,7 +44,7 @@ void main() {
 
     test('Throws TranslationNoInternetException with exact required message on SocketException', () async {
       final mockClient = MockHttpClient();
-      when(() => mockClient.get(any())).thenThrow(const SocketException('No Internet'));
+      when(() => mockClient.get(any(), headers: any(named: 'headers'))).thenThrow(const SocketException('No Internet'));
 
       final service = TranslationService(client: mockClient);
 
@@ -60,7 +60,7 @@ void main() {
 
     test('Throws TranslationNoInternetException on http.ClientException', () async {
       final mockClient = MockHttpClient();
-      when(() => mockClient.get(any())).thenThrow(http.ClientException('Network failure'));
+      when(() => mockClient.get(any(), headers: any(named: 'headers'))).thenThrow(http.ClientException('Network failure'));
 
       final service = TranslationService(client: mockClient);
 
@@ -77,7 +77,7 @@ void main() {
     test('Parses successful Google Translate API response', () async {
       final mockClient = MockHttpClient();
       const mockResponse = '[[["ಧೈರ್ಯ","Courage",null,null,10]],null,"en"]';
-      when(() => mockClient.get(any())).thenAnswer(
+      when(() => mockClient.get(any(), headers: any(named: 'headers'))).thenAnswer(
         (_) async => http.Response.bytes(utf8.encode(mockResponse), 200),
       );
 
@@ -109,7 +109,7 @@ void main() {
 
     test('Captures offline error and sets isOfflineError flag with exact message', () async {
       final mockClient = MockHttpClient();
-      when(() => mockClient.get(any())).thenThrow(const SocketException('Failed host lookup'));
+      when(() => mockClient.get(any(), headers: any(named: 'headers'))).thenThrow(const SocketException('Failed host lookup'));
 
       final service = TranslationService(client: mockClient);
       final notifier = TranslationNotifier(service);

@@ -302,22 +302,23 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        Text(
-                          'Word & Grammar',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: -0.2,
+                        Expanded(
+                          child: Text(
+                            'Word & Grammar',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -0.2,
+                            ),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 16),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Column(
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final isCompact = constraints.maxWidth < 420;
+                        if (isCompact) {
+                          return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -339,15 +340,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                                   return null;
                                 },
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                              const SizedBox(height: 14),
                               Text(
                                 'Part of Speech',
                                 style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
@@ -355,15 +348,18 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                               const SizedBox(height: 6),
                               DropdownButtonFormField<String>(
                                 initialValue: _selectedPartOfSpeech,
+                                isExpanded: true,
                                 decoration: const InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                                  prefixIcon: Icon(Icons.spellcheck_rounded),
                                 ),
                                 items: _partsOfSpeech.map((pos) {
                                   return DropdownMenuItem(
                                     value: pos,
                                     child: Text(
                                       pos[0].toUpperCase() + pos.substring(1),
-                                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                                     ),
                                   );
                                 }).toList(),
@@ -374,9 +370,78 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                                 },
                               ),
                             ],
-                          ),
-                        ),
-                      ],
+                          );
+                        }
+
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'English Word *',
+                                    style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  TextFormField(
+                                    controller: _wordController,
+                                    textCapitalization: TextCapitalization.words,
+                                    decoration: const InputDecoration(
+                                      hintText: 'e.g. Resilient',
+                                      prefixIcon: Icon(Icons.title_rounded),
+                                    ),
+                                    validator: (val) {
+                                      if (val == null || val.trim().isEmpty) {
+                                        return 'Please enter a word';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Part of Speech',
+                                    style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  DropdownButtonFormField<String>(
+                                    initialValue: _selectedPartOfSpeech,
+                                    isExpanded: true,
+                                    decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                                    ),
+                                    items: _partsOfSpeech.map((pos) {
+                                      return DropdownMenuItem(
+                                        value: pos,
+                                        child: Text(
+                                          pos[0].toUpperCase() + pos.substring(1),
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (val) {
+                                      if (val != null) {
+                                        setState(() => _selectedPartOfSpeech = val);
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -427,11 +492,13 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        Text(
-                          'Meanings & Translation',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: -0.2,
+                        Expanded(
+                          child: Text(
+                            'Meanings & Translation',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -0.2,
+                            ),
                           ),
                         ),
                       ],
@@ -481,12 +548,14 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                                 color: isDark ? const Color(0xFF86EFAC) : const Color(0xFF15803D),
                               ),
                               const SizedBox(width: 8),
-                              Text(
-                                'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning) *',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 13.5,
-                                  color: isDark ? const Color(0xFF86EFAC) : const Color(0xFF15803D),
+                              Expanded(
+                                child: Text(
+                                  'ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning) *',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 13.5,
+                                    color: isDark ? const Color(0xFF86EFAC) : const Color(0xFF15803D),
+                                  ),
                                 ),
                               ),
                             ],
@@ -558,11 +627,13 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        Text(
-                          'Context & Learning Details',
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: -0.2,
+                        Expanded(
+                          child: Text(
+                            'Context & Learning Details',
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -0.2,
+                            ),
                           ),
                         ),
                       ],
@@ -641,6 +712,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                     const SizedBox(height: 6),
                     DropdownButtonFormField<String>(
                       initialValue: _selectedCategory,
+                      isExpanded: true,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.category_rounded),
                         contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
@@ -648,7 +720,11 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                       items: _topics.map((t) {
                         return DropdownMenuItem(
                           value: t,
-                          child: Text(t, style: const TextStyle(fontWeight: FontWeight.w600)),
+                          child: Text(
+                            t,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
                         );
                       }).toList(),
                       onChanged: (val) {
@@ -678,10 +754,11 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                       ),
                     ],
                     const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Column(
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final isCompact = constraints.maxWidth < 420;
+                        if (isCompact) {
+                          return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
@@ -696,14 +773,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                                   contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                              const SizedBox(height: 12),
                               Text(
                                 'Antonyms (optional)',
                                 style: theme.textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w700),
@@ -717,9 +787,53 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                      ],
+                          );
+                        }
+
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Synonyms (optional)',
+                                    style: theme.textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  TextFormField(
+                                    controller: _synonymsController,
+                                    decoration: const InputDecoration(
+                                      hintText: 'tough, flexible',
+                                      contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Antonyms (optional)',
+                                    style: theme.textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w700),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  TextFormField(
+                                    controller: _antonymsController,
+                                    decoration: const InputDecoration(
+                                      hintText: 'fragile, weak',
+                                      contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -735,6 +849,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                   onPressed: _isSubmitting ? null : _submitWord,
                   style: ElevatedButton.styleFrom(
                     elevation: 2,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -746,9 +861,12 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                           child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                         )
                       : const Icon(Icons.add_task_rounded, size: 22),
-                  label: Text(
-                    _isSubmitting ? 'Saving Word...' : 'Add Word to Vocabulary',
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      _isSubmitting ? 'Saving Word...' : 'Add Word to Vocabulary',
+                      style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+                    ),
                   ),
                 ),
               ),

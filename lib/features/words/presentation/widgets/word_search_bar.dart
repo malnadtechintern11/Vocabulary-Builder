@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app/theme/app_colors.dart';
@@ -14,6 +15,7 @@ class WordSearchBar extends ConsumerStatefulWidget {
 
 class _WordSearchBarState extends ConsumerState<WordSearchBar> {
   late final TextEditingController _controller;
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -23,8 +25,23 @@ class _WordSearchBarState extends ConsumerState<WordSearchBar> {
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _controller.dispose();
     super.dispose();
+  }
+
+  void _onSearchChanged(String val) {
+    _debounce?.cancel();
+    _debounce = Timer(const Duration(milliseconds: 300), () {
+      if (mounted) {
+        ref.read(wordSearchQueryProvider.notifier).state = val;
+      }
+    });
+  }
+
+  void _onSearchSubmitted(String val) {
+    _debounce?.cancel();
+    ref.read(wordSearchQueryProvider.notifier).state = val;
   }
 
   Future<void> _toggleVoiceSearch() async {
@@ -105,9 +122,9 @@ class _WordSearchBarState extends ConsumerState<WordSearchBar> {
       children: [
         TextField(
           controller: _controller,
-          onChanged: (val) {
-            ref.read(wordSearchQueryProvider.notifier).state = val;
-          },
+          onChanged: _onSearchChanged,
+          onSubmitted: _onSearchSubmitted,
+          textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             hintText: isListening
                 ? 'Listening... Speak a word now'
@@ -132,6 +149,7 @@ class _WordSearchBarState extends ConsumerState<WordSearchBar> {
                     icon: const Icon(Icons.close_rounded, size: 20),
                     tooltip: 'Clear search',
                     onPressed: () {
+                      _debounce?.cancel();
                       _controller.clear();
                       ref.read(wordSearchQueryProvider.notifier).state = '';
                     },

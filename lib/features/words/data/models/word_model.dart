@@ -18,6 +18,7 @@ class WordModel extends Word {
     required super.category,
     required super.isFavorite,
     required super.isLearned,
+    super.isOnline = false,
   });
 
   /// Convert SQLite Map into WordModel
@@ -46,6 +47,7 @@ class WordModel extends Word {
       category: map[DatabaseTables.colCategory] as String? ?? 'daily',
       isFavorite: (map[DatabaseTables.colIsFavorite] as int? ?? 0) == 1,
       isLearned: (map[DatabaseTables.colIsLearned] as int? ?? 0) == 1,
+      isOnline: false,
     );
   }
 
@@ -83,6 +85,7 @@ class WordModel extends Word {
       category: entity.category,
       isFavorite: entity.isFavorite,
       isLearned: entity.isLearned,
+      isOnline: entity.isOnline,
     );
   }
 
@@ -111,6 +114,7 @@ class WordModel extends Word {
       category: cat.toLowerCase(),
       isFavorite: json['isFavorite'] == true,
       isLearned: json['isLearned'] == true,
+      isOnline: json['isOnline'] == true,
     );
   }
 
@@ -129,6 +133,7 @@ class WordModel extends Word {
     String? category,
     bool? isFavorite,
     bool? isLearned,
+    bool? isOnline,
   }) {
     return WordModel(
       id: id ?? this.id,
@@ -144,6 +149,7 @@ class WordModel extends Word {
       category: category ?? this.category,
       isFavorite: isFavorite ?? this.isFavorite,
       isLearned: isLearned ?? this.isLearned,
+      isOnline: isOnline ?? this.isOnline,
     );
   }
 
