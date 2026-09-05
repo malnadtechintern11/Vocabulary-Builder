@@ -112,4 +112,21 @@ class DatabaseTables {
       $colUnlockedAt TEXT NOT NULL
     );
   ''';
+
+  static const String tableCustomSentences = 'custom_sentences';
+
+  static const String createCustomSentencesTable = '''
+    CREATE TABLE IF NOT EXISTS $tableCustomSentences (
+      id TEXT PRIMARY KEY,
+      text TEXT NOT NULL UNIQUE,
+      meaning TEXT NOT NULL,
+      kannada_meaning TEXT,
+      vocabulary_words TEXT NOT NULL,
+      difficulty TEXT NOT NULL,
+      category TEXT NOT NULL,
+      is_favorite INTEGER NOT NULL DEFAULT 0,
+      is_practiced INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL
+    );
+  ''';
 }

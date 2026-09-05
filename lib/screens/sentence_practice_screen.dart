@@ -7,6 +7,7 @@ import '../core/widgets/audio_pronounce_button.dart';
 import '../core/widgets/empty_state_view.dart';
 import '../features/sentences/providers/sentences_provider.dart';
 import '../models/sentence.dart';
+import 'widgets/sentence_recording_dialog.dart';
 
 /// Interactive sentence practice mode with flashcard view, TTS, and "Next Sentence" progression
 class SentencePracticeScreen extends ConsumerStatefulWidget {
@@ -328,14 +329,37 @@ class _SentencePracticeScreenState
                       ),
                       const SizedBox(height: 16),
 
-                      // Speaker Pronunciation Button
-                      AudioPronounceTonalButton(
-                        id: currentSentence.id,
-                        text: currentSentence.text,
-                        label: 'Listen Pronunciation',
-                        playingLabel: 'Playing...',
-                        fontSize: 14,
-                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                      // Pronunciation Audio & Speech Recording Row
+                      Wrap(
+                        spacing: 10,
+                        runSpacing: 8,
+                        children: [
+                          AudioPronounceTonalButton(
+                            id: currentSentence.id,
+                            text: currentSentence.text,
+                            label: 'Listen',
+                            playingLabel: 'Playing...',
+                            fontSize: 13,
+                            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                          ),
+                          ElevatedButton.icon(
+                            onPressed: () => SentenceRecordingDialog.show(context, currentSentence),
+                            icon: const Icon(Icons.mic_rounded, size: 16),
+                            label: const Text(
+                              'Record Speech',
+                              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
 

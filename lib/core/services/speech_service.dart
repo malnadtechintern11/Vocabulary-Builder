@@ -49,11 +49,34 @@ class SpeechService {
     onListeningStateChanged?.call();
   }
 
+  String? _cachedEnglishLocale;
+
+  /// Returns the preferred English locale supported on this device (e.g. en_US, en_IN, en_GB)
+  Future<String?> getPreferredEnglishLocale() async {
+    if (_cachedEnglishLocale != null) return _cachedEnglishLocale;
+    try {
+      final locales = await _speechToText.locales();
+      for (final loc in locales) {
+        final id = loc.localeId.toLowerCase();
+        if (id == 'en_us' || id == 'en_in' || id == 'en_gb' || id.startsWith('en_') || id.startsWith('en-')) {
+          _cachedEnglishLocale = loc.localeId;
+          return _cachedEnglishLocale;
+        }
+      }
+    } catch (e) {
+      debugPrint('SpeechService getPreferredEnglishLocale warning: $e');
+    }
+    return null;
+  }
+
   /// Start listening for user speech
   Future<bool> startListening({
     required Function(String recognizedWords, bool isFinal) onResult,
-    Duration listenFor = const Duration(seconds: 10),
-    Duration pauseFor = const Duration(seconds: 3),
+    Function(double soundLevel)? onSoundLevelChange,
+    String? localeId,
+    Duration listenFor = const Duration(seconds: 25),
+    Duration pauseFor = const Duration(seconds: 4),
+    ListenMode listenMode = ListenMode.dictation,
   }) async {
     try {
       final hasInit = await init();
@@ -61,17 +84,21 @@ class SpeechService {
         return false;
       }
 
+      final resolvedLocale = localeId ?? await getPreferredEnglishLocale();
+
       await _speechToText.listen(
         onResult: (SpeechRecognitionResult result) {
           onResult(result.recognizedWords, result.finalResult);
           onListeningStateChanged?.call();
         },
+        onSoundLevelChange: onSoundLevelChange,
         listenOptions: SpeechListenOptions(
           listenFor: listenFor,
           pauseFor: pauseFor,
           partialResults: true,
-          cancelOnError: true,
-          listenMode: ListenMode.search,
+          cancelOnError: false,
+          listenMode: listenMode,
+          localeId: resolvedLocale,
         ),
       );
 

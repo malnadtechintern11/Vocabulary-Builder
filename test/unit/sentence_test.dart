@@ -1,4 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:vocabulary_builder/core/services/online_sentence_service.dart';
+import 'package:vocabulary_builder/core/services/sentence_pronunciation_service.dart';
 import 'package:vocabulary_builder/data/sentences_data.dart';
 import 'package:vocabulary_builder/models/sentence.dart';
 
@@ -125,6 +127,95 @@ void main() {
         final addedText = texts.add(normalizedText);
         expect(addedText, isTrue, reason: 'Duplicate sentence detected: ${s.text}');
       }
+    });
+  });
+
+  group('Online Sentence Search & Offline Exception Handling', () {
+    test('Sentence isOnline defaults to false and serializes/deserializes properly', () {
+      const offlineSentence = Sentence(
+        id: 's_offline_1',
+        text: 'The sky is clear today.',
+        meaning: 'There are no clouds in the sky.',
+        kannadaMeaning: 'ಇಂದು ಆಕಾಶವು ಸ್ವಚ್ಛವಾಗಿದೆ.',
+        difficulty: 'Beginner',
+        category: 'Weather',
+        vocabularyWords: [],
+      );
+      expect(offlineSentence.isOnline, isFalse);
+
+      final onlineSentence = offlineSentence.copyWith(isOnline: true);
+      expect(onlineSentence.isOnline, isTrue);
+
+      final json = onlineSentence.toJson();
+      expect(json['isOnline'], isTrue);
+
+      final restored = Sentence.fromJson(json);
+      expect(restored.isOnline, isTrue);
+      expect(restored.text, 'The sky is clear today.');
+
+      final restoredSnakeCase = Sentence.fromJson({
+        'id': 's_snake_1',
+        'text': 'A snake test',
+        'meaning': 'Test',
+        'kannada_meaning': 'ಪರೀಕ್ಷೆ',
+        'is_online': true,
+      });
+      expect(restoredSnakeCase.isOnline, isTrue);
+      expect(restoredSnakeCase.kannadaMeaning, 'ಪರೀಕ್ಷೆ');
+    });
+
+    test('SentenceNoInternetException must have exact user-specified message', () {
+      const ex = SentenceNoInternetException();
+      expect(
+        ex.message,
+        'This sentence is not available offline. Please connect to the internet to search for it.',
+      );
+      expect(
+        ex.toString(),
+        contains('This sentence is not available offline. Please connect to the internet to search for it.'),
+      );
+    });
+
+    test('SentenceNotFoundOnlineException formats message with search query', () {
+      final notFound = SentenceNotFoundOnlineException('Quantum mechanics explains electrons.');
+      expect(notFound.sentence, 'Quantum mechanics explains electrons.');
+      expect(notFound.toString(), contains('Quantum mechanics explains electrons.'));
+    });
+  });
+
+  group('Sentence Audio Recording & Pronunciation Evaluation', () {
+    test('Evaluates perfect pronunciation with 100% score and all words matched', () {
+      final result = SentencePronunciationService.evaluate(
+        targetSentence: 'The quick brown fox jumps over the lazy dog.',
+        spokenTranscript: 'the quick brown fox jumps over the lazy dog',
+      );
+
+      expect(result.accuracyScore, 100);
+      expect(result.title, contains('Outstanding'));
+      expect(result.words.every((w) => w.isMatched), isTrue);
+    });
+
+    test('Evaluates partial pronunciation with calculated accuracy and word status', () {
+      final result = SentencePronunciationService.evaluate(
+        targetSentence: 'Knowledge is power and wisdom is key.',
+        spokenTranscript: 'knowledge is power and nothing else',
+      );
+
+      // 4 words matched out of 7 ("knowledge", "is", "power", "and") = ~57%
+      expect(result.accuracyScore, inInclusiveRange(50, 65));
+      expect(result.words.where((w) => w.isMatched).length, 4);
+      expect(result.words.where((w) => !w.isMatched).length, 3);
+    });
+
+    test('Handles empty speech transcript gracefully', () {
+      final result = SentencePronunciationService.evaluate(
+        targetSentence: 'Practice makes perfect.',
+        spokenTranscript: '',
+      );
+
+      expect(result.accuracyScore, 0);
+      expect(result.title, 'No Speech Detected');
+      expect(result.words.every((w) => !w.isMatched), isTrue);
     });
   });
 }

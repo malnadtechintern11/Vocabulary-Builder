@@ -45,6 +45,7 @@ class Sentence {
   final String category; // e.g. 'Daily Conversation', 'Work & Career', 'Travel', etc.
   final bool isFavorite;
   final bool isPracticed;
+  final bool isOnline;
 
   const Sentence({
     required this.id,
@@ -56,6 +57,7 @@ class Sentence {
     required this.category,
     this.isFavorite = false,
     this.isPracticed = false,
+    this.isOnline = false,
   });
 
   /// Alias for meaning for clearer semantic distinction from kannadaMeaning
@@ -71,6 +73,7 @@ class Sentence {
     String? category,
     bool? isFavorite,
     bool? isPracticed,
+    bool? isOnline,
   }) {
     return Sentence(
       id: id ?? this.id,
@@ -82,6 +85,7 @@ class Sentence {
       category: category ?? this.category,
       isFavorite: isFavorite ?? this.isFavorite,
       isPracticed: isPracticed ?? this.isPracticed,
+      isOnline: isOnline ?? this.isOnline,
     );
   }
 
@@ -90,14 +94,15 @@ class Sentence {
       id: json['id'] as String? ?? '',
       text: json['text'] as String? ?? '',
       meaning: json['meaning'] as String? ?? '',
-      kannadaMeaning: json['kannadaMeaning'] as String? ?? '',
-      vocabularyWords: (json['vocabularyWords'] as List<dynamic>? ?? [])
+      kannadaMeaning: (json['kannadaMeaning'] ?? json['kannada_meaning']) as String? ?? '',
+      vocabularyWords: ((json['vocabularyWords'] ?? json['vocabulary_words']) as List<dynamic>? ?? [])
           .map((item) => SentenceWord.fromJson(item as Map<String, dynamic>))
           .toList(),
       difficulty: json['difficulty'] as String? ?? 'Beginner',
       category: json['category'] as String? ?? 'General',
-      isFavorite: json['isFavorite'] as bool? ?? false,
-      isPracticed: json['isPracticed'] as bool? ?? false,
+      isFavorite: (json['isFavorite'] ?? json['is_favorite']) as bool? ?? false,
+      isPracticed: (json['isPracticed'] ?? json['is_practiced']) as bool? ?? false,
+      isOnline: (json['isOnline'] ?? json['is_online']) as bool? ?? false,
     );
   }
 
@@ -112,15 +117,19 @@ class Sentence {
       'category': category,
       'isFavorite': isFavorite,
       'isPracticed': isPracticed,
+      'isOnline': isOnline,
     };
   }
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Sentence && runtimeType == other.runtimeType && id == other.id;
+      other is Sentence &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          isOnline == other.isOnline;
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode => id.hashCode ^ isOnline.hashCode;
 }
 

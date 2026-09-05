@@ -5,6 +5,7 @@ import 'package:vocabulary_builder/core/widgets/custom_badge.dart';
 import 'package:vocabulary_builder/core/widgets/empty_state_view.dart';
 import 'package:vocabulary_builder/core/widgets/error_state_view.dart';
 import 'package:vocabulary_builder/features/settings/presentation/screens/settings_screen.dart';
+import 'package:vocabulary_builder/features/settings/presentation/screens/privacy_policy_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/screens/add_word_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/widgets/difficulty_badge.dart';
 import 'package:mocktail/mocktail.dart';
@@ -16,7 +17,12 @@ import 'package:vocabulary_builder/features/words/domain/repositories/word_repos
 import 'package:vocabulary_builder/features/words/domain/usecases/search_words_usecase.dart';
 import 'package:vocabulary_builder/features/words/presentation/providers/words_provider.dart';
 import 'package:vocabulary_builder/features/words/presentation/screens/words_list_screen.dart';
+import 'package:vocabulary_builder/core/services/online_sentence_service.dart';
+import 'package:vocabulary_builder/features/sentences/providers/sentences_provider.dart';
+import 'package:vocabulary_builder/models/sentence.dart';
 import 'package:vocabulary_builder/screens/english_sentences_screen.dart';
+import 'package:vocabulary_builder/screens/sentence_practice_screen.dart';
+import 'package:vocabulary_builder/screens/widgets/sentence_card.dart';
 
 class MockWordRepository extends Mock implements WordRepository {}
 
@@ -101,20 +107,73 @@ void main() {
       expect(find.text('27 Topics (50+ each)'), findsOneWidget);
       expect(find.text('ಕನ್ನಡ ಅರ್ಥಗಳು ಸೇರಿಸಲಾಗಿದೆ'), findsOneWidget);
 
-      // Tap Privacy Policy to verify modal sheet opens
+      // Tap Privacy Policy to verify separate page opens
       await tester.tap(find.text('Privacy Policy'));
       await tester.pumpAndSettle();
 
+      expect(find.byType(PrivacyPolicyScreen), findsOneWidget);
       expect(find.text('100% Private, Offline-First & Transparent'), findsOneWidget);
       expect(find.text('1. Offline-First Data Storage'), findsOneWidget);
       expect(find.text('2. Zero Data Tracking & No Analytics'), findsOneWidget);
       expect(find.text('3. On-Device Image & Camera Privacy'), findsOneWidget);
       expect(find.text('I Understand'), findsOneWidget);
 
-      // Tap I Understand to dismiss
+      // Tap I Understand to dismiss and return to Settings
       await tester.tap(find.text('I Understand'));
       await tester.pumpAndSettle();
+      expect(find.byType(PrivacyPolicyScreen), findsNothing);
       expect(find.text('100% Private, Offline-First & Transparent'), findsNothing);
+    });
+
+    testWidgets('PrivacyPolicyScreen renders app bar, back button, and policy sections', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: PrivacyPolicyScreen(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(PrivacyPolicyScreen), findsOneWidget);
+      expect(find.text('Privacy Policy'), findsAtLeastNWidgets(1));
+      expect(find.text('100% Secure'), findsOneWidget);
+      expect(find.text('Our Privacy Commitments'), findsOneWidget);
+      expect(find.text('1. Offline-First Data Storage'), findsOneWidget);
+      expect(find.text('2. Zero Data Tracking & No Analytics'), findsOneWidget);
+      expect(find.text('3. On-Device Image & Camera Privacy'), findsOneWidget);
+      expect(find.text('4. Secure Online Dictionary & Translation'), findsOneWidget);
+      expect(find.text('5. Student & Family Safe'), findsOneWidget);
+      expect(find.text('6. Device Permissions Breakdown'), findsOneWidget);
+      expect(find.text('7. Total User Control & Data Deletion'), findsOneWidget);
+      expect(find.byTooltip('Back to Settings'), findsOneWidget);
+      expect(find.text('I Understand'), findsOneWidget);
+    });
+
+    testWidgets('SettingsScreen About section renders app details, capabilities, specs, and licenses', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(800, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: SettingsScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('About'), findsOneWidget);
+      expect(find.text('Application details, features & architecture'), findsOneWidget);
+
+      await tester.scrollUntilVisible(
+        find.text('Educational Mission'),
+        300,
+        scrollable: find.byType(Scrollable).first,
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Educational Mission'), findsOneWidget);
+      expect(find.text('Open Source Licenses'), findsOneWidget);
     });
 
     testWidgets('AddWordScreen renders form elements and Kannada label', (WidgetTester tester) async {
@@ -195,6 +254,136 @@ void main() {
       expect(find.text('English Sentences'), findsOneWidget);
       expect(find.text('Sentences Progress'), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('SentenceCard renders Online Sentence Result badge and Save Sentence button when sentence is online', (WidgetTester tester) async {
+      const onlineSentence = Sentence(
+        id: 'online_123',
+        text: 'Artificial intelligence is evolving rapidly.',
+        meaning: 'AI systems are progressing and improving quickly.',
+        kannadaMeaning: 'ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯು ವೇಗವಾಗಿ ವಿಕಸನಗೊಳ್ಳುತ್ತಿದೆ.',
+        difficulty: 'Intermediate',
+        category: 'Technology',
+        vocabularyWords: [
+          SentenceWord(word: 'Artificial', meaning: 'Made by humans'),
+          SentenceWord(word: 'Evolving', meaning: 'Developing gradually'),
+        ],
+        isOnline: true,
+      );
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: SentenceCard(sentence: onlineSentence),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Online Sentence Result'), findsOneWidget);
+      expect(find.text('Save Sentence'), findsOneWidget);
+      expect(find.text('Artificial intelligence is evolving rapidly.'), findsOneWidget);
+      expect(find.text('ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆಯು ವೇಗವಾಗಿ ವಿಕಸನಗೊಳ್ಳುತ್ತಿದೆ.'), findsOneWidget);
+
+      await tester.tap(find.text('Save Sentence'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(find.byType(SnackBar), findsOneWidget);
+      expect(find.textContaining('to offline library!'), findsOneWidget);
+    });
+
+    testWidgets('EnglishSentencesScreen displays offline message and retry button when sentence is not found locally and device is offline', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            filteredSentencesAsyncProvider.overrideWith(
+              (ref) => Future.error(const SentenceNoInternetException()),
+            ),
+          ],
+          child: const MaterialApp(
+            home: EnglishSentencesScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Sentence Not Available Offline'), findsOneWidget);
+      expect(
+        find.text('This sentence is not available offline. Please connect to the internet to search for it.'),
+        findsOneWidget,
+      );
+      expect(find.text('Retry Search'), findsOneWidget);
+    });
+
+    testWidgets('SentenceCard renders Record Audio mic button and opens SentenceRecordingDialog on tap', (WidgetTester tester) async {
+      const sentence = Sentence(
+        id: 's_rec_1',
+        text: 'The journey of a thousand miles begins with a single step.',
+        meaning: 'Big achievements start with small actions.',
+        kannadaMeaning: 'ಸಾವಿರ ಮೈಲುಗಳ ಪ್ರಯಾಣವು ಒಂದೇ ಹೆಜ್ಜೆಯಿಂದ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.',
+        difficulty: 'Beginner',
+        category: 'Inspiration',
+        vocabularyWords: [],
+      );
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: SentenceCard(sentence: sentence),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final micBtn = find.byTooltip('Record audio (Speak & Practice)');
+      expect(micBtn, findsOneWidget);
+
+      await tester.tap(micBtn);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Voice Pronunciation Practice'), findsOneWidget);
+      expect(find.text('READ AND SPEAK THIS SENTENCE:'), findsOneWidget);
+      expect(find.text('The journey of a thousand miles begins with a single step.'), findsWidgets);
+      expect(find.text('Tap to Record Audio'), findsOneWidget);
+    });
+
+    testWidgets('SentencePracticeScreen renders Record Speech button and opens dialog', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: SentencePracticeScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final recordSpeechBtn = find.text('Record Speech');
+      expect(recordSpeechBtn, findsOneWidget);
+
+      await tester.tap(recordSpeechBtn);
+      await tester.pumpAndSettle();
+
+      expect(find.text('Voice Pronunciation Practice'), findsOneWidget);
+    });
+
+    testWidgets('EnglishSentencesScreen search bar renders voice search microphone button', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: EnglishSentencesScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        find.byTooltip('Voice search (Record audio to search)'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('ScanTextScreen renders offline OCR header, camera and gallery buttons', (WidgetTester tester) async {

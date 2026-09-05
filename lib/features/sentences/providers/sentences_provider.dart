@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite/sqflite.dart';
+import '../../../core/database/app_database.dart';
+import '../../../core/database/database_tables.dart';
+import '../../../core/services/online_sentence_service.dart';
 import '../../../core/services/tts_service.dart';
 import '../../../data/sentences_data.dart';
 import '../../../models/sentence.dart';
@@ -123,15 +129,157 @@ final sentenceCategoriesListProvider = Provider<List<String>>((ref) {
   ];
 });
 
-/// Provider returning all 600 sentences enriched with user favorite and practiced status
+/// Persistence key for storing saved custom/online sentences
+const String _kSavedCustomSentencesPrefsKey = 'saved_custom_sentences_json';
+
+/// Provider managing custom user-saved sentences (stored in SQLite + SharedPreferences)
+final savedSentencesProvider =
+    StateNotifierProvider<SavedSentencesNotifier, List<Sentence>>((ref) {
+  final notifier = SavedSentencesNotifier();
+  notifier.loadSavedSentences();
+  return notifier;
+});
+
+class SavedSentencesNotifier extends StateNotifier<List<Sentence>> {
+  SavedSentencesNotifier() : super([]);
+
+  Future<void> loadSavedSentences() async {
+    try {
+      final List<Sentence> list = [];
+
+      // 1. Load from SharedPreferences
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        final jsonStringList = prefs.getStringList(_kSavedCustomSentencesPrefsKey) ?? [];
+        for (final str in jsonStringList) {
+          try {
+            final map = jsonDecode(str) as Map<String, dynamic>;
+            list.add(Sentence.fromJson(map));
+          } catch (_) {}
+        }
+      } catch (_) {}
+
+      // 2. Query SQLite custom_sentences table
+      try {
+        final db = await AppDatabase.instance.database;
+        final rows = await db.query(DatabaseTables.tableCustomSentences);
+        for (final row in rows) {
+          final id = row['id'] as String;
+          if (!list.any((s) => s.id == id)) {
+            final vocabJson = row['vocabulary_words'] as String? ?? '[]';
+            final vocabList = (jsonDecode(vocabJson) as List<dynamic>? ?? [])
+                .map((e) => SentenceWord.fromJson(e as Map<String, dynamic>))
+                .toList();
+
+            list.add(Sentence(
+              id: id,
+              text: row['text'] as String,
+              meaning: row['meaning'] as String,
+              kannadaMeaning: row['kannada_meaning'] as String? ?? '',
+              vocabularyWords: vocabList,
+              difficulty: row['difficulty'] as String? ?? 'Beginner',
+              category: row['category'] as String? ?? 'General',
+              isFavorite: (row['is_favorite'] as int? ?? 0) == 1,
+              isPracticed: (row['is_practiced'] as int? ?? 0) == 1,
+              isOnline: false,
+            ));
+          }
+        }
+      } catch (dbErr) {
+        debugPrint('SQLite custom_sentences query error: $dbErr');
+      }
+
+      state = list;
+    } catch (_) {}
+  }
+
+  Future<Sentence> saveSentence(Sentence sentence) async {
+    final localSentence = sentence.copyWith(isOnline: false);
+    // Remove if already exists with same ID or text
+    final current = state
+        .where((s) =>
+            s.id != localSentence.id &&
+            s.text.trim().toLowerCase() != localSentence.text.trim().toLowerCase())
+        .toList();
+    final next = [localSentence, ...current];
+    state = next;
+
+    // Persist to SharedPreferences
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final jsonStringList = next.map((s) => jsonEncode(s.toJson())).toList();
+      await prefs.setStringList(_kSavedCustomSentencesPrefsKey, jsonStringList);
+    } catch (_) {}
+
+    // Persist to SQLite
+    try {
+      final db = await AppDatabase.instance.database;
+      await db.insert(
+        DatabaseTables.tableCustomSentences,
+        {
+          'id': localSentence.id,
+          'text': localSentence.text,
+          'meaning': localSentence.meaning,
+          'kannada_meaning': localSentence.kannadaMeaning,
+          'vocabulary_words': jsonEncode(localSentence.vocabularyWords.map((v) => v.toJson()).toList()),
+          'difficulty': localSentence.difficulty,
+          'category': localSentence.category,
+          'is_favorite': localSentence.isFavorite ? 1 : 0,
+          'is_practiced': localSentence.isPracticed ? 1 : 0,
+          'created_at': DateTime.now().toIso8601String(),
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    } catch (e) {
+      debugPrint('SQLite insert custom sentence error: $e');
+    }
+
+    return localSentence;
+  }
+
+  Future<void> removeSentence(String sentenceId) async {
+    final next = state.where((s) => s.id != sentenceId).toList();
+    state = next;
+
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final jsonStringList = next.map((s) => jsonEncode(s.toJson())).toList();
+      await prefs.setStringList(_kSavedCustomSentencesPrefsKey, jsonStringList);
+    } catch (_) {}
+
+    try {
+      final db = await AppDatabase.instance.database;
+      await db.delete(
+        DatabaseTables.tableCustomSentences,
+        where: 'id = ?',
+        whereArgs: [sentenceId],
+      );
+    } catch (_) {}
+  }
+
+  bool isSentenceSaved(String sentenceText) {
+    final clean = sentenceText.trim().toLowerCase();
+    return state.any((s) => s.text.trim().toLowerCase() == clean);
+  }
+}
+
+/// Provider returning all sentences (built-in 600 + user saved custom sentences) enriched with user favorite and practiced status
 final allSentencesProvider = Provider<List<Sentence>>((ref) {
   final favoriteIds = ref.watch(favoriteSentenceIdsProvider);
   final practicedIds = ref.watch(practicedSentenceIdsProvider);
+  final savedCustomSentences = ref.watch(savedSentencesProvider);
 
-  return SentencesData.sentences.map((s) {
+  // Combine user-saved sentences + built-in 600 sentences
+  final combined = <Sentence>[
+    ...savedCustomSentences,
+    ...SentencesData.sentences,
+  ];
+
+  return combined.map((s) {
     return s.copyWith(
       isFavorite: favoriteIds.contains(s.id),
       isPracticed: practicedIds.contains(s.id),
+      isOnline: false,
     );
   }).toList();
 });
@@ -217,14 +365,20 @@ final sentenceProgressStatsProvider = Provider<SentenceProgressStats>((ref) {
   );
 });
 
-/// Provider returning sentences filtered by level, category, and active search query
-final filteredSentencesProvider = Provider<List<Sentence>>((ref) {
+/// Online Sentence Service provider
+final onlineSentenceServiceProvider = Provider<OnlineSentenceService>((ref) {
+  return OnlineSentenceService();
+});
+
+/// Async provider for sentences, automatically fetching from online API when local data has no matches
+final filteredSentencesAsyncProvider = FutureProvider<List<Sentence>>((ref) async {
   final all = ref.watch(allSentencesProvider);
   final filter = ref.watch(sentenceDifficultyFilterProvider);
   final category = ref.watch(sentenceCategoryFilterProvider);
   final query = ref.watch(sentenceSearchQueryProvider).trim().toLowerCase();
 
-  return all.where((sentence) {
+  // 1. Filter local sentences first
+  final localFiltered = all.where((sentence) {
     // 1. Difficulty & Tab filtering
     if (filter == 'Favorites') {
       if (!sentence.isFavorite) return false;
@@ -256,6 +410,40 @@ final filteredSentencesProvider = Provider<List<Sentence>>((ref) {
 
     return inText || inMeaning || inKannada || inCategory || inVocab;
   }).toList();
+
+  // If local results are found or search query is empty, return local data immediately (100% offline)
+  if (localFiltered.isNotEmpty || query.isEmpty) {
+    return localFiltered;
+  }
+
+  // 2. If NO local sentences match and search query is not empty, automatically fetch online
+  final onlineService = ref.watch(onlineSentenceServiceProvider);
+  try {
+    final onlineSentence = await onlineService.fetchSentenceDetails(query);
+    return [onlineSentence];
+  } on SentenceNotFoundOnlineException {
+    return [];
+  } on SentenceNoInternetException {
+    rethrow;
+  } catch (e) {
+    final errStr = e.toString().toLowerCase();
+    if (errStr.contains('socket') ||
+        errStr.contains('network') ||
+        errStr.contains('offline') ||
+        errStr.contains('connection') ||
+        errStr.contains('host')) {
+      throw const SentenceNoInternetException();
+    }
+    throw SentenceNotFoundOnlineException(query, e.toString());
+  }
+});
+
+/// Synchronous backward-compatible filteredSentencesProvider
+final filteredSentencesProvider = Provider<List<Sentence>>((ref) {
+  return ref.watch(filteredSentencesAsyncProvider).maybeWhen(
+        data: (list) => list,
+        orElse: () => [],
+      );
 });
 
 /// Current sentence index in Practice Mode

@@ -60,6 +60,7 @@ class AppDatabase {
     await db.execute(DatabaseTables.createWordQuizStatsTable);
     await db.execute(DatabaseTables.createDailyActivityTable);
     await db.execute(DatabaseTables.createAchievementsTable);
+    await db.execute(DatabaseTables.createCustomSentencesTable);
   }
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
@@ -85,6 +86,11 @@ class AppDatabase {
       } catch (e) {
         debugPrint('Error creating learning analytics tables: $e');
       }
+    }
+    try {
+      await db.execute(DatabaseTables.createCustomSentencesTable);
+    } catch (e) {
+      debugPrint('Ensuring custom sentences table exists: $e');
     }
   }
 

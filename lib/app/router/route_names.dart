@@ -9,6 +9,7 @@ class RouteNames {
   static const String progress = 'progress';
   static const String addWord = 'addWord';
   static const String settings = 'settings';
+  static const String privacyPolicy = 'privacyPolicy';
   static const String sentences = 'sentences';
   static const String sentencesPractice = 'sentencesPractice';
   static const String scanText = 'scanText';

@@ -9,6 +9,7 @@ class RoutePaths {
   static const String progress = '/progress';
   static const String addWord = '/add-word';
   static const String settings = '/settings';
+  static const String privacyPolicy = '/settings/privacy-policy';
   static const String sentences = '/sentences';
   static const String sentencesPractice = '/sentences/practice';
   static const String scanText = '/scan-text';

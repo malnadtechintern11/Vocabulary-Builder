@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../app/theme/app_colors.dart';
+import '../core/services/online_sentence_service.dart';
+import '../core/services/speech_service.dart';
 import '../core/widgets/animated_progress_bar.dart';
 import '../core/widgets/empty_state_view.dart';
 import '../features/sentences/providers/sentences_provider.dart';
@@ -32,10 +34,68 @@ class _EnglishSentencesScreenState
     super.dispose();
   }
 
+  Future<void> _toggleVoiceSearch() async {
+    final isListening = ref.read(voiceListeningProvider);
+
+    if (isListening) {
+      await SpeechService.instance.stopListening();
+      ref.read(voiceListeningProvider.notifier).setListening(false);
+      return;
+    }
+
+    final success = await SpeechService.instance.startListening(
+      onResult: (recognizedWords, isFinal) {
+        if (recognizedWords.trim().isEmpty) return;
+
+        final cleanWords = recognizedWords
+            .trim()
+            .replaceAll(RegExp(r'[\.\,\?\!\;]+$'), '')
+            .trim();
+
+        setState(() {
+          _searchController.text = cleanWords;
+          _searchController.selection = TextSelection.fromPosition(
+            TextPosition(offset: cleanWords.length),
+          );
+        });
+
+        ref.read(sentenceSearchQueryProvider.notifier).state = cleanWords;
+
+        if (isFinal) {
+          SpeechService.instance.stopListening();
+          ref.read(voiceListeningProvider.notifier).setListening(false);
+        }
+      },
+    );
+
+    if (!success && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Row(
+            children: [
+              Icon(Icons.mic_off_rounded, color: Colors.white, size: 20),
+              SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  'Microphone permission or speech recognition is not available.',
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: AppColors.incorrectRed,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final allSentences = ref.watch(allSentencesProvider);
-    final filteredSentences = ref.watch(filteredSentencesProvider);
+    final sentencesAsync = ref.watch(filteredSentencesAsyncProvider);
+    final searchQuery = ref.watch(sentenceSearchQueryProvider);
+    final isVoiceListening = ref.watch(voiceListeningProvider);
     final selectedFilter = ref.watch(sentenceDifficultyFilterProvider);
     final selectedCategory = ref.watch(sentenceCategoryFilterProvider);
     final categories = ref.watch(sentenceCategoriesListProvider);
@@ -237,16 +297,38 @@ class _EnglishSentencesScreenState
               decoration: InputDecoration(
                 hintText: 'Search 600+ sentences in English or ಕನ್ನಡ...',
                 prefixIcon: const Icon(Icons.search_rounded, size: 20),
-                suffixIcon: _searchController.text.isNotEmpty
-                    ? IconButton(
+                suffixIcon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (_searchController.text.isNotEmpty)
+                      IconButton(
                         icon: const Icon(Icons.clear_rounded, size: 18),
+                        tooltip: 'Clear search',
                         onPressed: () {
                           _searchController.clear();
                           ref.read(sentenceSearchQueryProvider.notifier).state =
                               '';
                         },
-                      )
-                    : null,
+                      ),
+                    IconButton(
+                      icon: Icon(
+                        isVoiceListening
+                            ? Icons.mic_rounded
+                            : Icons.mic_none_rounded,
+                        size: 20,
+                        color: isVoiceListening
+                            ? AppColors.incorrectRed
+                            : (isDark
+                                ? AppColors.textTertiaryDark
+                                : AppColors.textSecondaryLight),
+                      ),
+                      tooltip: isVoiceListening
+                          ? 'Listening... Tap to stop'
+                          : 'Voice search (Record audio to search)',
+                      onPressed: _toggleVoiceSearch,
+                    ),
+                  ],
+                ),
                 filled: true,
                 fillColor: isDark
                     ? AppColors.surfaceVariantDark
@@ -391,8 +473,85 @@ class _EnglishSentencesScreenState
 
           // Sentences List Content
           Expanded(
-            child: filteredSentences.isEmpty
-                ? EmptyStateView(
+            child: sentencesAsync.when(
+              loading: () => Center(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24.0,
+                    vertical: 16.0,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 16),
+                      Text(
+                        searchQuery.trim().isNotEmpty
+                            ? 'Searching online for "${searchQuery.trim()}"...'
+                            : 'Loading sentences...',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isDark
+                              ? AppColors.textPrimaryDark
+                              : AppColors.textPrimaryLight,
+                        ),
+                      ),
+                      if (searchQuery.trim().isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          'Fetching English & Kannada meanings, vocabulary words, and details...',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isDark
+                                ? AppColors.textTertiaryDark
+                                : AppColors.textSecondaryLight,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+              error: (err, stack) {
+                final isOffline = err is SentenceNoInternetException ||
+                    err.toString().toLowerCase().contains('offline') ||
+                    err.toString().toLowerCase().contains('socket') ||
+                    err.toString().toLowerCase().contains('network') ||
+                    err.toString().toLowerCase().contains('connection');
+
+                return EmptyStateView(
+                  icon: isOffline
+                      ? Icons.wifi_off_rounded
+                      : Icons.search_off_rounded,
+                  title: isOffline
+                      ? 'Sentence Not Available Offline'
+                      : 'Sentence Not Found',
+                  description: isOffline
+                      ? 'This sentence is not available offline. Please connect to the internet to search for it.'
+                      : (err is SentenceNotFoundOnlineException
+                          ? err.message
+                          : 'Could not find or translate this sentence online. Please check the spelling and try again.'),
+                  actionLabel: isOffline ? 'Retry Search' : 'Clear Search',
+                  actionIcon:
+                      isOffline ? Icons.refresh_rounded : Icons.clear_rounded,
+                  onActionPressed: () {
+                    if (isOffline) {
+                      ref.invalidate(filteredSentencesAsyncProvider);
+                    } else {
+                      _searchController.clear();
+                      ref.read(sentenceSearchQueryProvider.notifier).state = '';
+                    }
+                  },
+                );
+              },
+              data: (filteredSentences) {
+                if (filteredSentences.isEmpty) {
+                  return EmptyStateView(
                     icon: Icons.search_off_rounded,
                     title: 'No Sentences Found',
                     description:
@@ -408,30 +567,34 @@ class _EnglishSentencesScreenState
                           .read(sentenceCategoryFilterProvider.notifier)
                           .state = 'All';
                     },
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.fromLTRB(16, 10, 16, 24),
-                    itemCount: filteredSentences.length,
-                    itemBuilder: (context, index) {
-                      final sentence = filteredSentences[index];
-                      return SentenceCard(
-                        key: ValueKey(sentence.id),
-                        sentence: sentence,
-                        onPractice: () {
-                          final practiceIndex =
-                              allSentences.indexOf(sentence);
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => SentencePracticeScreen(
-                                initialIndex:
-                                    practiceIndex >= 0 ? practiceIndex : 0,
-                              ),
+                  );
+                }
+
+                return ListView.builder(
+                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 24),
+                  itemCount: filteredSentences.length,
+                  itemBuilder: (context, index) {
+                    final sentence = filteredSentences[index];
+                    return SentenceCard(
+                      key: ValueKey(sentence.id),
+                      sentence: sentence,
+                      onPractice: () {
+                        final practiceIndex =
+                            allSentences.indexOf(sentence);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => SentencePracticeScreen(
+                              initialIndex:
+                                  practiceIndex >= 0 ? practiceIndex : 0,
                             ),
-                          );
-                        },
-                      );
-                    },
-                  ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            ),
           ),
         ],
       ),

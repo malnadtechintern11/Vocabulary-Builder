@@ -7,6 +7,7 @@ import '../../core/widgets/animated_favorite_button.dart';
 import '../../core/widgets/audio_pronounce_button.dart';
 import '../../features/sentences/providers/sentences_provider.dart';
 import '../../models/sentence.dart';
+import 'sentence_recording_dialog.dart';
 
 /// Clean, learner-friendly card displaying an English sentence, meaning, and key vocabulary
 class SentenceCard extends ConsumerWidget {
@@ -66,6 +67,90 @@ class SentenceCard extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Online Result Banner & Save Sentence Action if fetched online
+            if (sentence.isOnline) ...[
+              Container(
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  color: isDark
+                      ? const Color(0xFF0F2B2B)
+                      : const Color(0xFFF0FDFA),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFF0D9488).withValues(alpha: isDark ? 0.35 : 0.25),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF0D9488), Color(0xFF0284C7)],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.public_rounded, color: Colors.white, size: 12),
+                          SizedBox(width: 4),
+                          Text(
+                            'Online Sentence Result',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 11,
+                              letterSpacing: 0.2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        ref
+                            .read(savedSentencesProvider.notifier)
+                            .saveSentence(sentence);
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Saved "${sentence.text.length > 30 ? '${sentence.text.substring(0, 30)}...' : sentence.text}" to offline library!',
+                            ),
+                            backgroundColor: AppColors.success,
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.bookmark_add_rounded, size: 14),
+                      label: const Text('Save Sentence'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            isDark ? AppColors.primaryLight : AppColors.primary,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        textStyle: const TextStyle(
+                            fontSize: 11, fontWeight: FontWeight.w800),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+
             // Top Row: Difficulty Badge, Category Chip & Favorite
             Row(
               children: [
@@ -401,6 +486,18 @@ class SentenceCard extends ConsumerWidget {
                   label: 'Listen',
                   playingLabel: 'Playing',
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                ),
+                const SizedBox(width: 4),
+
+                // Record Audio / Voice Pronunciation Button
+                IconButton(
+                  icon: const Icon(Icons.mic_rounded, size: 20),
+                  tooltip: 'Record audio (Speak & Practice)',
+                  visualDensity: VisualDensity.compact,
+                  constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+                  padding: EdgeInsets.zero,
+                  color: isDark ? AppColors.primaryLight : AppColors.primary,
+                  onPressed: () => SentenceRecordingDialog.show(context, sentence),
                 ),
                 const SizedBox(width: 4),
 
