@@ -233,18 +233,18 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                  backgroundColor: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
                   selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
                   side: BorderSide(
                     color: isSel
                         ? (isDark ? AppColors.primaryLight : AppColors.primary)
-                        : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                        : (isDark ? AppColors.borderDark : AppColors.borderLight),
                     width: 1,
                   ),
                   labelStyle: TextStyle(
                     color: isSel
                         ? Colors.white
-                        : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                        : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
                     fontWeight: isSel ? FontWeight.w700 : FontWeight.w600,
                     fontSize: 13,
                   ),
@@ -296,7 +296,7 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                 return Container(
                   padding: const EdgeInsets.all(18.0),
                   decoration: BoxDecoration(
-                    color: isDark ? AppColors.surfaceDark : Colors.white,
+                    color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
                     borderRadius: BorderRadius.circular(18),
                     border: Border.all(
                       color: isDark ? AppColors.borderDark : AppColors.borderLight,
@@ -345,7 +345,7 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
         child: Material(
           color: isSelected
               ? (isDark ? AppColors.surfaceVariantDark : AppColors.primaryContainerLight)
-              : (isDark ? AppColors.surfaceDark : Colors.white),
+              : (isDark ? AppColors.surfaceDark : AppColors.surfaceLight),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
             side: BorderSide(

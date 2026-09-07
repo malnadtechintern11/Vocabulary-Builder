@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../providers/theme_controller.dart';
@@ -11,26 +12,34 @@ import 'privacy_policy_screen.dart';
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
-  static const String _shareMessage = '''
+  /// Play Store link and text shared with other apps and users
+  static const String shareLink = AppConstants.playStoreWebUrl;
+  static const String shareMessage = '''
 🌟 Vocabulary Builder - English & ಕನ್ನಡ Learning Hub
-Boost your vocabulary with 1,350+ words, Kannada meanings, offline quizzes, 600+ sentences, and photo OCR translation!
-Download and master English vocabulary effortlessly today!''';
+Boost your vocabulary with 1,350+ curated words, Kannada meanings, offline quizzes, 600+ sentences & camera OCR translation!
+
+📲 Download on Google Play Store:
+${AppConstants.playStoreWebUrl}''';
 
   void _shareApp(BuildContext context) async {
     try {
+      // Share both the app description and the clickable Google Play Store link
       await SharePlus.instance.share(
         ShareParams(
-          text: _shareMessage,
+          text: shareMessage,
           subject: 'Learn English with Vocabulary Builder (English & ಕನ್ನಡ)',
+          title: 'Vocabulary Builder',
         ),
       );
     } catch (_) {
-      // Fallback: Copy to clipboard if system share sheet encounters an issue
-      await Clipboard.setData(const ClipboardData(text: _shareMessage));
+      // Fallback: Copy both text and link directly to clipboard
+      await Clipboard.setData(
+        const ClipboardData(text: shareMessage),
+      );
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('App share message copied to clipboard!'),
+            content: Text('App details and Play Store link copied to clipboard!'),
             duration: Duration(seconds: 2),
             behavior: SnackBarBehavior.floating,
           ),
@@ -147,7 +156,20 @@ Download and master English vocabulary effortlessly today!''';
 
           const SizedBox(height: 26),
 
-          // Section 2: Share & Community (Attractive Action Banner)
+          // Section 2: Rate Us & Support
+          _buildSectionHeader(
+            context,
+            icon: Icons.star_rounded,
+            title: 'Rate Us',
+            subtitle: 'Love learning? Rate us 5 stars on Google Play Store',
+          ),
+          const SizedBox(height: 12),
+
+          const _RateUsCard(),
+
+          const SizedBox(height: 26),
+
+          // Section 3: Share & Community (Attractive Action Banner)
           _buildSectionHeader(
             context,
             icon: Icons.share_rounded,
@@ -158,17 +180,11 @@ Download and master English vocabulary effortlessly today!''';
 
           Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: isDark
-                    ? [const Color(0xFF311B92), const Color(0xFF1E1B4B)]
-                    : [const Color(0xFF4F46E5), const Color(0xFF6366F1)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              gradient: isDark ? AppColors.heroGradientDark : AppColors.primaryGradient,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF4F46E5).withValues(alpha: isDark ? 0.35 : 0.25),
+                  color: AppColors.primary.withValues(alpha: isDark ? 0.35 : 0.25),
                   blurRadius: 14,
                   offset: const Offset(0, 5),
                 ),
@@ -1206,6 +1222,287 @@ Download and master English vocabulary effortlessly today!''';
                 fontSize: 12.5,
                 fontWeight: FontWeight.w700,
                 color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Interactive 5-star rating card connecting directly to the Google Play Store
+class _RateUsCard extends StatefulWidget {
+  const _RateUsCard();
+
+  @override
+  State<_RateUsCard> createState() => _RateUsCardState();
+}
+
+class _RateUsCardState extends State<_RateUsCard> {
+  int _selectedRating = 0;
+
+  // Vibrant gold color for filled rating stars
+  static const Color _goldColor = Color(0xFFFFB800);
+
+  Future<void> _handleRating(int rating) async {
+    setState(() {
+      _selectedRating = rating;
+    });
+
+    HapticFeedback.lightImpact();
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Row(
+            children: [
+              const Icon(Icons.star_rounded, color: _goldColor, size: 20),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Opening Google Play Store for your $rating-star rating...',
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+              ),
+            ],
+          ),
+          duration: const Duration(seconds: 2),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+
+    await _openPlayStore(context);
+  }
+
+  Future<void> _openPlayStore(BuildContext context) async {
+    final marketUri = Uri.parse(AppConstants.playStoreMarketUrl);
+    final webUri = Uri.parse(AppConstants.playStoreWebUrl);
+
+    try {
+      // 1. Attempt to open native Google Play Store app
+      final launchedMarket = await launchUrl(
+        marketUri,
+        mode: LaunchMode.externalApplication,
+      );
+
+      if (!launchedMarket) {
+        // 2. Fallback to web browser with Play Store URL
+        final launchedWeb = await launchUrl(
+          webUri,
+          mode: LaunchMode.externalApplication,
+        );
+        if (!launchedWeb && context.mounted) {
+          _showFallbackCopySnackBar(context);
+        }
+      }
+    } catch (_) {
+      try {
+        // Fallback if market:// scheme is unsupported on this device
+        final launchedWeb = await launchUrl(
+          webUri,
+          mode: LaunchMode.externalApplication,
+        );
+        if (!launchedWeb && context.mounted) {
+          _showFallbackCopySnackBar(context);
+        }
+      } catch (_) {
+        if (context.mounted) {
+          _showFallbackCopySnackBar(context);
+        }
+      }
+    }
+  }
+
+  void _showFallbackCopySnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Could not open Google Play Store directly.'),
+        action: SnackBarAction(
+          label: 'Copy Link',
+          onPressed: () {
+            Clipboard.setData(const ClipboardData(text: AppConstants.playStoreWebUrl));
+          },
+        ),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  String _getRatingFeedbackText(int rating) {
+    switch (rating) {
+      case 5:
+        return '5 Stars • Loved it! Best vocabulary app!';
+      case 4:
+        return '4 Stars • Great learning experience!';
+      case 3:
+        return '3 Stars • Good, your review helps us improve!';
+      case 2:
+        return '2 Stars • Help us improve with your feedback!';
+      case 1:
+        return '1 Star • Tell us what to fix on Play Store!';
+      default:
+        return 'Tap a star to rate on Google Play Store';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.surfaceDark : Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: isDark ? AppColors.borderDark : AppColors.borderLight,
+          width: 1.2,
+        ),
+        boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+      ),
+      padding: const EdgeInsets.all(18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [_goldColor, Color(0xFFD97706)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: [
+                    BoxShadow(
+                      color: _goldColor.withValues(alpha: 0.35),
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.star_rounded,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Rate Vocabulary Builder',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w900,
+                        fontSize: 16,
+                        letterSpacing: -0.2,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Enjoying our app? Tap any star to review on Play Store!',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontSize: 12,
+                        color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          const Divider(height: 1),
+          const SizedBox(height: 16),
+
+          // Interactive 5-Star Row (blank initially, filled with gold on tap)
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+            decoration: BoxDecoration(
+              color: isDark
+                  ? AppColors.surfaceVariantDark.withValues(alpha: 0.5)
+                  : const Color(0xFFF8FAFC),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: isDark ? AppColors.borderDark : const Color(0xFFE2E8F0),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: List.generate(5, (index) {
+                final starNumber = index + 1;
+                final isFilled = starNumber <= _selectedRating;
+
+                return InkWell(
+                  onTap: () => _handleRating(starNumber),
+                  borderRadius: BorderRadius.circular(12),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+                    child: AnimatedScale(
+                      scale: isFilled ? 1.08 : 1.0,
+                      duration: const Duration(milliseconds: 160),
+                      curve: Curves.easeOutBack,
+                      child: Icon(
+                        isFilled ? Icons.star_rounded : Icons.star_outline_rounded,
+                        color: isFilled
+                            ? _goldColor
+                            : (isDark ? AppColors.blueGrey : const Color(0xFF94A3B8)),
+                        size: 38,
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
+
+          const SizedBox(height: 10),
+
+          // Dynamic Rating Feedback Text
+          Text(
+            _getRatingFeedbackText(_selectedRating),
+            style: TextStyle(
+              fontSize: 12.5,
+              fontWeight: FontWeight.w700,
+              color: _selectedRating > 0
+                  ? (isDark ? const Color(0xFFFBBF24) : const Color(0xFFD97706))
+                  : (isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight),
+            ),
+          ),
+
+          const SizedBox(height: 14),
+
+          // Direct Button: "Rate on Google Play Store"
+          SizedBox(
+            width: double.infinity,
+            height: 44,
+            child: ElevatedButton.icon(
+              onPressed: () => _handleRating(_selectedRating > 0 ? _selectedRating : 5),
+              icon: const Icon(Icons.rate_review_rounded, size: 18),
+              label: const Text(
+                'Rate on Google Play Store',
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.1,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
+                foregroundColor: Colors.white,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ),

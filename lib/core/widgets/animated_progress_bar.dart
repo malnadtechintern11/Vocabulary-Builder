@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../app/theme/app_colors.dart';
 
 /// Smooth animated progress indicator with custom easing curve, rounded caps, and optional label
 class AnimatedProgressBar extends StatelessWidget {
@@ -27,7 +28,7 @@ class AnimatedProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final clampedValue = value.clamp(0.0, 1.0);
-    final defaultBg = backgroundColor ?? (theme.brightness == Brightness.dark ? Colors.white12 : const Color(0xFFE2E8F0));
+    final defaultBg = backgroundColor ?? (theme.brightness == Brightness.dark ? Colors.white12 : AppColors.borderLight);
     final defaultColor = color ?? theme.colorScheme.primary;
 
     return Column(

@@ -209,12 +209,12 @@ class _AchievementsViewState extends State<AchievementsView> {
           decoration: BoxDecoration(
             color: isSelected
                 ? (isDark ? AppColors.primaryLight : AppColors.primary)
-                : (isDark ? AppColors.surfaceDark : const Color(0xFFF1F5F9)),
+                : (isDark ? AppColors.surfaceDark : AppColors.surfaceVariantLight),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isSelected
                   ? (isDark ? AppColors.primaryLight : AppColors.primary)
-                  : (isDark ? AppColors.borderDark : const Color(0xFFE2E8F0)),
+                  : (isDark ? AppColors.borderDark : AppColors.borderLight),
             ),
           ),
           child: Text(

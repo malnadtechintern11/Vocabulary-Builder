@@ -47,14 +47,14 @@ class AppTheme {
         margin: EdgeInsets.zero,
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: const Color(0xFFF1F5F9),
+        backgroundColor: AppColors.surfaceVariantLight,
         selectedColor: AppColors.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: Color(0xFFCBD5E1), width: 1),
+          side: const BorderSide(color: AppColors.borderLight, width: 1),
         ),
         labelStyle: const TextStyle(
-          color: Color(0xFF0F172A),
+          color: AppColors.textPrimaryLight,
           fontSize: 12.5,
           fontWeight: FontWeight.w700,
         ),
@@ -129,7 +129,7 @@ class AppTheme {
             return const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w800,
-              color: AppColors.primary,
+              color: AppColors.deepNavyBlue,
             );
           }
           return const TextStyle(
@@ -152,19 +152,19 @@ class AppTheme {
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        backgroundColor: const Color(0xFF0F172A),
+        backgroundColor: AppColors.deepNavyBlue,
         contentTextStyle: const TextStyle(
-          color: Colors.white,
+          color: AppColors.ivory,
           fontSize: 13.5,
           fontWeight: FontWeight.w600,
         ),
       ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: const Color(0xFF0F172A).withValues(alpha: 0.92),
+          color: AppColors.deepNavyBlue.withValues(alpha: 0.94),
           borderRadius: BorderRadius.circular(10),
         ),
-        textStyle: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+        textStyle: const TextStyle(color: AppColors.ivory, fontSize: 12, fontWeight: FontWeight.w600),
       ),
       dividerTheme: const DividerThemeData(
         color: AppColors.borderLight,
@@ -326,18 +326,18 @@ class AppTheme {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         backgroundColor: AppColors.surfaceVariantDark,
         contentTextStyle: const TextStyle(
-          color: Colors.white,
+          color: AppColors.ivory,
           fontSize: 13.5,
           fontWeight: FontWeight.w600,
         ),
       ),
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: const Color(0xFF1E293B).withValues(alpha: 0.95),
+          color: AppColors.surfaceVariantDark.withValues(alpha: 0.96),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: AppColors.borderDark),
         ),
-        textStyle: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+        textStyle: const TextStyle(color: AppColors.ivory, fontSize: 12, fontWeight: FontWeight.w600),
       ),
       dividerTheme: const DividerThemeData(
         color: AppColors.borderDark,

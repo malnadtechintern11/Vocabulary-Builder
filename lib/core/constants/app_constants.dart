@@ -9,4 +9,9 @@ class AppConstants {
   // Words limits & defaults
   static const int defaultQuizQuestionCount = 10;
   static const int minWordsRequiredForQuiz = 4;
+
+  // Google Play Store Details
+  static const String playStorePackageName = 'com.vocabularybuilder.vocabulary_builder';
+  static const String playStoreMarketUrl = 'market://details?id=$playStorePackageName';
+  static const String playStoreWebUrl = 'https://play.google.com/store/apps/details?id=$playStorePackageName';
 }

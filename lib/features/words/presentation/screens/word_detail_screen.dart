@@ -92,16 +92,14 @@ class _WordDetailScreenState extends ConsumerState<WordDetailScreen> {
                 padding: const EdgeInsets.all(14),
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: isDark
-                        ? [const Color(0xFF0F766E), const Color(0xFF0369A1)]
-                        : [const Color(0xFFCCFBF1), const Color(0xFFE0F2FE)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
+                  gradient: isDark
+                      ? AppColors.heroGradientDark
+                      : AppColors.heroGradientLight,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: isDark ? const Color(0xFF14B8A6) : const Color(0xFF38BDF8),
+                    color: isDark
+                        ? AppColors.borderDark
+                        : AppColors.primaryLight.withValues(alpha: 0.35),
                     width: 1.2,
                   ),
                 ),
@@ -113,9 +111,9 @@ class _WordDetailScreenState extends ConsumerState<WordDetailScreen> {
                         color: isDark ? Colors.black26 : Colors.white,
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.public_rounded,
-                        color: Color(0xFF0D9488),
+                        color: isDark ? AppColors.primaryLight : AppColors.primary,
                         size: 20,
                       ),
                     ),

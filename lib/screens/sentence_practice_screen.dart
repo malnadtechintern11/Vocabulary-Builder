@@ -528,7 +528,7 @@ class _SentencePracticeScreenState
                                           fontWeight: FontWeight.w500,
                                           color: isDark
                                               ? AppColors.textPrimaryDark
-                                              : const Color(0xFF14532D),
+                                              : AppColors.textPrimaryLight,
                                         ),
                                       ),
                                     ],
@@ -615,7 +615,7 @@ class _SentencePracticeScreenState
                                           fontSize: 13,
                                           color: isDark
                                               ? AppColors.textSecondaryDark
-                                              : const Color(0xFF334155),
+                                              : AppColors.textSecondaryLight,
                                         ),
                                       ),
                                     ),

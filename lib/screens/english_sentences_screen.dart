@@ -127,19 +127,9 @@ class _EnglishSentencesScreenState
             margin: const EdgeInsets.fromLTRB(16, 4, 16, 12),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: isDark
-                    ? [
-                        const Color(0xFF1E1B4B).withValues(alpha: 0.9),
-                        const Color(0xFF312E81).withValues(alpha: 0.6),
-                      ]
-                    : [
-                        const Color(0xFFEEF2FF),
-                        const Color(0xFFE0E7FF),
-                      ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              gradient: isDark
+                  ? AppColors.heroGradientDark
+                  : AppColors.heroGradientLight,
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
                 color: isDark
@@ -435,7 +425,7 @@ class _EnglishSentencesScreenState
                     showCheckmark: false,
                     backgroundColor: isDark
                         ? AppColors.surfaceVariantDark.withValues(alpha: 0.5)
-                        : const Color(0xFFF1F5F9),
+                        : AppColors.surfaceVariantLight,
                     selectedColor:
                         isDark ? AppColors.primaryLight : AppColors.primary,
                     side: BorderSide(
@@ -445,15 +435,15 @@ class _EnglishSentencesScreenState
                               : AppColors.primary)
                           : (isDark
                               ? AppColors.borderDark
-                              : const Color(0xFFCBD5E1)),
+                              : AppColors.borderLight),
                       width: 1,
                     ),
                     labelStyle: TextStyle(
                       color: isSel
                           ? Colors.white
                           : (isDark
-                              ? const Color(0xFFF8FAFC)
-                              : const Color(0xFF0F172A)),
+                              ? AppColors.textPrimaryDark
+                              : AppColors.textPrimaryLight),
                       fontWeight: isSel ? FontWeight.w700 : FontWeight.w500,
                       fontSize: 11.5,
                     ),

@@ -43,18 +43,18 @@ class DifficultyFilterChips extends ConsumerWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              backgroundColor: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+              backgroundColor: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
               selectedColor: isDark ? AppColors.primaryLight : AppColors.primary,
               side: BorderSide(
                 color: isSelected
                     ? (isDark ? AppColors.primaryLight : AppColors.primary)
-                    : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
+                    : (isDark ? AppColors.borderDark : AppColors.borderLight),
                 width: 1.2,
               ),
               labelStyle: TextStyle(
                 color: isSelected
                     ? Colors.white
-                    : (isDark ? const Color(0xFFF8FAFC) : const Color(0xFF0F172A)),
+                    : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
                 fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
                 fontSize: 12.5,
               ),

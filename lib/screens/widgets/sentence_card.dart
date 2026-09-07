@@ -74,11 +74,13 @@ class SentenceCard extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? const Color(0xFF0F2B2B)
-                      : const Color(0xFFF0FDFA),
+                      ? AppColors.surfaceVariantDark
+                      : AppColors.primaryContainerLight,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: const Color(0xFF0D9488).withValues(alpha: isDark ? 0.35 : 0.25),
+                    color: isDark
+                        ? AppColors.borderDark
+                        : AppColors.primaryLight.withValues(alpha: 0.35),
                     width: 1,
                   ),
                 ),
@@ -87,9 +89,7 @@ class SentenceCard extends ConsumerWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFF0D9488), Color(0xFF0284C7)],
-                        ),
+                        gradient: AppColors.accentGradient,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Row(
@@ -450,7 +450,7 @@ class SentenceCard extends ConsumerWidget {
                                       fontSize: 12,
                                       color: isDark
                                           ? AppColors.textSecondaryDark
-                                          : const Color(0xFF334155),
+                                          : AppColors.textSecondaryLight,
                                     ),
                                   ),
                                 ],

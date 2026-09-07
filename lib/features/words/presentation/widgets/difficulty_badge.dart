@@ -33,12 +33,12 @@ class DifficultyBadge extends StatelessWidget {
         break;
       case 'advanced':
         label = 'ADVANCED';
-        bg = isDark ? const Color(0xFF4C1D95) : const Color(0xFFEDE9FE);
-        text = isDark ? const Color(0xFFC4B5FD) : const Color(0xFF5B21B6);
+        bg = isDark ? const Color(0xFF162C40) : const Color(0xFFE5EDF2);
+        text = isDark ? const Color(0xFFA9C0CF) : const Color(0xFF183F63);
         break;
       default:
-        bg = isDark ? Colors.white12 : const Color(0xFFF1F5F9);
-        text = isDark ? Colors.white70 : const Color(0xFF334155);
+        bg = isDark ? Colors.white12 : const Color(0xFFE7ECEF);
+        text = isDark ? const Color(0xFFF2F0E8) : const Color(0xFF183F63);
     }
 
     return CustomBadge(

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:vocabulary_builder/core/widgets/custom_badge.dart';
 import 'package:vocabulary_builder/core/widgets/empty_state_view.dart';
 import 'package:vocabulary_builder/core/widgets/error_state_view.dart';
+import 'package:vocabulary_builder/core/constants/app_constants.dart';
 import 'package:vocabulary_builder/features/settings/presentation/screens/settings_screen.dart';
 import 'package:vocabulary_builder/features/settings/presentation/screens/privacy_policy_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/screens/add_word_screen.dart';
@@ -100,6 +101,8 @@ void main() {
       expect(find.text('Dark Mode'), findsOneWidget);
       expect(find.text('Share & Community'), findsOneWidget);
       expect(find.text('Share App'), findsOneWidget);
+      expect(SettingsScreen.shareMessage.contains(AppConstants.playStoreWebUrl), isTrue);
+      expect(SettingsScreen.shareMessage.contains('com.vocabularybuilder.vocabulary_builder'), isTrue);
       expect(find.text('Privacy & Security'), findsOneWidget);
       expect(find.text('Privacy Policy'), findsOneWidget);
       expect(find.text('Vocabulary Library'), findsOneWidget);
@@ -123,6 +126,73 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(PrivacyPolicyScreen), findsNothing);
       expect(find.text('100% Private, Offline-First & Transparent'), findsNothing);
+    });
+
+    testWidgets('SettingsScreen renders Rate Us section with initially blank stars and fills on tap', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(800, 1600);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: SettingsScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Verify Rate Us section header and card are rendered
+      expect(find.text('Rate Us'), findsOneWidget);
+      expect(find.text('Rate Vocabulary Builder'), findsOneWidget);
+      expect(find.text('Rate on Google Play Store'), findsOneWidget);
+
+      // Initially, all 5 stars in the rating bar must be blank/outlined
+      expect(find.byIcon(Icons.star_outline_rounded), findsNWidgets(5));
+
+      // Tap the 3rd star to rate 3 stars
+      final outlineStars = find.byIcon(Icons.star_outline_rounded);
+      await tester.tap(outlineStars.at(2)); // Index 2 is the 3rd star
+      await tester.pump();
+
+      // 3 stars filled in the rating row, 2 remain blank/outlined
+      expect(find.byIcon(Icons.star_outline_rounded), findsNWidgets(2));
+      // In the rating row there are exactly 3 filled stars with size 38 and gold color
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.icon == Icons.star_rounded &&
+              widget.size == 38 &&
+              widget.color == const Color(0xFFFFB800),
+        ),
+        findsNWidgets(3),
+      );
+
+      // Verify feedback snackbar is displayed
+      expect(find.byType(SnackBar), findsOneWidget);
+      expect(find.textContaining('Opening Google Play Store for your 3-star rating'), findsOneWidget);
+
+      // Tap the 5th star to update rating to 5 stars
+      final remainingOutlines = find.byIcon(Icons.star_outline_rounded);
+      await tester.tap(remainingOutlines.at(1)); // The last outline star
+      await tester.pump();
+
+      // Now all 5 stars in the rating row are filled with gold
+      expect(find.byIcon(Icons.star_outline_rounded), findsNothing);
+      expect(
+        find.byWidgetPredicate(
+          (widget) =>
+              widget is Icon &&
+              widget.icon == Icons.star_rounded &&
+              widget.size == 38 &&
+              widget.color == const Color(0xFFFFB800),
+        ),
+        findsNWidgets(5),
+      );
+
+      await tester.pump(const Duration(seconds: 3));
+      expect(tester.takeException(), isNull);
     });
 
     testWidgets('PrivacyPolicyScreen renders app bar, back button, and policy sections', (WidgetTester tester) async {

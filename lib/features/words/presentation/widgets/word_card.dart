@@ -52,13 +52,11 @@ class WordCard extends ConsumerWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFF0D9488), Color(0xFF0284C7)],
-                          ),
+                          gradient: AppColors.accentGradient,
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(0xFF0D9488).withValues(alpha: 0.3),
+                              color: AppColors.primary.withValues(alpha: 0.3),
                               blurRadius: 6,
                               offset: const Offset(0, 2),
                             ),
@@ -208,8 +206,8 @@ class WordCard extends ConsumerWidget {
                           height: 1.45,
                           fontWeight: FontWeight.w500,
                           color: isDark
-                              ? const Color(0xFFE2E8F0)
-                              : const Color(0xFF334155),
+                              ? AppColors.textPrimaryDark
+                              : AppColors.textPrimaryLight,
                         ),
                       ),
                     ),

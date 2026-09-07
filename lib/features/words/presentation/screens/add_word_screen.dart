@@ -276,7 +276,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: isDark ? AppColors.surfaceDark : Colors.white,
+                  color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
                     color: isDark ? AppColors.borderDark : AppColors.borderLight,
@@ -466,7 +466,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: isDark ? AppColors.surfaceDark : Colors.white,
+                  color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
                     color: isDark ? AppColors.borderDark : AppColors.borderLight,
@@ -601,7 +601,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: isDark ? AppColors.surfaceDark : Colors.white,
+                  color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
                   borderRadius: BorderRadius.circular(18),
                   border: Border.all(
                     color: isDark ? AppColors.borderDark : AppColors.borderLight,

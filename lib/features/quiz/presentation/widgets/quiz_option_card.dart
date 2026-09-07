@@ -27,9 +27,9 @@ class QuizOptionCard extends StatelessWidget {
     final isDark = theme.brightness == Brightness.dark;
 
     Color borderColor = isDark ? AppColors.borderDark : AppColors.borderLight;
-    Color bgColor = isDark ? AppColors.surfaceDark : Colors.white;
-    Color letterBg = isDark ? Colors.white10 : const Color(0xFFF1F5F9);
-    Color letterColor = isDark ? Colors.white70 : const Color(0xFF334155);
+    Color bgColor = isDark ? AppColors.surfaceDark : AppColors.surfaceLight;
+    Color letterBg = isDark ? Colors.white10 : AppColors.surfaceVariantLight;
+    Color letterColor = isDark ? AppColors.ivory : AppColors.textPrimaryLight;
     IconData? stateIcon;
     Color? iconColor;
 

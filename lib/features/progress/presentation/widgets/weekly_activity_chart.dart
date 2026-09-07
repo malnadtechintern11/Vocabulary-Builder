@@ -66,7 +66,7 @@ class WeeklyActivityChart extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
                 decoration: BoxDecoration(
-                  color: isDark ? AppColors.surfaceVariantDark : const Color(0xFFF1F5F9),
+                  color: isDark ? AppColors.surfaceVariantDark : AppColors.surfaceVariantLight,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
@@ -117,7 +117,7 @@ class WeeklyActivityChart extends StatelessWidget {
                                 ? LinearGradient(
                                     colors: [
                                       isDark ? AppColors.primaryLight : AppColors.primary,
-                                      const Color(0xFF818CF8),
+                                      AppColors.secondaryLight,
                                     ],
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
@@ -133,7 +133,7 @@ class WeeklyActivityChart extends StatelessWidget {
                                       )
                                     : null),
                             color: !hasActivity
-                                ? (isDark ? Colors.white12 : const Color(0xFFE2E8F0))
+                                ? (isDark ? Colors.white12 : AppColors.borderLight)
                                 : null,
                             borderRadius: BorderRadius.circular(11),
                           ),

@@ -105,13 +105,9 @@ class WordsListScreen extends ConsumerWidget {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: isDark
-                                    ? [const Color(0xFF1E1B4B), const Color(0xFF312E81)]
-                                    : [const Color(0xFFEEF2FF), const Color(0xFFE0E7FF)],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
+                              gradient: isDark
+                                  ? AppColors.heroGradientDark
+                                  : AppColors.heroGradientLight,
                               borderRadius: BorderRadius.circular(18),
                               border: Border.all(
                                 color: isDark

@@ -196,7 +196,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.surfaceDark : Colors.white,
+        color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
@@ -485,7 +485,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.surfaceDark : Colors.white,
+        color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
@@ -532,7 +532,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.surfaceDark : Colors.white,
+        color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
@@ -742,7 +742,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
             boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
           ),
           child: Material(
-            color: isDark ? AppColors.surfaceDark : Colors.white,
+            color: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
               side: BorderSide(
