@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/widgets/app_share_button.dart';
 
 /// Dedicated full screen for Privacy Policy & Security commitments
 class PrivacyPolicyScreen extends StatelessWidget {
@@ -43,6 +44,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           ),
         ),
         title: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               padding: const EdgeInsets.all(7),
@@ -57,49 +59,23 @@ class PrivacyPolicyScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 10),
-            Text(
-              'Privacy Policy',
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w900,
-                fontSize: 18,
-                letterSpacing: -0.3,
-                color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+            Flexible(
+              child: Text(
+                'Privacy Policy',
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
+                  letterSpacing: -0.3,
+                  color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                ),
               ),
             ),
           ],
         ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: const Color(0xFF10B981).withValues(alpha: isDark ? 0.2 : 0.12),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: const Color(0xFF10B981).withValues(alpha: 0.35),
-                width: 1,
-              ),
-            ),
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.shield_rounded,
-                  size: 14,
-                  color: Color(0xFF10B981),
-                ),
-                SizedBox(width: 5),
-                Text(
-                  '100% Secure',
-                  style: TextStyle(
-                    fontSize: 11.5,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF10B981),
-                  ),
-                ),
-              ],
-            ),
-          ),
+        actions: const [
+          AppShareButton(),
+          SizedBox(width: 4),
         ],
       ),
       body: SafeArea(
@@ -126,13 +102,15 @@ class PrivacyPolicyScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text(
-                    'Our Privacy Commitments',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: -0.2,
-                      color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                  Expanded(
+                    child: Text(
+                      'Our Privacy Commitments',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.2,
+                        color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                      ),
                     ),
                   ),
                 ],
@@ -166,7 +144,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 tag: 'Zero Telemetry',
                 title: '2. Zero Data Tracking & No Analytics',
                 description:
-                    'Vocabulary Builder does not track your search history, personal information, location, or usage habits. There are no third-party trackers, telemetry libraries, or targeted advertising SDKs included.',
+                    'Kalika does not track your search history, personal information, location, or usage habits. There are no third-party trackers, telemetry libraries, or targeted advertising SDKs included.',
                 highlights: const [
                   'No third-party advertising SDKs or tracking cookies.',
                   'Zero collection of user search queries or study habits.',
@@ -238,7 +216,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 tag: 'Minimal Permissions',
                 title: '6. Device Permissions Breakdown',
                 description:
-                    'Vocabulary Builder requests only essential permissions strictly needed to enable specific learning features:',
+                    'Kalika requests only essential permissions strictly needed to enable specific learning features:',
                 highlights: const [
                   'Camera: Optional, requested only when scanning text with OCR.',
                   'Storage/Photos: Optional, requested only when picking an image.',
@@ -299,7 +277,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            'Vocabulary Builder • English & ಕನ್ನಡ Learning Hub',
+                            'Kalika • English & ಕನ್ನಡ Learning Hub',
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,
@@ -446,7 +424,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Your vocabulary growth and learning journey are personal. Vocabulary Builder is engineered from the ground up to respect your privacy with zero external tracking, zero cloud data harvesting, and complete on-device security.',
+            'Your vocabulary growth and learning journey are personal. Kalika is engineered from the ground up to respect your privacy with zero external tracking, zero cloud data harvesting, and complete on-device security.',
             style: TextStyle(
               fontSize: 13,
               height: 1.5,
@@ -459,6 +437,12 @@ class PrivacyPolicyScreen extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
+              _buildFeaturePill(
+                icon: Icons.shield_rounded,
+                label: '100% Secure',
+                isDark: isDark,
+                color: const Color(0xFF10B981),
+              ),
               _buildFeaturePill(
                 icon: Icons.wifi_off_rounded,
                 label: 'Offline-First',
@@ -490,14 +474,18 @@ class PrivacyPolicyScreen extends StatelessWidget {
     required IconData icon,
     required String label,
     required bool isDark,
+    Color? color,
   }) {
+    final pillColor = color ?? const Color(0xFF0D9488);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         color: isDark ? AppColors.surfaceDark.withValues(alpha: 0.8) : Colors.white,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: isDark ? AppColors.borderDark : const Color(0xFFCBD5E1),
+          color: color != null
+              ? color.withValues(alpha: isDark ? 0.45 : 0.3)
+              : (isDark ? AppColors.borderDark : const Color(0xFFCBD5E1)),
           width: 1,
         ),
       ),
@@ -507,7 +495,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           Icon(
             icon,
             size: 13,
-            color: const Color(0xFF0D9488),
+            color: pillColor,
           ),
           const SizedBox(width: 5),
           Text(
@@ -515,7 +503,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 11.5,
               fontWeight: FontWeight.w700,
-              color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+              color: color != null && !isDark
+                  ? color
+                  : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
             ),
           ),
         ],

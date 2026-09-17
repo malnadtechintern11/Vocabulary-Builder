@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../domain/entities/quiz_question.dart';
 import '../providers/quiz_controller.dart';
 
@@ -28,6 +29,10 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Vocabulary Quiz'),
+        actions: const [
+          AppShareButton(),
+          SizedBox(width: 4),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),

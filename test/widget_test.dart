@@ -5,8 +5,12 @@ import 'package:vocabulary_builder/core/widgets/custom_badge.dart';
 import 'package:vocabulary_builder/core/widgets/empty_state_view.dart';
 import 'package:vocabulary_builder/core/widgets/error_state_view.dart';
 import 'package:vocabulary_builder/core/constants/app_constants.dart';
+import 'package:vocabulary_builder/core/utils/app_share_helper.dart';
+import 'package:vocabulary_builder/core/widgets/app_share_button.dart';
 import 'package:vocabulary_builder/features/settings/presentation/screens/settings_screen.dart';
 import 'package:vocabulary_builder/features/settings/presentation/screens/privacy_policy_screen.dart';
+import 'package:vocabulary_builder/features/settings/presentation/screens/about_screen.dart';
+import 'package:vocabulary_builder/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/screens/add_word_screen.dart';
 import 'package:vocabulary_builder/features/words/presentation/widgets/difficulty_badge.dart';
 import 'package:mocktail/mocktail.dart';
@@ -144,7 +148,7 @@ void main() {
 
       // Verify Rate Us section header and card are rendered
       expect(find.text('Rate Us'), findsOneWidget);
-      expect(find.text('Rate Vocabulary Builder'), findsOneWidget);
+      expect(find.text('Rate Kalika'), findsOneWidget);
       expect(find.text('Rate on Google Play Store'), findsOneWidget);
 
       // Initially, all 5 stars in the rating bar must be blank/outlined
@@ -218,7 +222,90 @@ void main() {
       expect(find.text('I Understand'), findsOneWidget);
     });
 
-    testWidgets('SettingsScreen About section renders app details, capabilities, specs, and licenses', (WidgetTester tester) async {
+    testWidgets('PrivacyPolicyScreen renders without any overflow on compact 320px screen', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(320, 640);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: PrivacyPolicyScreen(),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(PrivacyPolicyScreen), findsOneWidget);
+      expect(find.text('Privacy Policy'), findsAtLeastNWidgets(1));
+      expect(find.text('100% Secure'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('FavoritesScreen renders empty state with refresh button and allows pull-to-refresh', (WidgetTester tester) async {
+      final mockRepo = MockWordRepository();
+      when(() => mockRepo.getWords(onlyFavorites: true)).thenAnswer((_) async => []);
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            wordRepositoryProvider.overrideWithValue(mockRepo),
+          ],
+          child: const MaterialApp(
+            home: FavoritesScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(FavoritesScreen), findsOneWidget);
+      expect(find.text('Saved Collection'), findsOneWidget);
+      expect(find.text('No Saved Words Yet'), findsOneWidget);
+      expect(find.byTooltip('Refresh Saved Words'), findsOneWidget);
+
+      // Tap refresh button
+      await tester.tap(find.byTooltip('Refresh Saved Words'));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('FavoritesScreen displays saved words reactively when favorites are present', (WidgetTester tester) async {
+      final mockRepo = MockWordRepository();
+      const savedWord = Word(
+        id: 42,
+        word: 'Ephemeral',
+        phonetic: '/ɪˈfem.ər.əl/',
+        partOfSpeech: 'adjective',
+        meaning: 'Lasting for a very short time',
+        kannadaMeaning: 'ಕ್ಷಣಿಕ / ಅಲ್ಪಕಾಲಿಕ',
+        example: 'Fame is ephemeral.',
+        synonyms: ['fleeting', 'transient'],
+        antonyms: ['permanent'],
+        difficulty: 'advanced',
+        category: 'daily',
+        isFavorite: true,
+        isLearned: false,
+      );
+
+      when(() => mockRepo.getWords(onlyFavorites: true)).thenAnswer((_) async => [savedWord]);
+
+      await tester.pumpWidget(
+        ProviderScope(
+          overrides: [
+            wordRepositoryProvider.overrideWithValue(mockRepo),
+          ],
+          child: const MaterialApp(
+            home: FavoritesScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Saved Collection'), findsOneWidget);
+      expect(find.text('Ephemeral'), findsOneWidget);
+      expect(find.text('1 word saved for quick pronunciation & study practice'), findsOneWidget);
+      expect(find.text('No Saved Words Yet'), findsNothing);
+    });
+
+    testWidgets('SettingsScreen About card navigates to dedicated AboutScreen', (WidgetTester tester) async {
       tester.view.physicalSize = const Size(800, 2400);
       tester.view.devicePixelRatio = 1.0;
       addTearDown(tester.view.resetPhysicalSize);
@@ -234,16 +321,64 @@ void main() {
 
       expect(find.text('About'), findsOneWidget);
       expect(find.text('Application details, features & architecture'), findsOneWidget);
+      expect(find.text('About App'), findsOneWidget);
 
-      await tester.scrollUntilVisible(
-        find.text('Educational Mission'),
-        300,
-        scrollable: find.byType(Scrollable).first,
+      // Tap the About App card to navigate to the dedicated AboutScreen
+      await tester.tap(find.text('About App'));
+      await tester.pumpAndSettle();
+
+      // Verify we are on AboutScreen
+      expect(find.byType(AboutScreen), findsOneWidget);
+      expect(find.byTooltip('Back to Settings'), findsOneWidget);
+      expect(find.text('Core Learning Capabilities'), findsOneWidget);
+      expect(find.text('Technical Specifications'), findsOneWidget);
+      expect(find.text('Educational Mission'), findsOneWidget);
+      expect(find.text('Open Source Licenses'), findsOneWidget);
+
+      // Tap back button and verify returned to SettingsScreen
+      await tester.tap(find.byTooltip('Back to Settings'));
+      await tester.pumpAndSettle();
+      expect(find.byType(AboutScreen), findsNothing);
+      expect(find.text('Application details, features & architecture'), findsOneWidget);
+    });
+
+    testWidgets('AboutScreen renders independently with all brand, feature, and specification sections', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: AboutScreen(),
+        ),
       );
       await tester.pumpAndSettle();
 
+      expect(find.text('About App'), findsAtLeastNWidgets(1));
+      expect(find.byTooltip('Back to Settings'), findsOneWidget);
+      expect(find.text(AppConstants.appName), findsOneWidget);
+      expect(find.text('Core Learning Capabilities'), findsOneWidget);
+      expect(find.text('Technical Specifications'), findsOneWidget);
       expect(find.text('Educational Mission'), findsOneWidget);
       expect(find.text('Open Source Licenses'), findsOneWidget);
+    });
+
+    testWidgets('AppShareButton is present in top right of screens and initiates share', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: SettingsScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Verify the top-right share icon button is present
+      expect(find.byType(AppShareButton), findsOneWidget);
+      expect(find.byTooltip('Share App'), findsOneWidget);
+
+      // Tap the share button to verify it responds and triggers fallback clipboard in test environment
+      await tester.tap(find.byType(AppShareButton));
+      await tester.pumpAndSettle();
+
+      expect(AppShareHelper.shareMessage.contains(AppConstants.playStoreWebUrl), isTrue);
+      expect(AppShareHelper.shareMessage.contains('com.vocabularybuilder.vocabulary_builder'), isTrue);
     });
 
     testWidgets('AddWordScreen renders form elements and Kannada label', (WidgetTester tester) async {

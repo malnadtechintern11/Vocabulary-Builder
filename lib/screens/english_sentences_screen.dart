@@ -5,6 +5,7 @@ import '../core/services/online_sentence_service.dart';
 import '../core/services/speech_service.dart';
 import '../core/widgets/animated_progress_bar.dart';
 import '../core/widgets/empty_state_view.dart';
+import '../core/widgets/app_share_button.dart';
 import '../features/sentences/providers/sentences_provider.dart';
 import 'sentence_practice_screen.dart';
 import 'widgets/sentence_card.dart';
@@ -118,6 +119,8 @@ class _EnglishSentencesScreenState
               );
             },
           ),
+          const AppShareButton(),
+          const SizedBox(width: 4),
         ],
       ),
       body: Column(

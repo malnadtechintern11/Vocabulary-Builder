@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/services/online_dictionary_service.dart';
 import '../../../../core/widgets/animated_progress_bar.dart';
 import '../../../../core/widgets/empty_state_view.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../../progress/presentation/providers/learning_streak_provider.dart';
 import '../../../quiz/presentation/providers/quiz_controller.dart';
 import '../providers/words_provider.dart';
@@ -33,15 +35,26 @@ class WordsListScreen extends ConsumerWidget {
         title: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
-                color: (isDark ? AppColors.primaryLight : AppColors.primary).withValues(alpha: 0.14),
-                borderRadius: BorderRadius.circular(11),
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.08),
+                    blurRadius: 4,
+                    offset: const Offset(0, 1),
+                  ),
+                ],
               ),
-              child: Icon(
-                Icons.school_rounded,
-                size: 21,
-                color: isDark ? AppColors.primaryLight : AppColors.primary,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  AppConstants.appLogoAssetPath,
+                  width: 36,
+                  height: 36,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(width: 11),
@@ -51,7 +64,7 @@ class WordsListScreen extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
-                    'Vocabulary Builder',
+                    'Kalika',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w900,
@@ -75,6 +88,10 @@ class WordsListScreen extends ConsumerWidget {
             ),
           ],
         ),
+        actions: const [
+          AppShareButton(),
+          SizedBox(width: 4),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {

@@ -6,6 +6,7 @@ import 'package:vocabulary_builder/app/theme/app_colors.dart';
 import 'package:vocabulary_builder/core/widgets/empty_state_view.dart';
 import 'package:vocabulary_builder/core/widgets/error_state_view.dart';
 import 'package:vocabulary_builder/core/widgets/loading_view.dart';
+import 'package:vocabulary_builder/core/widgets/app_share_button.dart';
 import 'package:vocabulary_builder/features/words/presentation/widgets/word_card.dart';
 import '../providers/favorites_provider.dart';
 
@@ -59,17 +60,37 @@ class FavoritesScreen extends ConsumerWidget {
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh_rounded),
+            tooltip: 'Refresh Saved Words',
+            onPressed: () => ref.invalidate(favoritesListProvider),
+          ),
+          const AppShareButton(),
+          const SizedBox(width: 4),
+        ],
       ),
       body: favoritesAsync.when(
         data: (favorites) {
           if (favorites.isEmpty) {
-            return EmptyStateView(
-              icon: Icons.favorite_border_rounded,
-              title: 'No Saved Words Yet',
-              description: 'Tap the heart icon on any vocabulary word to save it here for quick review and listening practice.',
-              actionLabel: 'Explore Words',
-              actionIcon: Icons.explore_rounded,
-              onActionPressed: () => context.go(RoutePaths.words),
+            return RefreshIndicator(
+              onRefresh: () async {
+                ref.invalidate(favoritesListProvider);
+              },
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  child: EmptyStateView(
+                    icon: Icons.favorite_border_rounded,
+                    title: 'No Saved Words Yet',
+                    description: 'Tap the heart icon on any vocabulary word to save it here for quick review and listening practice.',
+                    actionLabel: 'Explore Words',
+                    actionIcon: Icons.explore_rounded,
+                    onActionPressed: () => context.go(RoutePaths.words),
+                  ),
+                ),
+              ),
             );
           }
 

@@ -7,6 +7,7 @@ import '../../../../core/services/learning_analytics_service.dart';
 import '../../../../core/widgets/animated_progress_bar.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../../quiz/domain/entities/quiz_question.dart';
 import '../../../quiz/presentation/providers/quiz_controller.dart';
 import '../providers/learning_streak_provider.dart';
@@ -56,6 +57,10 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
     return Scaffold(
       appBar: AppBar(
         title: const Text('Learning Hub & Progress'),
+        actions: const [
+          AppShareButton(),
+          SizedBox(width: 4),
+        ],
         bottom: TabBar(
           controller: _tabController,
           indicatorColor: isDark ? AppColors.primaryLight : AppColors.primary,

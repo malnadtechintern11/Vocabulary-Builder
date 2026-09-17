@@ -133,6 +133,13 @@ final categoriesProvider = FutureProvider<List<String>>((ref) async {
   return repository.getCategories();
 });
 
+// --- Favorites List Provider ---
+
+final favoritesListProvider = FutureProvider<List<Word>>((ref) async {
+  final getWordsUseCase = ref.watch(getWordsUseCaseProvider);
+  return getWordsUseCase(onlyFavorites: true);
+});
+
 // --- Word Detail Provider ---
 
 final wordDetailProvider = FutureProvider.family<Word, int>((ref, wordId) async {
@@ -156,6 +163,7 @@ class WordController extends StateNotifier<AsyncValue<void>> {
       _ref.invalidate(wordsListProvider);
       _ref.invalidate(wordDetailProvider(word.id));
       _ref.invalidate(getWordStatisticsUseCaseProvider);
+      _ref.invalidate(favoritesListProvider);
       state = const AsyncValue.data(null);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -170,6 +178,7 @@ class WordController extends StateNotifier<AsyncValue<void>> {
       _ref.invalidate(wordsListProvider);
       _ref.invalidate(categoriesProvider);
       _ref.invalidate(getWordStatisticsUseCaseProvider);
+      _ref.invalidate(favoritesListProvider);
       state = const AsyncValue.data(null);
       return created;
     } catch (e, st) {
@@ -195,6 +204,7 @@ class WordController extends StateNotifier<AsyncValue<void>> {
       _ref.invalidate(wordsListProvider);
       _ref.invalidate(wordDetailProvider(word.id));
       _ref.invalidate(getWordStatisticsUseCaseProvider);
+      _ref.invalidate(favoritesListProvider);
       _ref.invalidate(streakInfoProvider);
       _ref.invalidate(todayWordsLearnedProvider);
       _ref.invalidate(weeklyActivityProvider);

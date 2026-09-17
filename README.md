@@ -1,4 +1,4 @@
-# Vocabulary Builder 📚
+# Kalika 📚
 
 A production-quality, offline-first Flutter application designed to help learners and students master English vocabulary, discover word meanings, explore synonyms/antonyms, take interactive quizzes, and track learning progress.
 

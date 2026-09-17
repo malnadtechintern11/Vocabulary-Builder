@@ -9,6 +9,7 @@ import '../../features/quiz/presentation/screens/quiz_result_screen.dart';
 import '../../features/quiz/presentation/screens/quiz_setup_screen.dart';
 import '../../features/settings/presentation/screens/settings_screen.dart';
 import '../../features/settings/presentation/screens/privacy_policy_screen.dart';
+import '../../features/settings/presentation/screens/about_screen.dart';
 import '../../features/words/domain/entities/word.dart';
 import '../../features/words/presentation/screens/add_word_screen.dart';
 import '../../features/words/presentation/screens/word_detail_screen.dart';
@@ -129,6 +130,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                     name: RouteNames.privacyPolicy,
                     parentNavigatorKey: _rootNavigatorKey,
                     builder: (context, state) => const PrivacyPolicyScreen(),
+                  ),
+                  GoRoute(
+                    path: 'about',
+                    name: RouteNames.about,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    builder: (context, state) => const AboutScreen(),
                   ),
                 ],
               ),

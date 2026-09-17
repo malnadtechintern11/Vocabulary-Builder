@@ -1,7 +1,7 @@
 # Architecture Documentation
 
 ## Overview
-**Vocabulary Builder** is built using **Feature-First Clean Architecture** with **Riverpod** for reactive state management, **GoRouter** for declarative navigation, and **SQLite (sqflite / sqflite_common_ffi)** for offline data persistence.
+**Kalika** is built using **Feature-First Clean Architecture** with **Riverpod** for reactive state management, **GoRouter** for declarative navigation, and **SQLite (sqflite / sqflite_common_ffi)** for offline data persistence.
 
 ```
 UI (Screens / Widgets)

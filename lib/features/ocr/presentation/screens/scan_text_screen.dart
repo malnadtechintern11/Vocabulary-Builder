@@ -8,6 +8,7 @@ import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../core/services/translation_service.dart';
 import '../../../../core/widgets/audio_pronounce_button.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../../words/presentation/widgets/difficulty_badge.dart';
 import '../providers/ocr_provider.dart';
 
@@ -278,6 +279,8 @@ class ScanTextScreen extends ConsumerWidget {
                 ref.read(ocrNotifierProvider.notifier).clear();
               },
             ),
+          const AppShareButton(),
+          const SizedBox(width: 4),
         ],
       ),
       body: ListView(

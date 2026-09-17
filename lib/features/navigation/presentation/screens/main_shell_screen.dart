@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../favorites/presentation/providers/favorites_provider.dart';
 
 /// Shell Scaffold providing modern dock-style bottom navigation across core features
-class MainShellScreen extends StatelessWidget {
+class MainShellScreen extends ConsumerWidget {
   final StatefulNavigationShell navigationShell;
 
   const MainShellScreen({
@@ -12,7 +14,7 @@ class MainShellScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
@@ -37,6 +39,9 @@ class MainShellScreen extends StatelessWidget {
         child: NavigationBar(
           selectedIndex: navigationShell.currentIndex,
           onDestinationSelected: (index) {
+            if (index == 1) {
+              ref.invalidate(favoritesListProvider);
+            }
             navigationShell.goBranch(
               index,
               initialLocation: index == navigationShell.currentIndex,

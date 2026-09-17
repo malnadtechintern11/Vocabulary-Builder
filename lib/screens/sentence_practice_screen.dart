@@ -5,6 +5,7 @@ import '../app/theme/app_colors.dart';
 import '../core/services/tts_service.dart';
 import '../core/widgets/audio_pronounce_button.dart';
 import '../core/widgets/empty_state_view.dart';
+import '../core/widgets/app_share_button.dart';
 import '../features/sentences/providers/sentences_provider.dart';
 import '../models/sentence.dart';
 import 'widgets/sentence_recording_dialog.dart';
@@ -92,7 +93,13 @@ class _SentencePracticeScreenState
 
     if (sentences.isEmpty) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Sentence Practice')),
+        appBar: AppBar(
+          title: const Text('Sentence Practice'),
+          actions: const [
+            AppShareButton(),
+            SizedBox(width: 4),
+          ],
+        ),
         body: EmptyStateView(
           icon: Icons.sentiment_dissatisfied_rounded,
           title: 'No Sentences Available',
@@ -151,6 +158,8 @@ class _SentencePracticeScreenState
                   .toggleFavorite(currentSentence.id);
             },
           ),
+          const AppShareButton(),
+          const SizedBox(width: 4),
         ],
       ),
       body: SafeArea(

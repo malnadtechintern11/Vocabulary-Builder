@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../providers/quiz_controller.dart';
 
 /// Screen summarizing completed quiz score, accuracy, and options to retake or return
@@ -27,7 +28,13 @@ class _QuizResultView extends ConsumerWidget {
 
     if (result == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Quiz Result')),
+        appBar: AppBar(
+          title: const Text('Quiz Result'),
+          actions: const [
+            AppShareButton(),
+            SizedBox(width: 4),
+          ],
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -52,6 +59,10 @@ class _QuizResultView extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Quiz Summary'),
         automaticallyImplyLeading: false,
+        actions: const [
+          AppShareButton(),
+          SizedBox(width: 4),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),

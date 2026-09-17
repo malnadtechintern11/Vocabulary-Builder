@@ -7,6 +7,7 @@ import '../../../../core/widgets/animated_progress_bar.dart';
 import '../../../../core/widgets/audio_pronounce_button.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../providers/quiz_controller.dart';
 import '../widgets/quiz_option_card.dart';
 
@@ -75,6 +76,10 @@ class ActiveQuizScreen extends ConsumerWidget {
               }
             },
           ),
+          actions: const [
+            AppShareButton(),
+            SizedBox(width: 4),
+          ],
         ),
         body: quizStateAsync.when(
           data: (state) {

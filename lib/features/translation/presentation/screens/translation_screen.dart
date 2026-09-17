@@ -8,6 +8,7 @@ import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../core/services/translation_service.dart';
 import '../../../../core/services/tts_service.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../../ocr/presentation/providers/ocr_provider.dart';
 import '../providers/translation_provider.dart';
 
@@ -190,6 +191,10 @@ class _TranslationScreenState extends ConsumerState<TranslationScreen> {
             ),
           ],
         ),
+        actions: const [
+          AppShareButton(),
+          SizedBox(width: 4),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
@@ -261,7 +266,7 @@ class _TranslationScreenState extends ConsumerState<TranslationScreen> {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'All other Vocabulary Builder features (Words, Sentences, Quizzes, Progress) continue to work 100% offline.',
+                    'All other Kalika features (Words, Sentences, Quizzes, Progress) continue to work 100% offline.',
                     style: TextStyle(
                       fontSize: 11.5,
                       color: isDark ? const Color(0xFFFCA5A5) : const Color(0xFF991B1B),

@@ -7,6 +7,7 @@ import '../../../../core/widgets/audio_pronounce_button.dart';
 import '../../../../core/widgets/error_state_view.dart';
 import '../../../../core/widgets/loading_view.dart';
 import '../../../../core/widgets/success_celebration_dialog.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../domain/entities/word.dart';
 import '../providers/words_provider.dart';
 import '../widgets/difficulty_badge.dart';
@@ -77,7 +78,8 @@ class _WordDetailScreenState extends ConsumerState<WordDetailScreen> {
                 ref.read(wordControllerProvider.notifier).toggleFavorite(word);
               },
             ),
-          const SizedBox(width: 8),
+          const AppShareButton(),
+          const SizedBox(width: 4),
         ],
       ),
       body: SingleChildScrollView(
@@ -508,17 +510,19 @@ class _WordDetailScreenState extends ConsumerState<WordDetailScreen> {
                       ? null
                       : () async {
                           setState(() => _isSaving = true);
-                          final saved = await ref.read(wordControllerProvider.notifier).addWord(word);
+                          final saved = await ref.read(wordControllerProvider.notifier).addWord(
+                            word.copyWith(isFavorite: true),
+                          );
                           setState(() => _isSaving = false);
                           if (saved != null) {
                             setState(() {
-                              _savedOnlineWord = saved;
+                              _savedOnlineWord = saved.copyWith(isFavorite: true);
                             });
                             if (context.mounted) {
                               SuccessCelebrationDialog.show(
                                 context: context,
                                 title: 'Word Saved to Library! 📚',
-                                message: '"${saved.word}" is now permanently available offline in your vocabulary database.',
+                                message: '"${saved.word}" is now permanently available offline and added to your Saved Collection.',
                                 scoreText: '+1 Saved Word',
                                 primaryButtonLabel: 'Great!',
                                 onPrimaryPressed: () => Navigator.of(context).pop(),

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../app/router/route_paths.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../core/widgets/success_celebration_dialog.dart';
+import '../../../../core/widgets/app_share_button.dart';
 import '../../domain/entities/word.dart';
 import '../providers/words_provider.dart';
 
@@ -32,6 +33,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
   String _selectedCategory = 'General';
   bool _isCustomCategory = false;
   bool _isSubmitting = false;
+  bool _markAsFavorite = true;
 
   final List<String> _partsOfSpeech = [
     'noun',
@@ -132,7 +134,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
       antonyms: antonyms,
       difficulty: _selectedDifficulty.toLowerCase(),
       category: finalCategory,
-      isFavorite: false,
+      isFavorite: _markAsFavorite,
       isLearned: false,
     );
 
@@ -145,7 +147,9 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
       SuccessCelebrationDialog.show(
         context: context,
         title: 'Word Added Successfully!',
-        message: '"${result.word}" is now permanently saved to your offline vocabulary library.',
+        message: _markAsFavorite
+            ? '"${result.word}" is permanently saved to your offline library and added to your Saved Collection.'
+            : '"${result.word}" is now permanently saved to your offline vocabulary library.',
         scoreText: '+1 New Word',
         primaryButtonLabel: 'View Word',
         onPrimaryPressed: () {
@@ -179,6 +183,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
       _selectedDifficulty = 'basic';
       _selectedCategory = 'General';
       _isCustomCategory = false;
+      _markAsFavorite = true;
     });
   }
 
@@ -201,6 +206,8 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
             tooltip: 'Clear Form',
             onPressed: _resetForm,
           ),
+          const AppShareButton(),
+          const SizedBox(width: 4),
         ],
       ),
       body: SingleChildScrollView(
@@ -839,7 +846,73 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                 ),
               ),
 
-              const SizedBox(height: 28),
+              const SizedBox(height: 18),
+
+              // Add to Saved Collection Toggle Card
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                decoration: BoxDecoration(
+                  color: isDark ? AppColors.surfaceDark : Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: _markAsFavorite
+                        ? AppColors.favorite.withValues(alpha: isDark ? 0.45 : 0.35)
+                        : (isDark ? AppColors.borderDark : AppColors.borderLight),
+                    width: 1.2,
+                  ),
+                  boxShadow: isDark ? AppColors.cardShadowDark : AppColors.cardShadowLight,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: AppColors.favorite.withValues(alpha: isDark ? 0.25 : 0.12),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.favorite_rounded,
+                        size: 20,
+                        color: AppColors.favorite,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Add to Saved Collection',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.5,
+                              letterSpacing: -0.2,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            'Quick access in your Saved Revision Deck',
+                            style: TextStyle(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w500,
+                              color: isDark
+                                  ? AppColors.textSecondaryDark
+                                  : AppColors.textSecondaryLight,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Switch(
+                      value: _markAsFavorite,
+                      activeThumbColor: AppColors.favorite,
+                      onChanged: (val) => setState(() => _markAsFavorite = val),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 24),
 
               // Save Word Button
               SizedBox(
