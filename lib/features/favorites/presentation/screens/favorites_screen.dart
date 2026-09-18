@@ -84,7 +84,7 @@ class FavoritesScreen extends ConsumerWidget {
                   child: EmptyStateView(
                     icon: Icons.favorite_border_rounded,
                     title: 'No Saved Words Yet',
-                    description: 'Tap the heart icon on any vocabulary word to save it here for quick review and listening practice.',
+                    description: 'Tap the heart icon on any word in Kalika to save it here for quick review and listening practice.',
                     actionLabel: 'Explore Words',
                     actionIcon: Icons.explore_rounded,
                     onActionPressed: () => context.go(RoutePaths.words),

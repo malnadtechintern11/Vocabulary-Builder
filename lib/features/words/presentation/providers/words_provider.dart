@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/services/analytics_service.dart';
 import '../../../../core/services/online_dictionary_service.dart';
 import '../../../progress/presentation/providers/learning_streak_provider.dart';
 import '../../../quiz/presentation/providers/quiz_controller.dart';
@@ -175,6 +176,10 @@ class WordController extends StateNotifier<AsyncValue<void>> {
     try {
       final useCase = _ref.read(addWordUseCaseProvider);
       final created = await useCase(word.copyWith(isOnline: false));
+      AnalyticsService.instance.logCustomWordAdded(
+        word: created.word,
+        category: created.category,
+      );
       _ref.invalidate(wordsListProvider);
       _ref.invalidate(categoriesProvider);
       _ref.invalidate(getWordStatisticsUseCaseProvider);
@@ -199,6 +204,11 @@ class WordController extends StateNotifier<AsyncValue<void>> {
         final analyticsService = _ref.read(learningAnalyticsServiceProvider);
         goalAchieved = await analyticsService.recordWordLearned(word.id);
         await analyticsService.getAchievements();
+        AnalyticsService.instance.logWordLearned(
+          word: word.word,
+          difficulty: word.difficulty,
+          category: word.category,
+        );
       }
 
       _ref.invalidate(wordsListProvider);

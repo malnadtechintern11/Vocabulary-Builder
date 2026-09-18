@@ -390,14 +390,14 @@ class LearningAnalyticsService {
       };
 
       final definitions = <_BadgeDefinition>[
-        _BadgeDefinition('first_word', 'First Step', 'Learned your first vocabulary word', Icons.looks_one_rounded, const Color(0xFF10B981), 1, masteredWords),
-        _BadgeDefinition('words_10', 'Lexicon Novice', 'Mastered 10 vocabulary words', Icons.local_library_rounded, const Color(0xFF0D9488), 10, masteredWords),
-        _BadgeDefinition('words_50', 'Word Enthusiast', 'Mastered 50 vocabulary words', Icons.school_rounded, const Color(0xFF3B82F6), 50, masteredWords),
-        _BadgeDefinition('words_100', 'Vocabulary Master', 'Mastered 100 vocabulary words', Icons.workspace_premium_rounded, const Color(0xFF8B5CF6), 100, masteredWords),
-        _BadgeDefinition('words_250', 'Lexicon Scholar', 'Mastered 250 vocabulary words', Icons.military_tech_rounded, const Color(0xFFEC4899), 250, masteredWords),
-        _BadgeDefinition('first_quiz', 'Quiz Cadet', 'Completed your first vocabulary quiz', Icons.quiz_rounded, const Color(0xFFF59E0B), 1, totalQuizzes),
+        _BadgeDefinition('first_word', 'First Step', 'Learned your first Kalika word', Icons.looks_one_rounded, const Color(0xFF10B981), 1, masteredWords),
+        _BadgeDefinition('words_10', 'Lexicon Novice', 'Mastered 10 Kalika words', Icons.local_library_rounded, const Color(0xFF0D9488), 10, masteredWords),
+        _BadgeDefinition('words_50', 'Word Enthusiast', 'Mastered 50 Kalika words', Icons.school_rounded, const Color(0xFF3B82F6), 50, masteredWords),
+        _BadgeDefinition('words_100', 'Kalika Master', 'Mastered 100 Kalika words', Icons.workspace_premium_rounded, const Color(0xFF8B5CF6), 100, masteredWords),
+        _BadgeDefinition('words_250', 'Lexicon Scholar', 'Mastered 250 Kalika words', Icons.military_tech_rounded, const Color(0xFFEC4899), 250, masteredWords),
+        _BadgeDefinition('first_quiz', 'Quiz Cadet', 'Completed your first Kalika quiz', Icons.quiz_rounded, const Color(0xFFF59E0B), 1, totalQuizzes),
         _BadgeDefinition('quiz_ace', 'Quiz Ace', 'Scored a perfect 100% on a quiz', Icons.emoji_events_rounded, const Color(0xFF10B981), 1, perfectQuizzes),
-        _BadgeDefinition('quiz_10', 'Quiz Champion', 'Completed 10 vocabulary quizzes', Icons.stars_rounded, const Color(0xFF6366F1), 10, totalQuizzes),
+        _BadgeDefinition('quiz_10', 'Quiz Champion', 'Completed 10 Kalika quizzes', Icons.stars_rounded, const Color(0xFF6366F1), 10, totalQuizzes),
         _BadgeDefinition('streak_3', 'Consistent Learner', 'Maintained a 3-day learning streak', Icons.local_fire_department_rounded, const Color(0xFFF97316), 3, streak.longestStreak),
         _BadgeDefinition('streak_7', 'Weekly Warrior', 'Maintained a 7-day learning streak', Icons.whatshot_rounded, const Color(0xFFEF4444), 7, streak.longestStreak),
         _BadgeDefinition('streak_30', 'Monthly Legend', 'Maintained a 30-day learning streak', Icons.auto_awesome_rounded, const Color(0xFFE11D48), 30, streak.longestStreak),

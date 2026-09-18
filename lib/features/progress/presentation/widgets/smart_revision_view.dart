@@ -25,7 +25,7 @@ class SmartRevisionView extends ConsumerWidget {
       return EmptyStateView(
         icon: Icons.check_circle_outline_rounded,
         title: 'No Weak Words! 🎉',
-        description: 'You have answered your vocabulary quizzes with high accuracy! Continue taking quizzes to keep tracking words that need practice.',
+        description: 'You have answered your Kalika quizzes with high accuracy! Continue taking quizzes to keep tracking words that need practice.',
         actionLabel: 'Take a Quiz',
         actionIcon: Icons.quiz_rounded,
         onActionPressed: () => context.go(RoutePaths.quiz),

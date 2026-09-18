@@ -18,6 +18,7 @@ import '../../features/ocr/presentation/screens/scan_text_screen.dart';
 import '../../features/translation/presentation/screens/translation_screen.dart';
 import '../../screens/english_sentences_screen.dart';
 import '../../screens/sentence_practice_screen.dart';
+import '../../core/services/analytics_service.dart';
 import 'route_names.dart';
 import 'route_paths.dart';
 
@@ -25,10 +26,15 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'rootNav');
 
 /// Provider for GoRouter instance
 final appRouterProvider = Provider<GoRouter>((ref) {
+  final analyticsObserver = AnalyticsService.instance.observer;
+
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: RoutePaths.words,
     debugLogDiagnostics: false,
+    observers: [
+      ?analyticsObserver,
+    ],
     routes: [
       // Main Application Stateful Shell
       StatefulShellRoute.indexedStack(

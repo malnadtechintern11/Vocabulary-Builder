@@ -149,7 +149,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
         title: 'Word Added Successfully!',
         message: _markAsFavorite
             ? '"${result.word}" is permanently saved to your offline library and added to your Saved Collection.'
-            : '"${result.word}" is now permanently saved to your offline vocabulary library.',
+            : '"${result.word}" is now permanently saved to your offline Kalika library.',
         scoreText: '+1 New Word',
         primaryButtonLabel: 'View Word',
         onPrimaryPressed: () {
@@ -194,7 +194,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add New Word'),
+        title: const Text('Add Word to Kalika'),
         actions: [
           IconButton(
             icon: const Icon(Icons.document_scanner_rounded),
@@ -253,7 +253,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Custom Vocabulary',
+                            'Add to Kalika',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 19,
@@ -937,7 +937,7 @@ class _AddWordScreenState extends ConsumerState<AddWordScreen> {
                   label: FittedBox(
                     fit: BoxFit.scaleDown,
                     child: Text(
-                      _isSubmitting ? 'Saving Word...' : 'Add Word to Vocabulary',
+                      _isSubmitting ? 'Saving Word...' : 'Add Word to Kalika',
                       style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
                     ),
                   ),

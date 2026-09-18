@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../app/theme/app_colors.dart';
+import '../../../../core/services/analytics_service.dart';
 import '../../../../core/services/speech_service.dart';
 import '../providers/words_provider.dart';
 
@@ -42,6 +43,7 @@ class _WordSearchBarState extends ConsumerState<WordSearchBar> {
   void _onSearchSubmitted(String val) {
     _debounce?.cancel();
     ref.read(wordSearchQueryProvider.notifier).state = val;
+    AnalyticsService.instance.logSearch(searchTerm: val);
   }
 
   Future<void> _toggleVoiceSearch() async {

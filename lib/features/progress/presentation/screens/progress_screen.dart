@@ -56,7 +56,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Learning Hub & Progress'),
+        title: const Text('Kalika Progress'),
         actions: const [
           AppShareButton(),
           SizedBox(width: 4),
@@ -380,7 +380,7 @@ class _ProgressScreenState extends ConsumerState<ProgressScreen> with SingleTick
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                'Vocabulary Mastery',
+                'Kalika Mastery',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 19,

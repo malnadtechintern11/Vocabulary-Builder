@@ -388,7 +388,7 @@ class SentenceCard extends ConsumerWidget {
             if (sentence.vocabularyWords.isNotEmpty) ...[
               const SizedBox(height: 12),
               Text(
-                'Key Vocabulary',
+                'Key Kalika Words',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,

@@ -361,11 +361,11 @@ class SettingsScreen extends ConsumerWidget {
 
           const SizedBox(height: 26),
 
-          // Section 4: Vocabulary Library Info
+          // Section 4: Kalika Library Info
           _buildSectionHeader(
             context,
             icon: Icons.library_books_rounded,
-            title: 'Vocabulary Library',
+            title: 'Kalika Library',
             subtitle: 'Embedded offline dictionary & learning tools',
           ),
           const SizedBox(height: 12),
@@ -386,7 +386,7 @@ class SettingsScreen extends ConsumerWidget {
                 _buildInfoRow(
                   context,
                   icon: Icons.auto_stories_rounded,
-                  title: 'Total Vocabulary',
+                  title: 'Total Kalika Words',
                   value: '1,350 Words',
                 ),
                 const Divider(height: 22),
@@ -869,7 +869,7 @@ class _RateUsCardState extends State<_RateUsCard> {
   String _getRatingFeedbackText(int rating) {
     switch (rating) {
       case 5:
-        return '5 Stars • Loved it! Best vocabulary app!';
+        return '5 Stars • Loved it! Best Kalika app!';
       case 4:
         return '4 Stars • Great learning experience!';
       case 3:

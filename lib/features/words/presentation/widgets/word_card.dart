@@ -86,7 +86,7 @@ class WordCard extends ConsumerWidget {
                           if (saved != null && context.mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Saved "${word.word}" to offline vocabulary!'),
+                                content: Text('Saved "${word.word}" to offline Kalika library!'),
                                 backgroundColor: AppColors.success,
                                 behavior: SnackBarBehavior.floating,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -95,7 +95,7 @@ class WordCard extends ConsumerWidget {
                           }
                         },
                         icon: const Icon(Icons.bookmark_add_rounded, size: 14),
-                        label: const Text('Add to Vocabulary'),
+                        label: const Text('Add to Kalika'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: isDark ? AppColors.primaryLight : AppColors.primary,
                           foregroundColor: Colors.white,

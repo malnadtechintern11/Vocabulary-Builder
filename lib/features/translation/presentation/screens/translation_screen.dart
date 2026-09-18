@@ -922,7 +922,7 @@ class _TranslationScreenState extends ConsumerState<TranslationScreen> {
                           );
                         },
                         icon: const Icon(Icons.bookmark_add_rounded, size: 16),
-                        label: const Text('Save to Vocabulary'),
+                        label: const Text('Save to Kalika'),
                         style: FilledButton.styleFrom(
                           visualDensity: VisualDensity.compact,
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),

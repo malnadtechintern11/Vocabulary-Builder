@@ -552,7 +552,7 @@ class WordsListScreen extends ConsumerWidget {
                     child: LoadingView(
                       message: isSearching
                           ? 'Searching online dictionary for "${searchQuery.trim()}"...'
-                          : 'Loading vocabulary...',
+                          : 'Loading Kalika words...',
                     ),
                   ),
                 ];

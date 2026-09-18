@@ -565,7 +565,7 @@ class _SentencePracticeScreenState
                       // Important Vocabulary Words
                       if (currentSentence.vocabularyWords.isNotEmpty) ...[
                         Text(
-                          'Important Vocabulary Words',
+                          'Key Kalika Words',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,

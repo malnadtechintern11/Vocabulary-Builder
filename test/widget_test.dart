@@ -106,10 +106,10 @@ void main() {
       expect(find.text('Share & Community'), findsOneWidget);
       expect(find.text('Share App'), findsOneWidget);
       expect(SettingsScreen.shareMessage.contains(AppConstants.playStoreWebUrl), isTrue);
-      expect(SettingsScreen.shareMessage.contains('com.vocabularybuilder.vocabulary_builder'), isTrue);
+      expect(SettingsScreen.shareMessage.contains('com.kalika.app'), isTrue);
       expect(find.text('Privacy & Security'), findsOneWidget);
       expect(find.text('Privacy Policy'), findsOneWidget);
-      expect(find.text('Vocabulary Library'), findsOneWidget);
+      expect(find.text('Kalika Library'), findsOneWidget);
       expect(find.text('1,350 Words'), findsOneWidget);
       expect(find.text('27 Topics (50+ each)'), findsOneWidget);
       expect(find.text('ಕನ್ನಡ ಅರ್ಥಗಳು ಸೇರಿಸಲಾಗಿದೆ'), findsOneWidget);
@@ -350,7 +350,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('About App'), findsAtLeastNWidgets(1));
+      expect(find.text('About Kalika'), findsAtLeastNWidgets(1));
       expect(find.byTooltip('Back to Settings'), findsOneWidget);
       expect(find.text(AppConstants.appName), findsOneWidget);
       expect(find.text('Core Learning Capabilities'), findsOneWidget);
@@ -378,7 +378,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(AppShareHelper.shareMessage.contains(AppConstants.playStoreWebUrl), isTrue);
-      expect(AppShareHelper.shareMessage.contains('com.vocabularybuilder.vocabulary_builder'), isTrue);
+      expect(AppShareHelper.shareMessage.contains('com.kalika.app'), isTrue);
     });
 
     testWidgets('AddWordScreen renders form elements and Kannada label', (WidgetTester tester) async {
@@ -390,13 +390,13 @@ void main() {
         ),
       );
 
-      expect(find.text('Add New Word'), findsOneWidget);
-      expect(find.text('Custom Vocabulary'), findsOneWidget);
+      expect(find.text('Add Word to Kalika'), findsAtLeastNWidgets(1));
+      expect(find.text('Add to Kalika'), findsOneWidget);
       expect(find.text('English Word *'), findsOneWidget);
       expect(find.text('English Meaning / Definition *'), findsOneWidget);
       expect(find.text('ಕನ್ನಡ ಅರ್ಥ (Kannada Meaning) *'), findsOneWidget);
       expect(find.text('Contextual Example Sentence'), findsOneWidget);
-      expect(find.text('Add Word to Vocabulary'), findsOneWidget);
+      expect(find.text('Add Word to Kalika'), findsAtLeastNWidgets(1));
     });
 
     testWidgets('AddWordScreen renders without any overflow on compact 320px screen', (WidgetTester tester) async {

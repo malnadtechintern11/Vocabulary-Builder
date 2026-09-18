@@ -28,7 +28,7 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vocabulary Quiz'),
+        title: const Text('Kalika Quiz'),
         actions: const [
           AppShareButton(),
           SizedBox(width: 4),
@@ -82,7 +82,7 @@ class _QuizSetupScreenState extends ConsumerState<QuizSetupScreen> {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Challenge yourself with randomized questions generated directly from your local vocabulary library.',
+                    'Challenge yourself with randomized questions generated directly from your local Kalika library.',
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.9),
                       fontSize: 14,

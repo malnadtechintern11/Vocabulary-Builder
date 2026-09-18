@@ -122,7 +122,7 @@ class _QuizResultView extends ConsumerWidget {
             const SizedBox(height: 6),
             Text(
               isPassed
-                  ? 'You demonstrated strong mastery of this vocabulary set.'
+                  ? 'You demonstrated strong mastery of this Kalika word set.'
                   : 'Practice makes permanent! Review the words and try again.',
               textAlign: TextAlign.center,
               style: TextStyle(

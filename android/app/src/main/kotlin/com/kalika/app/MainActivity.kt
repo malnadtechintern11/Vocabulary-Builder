@@ -1,4 +1,4 @@
-package com.vocabularybuilder.vocabulary_builder
+package com.kalika.app
 
 import io.flutter.embedding.android.FlutterActivity
 

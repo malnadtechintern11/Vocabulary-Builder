@@ -172,7 +172,7 @@ class ScanTextScreen extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Text(
-                    'This word is not yet in your local dictionary. You can translate it to Kannada online or save it to your vocabulary.',
+                    'This word is not yet in your local dictionary. You can translate it to Kannada online or save it to Kalika.',
                     style: TextStyle(fontSize: 13, height: 1.4),
                   ),
                 ),

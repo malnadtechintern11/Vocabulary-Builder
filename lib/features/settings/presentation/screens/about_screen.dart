@@ -62,7 +62,7 @@ class AboutScreen extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              'About App',
+              'About Kalika',
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w900,
                 fontSize: 18,

@@ -237,7 +237,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 description:
                     'You maintain complete control over your educational records at all times. You can delete custom words, clear your learning progress, or remove all cached data directly from the app settings or device application manager.',
                 highlights: const [
-                  'Instant reset of quizzes, bookmarks, and custom vocabulary.',
+                  'Instant reset of quizzes, bookmarks, and custom Kalika words.',
                   'Uninstalling the app permanently purges all SQLite databases.',
                   'Zero residual records kept on external servers.',
                 ],

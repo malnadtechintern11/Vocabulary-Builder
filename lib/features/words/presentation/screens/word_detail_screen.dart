@@ -546,7 +546,7 @@ class _WordDetailScreenState extends ConsumerState<WordDetailScreen> {
                         )
                       : const Icon(Icons.bookmark_add_rounded, color: Colors.white),
                   label: Text(
-                    _isSaving ? 'Saving to Offline Library...' : 'Add to Vocabulary (Save Offline)',
+                    _isSaving ? 'Saving to Offline Library...' : 'Add to Kalika (Save Offline)',
                     style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w800, fontSize: 15),
                   ),
                 ),

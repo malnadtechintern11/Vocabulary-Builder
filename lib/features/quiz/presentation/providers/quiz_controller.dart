@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/services/analytics_service.dart';
 import '../../../../core/services/learning_analytics_service.dart';
 import '../../data/datasources/quiz_local_data_source.dart';
 import '../../data/repositories/quiz_repository_impl.dart';
@@ -204,6 +205,11 @@ class QuizController extends StateNotifier<AsyncValue<QuizSessionState?>> {
       final analyticsService = _ref.read(learningAnalyticsServiceProvider);
       await analyticsService.recordActivityToday();
       await analyticsService.getAchievements(); // Evaluates and unlocks badges
+      AnalyticsService.instance.logQuizCompleted(
+        score: correct,
+        totalQuestions: total,
+        quizType: current.quizType.name,
+      );
 
       // Invalidate history provider to update progress dashboard
       _ref.invalidate(quizHistoryProvider);

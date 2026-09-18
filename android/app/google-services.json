@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "346682434600",
+    "project_id": "kalika-27e2e",
+    "storage_bucket": "kalika-27e2e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346682434600:android:220e3aa67f6774b9f3411d",
+        "android_client_info": {
+          "package_name": "com.kalika.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL8hp5Sc3xJ_WYSoRFFq9GqI8RcJOv4R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
