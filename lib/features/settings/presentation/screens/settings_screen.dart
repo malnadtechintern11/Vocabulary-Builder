@@ -104,23 +104,11 @@ class SettingsScreen extends ConsumerWidget {
 
           _buildThemeCard(
             context: context,
-            title: 'System Default',
-            subtitle: 'Automatically match device system theme settings',
-            icon: Icons.brightness_auto_rounded,
-            isSelected: currentThemeMode == ThemeMode.system,
-            isDark: isDark,
-            onTap: () {
-              ref.read(themeControllerProvider.notifier).setThemeMode(ThemeMode.system);
-            },
-          ),
-          const SizedBox(height: 10),
-
-          _buildThemeCard(
-            context: context,
             title: 'Light Mode',
-            subtitle: 'Crisp, bright design with high contrast',
+            badgeText: 'System Default',
+            subtitle: 'Crisp, bright design with high contrast (Default)',
             icon: Icons.light_mode_rounded,
-            isSelected: currentThemeMode == ThemeMode.light,
+            isSelected: currentThemeMode == ThemeMode.light || currentThemeMode == ThemeMode.system,
             isDark: isDark,
             onTap: () {
               ref.read(themeControllerProvider.notifier).setThemeMode(ThemeMode.light);
@@ -615,6 +603,7 @@ class SettingsScreen extends ConsumerWidget {
     required bool isSelected,
     required bool isDark,
     required VoidCallback onTap,
+    String? badgeText,
   }) {
     final theme = Theme.of(context);
     final primaryColor = isDark ? AppColors.primaryLight : AppColors.primary;
@@ -667,15 +656,47 @@ class SettingsScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        title,
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                          fontSize: 15,
-                          color: isSelected
-                              ? primaryColor
-                              : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
-                        ),
+                      Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              title,
+                              style: theme.textTheme.bodyLarge?.copyWith(
+                                fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
+                                fontSize: 15,
+                                color: isSelected
+                                    ? primaryColor
+                                    : (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight),
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          if (badgeText != null) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
+                              decoration: BoxDecoration(
+                                color: (isSelected ? primaryColor : (isDark ? AppColors.primaryLight : AppColors.primary))
+                                    .withValues(alpha: isDark ? 0.22 : 0.12),
+                                borderRadius: BorderRadius.circular(6),
+                                border: Border.all(
+                                  color: (isSelected ? primaryColor : (isDark ? AppColors.primaryLight : AppColors.primary))
+                                      .withValues(alpha: 0.35),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Text(
+                                badgeText,
+                                style: TextStyle(
+                                  fontSize: 10.5,
+                                  fontWeight: FontWeight.w700,
+                                  color: isDark ? AppColors.primaryLight : AppColors.primary,
+                                  letterSpacing: 0.2,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
                       ),
                       const SizedBox(height: 2),
                       Text(

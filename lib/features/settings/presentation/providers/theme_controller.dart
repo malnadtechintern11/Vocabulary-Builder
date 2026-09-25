@@ -7,7 +7,7 @@ const String kThemeModePrefKey = 'app_theme_mode';
 
 /// StateNotifier to manage and persist ThemeMode across app restarts
 class ThemeController extends StateNotifier<ThemeMode> {
-  ThemeController() : super(ThemeMode.system) {
+  ThemeController() : super(ThemeMode.light) {
     _loadThemeMode();
   }
 
@@ -17,12 +17,12 @@ class ThemeController extends StateNotifier<ThemeMode> {
       final prefs = await SharedPreferences.getInstance();
       final savedMode = prefs.getString(kThemeModePrefKey);
 
-      if (savedMode == 'light') {
-        state = ThemeMode.light;
-      } else if (savedMode == 'dark') {
+      if (savedMode == 'dark') {
         state = ThemeMode.dark;
-      } else {
+      } else if (savedMode == 'system') {
         state = ThemeMode.system;
+      } else {
+        state = ThemeMode.light;
       }
     } catch (e) {
       debugPrint('Error loading theme mode: $e');

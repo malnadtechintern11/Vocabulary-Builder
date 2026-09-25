@@ -11,10 +11,10 @@ void main() {
       SharedPreferences.setMockInitialValues({});
     });
 
-    test('Initial theme mode is ThemeMode.system when no preference is saved', () async {
+    test('Initial theme mode is ThemeMode.light when no preference is saved', () async {
       SharedPreferences.setMockInitialValues({});
       final controller = ThemeController();
-      expect(controller.state, equals(ThemeMode.system));
+      expect(controller.state, equals(ThemeMode.light));
     });
 
     test('Loads light theme mode from SharedPreferences', () async {

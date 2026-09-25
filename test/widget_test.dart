@@ -706,5 +706,35 @@ void main() {
       await tester.pump();
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('SettingsScreen displays System Default badge in Light Mode and switches themes correctly', (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(800, 1600);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.resetPhysicalSize);
+
+      await tester.pumpWidget(
+        const ProviderScope(
+          child: MaterialApp(
+            home: SettingsScreen(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Verify Light Mode title and System Default badge
+      expect(find.text('Light Mode'), findsOneWidget);
+      expect(find.text('System Default'), findsOneWidget);
+      expect(find.text('Dark Mode'), findsOneWidget);
+
+      // Tap Dark Mode to switch
+      await tester.tap(find.text('Dark Mode'));
+      await tester.pumpAndSettle();
+
+      // Tap Light Mode to switch back
+      await tester.tap(find.text('Light Mode'));
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+    });
   });
 }
